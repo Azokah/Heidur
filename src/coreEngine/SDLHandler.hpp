@@ -20,9 +20,6 @@ class SDLHandler {
 		static SDLHandler& getInstance();
 		~SDLHandler();
 
-		//Input
-		SDL_EventType input();
-
 		//Graficado
 		void cleanRender();
 		void draw();
@@ -44,8 +41,6 @@ class SDLHandler {
 		
 		SDL_Window * ventana;
 		SDL_Renderer * render;
-
-        SDL_Event event;
 
 		Texto * texto;
 };

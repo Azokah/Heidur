@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/components/Physics.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2
 
 default: main $(OBJECTS)
@@ -16,14 +16,22 @@ SDLHandler.o: coreEngine/SDLHandler.hpp coreEngine/SDLHandler.cpp
 Texto.o: coreEngine/Texto.hpp coreEngine/Texto.cpp
 	$(CC) -c coreEngine/Texto.cpp
 
+InputManager.o: coreEngine/InputManager.hpp coreEngine/InputManager.cpp
+	$(CC) -c coreEngine/InputManager.cpp
+
 Timer.o: coreEngine/Timer.hpp coreEngine/Timer.cpp
 	$(CC) -c coreEngine/Timer.cpp
 
 Sprite.o: gameobject/components/Sprite.hpp gameobject/components/Sprite.cpp
 	$(CC) -c gameobject/components/Sprite.cpp
 
+Physics.o: gameobject/components/Physics.hpp gameobject/components/Physics.cpp
+	$(CC) -c gameobject/components/Physics.cpp
+
 Player.o: gameobject/Player.hpp gameobject/Player.cpp
 	$(CC) -c gameobject/Player.cpp
+
+
 
 clean:
 	-rm -f main
@@ -32,3 +40,5 @@ clean:
 	-rm -f Timer.o 
 	-rm -f Player.o 
 	-rm -f Sprite.o 
+	-rm -f Physics.o 
+	-rm -f InputManager.o

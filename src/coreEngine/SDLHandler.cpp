@@ -79,38 +79,6 @@ void SDLHandler::takeScreenshot(){
 
 }
 
-//Input method
-SDL_EventType SDLHandler::input(){
-    SDL_EventType accion;
-    /* Check for events */
-    while( SDL_PollEvent( &event ) ){
-        switch( event.type ){
-            /* Look for a keypress */
-            case SDL_KEYDOWN:
-                /* Check the SDLKey values and move change the coords */
-                switch( event.key.keysym.sym ){
-                    case SDLK_ESCAPE:
-                        SDL_Quit();
-                        accion = SDL_QUIT;
-                        break;
-                    case SDLK_F1:
-                        takeScreenshot();
-                        accion = SDL_KEYDOWN;
-                        break;
-                }
-                break;
-            case SDL_QUIT:
-                    SDL_Quit();
-                    accion = SDL_QUIT;
-                    break;
-            default:
-                break;
-        }
-    }
-
-    return accion;
-};
-
 float SDLHandler::getDelta(){
     float aux = Timer::getInstance().get_ticks();
     float retorno = aux - delta;

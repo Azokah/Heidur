@@ -6,6 +6,7 @@
 
 
 class Sprite;
+class Physics;
 
 class Player{
     public:
@@ -15,5 +16,6 @@ class Player{
         void update(float);
     //private:
         Sprite * sprite;
+        Physics * physics;
 
 };
