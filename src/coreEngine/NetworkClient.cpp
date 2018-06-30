@@ -10,7 +10,7 @@ NetworkClient::NetworkClient(){
 };
 NetworkClient::~NetworkClient(){
   std::cout<<"Closing connection with server...\n";
-  SDLNet_TCP_Close(server);
+  SDLNet_TCP_Close(client);
   Quit();
 };
 

@@ -1,7 +1,7 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o
-LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o
+LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2 -lSDL2_net
 
 default: main $(OBJECTS)
 
@@ -37,6 +37,8 @@ Player.o: gameobject/Player.hpp gameobject/Player.cpp
 Scenario.o: gameobject/Scenario.hpp gameobject/Scenario.cpp
 	$(CC) -c gameobject/Scenario.cpp
 
+NetworkClient.o: coreEngine/NetworkClient.hpp coreEngine/NetworkClient.cpp
+	$(CC) -c coreEngine/NetworkClient.cpp
 
 clean:
 	-rm -f main
@@ -48,4 +50,5 @@ clean:
 	-rm -f Physics.o 
 	-rm -f InputManager.o
 	-rm -f Scenario.o
-	-rm -f Grid.o 
+	-rm -f Grid.o
+	-rm -f NetworkClient.o 
