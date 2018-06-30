@@ -35,7 +35,9 @@ SDLHandler::SDLHandler()
     delta = Timer::getInstance().get_ticks();
     
 };
-SDLHandler::~SDLHandler(){};
+SDLHandler::~SDLHandler(){
+    delete texto;
+};
 
 //Graphics methods
 

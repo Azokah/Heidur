@@ -20,6 +20,12 @@ void Sprite::draw(){
     SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,NULL,&position);
 };
 
+void Sprite::drawAt(int y, int x){
+    position.x = x;
+    position.y = y;
+    SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,NULL,&position);
+};
+
 void Sprite::update(){
     
 };

@@ -12,6 +12,7 @@ class Sprite {
         void update();
 
         void draw();
+        void drawAt(int,int);
         SDL_Rect position;
 
     private:

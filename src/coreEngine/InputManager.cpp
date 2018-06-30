@@ -33,17 +33,16 @@ SDL_EventType InputManager::processInput(Player* player){
                         SDLHandler::getInstance().takeScreenshot();
                         accion = SDL_KEYDOWN;
                         break;
-                    case SDLK_UP:
-                        std::cout<<"Presionado"<<std::endl;
+                    case SDLK_w:
                         up->execute(player);
                         break;
-                    case SDLK_DOWN:
+                    case SDLK_s:
                         down->execute(player);
                         break;
-                    case SDLK_RIGHT:
+                    case SDLK_d:
                         right->execute(player);
                         break;
-                    case SDLK_LEFT:
+                    case SDLK_a:
                         left->execute(player);
                         break;
                     accion = SDL_KEYDOWN;
@@ -52,17 +51,16 @@ SDL_EventType InputManager::processInput(Player* player){
             case SDL_KEYUP:
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
-                    case SDLK_UP:
-                    std::cout<<"desPresionado"<<std::endl;
+                    case SDLK_w:
                         stopUp->execute(player);
                         break;
-                    case SDLK_DOWN:
+                    case SDLK_s:
                         stopDown->execute(player);
                         break;
-                    case SDLK_RIGHT:
+                    case SDLK_d:
                         stopRight->execute(player);
                         break;
-                    case SDLK_LEFT:
+                    case SDLK_a:
                         stopLeft->execute(player);
                         break;
                     accion = SDL_KEYUP;

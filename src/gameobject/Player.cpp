@@ -7,11 +7,18 @@ Player::Player(){
     physics = new Physics();
     sprite = new Sprite();
 };
-Player::~Player(){};
+Player::~Player(){
+    delete physics;
+    delete sprite;
+};
 
 
 void Player::update(float delta){
     physics->update(delta,sprite);
     sprite->update();
 
+};
+
+void Player::draw(){
+    sprite->draw();
 };

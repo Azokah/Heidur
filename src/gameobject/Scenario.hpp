@@ -4,20 +4,18 @@
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
-
 class Sprite;
-class Physics;
+class Grid;
 
-class Player{
+class Scenario{
     public:
-        Player();
-        ~Player();
+        Scenario();
+        ~Scenario();
 
         void update(float);
         void draw();
-        
-    //private:
+
         Sprite * sprite;
-        Physics * physics;
+        Grid * grid;
 
 };

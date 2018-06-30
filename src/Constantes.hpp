@@ -21,7 +21,7 @@
 #define MUSICA_PATH "../resources/Musica/Castillo_Tuto.ogg"
 
 //Graficos
-#define SPRITE_PATH "../resources/Sprites/Player-sprite.png"
+#define SPRITE_PATH "../resources/Sprites/Sprites.png"
 
 //Texto
 #define TEXTO_SIZE 18
@@ -37,6 +37,10 @@
 //GAMEPLAY
 #define PLAYERS_SPEED_BASE 0.64
 
+
+//GRID
+#define GRID_MAX_H 20
+#define GRID_MAX_W 20
 //ERRORES
 #define SDL_INIT_ERROR -1
 #define ERROR_SPRITESHEET -2

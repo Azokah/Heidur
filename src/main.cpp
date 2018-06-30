@@ -3,6 +3,7 @@
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
 #include "gameobject/Player.hpp"
+#include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
 
 
@@ -14,6 +15,7 @@ int main(int argc, char * argv[]){
     SDLHandler * sdl = &SDLHandler::getInstance();
     InputManager input;
     Player player;
+    Scenario map;
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
@@ -24,7 +26,8 @@ int main(int argc, char * argv[]){
         player.update(delta);
 
         sdl->cleanRender();
-        player.sprite->draw();
+        map.draw();
+        player.draw();
         sdl->draw();
     }
     return 0;
