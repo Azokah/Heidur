@@ -23,6 +23,7 @@ void Scenario::draw(){
         for(int j = 0; j < GRID_MAX_W; j++)
             switch(grid->getValueAt(i,j)){
                 default:
+                    sprite->setDest(0,grid->getValueAt(i,j),1,1);
                     sprite->drawAt(i*TILE_H,j*TILE_W);
                     break;
             }

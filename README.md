@@ -1,6 +1,6 @@
 # Mr. io Co.
 
-![In-Development screenshot](screenshots/develop/417.bmp)
+![In-Development screenshot](screenshots/develop/2875.bmp)
 
 ### Small - Casual - Multiplatform - Adventure Mystery Game
 

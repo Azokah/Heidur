@@ -13,7 +13,9 @@ class Sprite {
 
         void draw();
         void drawAt(int,int);
-        SDL_Rect position;
+
+        void setDest(int,int,int,int);
+        SDL_Rect position, dest;
 
     private:
         SDL_Texture * texture;

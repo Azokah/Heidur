@@ -47,6 +47,7 @@
 #define MIXER_ERROR -3
 #define MUSIC_ERROR -4
 #define FONT_ERROR -5
+#define NETWORK_ERROR -6
 
 
 namespace globals {
