@@ -39,13 +39,14 @@
 
 
 //GRID
-#define GRID_MAX_H 20
-#define GRID_MAX_W 20
+#define GRID_MAX_H 5
+#define GRID_MAX_W 5
 
 //NETWORKING
 #define MASTER_SERVER_IP "127.0.0.1"
 #define MASTER_SERVER_PORT 2715
 #define MAX_BUFFER_DATA 100
+#define BUFFER_SIZE 25
 
 //ERRORES
 #define SDL_INIT_ERROR -1

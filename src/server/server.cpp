@@ -9,7 +9,9 @@ int main(int argc, char * argv[]){
     cout <<"Initializing server..\n";
     NetworkServer * server = &NetworkServer::getInstance();
     
-    server->update();
-
+    while(true){
+        server->update();
+    }
+    
     return 0;
 }

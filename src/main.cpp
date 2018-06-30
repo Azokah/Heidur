@@ -12,7 +12,7 @@
 using namespace std;
 
 int main(int argc, char * argv[]){
-    cout << "Starting window...." << endl;
+    cout << "Starting game...." << endl;
     
     SDLHandler * sdl = &SDLHandler::getInstance();
     InputManager input;
@@ -20,7 +20,6 @@ int main(int argc, char * argv[]){
     Player player;
     Scenario map;
     
-    net->update();
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
@@ -28,6 +27,7 @@ int main(int argc, char * argv[]){
         inputAction = input.processInput(&player);
         
         player.update(delta);
+        net->updatePlayer(&player);
 
         sdl->cleanRender();
         map.draw();

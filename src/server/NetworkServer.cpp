@@ -8,6 +8,7 @@ NetworkServer::NetworkServer(){
   Init();
   SDLNet_ResolveHost(&ip,NULL,MASTER_SERVER_PORT);
   server = SDLNet_TCP_Open(&ip);
+  client = SDLNet_TCP_Accept(server);
 
 };
 NetworkServer::~NetworkServer(){
@@ -18,14 +19,12 @@ NetworkServer::~NetworkServer(){
 
 
 void NetworkServer::update(){
-  const char * text = "Client connected!\n";
-  while(true){
+  char buffer[BUFFER_SIZE];
+  if(client){
+    SDLNet_TCP_Recv(client,buffer,BUFFER_SIZE);
+    std::cout<<buffer<<std::endl;
+  }else{
     client = SDLNet_TCP_Accept(server);
-    if(client){
-      SDLNet_TCP_Send(client,text,strlen(text)+1);
-      SDLNet_TCP_Close(client);
-      break;
-    }
   }
 };
 

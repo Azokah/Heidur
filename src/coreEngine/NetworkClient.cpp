@@ -1,5 +1,7 @@
 #include "NetworkClient.hpp"
- 
+#include "../gameobject/Player.hpp"
+#include "../gameobject/components/Sprite.hpp"
+
 NetworkClient& NetworkClient::getInstance(){
   static NetworkClient instance;
   return instance;
@@ -7,6 +9,8 @@ NetworkClient& NetworkClient::getInstance(){
 NetworkClient::NetworkClient(){
   Init();
   SDLNet_ResolveHost(&ip,MASTER_SERVER_IP,MASTER_SERVER_PORT);
+  std::cout<<"Attempting connection with server...\n";
+  client = SDLNet_TCP_Open(&ip);
 };
 NetworkClient::~NetworkClient(){
   std::cout<<"Closing connection with server...\n";
@@ -14,6 +18,12 @@ NetworkClient::~NetworkClient(){
   Quit();
 };
 
+void NetworkClient::updatePlayer(Player* p){
+  //This should be done via UDP i think
+  char txt[25];
+  sprintf(txt,"%d %d",p->sprite->position.x, p->sprite->position.y);
+  SDLNet_TCP_Send(client,txt,strlen(txt));
+};
 
 void NetworkClient::update(){
   std::cout<<"Attempting connection with server...\n";
