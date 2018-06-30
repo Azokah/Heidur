@@ -6,19 +6,19 @@ NetworkServer& NetworkServer::getInstance(){
 };
 NetworkServer::NetworkServer(){
   Init();
-  SDLNet_ResolveHost(&ip,NULL,2715);
+  SDLNet_ResolveHost(&ip,NULL,MASTER_SERVER_PORT);
   server = SDLNet_TCP_Open(&ip);
 
 };
 NetworkServer::~NetworkServer(){
-  std::cout<<"Cerrando el server...\n";
+  std::cout<<"Closing the server...\n";
   SDLNet_TCP_Close(server);
   Quit();
 };
 
 
 void NetworkServer::update(){
-  const char * text = "cliente conectado!\n";
+  const char * text = "Client connected!\n";
   while(true){
     client = SDLNet_TCP_Accept(server);
     if(client){
@@ -31,7 +31,7 @@ void NetworkServer::update(){
 
 bool NetworkServer::Init() {
     if (SDLNet_Init() < 0) {
-        globals::getError("No se pudo inicializar el NetworkServer",NETWORK_ERROR);
+        globals::getError("Cannot initialize NetworkServer",NETWORK_ERROR);
           return false;
         }
         else
