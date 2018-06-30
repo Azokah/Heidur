@@ -1,6 +1,6 @@
 # Mr. io Co.
 
-![In-Development screenshot](NAN)
+![In-Development screenshot](screenshots/develop/417.bmp)
 
 ### Small - Casual - Multiplatform - Adventure Mystery Game
 
@@ -20,7 +20,7 @@
 * Casual, with 5 to 15 minutes games
 
 ### For more information
- * [See our one sheet sample](https://github.com/Azokah/Heidur/blob/master/Docs/One%20sheet%20sample.pdf)
+ * [See our one sheet sample](docs/One%20sheet%20sample.pdf)
 
 ##### Authors: 
 * Jaime Gonzalez Bonorino ( Azokah - jaimegbonorino@gmail.com )
