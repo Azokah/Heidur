@@ -31,28 +31,10 @@ SDL_EventType InputManager::processInput(Player* player){
                         break;
                     case SDLK_F1:
                         SDLHandler::getInstance().takeScreenshot();
+                        accion = SDL_KEYDOWN;
                         break;
                     case SDLK_UP:
                         std::cout<<"Presionado"<<std::endl;
-                        stopUp->execute(player);
-                        break;
-                    case SDLK_DOWN:
-                        stopDown->execute(player);
-                        break;
-                    case SDLK_RIGHT:
-                        stopRight->execute(player);
-                        break;
-                    case SDLK_LEFT:
-                        stopLeft->execute(player);
-                        break;
-                    accion = SDL_KEYDOWN;
-                }
-                break;
-            case SDL_KEYUP:
-                /* Check the SDLKey values and move change the coords */
-                switch( event.key.keysym.sym ){
-                    case SDLK_UP:
-                    std::cout<<"desPresionado"<<std::endl;
                         up->execute(player);
                         break;
                     case SDLK_DOWN:
@@ -63,6 +45,25 @@ SDL_EventType InputManager::processInput(Player* player){
                         break;
                     case SDLK_LEFT:
                         left->execute(player);
+                        break;
+                    accion = SDL_KEYDOWN;
+                }
+                break;
+            case SDL_KEYUP:
+                /* Check the SDLKey values and move change the coords */
+                switch( event.key.keysym.sym ){
+                    case SDLK_UP:
+                    std::cout<<"desPresionado"<<std::endl;
+                        stopUp->execute(player);
+                        break;
+                    case SDLK_DOWN:
+                        stopDown->execute(player);
+                        break;
+                    case SDLK_RIGHT:
+                        stopRight->execute(player);
+                        break;
+                    case SDLK_LEFT:
+                        stopLeft->execute(player);
                         break;
                     accion = SDL_KEYUP;
                 }
