@@ -74,7 +74,7 @@ void SDLHandler::takeScreenshot(){
     SDL_Surface *sshot = SDL_CreateRGBSurface(0, PANTALLA_AN, PANTALLA_AL, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
     SDL_RenderReadPixels(render, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
     char txt[25];
-    sprintf(txt,"Screenshots/%d.bmp",Timer::getInstance().get_ticks());
+    sprintf(txt,"%s%d.bmp",SCREENSHOT_PATH,Timer::getInstance().get_ticks());
     SDL_SaveBMP(sshot, txt);
     std::cout<<"Screenshot taken!"<<std::endl;
     SDL_FreeSurface(sshot);
