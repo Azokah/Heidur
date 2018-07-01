@@ -15,8 +15,14 @@ class NetworkServer{
     NetworkServer();
     IPaddress ip;
     TCPsocket server;
-    TCPsocket client;
+    TCPsocket client[MAX_CLIENTS+1]; //Actual sockets go add to the container
+    SDLNet_SocketSet clients; //Container to manage sockets
+    int connectedClients;
 
     bool Init(); //Initialize SDL_net
     void Quit(); //Exit SDL_net
+
+    void checkSockets();
+    void checkConnections();
+    void notifyNewPlayerOnline(int); //Method that informs clients when a new player connected
 };

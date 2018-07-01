@@ -47,6 +47,17 @@
 #define MASTER_SERVER_PORT 2715
 #define MAX_BUFFER_DATA 100
 #define BUFFER_SIZE 25
+#define MAX_CLIENTS 3
+#define MAX_CLIENT_SOCKETSET 1
+#define SERVER_SOCKET_NUMBER 0
+#define SERVER_CHECKSOCKET_MS 1000
+#define CLIENT_CHECKSOCKET_MS 60
+
+
+//NETWORKING CODES
+#define PLAYER_DATA_CODE 0
+#define NEW_PLAYER_CONNECTED_CODE 1
+
 
 //ERRORES
 #define SDL_INIT_ERROR -1
@@ -55,7 +66,9 @@
 #define MUSIC_ERROR -4
 #define FONT_ERROR -5
 #define NETWORK_ERROR -6
-
+#define CANNOT_CONNECT_ERROR -7
+#define SOCKET_SETS_ERROR -8
+#define SOCKET_SETS_ERROR_2 -9
 
 namespace globals {
     static void getError(std::string errorString, int error ){

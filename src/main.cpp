@@ -23,12 +23,18 @@ int main(int argc, char * argv[]){
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
-
-        inputAction = input.processInput(&player);
-        
-        player.update(delta);
+        //Networking (Should be another thread)
+        net->update();
         net->updatePlayer(&player);
 
+        
+        inputAction = input.processInput(&player); //Input
+        
+        //Update entities
+        player.update(delta);
+        
+        
+        //Drawing sequence
         sdl->cleanRender();
         map.draw();
         player.draw();
