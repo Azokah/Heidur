@@ -25,4 +25,5 @@ class NetworkServer{
     void checkSockets();
     void checkConnections();
     void notifyNewPlayerOnline(int); //Method that informs clients when a new player connected
+    void processBuffer(std::string,int);
 };

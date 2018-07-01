@@ -73,7 +73,8 @@ void NetworkServer::checkSockets(){
           numBytes=SDLNet_TCP_Recv(client[c],buffer,BUFFER_SIZE);
           if(numBytes) {  //If recieved some bytes, process socket
               // process the packet.
-              std::cout<<buffer<<std::endl;
+              
+              processBuffer(buffer,c);
           }else{ // If recieved 0 or negative bytes, close socket, player may be disconnected
             SDLNet_TCP_Close(client[c]);
             SDLNet_TCP_DelSocket(clients,client[c]);
@@ -82,6 +83,41 @@ void NetworkServer::checkSockets(){
         }
       }
 
+  }
+};
+
+//Method that process the recieved buffer from the TCP Socket
+void NetworkServer::processBuffer(std::string buffer, int id){
+  buffer = buffer.substr(0, buffer.find("\n"));
+
+  std::string operationCode = buffer.substr(0, buffer.find(":")); //We put the opcode in another string
+  buffer = buffer.substr(buffer.find(":")+1); // We separate the rest of the string
+  int opCode = std::stoi(operationCode); // Parse opcode string to int
+  char text[BUFFER_SIZE]; //Variable used to forward messages
+  int size;
+  int value[3];
+  switch(opCode){
+    case PLAYER_DATA_CODE: //if opcode is for updating player's positions
+
+      //We obtain the values from the stirng
+      value[0] = std::stoi(buffer.substr(0, buffer.find(":")));
+      buffer = buffer.substr(buffer.find(" ")+1);
+      value[1] = std::stoi(buffer.substr(0, buffer.find("%d")));
+      buffer = buffer.substr(buffer.find(" ")+1);
+      value[2] = std::stoi(buffer.substr(0, buffer.find("%d")));
+
+      //Lets create a new string
+      size = sprintf(text,"%d: %d %d %d\n",0,value[1],value[2], id);
+      
+      for(int c = 0; c < MAX_CLIENTS; c++){
+        if(client[c] && c != SERVER_SOCKET_NUMBER && c != id){
+          SDLNet_TCP_Send(client[c],text,size); //we send a message to every client except server
+        }
+      }
+      break;
+    default:
+      std::cout<<"Opcode recieved: "<<opCode<<std::endl;
+      break;
   }
 };
 

@@ -1,8 +1,10 @@
 #include <iostream>
+#include <vector>
 #include "Constantes.hpp"
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
 #include "coreEngine/NetworkClient.hpp"
+#include "coreEngine/GOManager.hpp"
 #include "gameobject/Player.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
@@ -19,7 +21,8 @@ int main(int argc, char * argv[]){
     NetworkClient * net = &NetworkClient::getInstance();
     Player player;
     Scenario map;
-    
+    GOManager * gom = &GOManager::getInstance();
+
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
@@ -32,12 +35,13 @@ int main(int argc, char * argv[]){
         
         //Update entities
         player.update(delta);
-        
+        gom->update(delta);
         
         //Drawing sequence
         sdl->cleanRender();
         map.draw();
         player.draw();
+        gom->draw();
         sdl->draw();
     }
     return 0;

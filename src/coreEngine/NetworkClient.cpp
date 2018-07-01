@@ -2,6 +2,7 @@
 #include "Timer.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/components/Sprite.hpp"
+#include "GOManager.hpp"
 
 NetworkClient& NetworkClient::getInstance(){
   static NetworkClient instance;
@@ -33,9 +34,10 @@ NetworkClient::~NetworkClient(){
 
 void NetworkClient::updatePlayer(Player* p){
   //This should be done via UDP i think
-  char txt[25];
-  sprintf(txt,"%d: %d %d",PLAYER_DATA_CODE,p->sprite->position.x, p->sprite->position.y);
-  SDLNet_TCP_Send(client,txt,strlen(txt));
+  char txt[BUFFER_SIZE];
+  int size;
+  size = sprintf(txt,"%d: %d %d\n",PLAYER_DATA_CODE,p->sprite->position.x, p->sprite->position.y);
+  SDLNet_TCP_Send(client,txt,size);
 };
 
 //Method that checks on sockets if recieved bytes
@@ -63,7 +65,7 @@ void NetworkClient::checkSockets(){
 //Method that process the recieved buffer from the TCP Socket
 void NetworkClient::processBuffer(std::string buffer){
   std::string operationCode = buffer.substr(0, buffer.find(":"));
-  buffer = buffer.substr(buffer.find(":")+1);
+  buffer = buffer.substr(buffer.find(" ")+1);
   int opCode = std::stoi(operationCode);
   int value;
   int pos_x, pos_y;
@@ -71,7 +73,17 @@ void NetworkClient::processBuffer(std::string buffer){
     case NEW_PLAYER_CONNECTED_CODE:
       //Add new player
       value = std::stoi(buffer);
+      GOManager::getInstance().playerFromConnection(value);
+      break;
+    case PLAYER_DATA_CODE:
+      
+      pos_x = std::stoi(buffer.substr(0, buffer.find(" ")));
+      buffer = buffer.substr(buffer.find(" ")+1);
+      pos_y = std::stoi(buffer.substr(0, buffer.find("%d")));
+      buffer = buffer.substr(buffer.find(" ")+1);
+      value = std::stoi(buffer.substr(0, buffer.find("%d")));
 
+      GOManager::getInstance().updatePlayer(value,pos_x,pos_y);
       break;
     default:
       std::cout<<"Opcode recieved: "<<opCode<<std::endl;
