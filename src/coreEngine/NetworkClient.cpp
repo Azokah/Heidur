@@ -64,26 +64,30 @@ void NetworkClient::checkSockets(){
 
 //Method that process the recieved buffer from the TCP Socket
 void NetworkClient::processBuffer(std::string buffer){
-  std::string operationCode = buffer.substr(0, buffer.find(":"));
-  buffer = buffer.substr(buffer.find(" ")+1);
-  int opCode = std::stoi(operationCode);
-  int value;
-  int pos_x, pos_y;
-  switch(opCode){
-    case NEW_PLAYER_CONNECTED_CODE:
-      //Add new player
-      value = std::stoi(buffer);
-      GOManager::getInstance().playerFromConnection(value);
+  buffer = buffer.substr(0, buffer.find("\n"));
+  
+  std::string operationCode = buffer.substr(0, buffer.find(":")); //Get operationCode
+  buffer = buffer.substr(buffer.find(" ")+1); //get the next substring
+  int opCode = std::stoi(operationCode); //parse opcode to int
+  int value; //Value, used to store data
+  int pos_x, pos_y;//used to store data
+
+
+  switch(opCode){//switch by opcode
+    case NEW_PLAYER_CONNECTED_CODE: //if a new player connected
+      value = std::stoi(buffer);//get client id
+      GOManager::getInstance().playerFromConnection(value); //Add new player by id
       break;
-    case PLAYER_DATA_CODE:
-      
+    case PLAYER_DATA_CODE://if a player moved
+
+      //get his new position
       pos_x = std::stoi(buffer.substr(0, buffer.find(" ")));
       buffer = buffer.substr(buffer.find(" ")+1);
       pos_y = std::stoi(buffer.substr(0, buffer.find("%d")));
       buffer = buffer.substr(buffer.find(" ")+1);
       value = std::stoi(buffer.substr(0, buffer.find("%d")));
 
-      GOManager::getInstance().updatePlayer(value,pos_x,pos_y);
+      GOManager::getInstance().updatePlayer(value,pos_x,pos_y);//Move player by id to his new position
       break;
     default:
       std::cout<<"Opcode recieved: "<<opCode<<std::endl;

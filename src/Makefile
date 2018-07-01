@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o 
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2 -lSDL2_net
 
 default: main $(OBJECTS)
@@ -40,6 +40,9 @@ Physics.o: gameobject/components/Physics.hpp gameobject/components/Physics.cpp
 Player.o: gameobject/Player.hpp gameobject/Player.cpp
 	$(CC) -c gameobject/Player.cpp
 
+Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
+	$(CC) -c gameobject/Monster.cpp
+
 Scenario.o: gameobject/Scenario.hpp gameobject/Scenario.cpp
 	$(CC) -c gameobject/Scenario.cpp
 
@@ -61,3 +64,4 @@ clean:
 	-rm -f NetworkClient.o 
 	-rm -f GOManager.o 
 	-rm -f PlayerExternal.o 
+	-rm -f Monster.o

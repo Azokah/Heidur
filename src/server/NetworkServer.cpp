@@ -71,9 +71,9 @@ void NetworkServer::checkSockets(){
       for(int c = 0; c < MAX_CLIENTS; c++){
         if(SDLNet_SocketReady(client[c])) {
           numBytes=SDLNet_TCP_Recv(client[c],buffer,BUFFER_SIZE);
-          if(numBytes) {  //If recieved some bytes, process socket
+          if(numBytes > 0) {  //If recieved some bytes, process socket
               // process the packet.
-              
+              std::cout<<numBytes<<" "<<buffer<<std::endl;
               processBuffer(buffer,c);
           }else{ // If recieved 0 or negative bytes, close socket, player may be disconnected
             SDLNet_TCP_Close(client[c]);

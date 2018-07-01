@@ -11,6 +11,8 @@ void Grid::resetGrid(){
     for(int i = 0; i < GRID_MAX_H; i++)
         for(int j = 0; j < GRID_MAX_W; j++)
             grid[i][j] = 1;
+
+    grid[3][3] = 2;
 };
 
 

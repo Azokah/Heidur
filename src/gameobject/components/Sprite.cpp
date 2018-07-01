@@ -37,3 +37,8 @@ void Sprite::setDest(int y, int x, int w, int h){
 void Sprite::update(){
     
 };
+
+
+bool Sprite::testColision(Sprite * sprite){
+    //tobedone
+}

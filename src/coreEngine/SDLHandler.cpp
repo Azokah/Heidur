@@ -10,10 +10,10 @@ SDLHandler& SDLHandler::getInstance(){
 SDLHandler::SDLHandler()
 {
     SDL_Rect viewport = {0, 0, PANTALLA_AL, PANTALLA_AN };
-    //viewport.x = 0;
-    //viewport.y = 0;
-    //viewport.w = PANTALLA_AN;
-    //viewport.h = PANTALLA_AL;
+    viewport.x = 0;
+    viewport.y = 0;
+    viewport.w = PANTALLA_AN;
+    viewport.h = PANTALLA_AL;
 
     //Inicializacion de elementos de SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)

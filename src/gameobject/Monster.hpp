@@ -4,22 +4,20 @@
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
-class Sprite;
-class Grid;
 
-class Scenario{
+class Sprite;
+class Physics;
+
+class Monster{
     public:
-        static Scenario& getInstance();
-        
-        ~Scenario();
+        Monster();
+        ~Monster();
 
         void update(float);
         void draw();
-        bool testColision(int,int);
-
+        
+    //private:
         Sprite * sprite;
-        Grid * grid;
+        Physics * physics;
 
-        private:
-            Scenario();
 };

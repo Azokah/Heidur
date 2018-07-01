@@ -14,6 +14,8 @@ class Sprite {
         void draw();
         void drawAt(int,int);
 
+        bool testColision(Sprite *);
+
         void setDest(int,int,int,int);
         SDL_Rect position, dest;
 
