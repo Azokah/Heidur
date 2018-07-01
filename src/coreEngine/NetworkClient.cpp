@@ -38,7 +38,7 @@ void NetworkClient::updatePlayer(Player* p){
   SDLNet_TCP_Send(client,txt,strlen(txt));
 };
 
-//Method that checks on sockets
+//Method that checks on sockets if recieved bytes
 void NetworkClient::checkSockets(){
   char buffer[BUFFER_SIZE];
   int numPkts;
@@ -54,10 +54,29 @@ void NetworkClient::checkSockets(){
         if(numPkts) {
             // process the packet.
             std::cout<<buffer<<std::endl;
+            processBuffer(buffer);
         }
       }
     }
+};
 
+//Method that process the recieved buffer from the TCP Socket
+void NetworkClient::processBuffer(std::string buffer){
+  std::string operationCode = buffer.substr(0, buffer.find(":"));
+  buffer = buffer.substr(buffer.find(":")+1);
+  int opCode = std::stoi(operationCode);
+  int value;
+  int pos_x, pos_y;
+  switch(opCode){
+    case NEW_PLAYER_CONNECTED_CODE:
+      //Add new player
+      value = std::stoi(buffer);
+
+      break;
+    default:
+      std::cout<<"Opcode recieved: "<<opCode<<std::endl;
+      break;
+  }
 };
 void NetworkClient::update(){
   checkSockets();

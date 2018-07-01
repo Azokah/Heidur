@@ -25,4 +25,5 @@ class NetworkClient{
     void Quit(); //Exit SDL_net
 
     void checkSockets();
+    void processBuffer(std::string);
 };

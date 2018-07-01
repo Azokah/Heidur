@@ -60,7 +60,7 @@ void NetworkServer::checkConnections(){
 //Method that checks on sockets
 void NetworkServer::checkSockets(){
   char buffer[BUFFER_SIZE];
-  int numPkts;
+  int numBytes;
   // Wait for up to 1 second for network activity
   //SDLNet_SocketSet set;
   int socketState = SDLNet_CheckSockets(clients, SERVER_CHECKSOCKET_MS);
@@ -70,16 +70,19 @@ void NetworkServer::checkSockets(){
       // check all sockets with SDLNet_SocketReady and handle the active ones.
       for(int c = 0; c < MAX_CLIENTS; c++){
         if(SDLNet_SocketReady(client[c])) {
-          numPkts=SDLNet_TCP_Recv(client[c],buffer,BUFFER_SIZE);
-          if(numPkts) {
+          numBytes=SDLNet_TCP_Recv(client[c],buffer,BUFFER_SIZE);
+          if(numBytes) {  //If recieved some bytes, process socket
               // process the packet.
               std::cout<<buffer<<std::endl;
+          }else{ // If recieved 0 or negative bytes, close socket, player may be disconnected
+            SDLNet_TCP_Close(client[c]);
+            SDLNet_TCP_DelSocket(clients,client[c]);
+            std::cout<<"A player has disconnected"<<std::endl;
           }
         }
       }
 
   }
-
 };
 
 //Method that informs clients when a new player connected
