@@ -2,6 +2,11 @@
 #include <iostream>
 #include <string>
 #include <SDL2/SDL.h>
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "../Constantes.hpp"
 
 class Sprite;
@@ -22,4 +27,7 @@ class Scenario{
 
         private:
             Scenario();
+
+            void load();
+            void load(std::string);
 };

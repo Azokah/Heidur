@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2 -lSDL2_net
 
 default: main $(OBJECTS)
@@ -21,6 +21,9 @@ InputManager.o: coreEngine/InputManager.hpp coreEngine/InputManager.cpp
 
 Timer.o: coreEngine/Timer.hpp coreEngine/Timer.cpp
 	$(CC) -c coreEngine/Timer.cpp
+
+Camera.o: coreEngine/Camera.hpp coreEngine/Camera.cpp
+	$(CC) -c coreEngine/Camera.cpp
 
 NetworkClient.o: coreEngine/NetworkClient.hpp coreEngine/NetworkClient.cpp
 	$(CC) -c coreEngine/NetworkClient.cpp
@@ -65,3 +68,4 @@ clean:
 	-rm -f GOManager.o 
 	-rm -f PlayerExternal.o 
 	-rm -f Monster.o
+	-rm -f Camera.o 

@@ -11,6 +11,7 @@ class Physics;
 class Monster{
     public:
         Monster();
+        Monster(int,int);
         ~Monster();
 
         void update(float);

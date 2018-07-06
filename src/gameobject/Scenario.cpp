@@ -10,6 +10,7 @@ Scenario& Scenario::getInstance(){
 Scenario::Scenario(){
     sprite = new Sprite();
     grid = new Grid();
+    load();
 };
 Scenario::~Scenario(){
     delete sprite;
@@ -36,7 +37,58 @@ void Scenario::draw(){
 bool Scenario::testColision(int y, int x){
     int i = y/TILE_H, j =  x/TILE_W;
     int i2 = (y+TILE_H)/TILE_H, j2 = (x+TILE_W)/TILE_W;
-    if(grid->getValueAt(i,j) != 1 || grid->getValueAt(i2,j) != 1 || grid->getValueAt(i,j2) != 1 || grid->getValueAt(i2,j2) != 1){
+    if(!grid->isWalkable(i,j) || !grid->isWalkable(i2,j) || !grid->isWalkable(i,j2)|| !grid->isWalkable(i2,j2)){
         return false;
     }else return true;
 }
+
+
+void Scenario::load(){
+	std::ifstream file(GRID_PATH);
+	int fila, columna;
+	fila = 0;
+	columna = 0;
+	std::string linea;
+
+	while (std::getline(file, linea,',')){
+		std::istringstream iss(linea);
+		int n;
+
+		while (iss >> n){
+			grid->setValue(fila,columna,n);
+			columna++;
+
+			if(columna >= GRID_MAX_W){
+				columna = 0;
+				fila += 1;
+			}
+		}
+	}
+
+	file.close();
+};
+
+void Scenario::load(std::string path){
+	std::ifstream file(path);
+	int fila, columna;
+	fila = 0;
+	columna = 0;
+	std::string linea;
+
+	while (std::getline(file, linea,',')){
+		std::istringstream iss(linea);
+		int n;
+
+		while (iss >> n){
+			grid->setValue(fila,columna,n);
+			columna++;
+
+			if(columna >= GRID_MAX_W){
+				columna = 0;
+				fila += 1;
+			}
+		}
+	}
+
+	file.close();
+};

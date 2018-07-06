@@ -22,4 +22,6 @@ class Sprite {
     private:
         SDL_Texture * texture;
         void loadTexture(SDL_Renderer*,std::string);
+
+        bool checkInBounds();
 };

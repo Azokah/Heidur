@@ -3,8 +3,8 @@
 #include "Constantes.hpp"
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
-#include "coreEngine/NetworkClient.hpp"
 #include "coreEngine/GOManager.hpp"
+#include "coreEngine/Camera.hpp"
 #include "gameobject/Player.hpp"
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
@@ -18,19 +18,17 @@ int main(int argc, char * argv[]){
     cout << "Starting game...." << endl;
     
     SDLHandler * sdl = &SDLHandler::getInstance();
+    Camera * camera = &Camera::getInstance();
     InputManager input;
-    //NetworkClient * net = &NetworkClient::getInstance();
+
     Player player;
-    Monster monster;
+    Monster monster(15,15);
     Scenario * map = &Scenario::getInstance();;
     GOManager * gom = &GOManager::getInstance();
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
-        //Networking (Should be another thread)
-        //net->update();
-        //net->updatePlayer(&player);
 
         inputAction = input.processInput(&player); //Input
         
@@ -38,7 +36,8 @@ int main(int argc, char * argv[]){
         player.update(delta);
         monster.update(delta);
         gom->update(delta);
-        
+        camera->update(&player);
+
         //Drawing sequence
         sdl->cleanRender();
         map->draw();

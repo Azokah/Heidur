@@ -39,10 +39,14 @@
 
 //GRAFICOS
 #define MONSTER_SPRITE_DEST 4
+#define TILE_GRASS_CODE 1
+#define TILE_MUD_CODE 2
+#define TILE_WOOD_FLOOR_CODE 6
 
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
+#define GRID_PATH "../resources/Maps/Mapa1.csv"
 
 //NETWORKING
 #define MASTER_SERVER_IP "127.0.0.1"

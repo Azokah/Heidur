@@ -8,6 +8,13 @@ Monster::Monster(){
     sprite = new Sprite();
     sprite->setDest(0,MONSTER_SPRITE_DEST,1,1);
 };
+Monster::Monster(int y,int x){
+    physics = new Physics();
+    sprite = new Sprite();
+    sprite->position.x = x*TILE_W;
+    sprite->position.y = y*TILE_H;
+    sprite->setDest(0,MONSTER_SPRITE_DEST,1,1);
+};
 Monster::~Monster(){
     delete physics;
     delete sprite;
