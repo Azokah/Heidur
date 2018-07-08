@@ -6,10 +6,10 @@
 #include "coreEngine/GOManager.hpp"
 #include "coreEngine/Camera.hpp"
 #include "gameobject/Player.hpp"
+#include "gameobject/Item.hpp"
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
-
 
 
 using namespace std;
@@ -23,6 +23,7 @@ int main(int argc, char * argv[]){
 
     Player player;
     Monster monster(15,15);
+    Item bush((ITEM_TYPE)1,15,5);
     Scenario * map = &Scenario::getInstance();;
     GOManager * gom = &GOManager::getInstance();
 
@@ -36,6 +37,7 @@ int main(int argc, char * argv[]){
         player.update(delta);
         monster.update(delta);
         gom->update(delta);
+        bush.update(delta);
         camera->update(&player);
 
         //Drawing sequence
@@ -43,6 +45,7 @@ int main(int argc, char * argv[]){
         map->draw();
         player.draw();
         monster.draw();
+        bush.draw();
         gom->draw();
         sdl->draw();
     }
