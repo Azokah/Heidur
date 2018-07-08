@@ -4,15 +4,19 @@
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
+enum ITEM_TYPE {
+    PLACEHOLDER,
+    BUSH
+};
 
 class Sprite;
 class Physics;
 class Stats;
 
-class Player{
+class Item{
     public:
-        Player();
-        ~Player();
+        Item(ITEM_TYPE,int,int);
+        ~Item();
 
         void update(float);
         void draw();
@@ -21,5 +25,7 @@ class Player{
         Sprite * sprite;
         Physics * physics;
         Stats * stats;
+
+        ITEM_TYPE type;
 
 };

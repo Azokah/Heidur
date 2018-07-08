@@ -1,10 +1,11 @@
 #include "Sprite.hpp"
 #include "../../coreEngine/SDLHandler.hpp"
+#include "../../coreEngine/Camera.hpp"
 
 Sprite::Sprite(){
     loadTexture(SDLHandler::getInstance().getRender(),SPRITE_PATH);
-    position.x = 0+TILE_W;
-    position.y = 0+TILE_H;
+    position.x = 5*TILE_W;
+    position.y = 5*TILE_H;
     position.w = dest.w = TILE_W;
     position.h = dest.h = TILE_H;
     dest.y = 0;
@@ -19,13 +20,27 @@ void Sprite::loadTexture(SDL_Renderer* render,std::string path){
 }
 
 void Sprite::draw(){
-    SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,&dest,&position);
+    if(checkInBounds()){
+        SDL_Rect posCam = Camera::getInstance().bounds;
+        position.x -= posCam.x;
+        position.y -= posCam.y;
+        SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,&dest,&position);
+        position.x += posCam.x;
+        position.y += posCam.y;
+    }
 };
 
 void Sprite::drawAt(int y, int x){
     position.x = x;
     position.y = y;
-    SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,&dest,&position);
+    if(checkInBounds()){
+        SDL_Rect posCam = Camera::getInstance().bounds;
+        position.x -= posCam.x;
+        position.y -= posCam.y;
+        SDL_RenderCopy(SDLHandler::getInstance().getRender(),texture,&dest,&position);
+        position.x += posCam.x;
+        position.y += posCam.y;
+    }
 };
 
 void Sprite::setDest(int y, int x, int w, int h){
@@ -36,4 +51,33 @@ void Sprite::setDest(int y, int x, int w, int h){
 }
 void Sprite::update(){
     
+};
+
+//Method in charge of checking if sprite is inside camera bounds
+bool Sprite::checkInBounds(){
+    SDL_Rect posCam = Camera::getInstance().bounds;
+    if(position.x >= posCam.x - TILE_W && position.x <= posCam.x+PANTALLA_AN)
+        if(position.y >= posCam.y - TILE_H && position.y <= posCam.y+PANTALLA_AL)
+            return true;
+    return false;
+};
+
+bool Sprite::testColision(Sprite * sprite){
+    //tobedone -- should work
+    /*int i = (sprite->position.y+TILE_H/2), j =  (sprite->position.x+TILE_W/3);
+    int i2 = (sprite->position.y+TILE_H), j2 = (sprite->position.x+(TILE_W/3)+(TILE_W/3));
+
+    int y = (position.y+TILE_H/2), x =  (position.x+TILE_W/3);
+    int y2 = (position.y+TILE_H), x2 = (position.x+(TILE_W/3)+(TILE_W/3));
+
+    if(((j > x2 ) || (j2 < x)) && ((i > y2) || (i2 < y))){
+        return false;
+    }else return true;*/
+}
+
+bool Sprite::isClicked(int y, int x){
+    if( x >= position.x && x <= position.x+position.w)
+        if( y >= position.y && y <= position.y+position.h)
+            return true; 
+    return false;
 };

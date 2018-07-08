@@ -1,27 +1,31 @@
-#include "Player.hpp"
+#include "Item.hpp"
 #include "components/Sprite.hpp"
 #include "components/Physics.hpp"
 #include "components/Stats.hpp"
 
-Player::Player(){
+Item::Item(ITEM_TYPE typeItem,int y,int x){
     physics = new Physics();
     sprite = new Sprite();
     stats = new Stats();
+    type = typeItem;
+    sprite->setDest(0,SPRITE_BUSH,1,1);
+    sprite->position.y = y*TILE_H;
+    sprite->position.x = x*TILE_W;
 };
-Player::~Player(){
+Item::~Item(){
     delete physics;
     delete sprite;
     delete stats;
 };
 
 
-void Player::update(float delta){
+void Item::update(float delta){
     physics->update(delta,sprite);
     sprite->update();
     stats->update();
 
 };
 
-void Player::draw(){
+void Item::draw(){
     sprite->draw();
 };

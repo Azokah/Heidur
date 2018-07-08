@@ -1,23 +1,18 @@
-# Mr. io Co.
+# Heidur
 
-![In-Development screenshot](screenshots/develop/2875.bmp)
+![In-Development screenshot](screenshots/develop/12424.bmp)
 
-### Small - Casual - Multiplatform - Adventure Mystery Game
+### Small - Casual - Multiplatform - RPG
 
 #### Summary
 
-    *Have you ever wanted to go in search of mysteries with your friends?
-    Have you ever wanted to discover, study, fight, and capture monsters?
-    Well, now you can, gather up to 3 friends and dont forget your dog,
-    the mystery is waiting for you... just be carefull.*
+   *In a place full of magic and mystery, a young man in search of opportunities gets the chance to work in the castle of one of the most powerful kings of Heidur. Soon the young man would discover that this job was not what he expected, but a promise is a promise, getting away is not an option. He will try determination and courage in an endless amount of adventures, to finally arrive at what seems to be the twisted end of the world, and with his own hands, to prevent it.*
 
 #### Features
-* Multiplayer
-* Teamwork-based gameplay
-* Intense puzzles
-* Proceduraly generated scenarios and monsters
-* Multiplatform
-* Casual, with 5 to 15 minutes games
+* Serious, big and original lore
+* Lots of things to do, at your own time
+* Casual
+* Singleplayer and Multiplayer experience
 
 ### For more information
  * [See our one sheet sample](docs/One%20sheet%20sample.pdf)

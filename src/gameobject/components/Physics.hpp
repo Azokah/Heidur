@@ -3,6 +3,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "../../Constantes.hpp"
+#include "../Scenario.hpp"
 
 class Sprite;
 
@@ -23,6 +24,7 @@ class Physics {
         void stopRight();
         void stopDown();
 
+        
 
     private:
 

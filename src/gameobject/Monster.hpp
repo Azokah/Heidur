@@ -7,12 +7,12 @@
 
 class Sprite;
 class Physics;
-class Stats;
 
-class Player{
+class Monster{
     public:
-        Player();
-        ~Player();
+        Monster();
+        Monster(int,int);
+        ~Monster();
 
         void update(float);
         void draw();
@@ -20,6 +20,5 @@ class Player{
     //private:
         Sprite * sprite;
         Physics * physics;
-        Stats * stats;
 
 };

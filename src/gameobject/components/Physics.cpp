@@ -1,6 +1,7 @@
 #include "Physics.hpp"
 #include "Sprite.hpp"
 
+
 Physics::Physics(){
     speed = PLAYERS_SPEED_BASE;
     movingUp = movingDown = movingRight = movingLeft = false;
@@ -9,10 +10,16 @@ Physics::~Physics(){};
 
 void Physics::update(float delta, Sprite* sprite){
     
-    if (movingUp) sprite->position.y -= speed*delta;
-    if (movingDown) sprite->position.y += speed*delta;
-    if (movingRight) sprite->position.x += speed*delta;
-    if (movingLeft) sprite->position.x -= speed*delta;
+    float totalMove = speed*delta;
+
+    if (movingUp && Scenario::getInstance().testColision(sprite->position.y-totalMove,sprite->position.x))
+        sprite->position.y -= totalMove;
+    if (movingDown && Scenario::getInstance().testColision(sprite->position.y+totalMove,sprite->position.x))
+        sprite->position.y += totalMove;
+    if (movingRight && Scenario::getInstance().testColision(sprite->position.y,sprite->position.x+totalMove))
+        sprite->position.x += totalMove;
+    if (movingLeft&& Scenario::getInstance().testColision(sprite->position.y,sprite->position.x-totalMove))
+        sprite->position.x -= totalMove;
 };
 void Physics::moveUp(){ movingUp = true;};
 void Physics::moveDown(){ movingDown = true; };
