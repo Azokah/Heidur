@@ -19,6 +19,8 @@ class Sprite {
         void setDest(int,int,int,int);
         SDL_Rect position, dest;
 
+        bool isClicked(int,int);
+
     private:
         SDL_Texture * texture;
         void loadTexture(SDL_Renderer*,std::string);

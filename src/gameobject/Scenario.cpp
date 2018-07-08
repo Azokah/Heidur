@@ -35,8 +35,8 @@ void Scenario::draw(){
 };
 
 bool Scenario::testColision(int y, int x){
-    int i = y/TILE_H, j =  x/TILE_W;
-    int i2 = (y+TILE_H)/TILE_H, j2 = (x+TILE_W)/TILE_W;
+    int i = (y+TILE_H/2)/TILE_H, j =  (x+TILE_W/3)/TILE_W;
+    int i2 = (y+TILE_H)/TILE_H, j2 = (x+(TILE_W/3)+(TILE_W/3))/TILE_W;
     if(!grid->isWalkable(i,j) || !grid->isWalkable(i2,j) || !grid->isWalkable(i,j2)|| !grid->isWalkable(i2,j2)){
         return false;
     }else return true;

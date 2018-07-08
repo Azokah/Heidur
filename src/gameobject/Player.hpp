@@ -7,6 +7,7 @@
 
 class Sprite;
 class Physics;
+class Stats;
 
 class Player{
     public:
@@ -19,5 +20,6 @@ class Player{
     //private:
         Sprite * sprite;
         Physics * physics;
+        Stats * stats;
 
 };

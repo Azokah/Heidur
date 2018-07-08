@@ -63,5 +63,21 @@ bool Sprite::checkInBounds(){
 };
 
 bool Sprite::testColision(Sprite * sprite){
-    //tobedone
+    //tobedone -- should work
+    /*int i = (sprite->position.y+TILE_H/2), j =  (sprite->position.x+TILE_W/3);
+    int i2 = (sprite->position.y+TILE_H), j2 = (sprite->position.x+(TILE_W/3)+(TILE_W/3));
+
+    int y = (position.y+TILE_H/2), x =  (position.x+TILE_W/3);
+    int y2 = (position.y+TILE_H), x2 = (position.x+(TILE_W/3)+(TILE_W/3));
+
+    if(((j > x2 ) || (j2 < x)) && ((i > y2) || (i2 < y))){
+        return false;
+    }else return true;*/
 }
+
+bool Sprite::isClicked(int y, int x){
+    if( x >= position.x && x <= position.x+position.w)
+        if( y >= position.y && y <= position.y+position.h)
+            return true; 
+    return false;
+};
