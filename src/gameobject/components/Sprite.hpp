@@ -21,10 +21,17 @@ class Sprite {
         SDL_Rect position, dest;
 
         bool isClicked(int,int);
+        void resetClickedStatus();
+
+        bool wasClicked; //To indicate if sprite was clicked by user
+
+        int getDistanceFromSprite(Sprite*);
 
     private:
         SDL_Texture * texture;
         void loadTexture(SDL_Renderer*,std::string);
 
         bool checkInBounds();
+
+       
 };

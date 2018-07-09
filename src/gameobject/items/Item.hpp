@@ -18,7 +18,7 @@ class Item{
     public:
         virtual ~Item() {};
 
-        virtual void update(float) = 0;
+        virtual void update(float,Player*) = 0;
         virtual void draw() = 0;
         
         virtual void action(Player*) = 0;
@@ -29,5 +29,7 @@ class Item{
         Stats * stats;
 
         ITEM_TYPE type;
+
+        std::string name, description;
 
 };

@@ -14,6 +14,6 @@ void Inventory::update(float delta){
 
 void Inventory::toConsole(){
     for(auto& i  : items){
-        std::cout<<i->type<<std::endl;
+        std::cout<<i->name<<"-"<<i->description<<std::endl;
     }
 };

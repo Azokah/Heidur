@@ -14,6 +14,8 @@ ItemBush::ItemBush(int y,int x):Item(){
     sprite->position.y = y*TILE_H;
     sprite->position.x = x*TILE_W;
     type = BUSH;
+    name = "Bush.";
+    description = "Used to craft things.";
 };
 ItemBush::~ItemBush(){
     delete physics;
@@ -23,13 +25,19 @@ ItemBush::~ItemBush(){
 
 void ItemBush::action(Player* p){
     p->inventory->items.push_back(this);
+    std::cout<<"Aded bush fruit to player\n"; //TESTUSE
 };
 
-void ItemBush::update(float delta){
+void ItemBush::update(float delta,Player* p){
     physics->update(delta,sprite);
     sprite->update(delta);
     stats->update(delta);
-
+    if(sprite->wasClicked){
+        if(p->sprite->getDistanceFromSprite(sprite) <= PICKUP_ITEM_DISTANCE){
+            action(p); 
+        }
+        sprite->resetClickedStatus();
+    }
 };
 
 void ItemBush::draw(){

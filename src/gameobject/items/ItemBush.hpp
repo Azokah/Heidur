@@ -10,7 +10,7 @@ class ItemBush : public Item{
         ItemBush(int,int);
         ~ItemBush();
 
-        virtual void update(float);
+        virtual void update(float,Player*);
         virtual void draw();
         
         virtual void action(Player*);

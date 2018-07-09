@@ -22,19 +22,22 @@ int main(int argc, char * argv[]){
 
     Player player;
     Monster monster(15,15);
-    ItemBush bush(15,5);
+    std::vector<Item*> bushes;
+    bushes.push_back(new ItemBush(15,5));
+    bushes.push_back(new ItemBush(5,15));
     Scenario * map = &Scenario::getInstance();;
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
 
-        inputAction = input.processInput(&player,&bush); //Input
+        inputAction = input.processInput(&player,bushes); //Input
         
         //Update entities
         player.update(delta);
         monster.update(delta);
-        bush.update(delta);
+        for(auto& bush : bushes)
+            bush->update(delta,&player);
         camera->update(&player);
 
         //Drawing sequence
@@ -42,7 +45,8 @@ int main(int argc, char * argv[]){
         map->draw();
         player.draw();
         monster.draw();
-        bush.draw();
+        for(auto& bush : bushes)
+            bush->draw();
         sdl->draw();
     }
     return 0;

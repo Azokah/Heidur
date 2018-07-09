@@ -4,6 +4,7 @@
 #include "../gameobject/items/Item.hpp"
 #include "../gameobject/components/Physics.hpp"
 #include "../gameobject/components/Sprite.hpp"
+#include "../gameobject/components/Inventory.hpp"
 
 InputManager::InputManager(){
     up = new MoveUp();
@@ -14,11 +15,12 @@ InputManager::InputManager(){
     stopDown = new StopDown();
     stopRight = new StopRight();
     stopLeft = new StopLeft();
+    toggleInventory = new ToggleInventory();
 };
 InputManager::~InputManager(){};
 
 
-SDL_EventType InputManager::processInput(Player* player,Item* items){
+SDL_EventType InputManager::processInput(Player* player,std::vector<Item*>items){
     SDL_EventType accion;
     /* Check for events */
     while( SDL_PollEvent( &event ) ){
@@ -46,6 +48,9 @@ SDL_EventType InputManager::processInput(Player* player,Item* items){
                         break;
                     case SDLK_a:
                         left->execute(player);
+                        break;
+                    case SDLK_i:
+                        toggleInventory->execute(player);
                         break;
                     accion = SDL_KEYDOWN;
                 }
@@ -86,8 +91,10 @@ SDL_EventType InputManager::processInput(Player* player,Item* items){
     return accion;
 };
 
-void InputManager::dispatchClick(int y,int x,Item*item){
-    std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
+void InputManager::dispatchClick(int y,int x,std::vector<Item*>items){
+    for(auto& item : items)
+        item->sprite->isClicked(y,x);
+        //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
     
 };
 
@@ -99,3 +106,4 @@ void StopUp::execute(Player* p) { p->physics->stopUp();};
 void StopDown::execute(Player* p) { p->physics->stopDown();};
 void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
+void ToggleInventory::execute(Player* p) { p->inventory->toConsole();};
