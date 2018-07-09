@@ -49,6 +49,12 @@ void Sprite::setDest(int y, int x, int w, int h){
     dest.w = w*TILE_W;
     dest.h = h*TILE_H;
 }
+void Sprite::setDest(int pos){
+    dest.y = 0*TILE_H;
+    dest.x = pos*TILE_W;
+    dest.w = 1*TILE_W;
+    dest.h = 1*TILE_H;
+}
 void Sprite::update(){
     
 };

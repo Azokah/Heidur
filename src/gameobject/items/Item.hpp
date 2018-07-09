@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <SDL2/SDL.h>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 
 enum ITEM_TYPE {
     PLACEHOLDER,
@@ -15,11 +15,12 @@ class Stats;
 
 class Item{
     public:
-        Item(ITEM_TYPE,int,int);
-        ~Item();
+        virtual ~Item() {};
 
-        void update(float);
-        void draw();
+        virtual void update(float) = 0;
+        virtual void draw() = 0;
+        
+        virtual void action() = 0;
         
     //private:
         Sprite * sprite;

@@ -17,6 +17,7 @@ class Sprite {
         bool testColision(Sprite *);
 
         void setDest(int,int,int,int);
+        void setDest(int);
         SDL_Rect position, dest;
 
         bool isClicked(int,int);

@@ -6,7 +6,7 @@
 #include "coreEngine/GOManager.hpp"
 #include "coreEngine/Camera.hpp"
 #include "gameobject/Player.hpp"
-#include "gameobject/Item.hpp"
+#include "gameobject/items/ItemBush.hpp"
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
@@ -23,7 +23,7 @@ int main(int argc, char * argv[]){
 
     Player player;
     Monster monster(15,15);
-    Item bush((ITEM_TYPE)1,15,5);
+    ItemBush bush(15,5);
     Scenario * map = &Scenario::getInstance();;
     GOManager * gom = &GOManager::getInstance();
 
