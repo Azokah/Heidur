@@ -1,3 +1,7 @@
+/********************************************************************************
+*   Deprecated                                                                  *
+*   Various methods are deprecated and made for another uses. Must be upgraded. *
+*********************************************************************************/
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/PlayerExternal.hpp"

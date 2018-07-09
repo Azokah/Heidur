@@ -55,7 +55,7 @@ void Sprite::setDest(int pos){
     dest.w = 1*TILE_W;
     dest.h = 1*TILE_H;
 }
-void Sprite::update(){
+void Sprite::update(float delta){
     
 };
 
@@ -82,6 +82,8 @@ bool Sprite::testColision(Sprite * sprite){
 }
 
 bool Sprite::isClicked(int y, int x){
+    x += Camera::getInstance().bounds.x;
+    y += Camera::getInstance().bounds.y;
     if( x >= position.x && x <= position.x+position.w)
         if( y >= position.y && y <= position.y+position.h)
             return true; 

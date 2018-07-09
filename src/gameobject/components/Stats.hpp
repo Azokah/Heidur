@@ -9,7 +9,7 @@ class Stats {
         Stats();
         ~Stats();
 
-        void update();
+        void update(float);
     //private:
         int health, energy, hunger, thirst;
         int actualHealth, actualEnergy, actualHunger, actualThirst;

@@ -3,7 +3,6 @@
 #include "Constantes.hpp"
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
-#include "coreEngine/GOManager.hpp"
 #include "coreEngine/Camera.hpp"
 #include "gameobject/Player.hpp"
 #include "gameobject/items/ItemBush.hpp"
@@ -25,18 +24,16 @@ int main(int argc, char * argv[]){
     Monster monster(15,15);
     ItemBush bush(15,5);
     Scenario * map = &Scenario::getInstance();;
-    GOManager * gom = &GOManager::getInstance();
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
 
-        inputAction = input.processInput(&player); //Input
+        inputAction = input.processInput(&player,&bush); //Input
         
         //Update entities
         player.update(delta);
         monster.update(delta);
-        gom->update(delta);
         bush.update(delta);
         camera->update(&player);
 
@@ -46,7 +43,6 @@ int main(int argc, char * argv[]){
         player.draw();
         monster.draw();
         bush.draw();
-        gom->draw();
         sdl->draw();
     }
     return 0;

@@ -1,3 +1,7 @@
+/********************************************
+*   Unused                                  *
+*   Made for a possible multiplayer feature *
+********************************************/
 #include "PlayerExternal.hpp"
 
 PlayerExternal::PlayerExternal(int ID):Player(){

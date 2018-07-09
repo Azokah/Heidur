@@ -23,7 +23,7 @@ Monster::~Monster(){
 
 void Monster::update(float delta){
     physics->update(delta,sprite);
-    sprite->update();
+    sprite->update(delta);
 
 };
 

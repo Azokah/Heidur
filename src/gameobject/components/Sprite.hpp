@@ -9,7 +9,7 @@ class Sprite {
         Sprite();
         ~Sprite();
 
-        void update();
+        void update(float);
 
         void draw();
         void drawAt(int,int);

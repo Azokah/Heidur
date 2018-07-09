@@ -5,7 +5,6 @@
 #include "../../Constantes.hpp"
 #include "Item.hpp"
 
-
 class ItemBush : public Item{
     public:
         ItemBush(int,int);
@@ -14,7 +13,7 @@ class ItemBush : public Item{
         virtual void update(float);
         virtual void draw();
         
-        virtual void action();
+        virtual void action(Player*);
     
 
 };

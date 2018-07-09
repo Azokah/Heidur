@@ -1,3 +1,7 @@
+/********************************************************************************
+*   Deprecated                                                                  *
+*   Various methods are deprecated and made for another uses. Must be upgraded. *
+*********************************************************************************/
 #include "NetworkClient.hpp"
 #include "Timer.hpp"
 #include "../gameobject/Player.hpp"

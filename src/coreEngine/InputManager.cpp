@@ -1,7 +1,9 @@
 #include "InputManager.hpp"
 #include "SDLHandler.hpp"
 #include "../gameobject/Player.hpp"
+#include "../gameobject/items/Item.hpp"
 #include "../gameobject/components/Physics.hpp"
+#include "../gameobject/components/Sprite.hpp"
 
 InputManager::InputManager(){
     up = new MoveUp();
@@ -16,7 +18,7 @@ InputManager::InputManager(){
 InputManager::~InputManager(){};
 
 
-SDL_EventType InputManager::processInput(Player* player){
+SDL_EventType InputManager::processInput(Player* player,Item* items){
     SDL_EventType accion;
     /* Check for events */
     while( SDL_PollEvent( &event ) ){
@@ -70,6 +72,12 @@ SDL_EventType InputManager::processInput(Player* player){
                     SDL_Quit();
                     accion = SDL_QUIT;
                     break;
+            case SDL_MOUSEBUTTONDOWN:
+                switch(event.button.button){
+                    case SDL_BUTTON_RIGHT:
+                        dispatchClick(event.button.y,event.button.x,items);
+                    break;
+                }
             default:
                 break;
         }
@@ -78,7 +86,10 @@ SDL_EventType InputManager::processInput(Player* player){
     return accion;
 };
 
-
+void InputManager::dispatchClick(int y,int x,Item*item){
+    std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
+    
+};
 
 void MoveUp::execute(Player* p) { p->physics->moveUp();};
 void MoveDown::execute(Player* p) { p->physics->moveDown();};

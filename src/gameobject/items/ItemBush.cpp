@@ -1,7 +1,10 @@
 #include "ItemBush.hpp"
+#include "../Player.hpp"
 #include "../components/Sprite.hpp"
 #include "../components/Physics.hpp"
 #include "../components/Stats.hpp"
+#include "../components/Inventory.hpp"
+
 
 ItemBush::ItemBush(int y,int x):Item(){
     physics = new Physics();
@@ -18,14 +21,14 @@ ItemBush::~ItemBush(){
     delete stats;
 };
 
-void ItemBush::action(){
-
+void ItemBush::action(Player* p){
+    p->inventory->items.push_back(this);
 };
 
 void ItemBush::update(float delta){
     physics->update(delta,sprite);
-    sprite->update();
-    stats->update();
+    sprite->update(delta);
+    stats->update(delta);
 
 };
 

@@ -12,6 +12,7 @@ enum ITEM_TYPE {
 class Sprite;
 class Physics;
 class Stats;
+class Player;
 
 class Item{
     public:
@@ -20,7 +21,7 @@ class Item{
         virtual void update(float) = 0;
         virtual void draw() = 0;
         
-        virtual void action() = 0;
+        virtual void action(Player*) = 0;
         
     //private:
         Sprite * sprite;

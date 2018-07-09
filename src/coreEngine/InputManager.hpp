@@ -4,6 +4,7 @@
 #include "../Constantes.hpp"
 
 class Player;
+class Item;
 
 class Command {
     public:
@@ -16,7 +17,9 @@ class InputManager {
         InputManager();
         ~InputManager();
         
-        SDL_EventType processInput(Player*);
+        SDL_EventType processInput(Player*,Item*);//Should be changed to a vector of items
+
+        void dispatchClick(int,int,Item*);
 
     private:
         SDL_Event event;

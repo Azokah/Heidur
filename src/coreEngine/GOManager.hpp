@@ -1,3 +1,7 @@
+/********************************************************************************
+*   Deprecated                                                                  *
+*   Various methods are deprecated and made for another uses. Must be upgraded. *
+*********************************************************************************/
 /********************************************************************
 *   This Class responsabilities are to manage,  create and delete   *
 *   all gameobjects that are not main player and map                *
