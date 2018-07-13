@@ -8,6 +8,8 @@
 #include "../items/ItemGeneric.hpp"
 
 ResourceBush::ResourceBush(int y,int x):Resource(){
+    srand(time(NULL));
+
     physics = new Physics();
     sprite = new Sprite();
     stats = new Stats();
@@ -58,7 +60,8 @@ void ResourceBush::goInCooldown(){
 void ResourceBush::checkCooldown(){
     if(Timer::getInstance().get_ticks() > cooldownTick){
         cooldown = false;
-        sprite->position.y = sprite->position.x = 2*TILE_W;
+        sprite->position.y = (rand()%GRID_MAX_H)*TILE_H;
+        sprite->position.x = (rand()%GRID_MAX_W)*TILE_W;
         
     }
 };

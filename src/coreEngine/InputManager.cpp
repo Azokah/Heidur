@@ -94,7 +94,7 @@ SDL_EventType InputManager::processInput(Player* player){
 
 void InputManager::dispatchClick(int y,int x){
     for(auto& item : GOManager::getInstance().items)
-        item->sprite->isClicked(y,x);
+        if(!item->cooldown)item->sprite->isClicked(y,x);
         //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
     
 };
