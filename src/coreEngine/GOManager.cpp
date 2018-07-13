@@ -5,14 +5,13 @@
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/resources/Resource.hpp"
-#include "../gameobject/resources/ResourceGeneric.hpp"
+#include "../gameobject/ResourceGeneric.hpp"
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){
-    items.push_back(new ResourceGeneric(BUSH,15,5));
-    items.push_back(new ResourceGeneric(BUSH,5,15));
-    items.push_back(new ResourceGeneric(ROCK,6,15));
+    resources.push_back(new ResourceGeneric(BUSH,15,5));
+    resources.push_back(new ResourceGeneric(BUSH,5,15));
+    resources.push_back(new ResourceGeneric(ROCK,6,15));
 };
 
 GOManager& GOManager::getInstance(){
@@ -20,11 +19,11 @@ GOManager& GOManager::getInstance(){
     return instance;
 };
 void GOManager::update(float delta,Player* player){
-    for(auto& i : items)
+    for(auto& i : resources)
         i->update(delta,player);
 };
 
 void GOManager::draw(){
-    for(auto& i : items)
+    for(auto& i : resources)
         i->draw();
 };

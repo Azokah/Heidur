@@ -2,10 +2,11 @@
 #include "SDLHandler.hpp"
 #include "GOManager.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/resources/Resource.hpp"
+#include "../gameobject/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/components/Inventory.hpp"
+#include "../gameobject/components/Resource.hpp"
 
 InputManager::InputManager(){
     up = new MoveUp();
@@ -93,8 +94,8 @@ SDL_EventType InputManager::processInput(Player* player){
 };
 
 void InputManager::dispatchClick(int y,int x){
-    for(auto& item : GOManager::getInstance().items)
-        if(!item->cooldown)item->sprite->isClicked(y,x);
+    for(auto& r : GOManager::getInstance().resources)
+        if(!r->resource->cooldown)r->sprite->isClicked(y,x);
         //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
     
 };

@@ -5,7 +5,7 @@
 #include "../Constantes.hpp"
 
 class Player;
-class Resource;
+class ResourceGeneric;
 
 class Command {
     public:

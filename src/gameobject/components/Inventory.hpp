@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include "../../Constantes.hpp"
 
-class Item;
+class ItemGeneric;
 
 class Inventory {
     public:
@@ -15,5 +15,5 @@ class Inventory {
         void update(float);
 
         void toConsole();
-        std::vector<Item*> items;
+        std::vector<ItemGeneric*> items;
 };

@@ -1,5 +1,7 @@
 #include "Inventory.hpp"
-#include "../items/Item.hpp"
+#include "Item.hpp"
+#include "../ItemGeneric.hpp"
+
 
 Inventory::Inventory(){
 
@@ -14,6 +16,6 @@ void Inventory::update(float delta){
 
 void Inventory::toConsole(){
     for(auto& i  : items){
-        std::cout<<i->name<<"-"<<i->description<<std::endl;
+        std::cout<<i->item->name<<"-"<<i->item->description<<std::endl;
     }
 };

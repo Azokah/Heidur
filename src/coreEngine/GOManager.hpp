@@ -10,7 +10,7 @@
 #include <iostream>
 #include <vector>
 
-class Resource;
+class ResourceGeneric;
 class Player;
 
 class GOManager {
@@ -21,7 +21,7 @@ class GOManager {
         void update(float,Player*);
         void draw();
 
-        std::vector<Resource*> items;
+        std::vector<ResourceGeneric*> resources;
 
     private:
         GOManager();
