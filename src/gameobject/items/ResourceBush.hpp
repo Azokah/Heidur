@@ -3,17 +3,19 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "../../Constantes.hpp"
-#include "Item.hpp"
+#include "Resource.hpp"
 
-class ItemBush : public Item{
+class ResourceBush : public Resource{
     public:
-        ItemBush(int,int);
-        ~ItemBush();
+        ResourceBush(int,int);
+        ~ResourceBush();
 
         virtual void update(float,Player*);
         virtual void draw();
         
         virtual void action(Player*);
-    
+
+        virtual void goInCooldown();
+        virtual void checkCooldown();
 
 };

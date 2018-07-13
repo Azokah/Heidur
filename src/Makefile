@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/items/ItemBush.hpp gameobject/components/Inventory.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ItemBush.o Inventory.o
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/items/ResourceBush.hpp gameobject/components/Inventory.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceBush.o Inventory.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2 -lSDL2_net
 
 default: main $(OBJECTS)
@@ -49,8 +49,8 @@ Stats.o: gameobject/components/Stats.hpp gameobject/components/Stats.cpp
 Player.o: gameobject/Player.hpp gameobject/Player.cpp
 	$(CC) -c gameobject/Player.cpp
 
-ItemBush.o: gameobject/items/ItemBush.hpp gameobject/items/ItemBush.cpp
-	$(CC) -c gameobject/items/ItemBush.cpp
+ResourceBush.o: gameobject/items/ResourceBush.hpp gameobject/items/ResourceBush.cpp
+	$(CC) -c gameobject/items/ResourceBush.cpp
 
 Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
 	$(CC) -c gameobject/Monster.cpp
@@ -79,5 +79,5 @@ clean:
 	-rm -f Monster.o
 	-rm -f Camera.o 
 	-rm -f Stats.o 
-	-rm -f ItemBush.o 
+	-rm -f ResourceBush.o 
 	-rm -f Inventory.o 

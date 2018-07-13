@@ -14,14 +14,17 @@ class Physics;
 class Stats;
 class Player;
 
-class Item{
+class Resource{
     public:
-        virtual ~Item() {};
+        virtual ~Resource() {};
 
         virtual void update(float,Player*) = 0;
         virtual void draw() = 0;
         
         virtual void action(Player*) = 0;
+
+        virtual void goInCooldown() = 0;
+        virtual void checkCooldown() = 0;
         
     //private:
         Sprite * sprite;
@@ -31,5 +34,7 @@ class Item{
         ITEM_TYPE type;
 
         std::string name, description;
+        int cooldownTick;
+        bool cooldown;
 
 };

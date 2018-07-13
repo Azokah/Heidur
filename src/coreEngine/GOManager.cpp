@@ -5,13 +5,13 @@
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/items/Item.hpp"
-#include "../gameobject/items/ItemBush.hpp"
+#include "../gameobject/items/Resource.hpp"
+#include "../gameobject/items/ResourceBush.hpp"
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){
-    items.push_back(new ItemBush(15,5));
-    items.push_back(new ItemBush(5,15));
+    items.push_back(new ResourceBush(15,5));
+    items.push_back(new ResourceBush(5,15));
 };
 
 GOManager& GOManager::getInstance(){

@@ -6,7 +6,6 @@
 #include "coreEngine/Camera.hpp"
 #include "coreEngine/GOManager.hpp"
 #include "gameobject/Player.hpp"
-#include "gameobject/items/ItemBush.hpp"
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
