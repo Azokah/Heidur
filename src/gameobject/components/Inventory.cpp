@@ -1,5 +1,5 @@
 #include "Inventory.hpp"
-#include "../items/Resource.hpp"
+#include "../resources/Resource.hpp"
 
 Inventory::Inventory(){
 

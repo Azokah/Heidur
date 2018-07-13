@@ -5,8 +5,8 @@
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/items/Resource.hpp"
-#include "../gameobject/items/ResourceBush.hpp"
+#include "../gameobject/resources/Resource.hpp"
+#include "../gameobject/resources/ResourceBush.hpp"
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){

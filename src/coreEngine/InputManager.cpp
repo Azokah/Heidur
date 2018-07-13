@@ -2,7 +2,7 @@
 #include "SDLHandler.hpp"
 #include "GOManager.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/items/Resource.hpp"
+#include "../gameobject/resources/Resource.hpp"
 #include "../gameobject/components/Physics.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/components/Inventory.hpp"
