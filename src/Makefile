@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/resources/ResourceBush.hpp gameobject/components/Inventory.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceBush.o Inventory.o
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/resources/ResourceBush.hpp gameobject/components/Inventory.hpp gameobject/items/ItemGeneric.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceBush.o Inventory.o ItemGeneric.o 
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2 -lSDL2_net
 
 default: main $(OBJECTS)
@@ -52,6 +52,9 @@ Player.o: gameobject/Player.hpp gameobject/Player.cpp
 ResourceBush.o: gameobject/resources/ResourceBush.hpp gameobject/resources/ResourceBush.cpp
 	$(CC) -c gameobject/resources/ResourceBush.cpp
 
+ItemGeneric.o: gameobject/items/ItemGeneric.hpp gameobject/items/ItemGeneric.cpp
+	$(CC) -c gameobject/items/ItemGeneric.cpp
+
 Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
 	$(CC) -c gameobject/Monster.cpp
 
@@ -81,3 +84,4 @@ clean:
 	-rm -f Stats.o 
 	-rm -f ResourceBush.o 
 	-rm -f Inventory.o 
+	-rm -f ItemGeneric.o 

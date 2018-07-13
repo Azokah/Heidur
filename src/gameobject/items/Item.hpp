@@ -4,34 +4,25 @@
 #include <SDL2/SDL.h>
 #include "../../Constantes.hpp"
 
-class Sprite;
-class Physics;
-class Stats;
-class Player;
-
 using namespace globals;
 
-class Resource{
+class Player;
+class Sprite;
+class Stats;
+
+class Item{
     public:
-        virtual ~Resource() {};
+        virtual ~Item() {};
 
         virtual void update(float,Player*) = 0;
         virtual void draw() = 0;
         
-        virtual void action(Player*) = 0;
-
-        virtual void goInCooldown() = 0;
-        virtual void checkCooldown() = 0;
-        
     //private:
         Sprite * sprite;
-        Physics * physics;
         Stats * stats;
 
         ITEM_TYPE type;
 
         std::string name, description;
-        int cooldownTick;
-        bool cooldown;
 
 };

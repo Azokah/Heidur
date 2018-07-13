@@ -127,4 +127,9 @@ namespace globals {
         int y;
     };
 
+    enum ITEM_TYPE {
+    PLACEHOLDER,
+    BUSH
+    };
+
 }

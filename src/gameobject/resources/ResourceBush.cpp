@@ -5,6 +5,7 @@
 #include "../components/Stats.hpp"
 #include "../components/Inventory.hpp"
 #include "../../coreEngine/Timer.hpp"
+#include "../items/ItemGeneric.hpp"
 
 ResourceBush::ResourceBush(int y,int x):Resource(){
     physics = new Physics();
@@ -25,7 +26,7 @@ ResourceBush::~ResourceBush(){
 };
 
 void ResourceBush::action(Player* p){
-    p->inventory->items.push_back(this); //Añade un item del tipo del recurso
+    p->inventory->items.push_back(new ItemGeneric(BUSH)); //Añade un item del tipo del recurso
     //std::cout<<"Aded bush fruit to player\n"; //TESTUSE
     goInCooldown();
 };

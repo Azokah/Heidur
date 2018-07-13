@@ -5,6 +5,8 @@
 #include "../../Constantes.hpp"
 #include "Resource.hpp"
 
+using namespace globals;
+
 class ResourceBush : public Resource{
     public:
         ResourceBush(int,int);
