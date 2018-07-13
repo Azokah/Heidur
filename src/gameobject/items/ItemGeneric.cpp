@@ -6,11 +6,23 @@
 
 ItemGeneric::ItemGeneric(ITEM_TYPE TYPE):Item(){
     type = TYPE;
-    name = "Stick";
-    description = "Used to craft things.";
-
     sprite = new Sprite();
     stats = new Stats();
+
+    switch(type){
+        case BUSH:
+            name = "Stick";
+            description = "Used to craft things.";
+            sprite->setDest(SPRITE_STICK);
+            break;
+        default:
+            name = "Unknown";
+            description = "Who knows?";
+            break;
+    }
+    
+
+    
 };
 ItemGeneric::~ItemGeneric() {};
 
