@@ -12,7 +12,7 @@ class Camera {
 
         void init();
 
-        void update(Player*);
+        void update(float,Player*);
 
         SDL_Rect bounds;
     private:

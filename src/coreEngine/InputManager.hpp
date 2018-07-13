@@ -18,9 +18,9 @@ class InputManager {
         InputManager();
         ~InputManager();
         
-        SDL_EventType processInput(Player*,std::vector<Item*>);
+        SDL_EventType processInput(Player*);
 
-        void dispatchClick(int,int,std::vector<Item*>);
+        void dispatchClick(int,int);
 
     private:
         SDL_Event event;

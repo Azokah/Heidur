@@ -10,22 +10,21 @@
 #include <iostream>
 #include <vector>
 
-class PlayerExternal;
+class Item;
+class Player;
 
 class GOManager {
     public:
         static GOManager& getInstance();
         ~GOManager();
 
-        void update(float);
+        void update(float,Player*);
         void draw();
 
-        void playerFromConnection(int);
-        void updatePlayer(int,int,int);
+        std::vector<Item*> items;
 
     private:
         GOManager();
 
-        std::vector<PlayerExternal*> players;
 
 };

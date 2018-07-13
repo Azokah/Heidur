@@ -4,6 +4,7 @@
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
 #include "coreEngine/Camera.hpp"
+#include "coreEngine/GOManager.hpp"
 #include "gameobject/Player.hpp"
 #include "gameobject/items/ItemBush.hpp"
 #include "gameobject/Monster.hpp"
@@ -22,31 +23,27 @@ int main(int argc, char * argv[]){
 
     Player player;
     Monster monster(15,15);
-    std::vector<Item*> bushes;
-    bushes.push_back(new ItemBush(15,5));
-    bushes.push_back(new ItemBush(5,15));
+    GOManager * gom = &GOManager::getInstance();
     Scenario * map = &Scenario::getInstance();;
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
         float delta = sdl->getDelta();
 
-        inputAction = input.processInput(&player,bushes); //Input
+        inputAction = input.processInput(&player); //Input
         
         //Update entities
         player.update(delta);
         monster.update(delta);
-        for(auto& bush : bushes)
-            bush->update(delta,&player);
-        camera->update(&player);
+        camera->update(delta,&player);
+        gom->update(delta,&player);
 
         //Drawing sequence
         sdl->cleanRender();
         map->draw();
         player.draw();
         monster.draw();
-        for(auto& bush : bushes)
-            bush->draw();
+        gom->draw();
         sdl->draw();
     }
     return 0;

@@ -1,5 +1,6 @@
 #include "InputManager.hpp"
 #include "SDLHandler.hpp"
+#include "GOManager.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/items/Item.hpp"
 #include "../gameobject/components/Physics.hpp"
@@ -20,7 +21,7 @@ InputManager::InputManager(){
 InputManager::~InputManager(){};
 
 
-SDL_EventType InputManager::processInput(Player* player,std::vector<Item*>items){
+SDL_EventType InputManager::processInput(Player* player){
     SDL_EventType accion;
     /* Check for events */
     while( SDL_PollEvent( &event ) ){
@@ -80,7 +81,7 @@ SDL_EventType InputManager::processInput(Player* player,std::vector<Item*>items)
             case SDL_MOUSEBUTTONDOWN:
                 switch(event.button.button){
                     case SDL_BUTTON_RIGHT:
-                        dispatchClick(event.button.y,event.button.x,items);
+                        dispatchClick(event.button.y,event.button.x);
                     break;
                 }
             default:
@@ -91,8 +92,8 @@ SDL_EventType InputManager::processInput(Player* player,std::vector<Item*>items)
     return accion;
 };
 
-void InputManager::dispatchClick(int y,int x,std::vector<Item*>items){
-    for(auto& item : items)
+void InputManager::dispatchClick(int y,int x){
+    for(auto& item : GOManager::getInstance().items)
         item->sprite->isClicked(y,x);
         //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
     

@@ -80,7 +80,7 @@ void NetworkClient::processBuffer(std::string buffer){
   switch(opCode){//switch by opcode
     case NEW_PLAYER_CONNECTED_CODE: //if a new player connected
       value = std::stoi(buffer);//get client id
-      GOManager::getInstance().playerFromConnection(value); //Add new player by id
+      //GOManager::getInstance().playerFromConnection(value); //Add new player by id
       break;
     case PLAYER_DATA_CODE://if a player moved
 
@@ -91,7 +91,7 @@ void NetworkClient::processBuffer(std::string buffer){
       buffer = buffer.substr(buffer.find(" ")+1);
       value = std::stoi(buffer.substr(0, buffer.find("%d")));
 
-      GOManager::getInstance().updatePlayer(value,pos_x,pos_y);//Move player by id to his new position
+      //GOManager::getInstance().updatePlayer(value,pos_x,pos_y);//Move player by id to his new position
       break;
     default:
       std::cout<<"Opcode recieved: "<<opCode<<std::endl;
