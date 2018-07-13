@@ -6,12 +6,13 @@
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/resources/Resource.hpp"
-#include "../gameobject/resources/ResourceBush.hpp"
+#include "../gameobject/resources/ResourceGeneric.hpp"
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){
-    items.push_back(new ResourceBush(15,5));
-    items.push_back(new ResourceBush(5,15));
+    items.push_back(new ResourceGeneric(BUSH,15,5));
+    items.push_back(new ResourceGeneric(BUSH,5,15));
+    items.push_back(new ResourceGeneric(ROCK,6,15));
 };
 
 GOManager& GOManager::getInstance(){

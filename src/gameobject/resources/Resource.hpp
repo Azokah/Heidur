@@ -28,7 +28,8 @@ class Resource{
         Physics * physics;
         Stats * stats;
 
-        ITEM_TYPE type;
+        RESOURCE_TYPE resourceType;
+        ITEM_TYPE itemType;
 
         std::string name, description;
         int cooldownTick;

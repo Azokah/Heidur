@@ -58,6 +58,7 @@
 #define TILE_WOOD_FLOOR_CODE 6
 #define SPRITE_BUSH 10
 #define SPRITE_STICK 7
+#define SPRITE_ARROW 7
 
 //GRID
 #define GRID_MAX_H 100
@@ -128,9 +129,13 @@ namespace globals {
         int y;
     };
 
+    enum RESOURCE_TYPE {
+    BUSH,
+    ROCK
+    };
     enum ITEM_TYPE {
-    PLACEHOLDER,
-    BUSH
+    STICK,
+    STONE
     };
 
 }

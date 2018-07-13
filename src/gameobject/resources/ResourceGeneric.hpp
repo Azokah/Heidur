@@ -9,10 +9,10 @@
 
 using namespace globals;
 
-class ResourceBush : public Resource{
+class ResourceGeneric : public Resource{
     public:
-        ResourceBush(int,int);
-        ~ResourceBush();
+        ResourceGeneric(RESOURCE_TYPE,int,int);
+        ~ResourceGeneric();
 
         virtual void update(float,Player*);
         virtual void draw();

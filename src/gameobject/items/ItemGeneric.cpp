@@ -10,10 +10,15 @@ ItemGeneric::ItemGeneric(ITEM_TYPE TYPE):Item(){
     stats = new Stats();
 
     switch(type){
-        case BUSH:
+        case STICK:
             name = "Stick";
             description = "Used to craft things.";
             sprite->setDest(SPRITE_STICK);
+            break;
+        case STONE:
+            name = "Arrow";
+            description = "Used to shoot with a bow.";
+            sprite->setDest(SPRITE_ARROW);
             break;
         default:
             name = "Unknown";
