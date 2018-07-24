@@ -9,6 +9,7 @@
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
+#include "gameobject/MenuGeneric.hpp"
 
 
 using namespace std;
@@ -24,6 +25,7 @@ int main(int argc, char * argv[]){
     Monster monster(15,15);
     GOManager * gom = &GOManager::getInstance();
     Scenario * map = &Scenario::getInstance();;
+    MenuGeneric * menu = new MenuGeneric();
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
@@ -36,6 +38,7 @@ int main(int argc, char * argv[]){
         monster.update(delta);
         camera->update(delta,&player);
         gom->update(delta,&player);
+        menu->update(delta);
 
         //Drawing sequence
         sdl->cleanRender();
@@ -43,6 +46,7 @@ int main(int argc, char * argv[]){
         player.draw();
         monster.draw();
         gom->draw();
+        menu->draw();
         sdl->draw();
     }
     return 0;
