@@ -10,8 +10,8 @@ Item::Item(ITEM_TYPE TYPE){
             description = "Used to craft things.";
             break;
         case STONE:
-            name = "Arrow";
-            description = "Used to shoot with a bow.";
+            name = "Stone";
+            description = "Used to craft things.";
             break;
         default:
             name = "Unknown";

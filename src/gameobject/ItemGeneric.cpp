@@ -7,21 +7,9 @@
 
 ItemGeneric::ItemGeneric(ITEM_TYPE TYPE){
     sprite = new Sprite();
+    sprite->setDest(SPRITE_ITEM);
     stats = new Stats();
     item = new Item(TYPE);
-
-    switch(TYPE){
-        case STICK:
-            sprite->setDest(SPRITE_STICK);
-            break;
-        case STONE:
-            sprite->setDest(SPRITE_ARROW);
-            break;
-        default:
-            break;
-    }
-    
-
     
 };
 ItemGeneric::~ItemGeneric() {};
