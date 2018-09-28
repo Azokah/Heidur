@@ -14,6 +14,14 @@ class MenuGeneric {
         void update(float);
         void draw();
 
-        SDL_Rect bgRect; 
+        bool activate();
+        bool deactivate();
+
+        bool active;
+
+        SDL_Rect bgRect;
         std::vector<MenuComponent*> menus;
+
+    private:
+        int getMaxString();
 };
