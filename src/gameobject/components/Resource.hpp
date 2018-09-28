@@ -4,6 +4,12 @@
 #include <SDL2/SDL.h>
 #include "../../Constantes.hpp"
 
+/*
+*   Clase que representa un resource en el juego.
+*   Los resource son recursos con los cuales se puede interactuar y devuelven un objeto.
+*   Cada resource tiene un resource type al cual esta asociado a un item type.
+*/
+
 
 class Player;
 

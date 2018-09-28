@@ -57,9 +57,8 @@
 #define TILE_MUD_CODE 2
 #define TILE_WOOD_FLOOR_CODE 6
 #define SPRITE_BUSH 10
-#define SPRITE_STICK 7
-#define SPRITE_ARROW 7
-
+#define SPRITE_RESOURCE_GENERIC 11
+#define SPRITE_ITEM 7
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100

@@ -20,12 +20,11 @@ ResourceGeneric::ResourceGeneric(RESOURCE_TYPE TYPE,int y,int x){
             sprite->position.y = y*TILE_H;
             sprite->position.x = x*TILE_W;
             break;
-        case ROCK:
-            sprite->setDest(SPRITE_ARROW);
+        default:
+            //case ROCK:
+            sprite->setDest(SPRITE_RESOURCE_GENERIC);
             sprite->position.y = y*TILE_H;
             sprite->position.x = x*TILE_W;
-            break;
-        default:
             break;
     }
     
