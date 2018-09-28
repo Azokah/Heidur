@@ -4,6 +4,7 @@
 #include "components/MenuComponent.hpp"
 
 MenuGeneric::MenuGeneric(){
+    active = true;
     menus.push_back(new MenuComponent("test"));
     menus.push_back(new MenuComponent("Inventario"));
 };
@@ -11,18 +12,22 @@ MenuGeneric::~MenuGeneric(){
 };
 
 void MenuGeneric::update(float delta){
-    bgRect.x = PANTALLA_AN/2;
-    bgRect.y = PANTALLA_AL/2;
-    bgRect.w = getMaxString();
-    bgRect.h = TEXTO_SIZE * menus.size();
+    if(active){
+        bgRect.x = PANTALLA_AN/2;
+        bgRect.y = PANTALLA_AL/2;
+        bgRect.w = getMaxString();
+        bgRect.h = TEXTO_SIZE * menus.size();
+    }
 };
 void MenuGeneric::draw(){
-    SDL_SetRenderDrawColor(SDLHandler::getInstance().getRender(),0,0,0,255);
-    SDL_RenderFillRect(SDLHandler::getInstance().getRender(),&bgRect);
-    int pos_y = 0;
-    for(auto& m : menus){
-        SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
-        pos_y++;
+    if(active){
+        SDL_SetRenderDrawColor(SDLHandler::getInstance().getRender(),0,0,0,255);
+        SDL_RenderFillRect(SDLHandler::getInstance().getRender(),&bgRect);
+        int pos_y = 0;
+        for(auto& m : menus){
+            SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
+            pos_y++;
+        }
     }
 };
 
@@ -32,4 +37,13 @@ int MenuGeneric::getMaxString(){
         if(m->label.size() > maxStr) maxStr = m->label.size();
     }
     return maxStr * TEXTO_SIZE/2;
+};
+
+bool MenuGeneric::activate(){
+    active = true;
+    return active;
+};
+bool MenuGeneric::deactivate(){
+    active = false;
+    return active;
 };
