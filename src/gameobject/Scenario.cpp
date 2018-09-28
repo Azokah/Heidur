@@ -19,7 +19,7 @@ Scenario::~Scenario(){
 
 
 void Scenario::update(float delta){
-    sprite->update();
+    sprite->update(delta);
 
 };
 

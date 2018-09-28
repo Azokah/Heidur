@@ -17,7 +17,7 @@ void Camera::init(){
     bounds.h = PANTALLA_AL;
 };
 
-void Camera::update(Player* p){
+void Camera::update(float delta, Player* p){
     bounds.x = p->sprite->position.x - PANTALLA_AN/2;
     bounds.y = p->sprite->position.y - PANTALLA_AL/2;
 };

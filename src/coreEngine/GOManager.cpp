@@ -1,36 +1,29 @@
+/********************************************************************************
+*   Deprecated                                                                  *
+*   Various methods are deprecated and made for another uses. Must be upgraded. *
+*********************************************************************************/
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
-#include "../gameobject/PlayerExternal.hpp"
+#include "../gameobject/Player.hpp"
+#include "../gameobject/ResourceGeneric.hpp"
 
 GOManager::~GOManager(){};
-GOManager::GOManager(){};
+GOManager::GOManager(){
+    resources.push_back(new ResourceGeneric(BUSH,15,5));
+    resources.push_back(new ResourceGeneric(BUSH,5,15));
+    resources.push_back(new ResourceGeneric(ROCK,6,15));
+};
 
 GOManager& GOManager::getInstance(){
     static GOManager instance;
     return instance;
 };
-
-void GOManager::playerFromConnection(int id){
-   players.push_back(new PlayerExternal(id));
-
+void GOManager::update(float delta,Player* player){
+    for(auto& i : resources)
+        i->update(delta,player);
 };
 
-void GOManager::update(float delta){
-    for(auto& p : players){
-        p->update(delta);
-    }
-};
 void GOManager::draw(){
-    for(auto& p : players){
-        p->draw();
-    }
-};
-
-void GOManager::updatePlayer(int ID, int x, int y){
-    for(auto& p : players){
-        if(p->getID() == ID){
-            p->sprite->position.x = x;
-            p->sprite->position.y = y;
-        }
-    }
+    for(auto& i : resources)
+        i->draw();
 };

@@ -3,6 +3,7 @@
 #include "../../coreEngine/Camera.hpp"
 
 Sprite::Sprite(){
+    wasClicked = false;
     loadTexture(SDLHandler::getInstance().getRender(),SPRITE_PATH);
     position.x = 5*TILE_W;
     position.y = 5*TILE_H;
@@ -49,7 +50,13 @@ void Sprite::setDest(int y, int x, int w, int h){
     dest.w = w*TILE_W;
     dest.h = h*TILE_H;
 }
-void Sprite::update(){
+void Sprite::setDest(int pos){
+    dest.y = 0*TILE_H;
+    dest.x = pos*TILE_W;
+    dest.w = 1*TILE_W;
+    dest.h = 1*TILE_H;
+}
+void Sprite::update(float delta){
     
 };
 
@@ -76,8 +83,24 @@ bool Sprite::testColision(Sprite * sprite){
 }
 
 bool Sprite::isClicked(int y, int x){
+    x += Camera::getInstance().bounds.x;
+    y += Camera::getInstance().bounds.y;
     if( x >= position.x && x <= position.x+position.w)
         if( y >= position.y && y <= position.y+position.h)
-            return true; 
-    return false;
+            wasClicked = true; 
+    return wasClicked;
+};
+
+void Sprite::resetClickedStatus(){
+    wasClicked = false;
+};
+
+
+int Sprite::getDistanceFromSprite(Sprite* s){
+    int x = position.x - s->position.x;
+    int y = position.y - s->position.y;
+    if(x < 0) x *= -1;
+    if(y < 0) y *= -1;
+
+    return x+y;
 };

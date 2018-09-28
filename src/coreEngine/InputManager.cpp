@@ -1,7 +1,12 @@
 #include "InputManager.hpp"
 #include "SDLHandler.hpp"
+#include "GOManager.hpp"
 #include "../gameobject/Player.hpp"
+#include "../gameobject/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
+#include "../gameobject/components/Sprite.hpp"
+#include "../gameobject/components/Inventory.hpp"
+#include "../gameobject/components/Resource.hpp"
 
 InputManager::InputManager(){
     up = new MoveUp();
@@ -12,6 +17,7 @@ InputManager::InputManager(){
     stopDown = new StopDown();
     stopRight = new StopRight();
     stopLeft = new StopLeft();
+    toggleInventory = new ToggleInventory();
 };
 InputManager::~InputManager(){};
 
@@ -45,6 +51,9 @@ SDL_EventType InputManager::processInput(Player* player){
                     case SDLK_a:
                         left->execute(player);
                         break;
+                    case SDLK_i:
+                        toggleInventory->execute(player);
+                        break;
                     accion = SDL_KEYDOWN;
                 }
                 break;
@@ -70,6 +79,12 @@ SDL_EventType InputManager::processInput(Player* player){
                     SDL_Quit();
                     accion = SDL_QUIT;
                     break;
+            case SDL_MOUSEBUTTONDOWN:
+                switch(event.button.button){
+                    case SDL_BUTTON_RIGHT:
+                        dispatchClick(event.button.y,event.button.x);
+                    break;
+                }
             default:
                 break;
         }
@@ -78,7 +93,12 @@ SDL_EventType InputManager::processInput(Player* player){
     return accion;
 };
 
-
+void InputManager::dispatchClick(int y,int x){
+    for(auto& r : GOManager::getInstance().resources)
+        if(!r->resource->cooldown)r->sprite->isClicked(y,x);
+        //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
+    
+};
 
 void MoveUp::execute(Player* p) { p->physics->moveUp();};
 void MoveDown::execute(Player* p) { p->physics->moveDown();};
@@ -88,3 +108,4 @@ void StopUp::execute(Player* p) { p->physics->stopUp();};
 void StopDown::execute(Player* p) { p->physics->stopDown();};
 void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
+void ToggleInventory::execute(Player* p) { p->inventory->toConsole();};

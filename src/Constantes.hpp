@@ -36,6 +36,11 @@
 
 //GAMEPLAY
 #define PLAYERS_SPEED_BASE 0.32
+#define PICKUP_ITEM_DISTANCE 100
+
+//GAMEPLAY-ITEMS
+#define STANDAR_COOLDOWN 10000
+#define BUSH_COOLDOWN 10000
 
 //STATS
 #define STARTING_HEALTH 100
@@ -51,8 +56,9 @@
 #define TILE_GRASS_CODE 1
 #define TILE_MUD_CODE 2
 #define TILE_WOOD_FLOOR_CODE 6
-#define SPRITE_BUSH 25
-
+#define SPRITE_BUSH 10
+#define SPRITE_RESOURCE_GENERIC 11
+#define SPRITE_ITEM 7
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
@@ -120,6 +126,15 @@ namespace globals {
     struct vector2i{
         int x;
         int y;
+    };
+
+    enum RESOURCE_TYPE {
+    BUSH,
+    ROCK
+    };
+    enum ITEM_TYPE {
+    STICK,
+    STONE
     };
 
 }

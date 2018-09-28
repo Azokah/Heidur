@@ -11,7 +11,7 @@ Stats::Stats(){
 };
 Stats::~Stats(){};
 
-void Stats::update(){
+void Stats::update(float delta){
     
 };
 

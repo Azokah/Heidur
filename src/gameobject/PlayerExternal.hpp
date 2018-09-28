@@ -1,5 +1,10 @@
+/********************************************
+*   Unused                                  *
+*   Made for a possible multiplayer feature *
+********************************************/
+
 #pragma once
-#include <iostream>
+#include <iostream> 
 #include <string>
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"

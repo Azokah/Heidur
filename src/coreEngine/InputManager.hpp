@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
 class Player;
+class ResourceGeneric;
 
 class Command {
     public:
@@ -18,6 +20,8 @@ class InputManager {
         
         SDL_EventType processInput(Player*);
 
+        void dispatchClick(int,int);
+
     private:
         SDL_Event event;
 
@@ -29,6 +33,7 @@ class InputManager {
         Command* stopLeft;
         Command* stopRight;
         Command* stopDown;
+        Command* toggleInventory;
 };
 
 
@@ -69,6 +74,10 @@ class StopLeft : public Command {
 };
 
 class StopRight : public Command {
+    public:
+        virtual void execute(Player*);
+};
+class ToggleInventory : public Command {
     public:
         virtual void execute(Player*);
 };

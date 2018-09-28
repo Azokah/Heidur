@@ -3,10 +3,9 @@
 #include "Constantes.hpp"
 #include "coreEngine/SDLHandler.hpp"
 #include "coreEngine/InputManager.hpp"
-#include "coreEngine/GOManager.hpp"
 #include "coreEngine/Camera.hpp"
+#include "coreEngine/GOManager.hpp"
 #include "gameobject/Player.hpp"
-#include "gameobject/Item.hpp"
 #include "gameobject/Monster.hpp"
 #include "gameobject/Scenario.hpp"
 #include "gameobject/components/Sprite.hpp"
@@ -23,9 +22,8 @@ int main(int argc, char * argv[]){
 
     Player player;
     Monster monster(15,15);
-    Item bush((ITEM_TYPE)1,15,5);
-    Scenario * map = &Scenario::getInstance();;
     GOManager * gom = &GOManager::getInstance();
+    Scenario * map = &Scenario::getInstance();;
 
     SDL_EventType inputAction;
     while (inputAction != SDL_QUIT){
@@ -36,16 +34,14 @@ int main(int argc, char * argv[]){
         //Update entities
         player.update(delta);
         monster.update(delta);
-        gom->update(delta);
-        bush.update(delta);
-        camera->update(&player);
+        camera->update(delta,&player);
+        gom->update(delta,&player);
 
         //Drawing sequence
         sdl->cleanRender();
         map->draw();
         player.draw();
         monster.draw();
-        bush.draw();
         gom->draw();
         sdl->draw();
     }

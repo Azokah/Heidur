@@ -4,28 +4,22 @@
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
-enum ITEM_TYPE {
-    PLACEHOLDER,
-    BUSH
-};
+using namespace globals;
 
 class Sprite;
-class Physics;
 class Stats;
+class Item;
 
-class Item{
+
+class ItemGeneric{
     public:
-        Item(ITEM_TYPE,int,int);
-        ~Item();
+        ItemGeneric(ITEM_TYPE);
+        ~ItemGeneric();
 
         void update(float);
         void draw();
-        
-    //private:
+
         Sprite * sprite;
-        Physics * physics;
         Stats * stats;
-
-        ITEM_TYPE type;
-
+        Item * item;
 };

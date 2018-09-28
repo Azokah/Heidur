@@ -12,7 +12,7 @@
 * Serious, big and original lore
 * Lots of things to do, at your own time
 * Casual
-* Singleplayer and Multiplayer experience
+* Singleplayer experience in a multiplayer connected world
 
 ### For more information
  * [See our one sheet sample](docs/One%20sheet%20sample.pdf)

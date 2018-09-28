@@ -8,6 +8,7 @@
 class Sprite;
 class Physics;
 class Stats;
+class Inventory;
 
 class Player{
     public:
@@ -21,5 +22,6 @@ class Player{
         Sprite * sprite;
         Physics * physics;
         Stats * stats;
+        Inventory * inventory;
 
 };
