@@ -32,5 +32,5 @@ void GOManager::draw(){
     for(auto& i : resources)
         i->draw();
 
-    //menu->draw();
+    menu->draw();
 };

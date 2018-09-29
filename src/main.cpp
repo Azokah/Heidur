@@ -11,6 +11,9 @@
 #include "gameobject/components/Sprite.hpp"
 
 
+//Hacer escenas y cuando se abre un menu pasar a esa escena
+//Hacer que cuando se abre un menu, el gameplay se congela. Permitiendo abrir menus en la misma escena
+
 using namespace std;
 
 int main(int argc, char * argv[]){

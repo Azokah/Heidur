@@ -22,6 +22,11 @@ class MenuGeneric {
         SDL_Rect bgRect;
         std::vector<MenuComponent*> menus;
 
+        void nextComponent();
+        void prevComponent();
+
     private:
         int getMaxString();
+
+        int selectedComponent;
 };

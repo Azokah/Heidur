@@ -5,6 +5,7 @@
 
 MenuGeneric::MenuGeneric(){
     active = true;
+    selectedComponent = 0;
 };
 MenuGeneric::~MenuGeneric(){
 };
@@ -22,9 +23,14 @@ void MenuGeneric::draw(){
         SDL_SetRenderDrawColor(SDLHandler::getInstance().getRender(),0,0,0,255);
         SDL_RenderFillRect(SDLHandler::getInstance().getRender(),&bgRect);
         int pos_y = 0;
+        int cont = 0;
         for(auto& m : menus){
-            SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
+            if(cont==selectedComponent)
+                SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,0,0);
+            else
+                SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
             pos_y++;
+            cont++;
         }
     }
 };
@@ -44,4 +50,13 @@ bool MenuGeneric::activate(){
 bool MenuGeneric::deactivate(){
     active = false;
     return active;
+};
+
+void MenuGeneric::nextComponent(){
+    selectedComponent++;
+    if(selectedComponent > menus.size()) selectedComponent = menus.size();
+};
+void MenuGeneric::prevComponent(){
+    selectedComponent--;
+    if(selectedComponent < 0) selectedComponent = 0;
 };
