@@ -18,6 +18,7 @@ InputManager::InputManager(){
     stopRight = new StopRight();
     stopLeft = new StopLeft();
     toggleInventory = new ToggleInventory();
+    interact = new Interact();
 };
 InputManager::~InputManager(){};
 
@@ -39,20 +40,23 @@ SDL_EventType InputManager::processInput(Player* player){
                         SDLHandler::getInstance().takeScreenshot();
                         accion = SDL_KEYDOWN;
                         break;
-                    case SDLK_w:
+                    case SDLK_UP:
                         up->execute(player);
                         break;
-                    case SDLK_s:
+                    case SDLK_DOWN:
                         down->execute(player);
                         break;
-                    case SDLK_d:
+                    case SDLK_RIGHT:
                         right->execute(player);
                         break;
-                    case SDLK_a:
+                    case SDLK_LEFT:
                         left->execute(player);
                         break;
                     case SDLK_i:
                         toggleInventory->execute(player);
+                        break;
+                    case SDLK_z:
+                        interact->execute(player);
                         break;
                     accion = SDL_KEYDOWN;
                 }
@@ -60,16 +64,16 @@ SDL_EventType InputManager::processInput(Player* player){
             case SDL_KEYUP:
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
-                    case SDLK_w:
+                    case SDLK_UP:
                         stopUp->execute(player);
                         break;
-                    case SDLK_s:
+                    case SDLK_DOWN:
                         stopDown->execute(player);
                         break;
-                    case SDLK_d:
+                    case SDLK_RIGHT:
                         stopRight->execute(player);
                         break;
-                    case SDLK_a:
+                    case SDLK_LEFT:
                         stopLeft->execute(player);
                         break;
                     accion = SDL_KEYUP;
@@ -93,9 +97,11 @@ SDL_EventType InputManager::processInput(Player* player){
     return accion;
 };
 
+
+//Deprecado el juego no usa mouse
 void InputManager::dispatchClick(int y,int x){
     for(auto& r : GOManager::getInstance().resources)
-        if(!r->resource->cooldown)r->sprite->isClicked(y,x);
+        if(!r->resource->cooldown)r->sprite->isInPos(y,x);
         //std::cout<<"Click in: "<<x<<" - "<<y<<". Da: "<<item->sprite->isClicked(y,x)<<"\n";
     
 };
@@ -109,3 +115,7 @@ void StopDown::execute(Player* p) { p->physics->stopDown();};
 void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
 void ToggleInventory::execute(Player* p) { p->inventory->toConsole();};
+void Interact::execute(Player* p) {
+    for(auto& r : GOManager::getInstance().resources)
+        if(!r->resource->cooldown)r->sprite->isInPos(p->sprite->position.y,p->sprite->position.x);
+};

@@ -82,9 +82,9 @@ bool Sprite::testColision(Sprite * sprite){
     }else return true;*/
 }
 
-bool Sprite::isClicked(int y, int x){
-    x += Camera::getInstance().bounds.x;
-    y += Camera::getInstance().bounds.y;
+bool Sprite::isInPos(int y, int x){
+    //x += Camera::getInstance().bounds.x;
+    //y += Camera::getInstance().bounds.y;
     if( x >= position.x && x <= position.x+position.w)
         if( y >= position.y && y <= position.y+position.h)
             wasClicked = true; 

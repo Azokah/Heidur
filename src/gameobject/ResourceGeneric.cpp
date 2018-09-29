@@ -22,7 +22,7 @@ ResourceGeneric::ResourceGeneric(RESOURCE_TYPE TYPE,int y,int x){
             break;
         default:
             //case ROCK:
-            sprite->setDest(SPRITE_RESOURCE_GENERIC);
+            sprite->setDest(SPRITE_ITEM);
             sprite->position.y = y*TILE_H;
             sprite->position.x = x*TILE_W;
             break;

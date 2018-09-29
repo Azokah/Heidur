@@ -20,7 +20,7 @@ class Sprite {
         void setDest(int);
         SDL_Rect position, dest;
 
-        bool isClicked(int,int);
+        bool isInPos(int,int);
         void resetClickedStatus();
 
         bool wasClicked; //To indicate if sprite was clicked by user

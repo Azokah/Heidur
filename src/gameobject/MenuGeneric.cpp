@@ -5,8 +5,6 @@
 
 MenuGeneric::MenuGeneric(){
     active = true;
-    menus.push_back(new MenuComponent("test"));
-    menus.push_back(new MenuComponent("Inventario"));
 };
 MenuGeneric::~MenuGeneric(){
 };

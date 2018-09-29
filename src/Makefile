@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/MenuGeneric.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o 
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/MenuGeneric.hpp gameobject/MainMenu.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2_net
 
 default: main $(OBJECTS)
@@ -67,6 +67,9 @@ ItemGeneric.o: gameobject/ItemGeneric.hpp gameobject/ItemGeneric.cpp
 MenuGeneric.o: gameobject/MenuGeneric.hpp gameobject/MenuGeneric.cpp
 	$(CC) -c gameobject/MenuGeneric.cpp
 
+MainMenu.o: gameobject/MainMenu.hpp gameobject/MainMenu.cpp
+	$(CC) -c gameobject/MainMenu.cpp
+
 Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
 	$(CC) -c gameobject/Monster.cpp
 
@@ -101,3 +104,4 @@ clean:
 	-rm -f Item.o 
 	-rm -f MenuComponent.o 
 	-rm -f MenuGeneric.o 
+	-rm -f MainMenu.o 

@@ -20,7 +20,7 @@ class InputManager {
         
         SDL_EventType processInput(Player*);
 
-        void dispatchClick(int,int);
+        void dispatchClick(int,int); //Deprecado, el juego no usa mouse
 
     private:
         SDL_Event event;
@@ -33,7 +33,9 @@ class InputManager {
         Command* stopLeft;
         Command* stopRight;
         Command* stopDown;
+        Command* interact;
         Command* toggleInventory;
+
 };
 
 
@@ -78,6 +80,10 @@ class StopRight : public Command {
         virtual void execute(Player*);
 };
 class ToggleInventory : public Command {
+    public:
+        virtual void execute(Player*);
+};
+class Interact : public Command {
     public:
         virtual void execute(Player*);
 };

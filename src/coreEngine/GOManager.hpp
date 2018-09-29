@@ -12,6 +12,7 @@
 
 class ResourceGeneric;
 class Player;
+class MenuGeneric;
 
 class GOManager {
     public:
@@ -22,6 +23,8 @@ class GOManager {
         void draw();
 
         std::vector<ResourceGeneric*> resources;
+
+        MenuGeneric * menu;
 
     private:
         GOManager();
