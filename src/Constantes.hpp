@@ -137,4 +137,9 @@ namespace globals {
     STONE
     };
 
+    enum EVENT_ENUM_TYPE {
+        QUIT,
+        NOTHING
+    };
+
 }

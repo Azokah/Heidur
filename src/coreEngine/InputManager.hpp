@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include "../Constantes.hpp"
 
+using namespace globals;
+
 class Player;
 class ResourceGeneric;
 
@@ -18,7 +20,7 @@ class InputManager {
         InputManager();
         ~InputManager();
         
-        SDL_EventType processInput(Player*);
+        EVENT_ENUM_TYPE processInput(Player*);
 
         void dispatchClick(int,int); //Deprecado, el juego no usa mouse
 

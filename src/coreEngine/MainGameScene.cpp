@@ -21,9 +21,9 @@ MainGameScene::MainGameScene(){
 };
 MainGameScene::~MainGameScene(){};
 
-SDL_EventType MainGameScene::update(){
-    SDL_EventType inputAction;
-    while (inputAction != SDL_QUIT){
+EVENT_ENUM_TYPE MainGameScene::update(){
+    EVENT_ENUM_TYPE inputAction;
+    while (inputAction != QUIT){
         float delta = sdl->getDelta();
 
         inputAction = input->processInput(player); //Input

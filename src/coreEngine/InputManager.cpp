@@ -23,7 +23,7 @@ InputManager::InputManager(){
 InputManager::~InputManager(){};
 
 
-SDL_EventType InputManager::processInput(Player* player){
+EVENT_ENUM_TYPE InputManager::processInput(Player* player){
     SDL_EventType accion;
     /* Check for events */
     while( SDL_PollEvent( &event ) ){
@@ -94,7 +94,8 @@ SDL_EventType InputManager::processInput(Player* player){
         }
     }
 
-    return accion;
+    if(accion == SDL_QUIT) return QUIT;
+    else return NOTHING;
 };
 
 

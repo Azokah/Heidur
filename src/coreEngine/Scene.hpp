@@ -1,9 +1,11 @@
 #include <iostream>
-#include <SDL2/SDL.h>
+#include "../Constantes.hpp"
+
+using namespace globals;
 
 class Scene {
     public:
         virtual ~Scene(){};
 
-        virtual SDL_EventType update() = 0;
+        virtual EVENT_ENUM_TYPE update() = 0;
 };

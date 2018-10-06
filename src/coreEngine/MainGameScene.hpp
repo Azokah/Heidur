@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../Constantes.hpp"
 #include "Scene.hpp"
 
 class SDLHandler;
@@ -8,12 +9,14 @@ class Player;
 class GOManager;
 class Scenario;
 
+using namespace globals;
+
 class MainGameScene : public Scene {
     public:
         MainGameScene();
         ~MainGameScene();
 
-        virtual SDL_EventType update();
+        virtual EVENT_ENUM_TYPE update();
 
     private:
 
