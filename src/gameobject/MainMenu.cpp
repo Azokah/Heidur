@@ -9,3 +9,8 @@ MainMenu::MainMenu():MenuGeneric(){
 };
 MainMenu::~MainMenu(){
 };
+
+MainMenu& MainMenu::getInstance(){
+    static MainMenu instance;
+    return instance;
+};

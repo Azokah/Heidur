@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/MenuGeneric.hpp gameobject/MainMenu.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o
+HEADERS = Constantes.hpp coreEngine/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/Texto.hpp coreEngine/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/NetworkClient.hpp coreEngine/GOManager.hpp gameobject/PlayerExternal.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/MenuGeneric.hpp gameobject/MainMenu.hpp gameobject/InventoryMenu.hpp coreEngine/MainGameScene.hpp coreEngine/SceneManager.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o NetworkClient.o GOManager.o PlayerExternal.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o InventoryMenu.o MainGameScene.o SceneManager.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2_net
 
 default: main $(OBJECTS)
@@ -31,6 +31,12 @@ NetworkClient.o: coreEngine/NetworkClient.hpp coreEngine/NetworkClient.cpp
 GOManager.o: coreEngine/GOManager.hpp coreEngine/GOManager.cpp
 	$(CC) -c coreEngine/GOManager.cpp
 
+SceneManager.o: coreEngine/SceneManager.hpp coreEngine/SceneManager.cpp
+	$(CC) -c coreEngine/SceneManager.cpp
+
+MainGameScene.o: coreEngine/MainGameScene.hpp coreEngine/MainGameScene.cpp
+	$(CC) -c coreEngine/MainGameScene.cpp
+
 Sprite.o: gameobject/components/Sprite.hpp gameobject/components/Sprite.cpp
 	$(CC) -c gameobject/components/Sprite.cpp
 
@@ -42,6 +48,9 @@ Item.o: gameobject/components/Item.hpp gameobject/components/Item.cpp
 
 Inventory.o: gameobject/components/Inventory.hpp gameobject/components/Inventory.cpp
 	$(CC) -c gameobject/components/Inventory.cpp
+
+InventoryMenu.o: gameobject/InventoryMenu.hpp gameobject/InventoryMenu.cpp
+	$(CC) -c gameobject/InventoryMenu.cpp
 
 MenuComponent.o: gameobject/components/MenuComponent.hpp gameobject/components/MenuComponent.cpp
 	$(CC) -c gameobject/components/MenuComponent.cpp
@@ -105,3 +114,6 @@ clean:
 	-rm -f MenuComponent.o 
 	-rm -f MenuGeneric.o 
 	-rm -f MainMenu.o 
+	-rm -f InventoryMenu.o 
+	-rm -f MainMenu.o 
+	-rm -f MainGameScene.o 
