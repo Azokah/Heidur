@@ -8,6 +8,12 @@
 #include "../gameobject/components/Inventory.hpp"
 #include "../gameobject/components/Resource.hpp"
 
+
+InputManager& InputManager::getInstance(){
+    static InputManager instance;
+    return instance;
+
+};
 InputManager::InputManager(){
     up = new MoveUp();
     down = new MoveDown();

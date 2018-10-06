@@ -17,7 +17,8 @@ class Command {
 
 class InputManager {
     public:
-        InputManager();
+        InputManager& getInstance();
+        
         ~InputManager();
         
         EVENT_ENUM_TYPE processInput(Player*);
@@ -25,6 +26,7 @@ class InputManager {
         void dispatchClick(int,int); //Deprecado, el juego no usa mouse
 
     private:
+        InputManager();
         SDL_Event event;
 
         Command* up;

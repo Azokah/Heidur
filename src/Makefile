@@ -117,3 +117,4 @@ clean:
 	-rm -f InventoryMenu.o 
 	-rm -f MainMenu.o 
 	-rm -f MainGameScene.o 
+	-rm -f SceneManager.o 
