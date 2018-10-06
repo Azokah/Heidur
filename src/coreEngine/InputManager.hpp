@@ -17,7 +17,7 @@ class Command {
 
 class InputManager {
     public:
-        InputManager& getInstance();
+        static InputManager& getInstance();
         
         ~InputManager();
         

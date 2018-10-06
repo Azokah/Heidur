@@ -15,9 +15,10 @@ MainGameScene::MainGameScene(){
     sdl = &SDLHandler::getInstance();
     camera = &Camera::getInstance();
     gom = &GOManager::getInstance();
-    map = &Scenario::getInstance();;
+    map = &Scenario::getInstance();
+    input = &InputManager::getInstance();
     player = new Player();
-    input = new InputManager();
+    
 };
 MainGameScene::~MainGameScene(){};
 
