@@ -1,6 +1,8 @@
 #include "InputManager.hpp"
 #include "SDLHandler.hpp"
 #include "GOManager.hpp"
+#include "SceneManager.hpp"
+#include "MainMenuScene.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
@@ -40,6 +42,7 @@ InputManager::InputManager(){
 InputManager::~InputManager(){};
 
 
+
 EVENT_ENUM_TYPE InputManager::processInput(MenuGeneric* menu){
     SDL_EventType accion;
     /* Check for events */
@@ -51,11 +54,11 @@ EVENT_ENUM_TYPE InputManager::processInput(MenuGeneric* menu){
                 switch( event.key.keysym.sym ){
                     case SDLK_ESCAPE:
                         SDL_Quit();
-                        accion = SDL_QUIT;
+                        //accion = SDL_QUIT;
                         break;
                     case SDLK_F1:
                         SDLHandler::getInstance().takeScreenshot();
-                        accion = SDL_KEYDOWN;
+                        //accion = SDL_KEYDOWN;
                         break;
                     case SDLK_UP:
                         upMenu->execute(menu);
@@ -116,12 +119,13 @@ EVENT_ENUM_TYPE InputManager::processInput(Player* player){
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
                     case SDLK_ESCAPE:
-                        SDL_Quit();
-                        accion = SDL_QUIT;
+                        //SDL_Quit();
+                        //accion = SDL_QUIT;
+                        SceneManager::getInstance().nextScene(new MainMenuScene());
                         break;
                     case SDLK_F1:
                         SDLHandler::getInstance().takeScreenshot();
-                        accion = SDL_KEYDOWN;
+                        //accion = SDL_KEYDOWN;
                         break;
                     case SDLK_UP:
                         up->execute(player);

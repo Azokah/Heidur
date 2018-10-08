@@ -14,6 +14,8 @@ class SceneManager {
 
         void update();
 
+        void exitGame();
+
         //Add scene control methods
         void nextScene(Scene*);
         void prevScene();

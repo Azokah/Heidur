@@ -44,6 +44,8 @@ class InputManager {
 
         void dispatchClick(int,int); //Deprecado, el juego no usa mouse
 
+        
+
     private:
         InputManager();
         SDL_Event event;

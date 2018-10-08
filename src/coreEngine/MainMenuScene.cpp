@@ -17,18 +17,18 @@ MainMenuScene::~MainMenuScene(){};
 
 EVENT_ENUM_TYPE MainMenuScene::update(){
     EVENT_ENUM_TYPE inputAction;
-    //while (inputAction != CLOSE_MENU){
-        float delta = sdl->getDelta();
+    
+    float delta = sdl->getDelta();
 
-        inputAction = input->processInput(menu); //Input
-        
-        //Update entities
-        menu->update(delta);
+    inputAction = input->processInput(menu); //Input
+    
+    //Update entities
+    menu->update(delta);
 
-        //Drawing sequence
-        sdl->cleanRender();
-        menu->draw();
-        sdl->draw();
-    //}
+    //Drawing sequence
+    sdl->cleanRender();
+    menu->draw();
+    sdl->draw();
+
     return inputAction;
 };

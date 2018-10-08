@@ -24,24 +24,24 @@ MainGameScene::~MainGameScene(){};
 
 EVENT_ENUM_TYPE MainGameScene::update(){
     EVENT_ENUM_TYPE inputAction;
-    //while (inputAction != QUIT){
-        float delta = sdl->getDelta();
 
-        inputAction = input->processInput(player); //Input
-        
-        //Update entities
-        player->update(delta);
-        //monster.update(delta);
-        camera->update(delta,player);
-        gom->update(delta,player);
+    float delta = sdl->getDelta();
 
-        //Drawing sequence
-        sdl->cleanRender();
-        map->draw();
-        player->draw();
-        //monster.draw();
-        gom->draw();
-        sdl->draw();
-    //}
+    inputAction = input->processInput(player); //Input
+    
+    //Update entities
+    player->update(delta);
+    //monster.update(delta);
+    camera->update(delta,player);
+    gom->update(delta,player);
+
+    //Drawing sequence
+    sdl->cleanRender();
+    map->draw();
+    player->draw();
+    //monster.draw();
+    gom->draw();
+    sdl->draw();
+    
     return inputAction;
 };
