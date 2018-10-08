@@ -111,7 +111,7 @@ namespace globals {
                 return lastID;
         }
 
-    enum game_estado{
+    enum gameState{
             INICIANDO,
             CORRIENDO,
             TERMINADO

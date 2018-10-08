@@ -21,8 +21,11 @@ MainMenu& MainMenu::getInstance(){
 void MainMenu::execute(){
     switch(currentOption){
         case 0:
-            std::cout<<"Starting game..."<<std::endl;//Starting game when game already started is wrong
-            SceneManager::getInstance().nextScene(new MainGameScene());
+            if(SceneManager::getInstance().state != CORRIENDO){
+                std::cout<<"Starting game..."<<std::endl;//Starting game when game already started is wrong
+                SceneManager::getInstance().nextScene(new MainGameScene());
+                SceneManager::getInstance().state = CORRIENDO;
+            }
             break;
         case 1:
             std::cout<<"Resuming game..."<<std::endl;
@@ -30,7 +33,7 @@ void MainMenu::execute(){
             break;
         case 3:
             std::cout<<"Exit game..."<<std::endl;
-            SceneManager::getInstance().exitGame(); //Segfault fixed with scenemanager scenes != 0
+            SceneManager::getInstance().exitGame();
             break;
         default:
             break;

@@ -5,6 +5,7 @@
 
 SceneManager::SceneManager(){
     scenes.push_back(new MainMenuScene());
+    state = INICIANDO;
 };
 SceneManager::~SceneManager(){};
 
