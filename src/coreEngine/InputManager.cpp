@@ -50,6 +50,7 @@ EVENT_ENUM_TYPE InputManager::processInput(MenuGeneric* menu){
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
                     case SDLK_ESCAPE:
+                        SDL_Quit();
                         accion = SDL_QUIT;
                         break;
                     case SDLK_F1:

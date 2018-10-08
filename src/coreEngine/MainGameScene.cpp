@@ -24,7 +24,7 @@ MainGameScene::~MainGameScene(){};
 
 EVENT_ENUM_TYPE MainGameScene::update(){
     EVENT_ENUM_TYPE inputAction;
-    while (inputAction != QUIT){
+    //while (inputAction != QUIT){
         float delta = sdl->getDelta();
 
         inputAction = input->processInput(player); //Input
@@ -42,6 +42,6 @@ EVENT_ENUM_TYPE MainGameScene::update(){
         //monster.draw();
         gom->draw();
         sdl->draw();
-    }
+    //}
     return inputAction;
 };

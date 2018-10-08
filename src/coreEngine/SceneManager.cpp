@@ -4,7 +4,6 @@
 
 SceneManager::SceneManager(){
     scenes.push_back(new MainMenuScene());
-    scenes.push_back(new MainGameScene());
 };
 SceneManager::~SceneManager(){};
 
@@ -14,7 +13,16 @@ SceneManager& SceneManager::getInstance(){
 };
 
 void SceneManager::update(){
-    for(auto& s : scenes){
-        s->update();
+    EVENT_ENUM_TYPE e;
+    while(e != QUIT && scenes.size() != 0){
+        e = scenes.front()->update();
     }
+    
+};
+
+void SceneManager::nextScene(Scene* s){
+    scenes.push_front(s);
+};
+void SceneManager::prevScene(){
+    scenes.pop_front();//Dealocate first memory leak
 };

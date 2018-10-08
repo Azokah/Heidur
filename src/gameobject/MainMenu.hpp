@@ -12,4 +12,6 @@ class MainMenu : public MenuGeneric{
         
         MainMenu();
         ~MainMenu();
+
+        void execute();
 };

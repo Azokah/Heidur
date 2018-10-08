@@ -17,7 +17,7 @@ MainMenuScene::~MainMenuScene(){};
 
 EVENT_ENUM_TYPE MainMenuScene::update(){
     EVENT_ENUM_TYPE inputAction;
-    while (inputAction != CLOSE_MENU){
+    //while (inputAction != CLOSE_MENU){
         float delta = sdl->getDelta();
 
         inputAction = input->processInput(menu); //Input
@@ -29,6 +29,6 @@ EVENT_ENUM_TYPE MainMenuScene::update(){
         sdl->cleanRender();
         menu->draw();
         sdl->draw();
-    }
+    //}
     return inputAction;
 };

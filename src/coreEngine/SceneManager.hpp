@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <deque>
 
 class Scene;
 
@@ -10,11 +10,13 @@ class SceneManager {
 
         static SceneManager& getInstance();
 
-        std::vector<Scene*> scenes;
+        std::deque<Scene*> scenes;
 
         void update();
 
         //Add scene control methods
+        void nextScene(Scene*);
+        void prevScene();
 
     private:
         SceneManager();

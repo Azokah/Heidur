@@ -4,6 +4,7 @@
 #include <vector>
 #include "../Constantes.hpp"
 
+
 class MenuComponent;
 
 class MenuGeneric {
@@ -20,14 +21,14 @@ class MenuGeneric {
 
         void nextOption();
         void previousOption();
-        void execute();
+        virtual void execute();
 
         bool active;
 
         SDL_Rect bgRect;
         std::vector<MenuComponent*> menus;
 
-    private:
+    protected:
         int getMaxString();
 
         int currentOption;
