@@ -5,6 +5,7 @@
 
 MenuGeneric::MenuGeneric(){
     active = true;
+    currentOption = 0;
 };
 MenuGeneric::~MenuGeneric(){
 };
@@ -21,9 +22,11 @@ void MenuGeneric::draw(){
     if(active){
         SDL_SetRenderDrawColor(SDLHandler::getInstance().getRender(),0,0,0,255);
         SDL_RenderFillRect(SDLHandler::getInstance().getRender(),&bgRect);
-        int pos_y = 0;
+        int pos_y = 0; //this is used as counter
         for(auto& m : menus){
-            SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
+            if(pos_y == currentOption)
+                SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,190,155);
+            else SDLHandler::getInstance().printText(m->label,bgRect.x,bgRect.y+(pos_y*TEXTO_SIZE),255,255,255);
             pos_y++;
         }
     }
@@ -44,4 +47,16 @@ bool MenuGeneric::activate(){
 bool MenuGeneric::deactivate(){
     active = false;
     return active;
+};
+
+void MenuGeneric::nextOption(){
+    currentOption++;
+};
+void MenuGeneric::previousOption(){
+    currentOption--;
+    if(currentOption < 0) currentOption = 0;
+};
+
+void MenuGeneric::execute(){
+    std::cout<<"Accion re loca"<<std::endl;
 };

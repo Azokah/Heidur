@@ -17,6 +17,11 @@ class MenuGeneric {
         bool activate();
         bool deactivate();
 
+
+        void nextOption();
+        void previousOption();
+        void execute();
+
         bool active;
 
         SDL_Rect bgRect;
@@ -24,4 +29,6 @@ class MenuGeneric {
 
     private:
         int getMaxString();
+
+        int currentOption;
 };

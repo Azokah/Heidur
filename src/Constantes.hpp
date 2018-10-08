@@ -139,6 +139,7 @@ namespace globals {
 
     enum EVENT_ENUM_TYPE {
         QUIT,
+        CLOSE_MENU,
         NOTHING
     };
 

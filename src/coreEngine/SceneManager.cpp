@@ -1,7 +1,9 @@
 #include "SceneManager.hpp"
+#include "MainMenuScene.hpp"
 #include "MainGameScene.hpp"
 
 SceneManager::SceneManager(){
+    scenes.push_back(new MainMenuScene());
     scenes.push_back(new MainGameScene());
 };
 SceneManager::~SceneManager(){};

@@ -13,6 +13,9 @@ class SceneManager {
         std::vector<Scene*> scenes;
 
         void update();
+
+        //Add scene control methods
+
     private:
         SceneManager();
 };
