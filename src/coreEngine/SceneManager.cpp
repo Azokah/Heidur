@@ -28,8 +28,12 @@ void SceneManager::update(){
 };
 
 void SceneManager::nextScene(Scene* s){
+    
     scenes.push_front(s);
+    
 };
 void SceneManager::prevScene(){
+    Scene* front = scenes.at(0);
     scenes.pop_front();//Dealocate first memory leak
+    delete(front);  //Preventing memory leak 
 };
