@@ -1,7 +1,7 @@
 #include "MenuGeneric.hpp"
-#include "../coreEngine/SDLHandler.hpp"
-#include "components/Sprite.hpp"
-#include "components/MenuComponent.hpp"
+#include "../../coreEngine/SDL/SDLHandler.hpp"
+#include "../components/Sprite.hpp"
+#include "../components/MenuComponent.hpp"
 
 MenuGeneric::MenuGeneric(){
     active = true;

@@ -1,11 +1,11 @@
 #include "ResourceGeneric.hpp"
-#include "Player.hpp"
-#include "ItemGeneric.hpp"
-#include "components/Sprite.hpp"
-#include "components/Physics.hpp"
-#include "components/Resource.hpp"
-#include "components/Inventory.hpp"
-#include "../coreEngine/Timer.hpp"
+#include "../Player.hpp"
+#include "../Items/ItemGeneric.hpp"
+#include "../components/Sprite.hpp"
+#include "../components/Physics.hpp"
+#include "../components/Resource.hpp"
+#include "../components/Inventory.hpp"
+#include "../../coreEngine/SDL/Timer.hpp"
 
 
 ResourceGeneric::ResourceGeneric(RESOURCE_TYPE TYPE,int y,int x){

@@ -3,10 +3,10 @@
 *   Various methods are deprecated and made for another uses. Must be upgraded. *
 *********************************************************************************/
 #include "NetworkClient.hpp"
-#include "Timer.hpp"
-#include "../gameobject/Player.hpp"
-#include "../gameobject/components/Sprite.hpp"
-#include "GOManager.hpp"
+#include "../SDL/Timer.hpp"
+#include "../../gameobject/Player.hpp"
+#include "../../gameobject/components/Sprite.hpp"
+#include "../GOManager.hpp"
 
 NetworkClient& NetworkClient::getInstance(){
   static NetworkClient instance;

@@ -1,14 +1,14 @@
 #include "MainGameScene.hpp"
 
-#include "../Constantes.hpp"
-#include "SDLHandler.hpp"
-#include "InputManager.hpp"
-#include "Camera.hpp"
-#include "GOManager.hpp"
-#include "../gameobject/Player.hpp"
-#include "../gameobject/Monster.hpp"
-#include "../gameobject/Scenario.hpp"
-#include "../gameobject/components/Sprite.hpp"
+#include "../../Constantes.hpp"
+#include "../SDL/SDLHandler.hpp"
+#include "../InputManager.hpp"
+#include "../Camera.hpp"
+#include "../GOManager.hpp"
+#include "../../gameobject/Player.hpp"
+#include "../../gameobject/Monster.hpp"
+#include "../../gameobject/Scenario.hpp"
+#include "../../gameobject/components/Sprite.hpp"
 
 
 MainGameScene::MainGameScene(){

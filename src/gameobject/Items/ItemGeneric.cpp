@@ -1,8 +1,8 @@
 #include "ItemGeneric.hpp"
-#include "Player.hpp"
-#include "components/Item.hpp"
-#include "components/Sprite.hpp"
-#include "components/Stats.hpp"
+#include "../Player.hpp"
+#include "../components/Item.hpp"
+#include "../components/Sprite.hpp"
+#include "../components/Stats.hpp"
 
 
 ItemGeneric::ItemGeneric(ITEM_TYPE TYPE){

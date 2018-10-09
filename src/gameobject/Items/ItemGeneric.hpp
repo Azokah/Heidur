@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <SDL2/SDL.h>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 
 using namespace globals;
 

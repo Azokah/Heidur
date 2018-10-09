@@ -1,5 +1,5 @@
 #include "InventoryMenu.hpp"
-#include "components/MenuComponent.hpp"
+#include "../components/MenuComponent.hpp"
 
 InventoryMenu& InventoryMenu::getInstance(){
     static InventoryMenu instance;

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <vector>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 
 
 class MenuComponent;

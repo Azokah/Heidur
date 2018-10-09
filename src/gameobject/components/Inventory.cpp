@@ -1,6 +1,6 @@
 #include "Inventory.hpp"
 #include "Item.hpp"
-#include "../ItemGeneric.hpp"
+#include "../Items/ItemGeneric.hpp"
 
 
 Inventory::Inventory(){

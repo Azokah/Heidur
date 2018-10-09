@@ -1,6 +1,6 @@
 #include "SceneManager.hpp"
-#include "MainMenuScene.hpp"
-#include "MainGameScene.hpp"
+#include "Scenes/MainMenuScene.hpp"
+#include "Scenes/MainGameScene.hpp"
 #include <SDL2/SDL.h>
 
 SceneManager::SceneManager(){

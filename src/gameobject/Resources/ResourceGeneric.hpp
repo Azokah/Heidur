@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>  
 #include <SDL2/SDL.h>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 
 class Physics;
 class Sprite;

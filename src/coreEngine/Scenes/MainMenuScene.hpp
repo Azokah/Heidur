@@ -1,20 +1,18 @@
 #include <iostream>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 #include "Scene.hpp"
 
 class SDLHandler;
 class Camera;
 class InputManager;
-class Player;
-class GOManager;
-class Scenario;
+class MainMenu;
 
 using namespace globals;
 
-class MainGameScene : public Scene {
+class MainMenuScene : public Scene {
     public:
-        MainGameScene();
-        ~MainGameScene();
+        MainMenuScene();
+        ~MainMenuScene();
 
         virtual EVENT_ENUM_TYPE update();
 
@@ -24,8 +22,6 @@ class MainGameScene : public Scene {
         Camera * camera;
         InputManager * input;
 
-        Player * player;
-        //Monster monster(15,15);
-        GOManager * gom;
-        Scenario * map;
+        MainMenu * menu;
+
 };

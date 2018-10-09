@@ -1,10 +1,10 @@
 #include "MainMenuScene.hpp"
 
-#include "../Constantes.hpp"
-#include "SDLHandler.hpp"
-#include "InputManager.hpp"
-#include "Camera.hpp"
-#include "../gameobject/MainMenu.hpp"
+#include "../../Constantes.hpp"
+#include "../SDL/SDLHandler.hpp"
+#include "../InputManager.hpp"
+#include "../Camera.hpp"
+#include "../../gameobject/GUI/MainMenu.hpp"
 
 MainMenuScene::MainMenuScene(){
     sdl = &SDLHandler::getInstance();

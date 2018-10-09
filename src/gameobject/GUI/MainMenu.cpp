@@ -1,7 +1,7 @@
 #include "MainMenu.hpp"
-#include "components/MenuComponent.hpp"
-#include "../coreEngine/SceneManager.hpp"
-#include "../coreEngine/MainGameScene.hpp"
+#include "../components/MenuComponent.hpp"
+#include "../../coreEngine/SceneManager.hpp"
+#include "../../coreEngine/Scenes/MainGameScene.hpp"
 
 MainMenu::MainMenu():MenuGeneric(){
     menus.push_back(new MenuComponent("New Game"));

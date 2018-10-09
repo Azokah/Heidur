@@ -1,8 +1,8 @@
 #include "Resource.hpp"
 #include "Inventory.hpp"
 #include "../Player.hpp"
-#include "../ItemGeneric.hpp"
-#include "../../coreEngine/Timer.hpp"
+#include "../Items/ItemGeneric.hpp"
+#include "../../coreEngine/SDL/Timer.hpp"
 
 
 Resource::Resource(RESOURCE_TYPE TYPE){

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../Constantes.hpp"
+#include "../../Constantes.hpp"
 #include <SDL2/SDL_ttf.h>
 
 class Texto

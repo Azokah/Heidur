@@ -1,15 +1,15 @@
 #include "InputManager.hpp"
-#include "SDLHandler.hpp"
+#include "SDL/SDLHandler.hpp"
 #include "GOManager.hpp"
 #include "SceneManager.hpp"
-#include "MainMenuScene.hpp"
+#include "Scenes/MainMenuScene.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/ResourceGeneric.hpp"
+#include "../gameobject/Resources/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/components/Inventory.hpp"
 #include "../gameobject/components/Resource.hpp"
-#include "../gameobject/MenuGeneric.hpp"
+#include "../gameobject/GUI/MenuGeneric.hpp"
 
 
 InputManager& InputManager::getInstance(){

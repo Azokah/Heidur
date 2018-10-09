@@ -1,5 +1,5 @@
 #include "Sprite.hpp"
-#include "../../coreEngine/SDLHandler.hpp"
+#include "../../coreEngine/SDL/SDLHandler.hpp"
 #include "../../coreEngine/Camera.hpp"
 
 Sprite::Sprite(){

@@ -5,9 +5,9 @@
 #include "GOManager.hpp"
 #include "../gameobject/components/Sprite.hpp"
 #include "../gameobject/Player.hpp"
-#include "../gameobject/ResourceGeneric.hpp"
-#include "../gameobject/MenuGeneric.hpp"
-#include "../gameobject/MainMenu.hpp"
+#include "../gameobject/Resources/ResourceGeneric.hpp"
+#include "../gameobject/GUI/MenuGeneric.hpp"
+#include "../gameobject/GUI/MainMenu.hpp"
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){
