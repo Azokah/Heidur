@@ -3,6 +3,7 @@
 #include "GOManager.hpp"
 #include "SceneManager.hpp"
 #include "Scenes/MainMenuScene.hpp"
+#include "Scenes/InventoryMenuScene.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/Resources/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
@@ -204,7 +205,10 @@ void StopUp::execute(Player* p) { p->physics->stopUp();};
 void StopDown::execute(Player* p) { p->physics->stopDown();};
 void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
-void ToggleInventory::execute(Player* p) { p->inventory->toConsole();};
+void ToggleInventory::execute(Player* p) {
+    p->inventory->toConsole();
+    SceneManager::getInstance().nextScene(new InventoryMenuScene());
+};
 void Interact::execute(Player* p) {
     for(auto& r : GOManager::getInstance().resources)
         if(!r->resource->cooldown)r->sprite->isInPos(p->sprite->position.y,p->sprite->position.x);

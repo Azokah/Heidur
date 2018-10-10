@@ -5,12 +5,12 @@
 #include "../../Constantes.hpp"
 #include "MenuGeneric.hpp"
 
-class InventoryMenu : public MenuGeneric{
+class BackpackMenu : public MenuGeneric{
     public:
-        static InventoryMenu& getInstance();
+        static BackpackMenu& getInstance();
 
-        InventoryMenu();
-        ~InventoryMenu();
+        BackpackMenu();
+        ~BackpackMenu();
 
         void execute();
 

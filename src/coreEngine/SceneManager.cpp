@@ -33,7 +33,7 @@ void SceneManager::nextScene(Scene* s){
     
 };
 void SceneManager::prevScene(){
-    Scene* front = scenes.at(0);
+    //Scene* front = scenes.at(0);
     scenes.pop_front();//Dealocate first memory leak
-    delete(front);  //Preventing memory leak 
+    //delete(front);  //Preventing memory leak 
 };
