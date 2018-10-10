@@ -12,7 +12,8 @@ class Inventory;
 
 class Player{
     public:
-        Player();
+        static Player& getInstance();
+        
         ~Player();
 
         void update(float);
@@ -23,5 +24,8 @@ class Player{
         Physics * physics;
         Stats * stats;
         Inventory * inventory;
+
+        private:
+            Player();
 
 };

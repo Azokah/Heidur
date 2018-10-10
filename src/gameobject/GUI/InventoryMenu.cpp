@@ -1,7 +1,7 @@
 #include "InventoryMenu.hpp"
-#include "BackpackMenu.hpp"
 #include "../components/MenuComponent.hpp"
 #include "../../coreEngine/SceneManager.hpp"
+#include "../../coreEngine/Scenes/BackpackMenuScene.hpp"
 
 
 InventoryMenu& InventoryMenu::getInstance(){
@@ -20,17 +20,13 @@ InventoryMenu::~InventoryMenu(){
 void InventoryMenu::execute(){
     switch(currentOption){
         case 0:
-            if(SceneManager::getInstance().state != CORRIENDO){
-                std::cout<<"Starting game..."<<std::endl;//Starting game when game already started is wrong
-                //SceneManager::getInstance().nextScene(new MainGameScene());
-                SceneManager::getInstance().state = CORRIENDO;
-            }
+            SceneManager::getInstance().nextScene( new BackpackMenuScene());
             break;
         case 1:
             std::cout<<"Resuming game..."<<std::endl;
             SceneManager::getInstance().prevScene(); //Segfault fixed with scenemanager scenes != 0
             break;
-        case 3:
+        case 2:
             std::cout<<"Resuming game..."<<std::endl;
             SceneManager::getInstance().prevScene(); //Segfault fixed with scenemanager scenes != 0
             break;

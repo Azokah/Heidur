@@ -17,7 +17,7 @@ MainGameScene::MainGameScene(){
     gom = &GOManager::getInstance();
     map = &Scenario::getInstance();
     input = &InputManager::getInstance();
-    player = new Player();
+    player = &Player::getInstance();
     
 };
 MainGameScene::~MainGameScene(){};

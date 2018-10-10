@@ -4,6 +4,11 @@
 #include "components/Stats.hpp"
 #include "components/Inventory.hpp"
 
+Player& Player::getInstance(){
+    static Player instance;
+    return instance;
+};
+
 Player::Player(){
     physics = new Physics();
     sprite = new Sprite();

@@ -14,4 +14,7 @@ class BackpackMenu : public MenuGeneric{
 
         void execute();
 
+        void update(float);
+        void fetchItems();
+
 };

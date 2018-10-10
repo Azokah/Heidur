@@ -206,7 +206,7 @@ void StopDown::execute(Player* p) { p->physics->stopDown();};
 void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
 void ToggleInventory::execute(Player* p) {
-    p->inventory->toConsole();
+    //p->inventory->toConsole();
     SceneManager::getInstance().nextScene(new InventoryMenuScene());
 };
 void Interact::execute(Player* p) {
