@@ -44,6 +44,7 @@ void Sprite::drawAt(int y, int x){
     }
 };
 
+//Deprectaed, used manually
 void Sprite::setDest(int y, int x, int w, int h){
     dest.y = y*TILE_H;
     dest.x = x*TILE_W;
@@ -51,8 +52,8 @@ void Sprite::setDest(int y, int x, int w, int h){
     dest.h = h*TILE_H;
 }
 void Sprite::setDest(int pos){
-    dest.y = 0*TILE_H;
-    dest.x = pos*TILE_W;
+    dest.y = (pos/SPRITES_PER_ROW)*TILE_H;
+    dest.x = (pos - ((pos/SPRITES_PER_ROW)*SPRITES_PER_ROW))*TILE_W;
     dest.w = 1*TILE_W;
     dest.h = 1*TILE_H;
 }

@@ -12,6 +12,7 @@ Player& Player::getInstance(){
 Player::Player(){
     physics = new Physics();
     sprite = new Sprite();
+    sprite->setDest(PLAYER_SPRITE_DEST);
     stats = new Stats();
     inventory = new Inventory();
 };

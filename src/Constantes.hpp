@@ -3,8 +3,8 @@
 //General
 //Constantes de Juego
 #define VERSION 0.0.1
-#define TILE_W 64
-#define TILE_H 64
+#define TILE_W 32
+#define TILE_H 32
 
 //SDLWrapper
 #define TITULO "HEIDUR - EARLY ALPHA"
@@ -21,7 +21,8 @@
 #define MUSICA_PATH "../resources/Musica/Castillo_Tuto.ogg"
 
 //Graficos
-#define SPRITE_PATH "../resources/Sprites/Sprites.png"
+#define SPRITES_PER_ROW 64
+#define SPRITE_PATH "../resources/Sprites/Test.png"
 
 //Texto
 #define TEXTO_SIZE 18
@@ -52,13 +53,14 @@
 #define STARTING_WISDOM 1
 
 //GRAFICOS
-#define MONSTER_SPRITE_DEST 4
-#define TILE_GRASS_CODE 1
-#define TILE_MUD_CODE 2
-#define TILE_WOOD_FLOOR_CODE 6
-#define SPRITE_BUSH 10
-#define SPRITE_RESOURCE_GENERIC 11
-#define SPRITE_ITEM 7
+#define PLAYER_SPRITE_DEST 87
+#define MONSTER_SPRITE_DEST 184
+#define TILE_GRASS_CODE 954
+#define TILE_MUD_CODE 827
+#define TILE_WOOD_FLOOR_CODE 913
+#define SPRITE_BUSH 1169
+#define SPRITE_RESOURCE_GENERIC 2923
+#define SPRITE_ITEM 2923
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
