@@ -10,7 +10,8 @@ Scenario& Scenario::getInstance(){
 Scenario::Scenario(){
     sprite = new Sprite();
     grid = new Grid();
-    load();
+    load(GRID_PATH);
+	loadColisiones(GRID_COLISIONS_PATH);
 };
 Scenario::~Scenario(){
     delete sprite;
@@ -43,8 +44,8 @@ bool Scenario::testColision(int y, int x){
 }
 
 
-void Scenario::load(){
-	std::ifstream file(GRID_PATH);
+void Scenario::load(std::string path){
+	std::ifstream file(path);
 	int fila, columna;
 	fila = 0;
 	columna = 0;
@@ -68,7 +69,7 @@ void Scenario::load(){
 	file.close();
 };
 
-void Scenario::load(std::string path){
+void Scenario::loadColisiones(std::string path){
 	std::ifstream file(path);
 	int fila, columna;
 	fila = 0;
@@ -80,7 +81,7 @@ void Scenario::load(std::string path){
 		int n;
 
 		while (iss >> n){
-			grid->setValue(fila,columna,n);
+			grid->setColisionAt(fila,columna,n);
 			columna++;
 
 			if(columna >= GRID_MAX_W){

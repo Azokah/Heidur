@@ -64,7 +64,8 @@
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
-#define GRID_PATH "../resources/Maps/Mapa1.csv"
+#define GRID_PATH "../resources/Maps/Mapa_Mapa.csv"
+#define GRID_COLISIONS_PATH "../resources/Maps/Mapa_Colisiones.csv"
 
 //NETWORKING
 #define MASTER_SERVER_IP "127.0.0.1"

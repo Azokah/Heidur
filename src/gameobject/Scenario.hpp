@@ -28,6 +28,6 @@ class Scenario{
         private:
             Scenario();
 
-            void load();
             void load(std::string);
+            void loadColisiones(std::string);
 };
