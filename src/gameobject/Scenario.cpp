@@ -1,6 +1,8 @@
 #include "Scenario.hpp"
 #include "components/Sprite.hpp"
 #include "components/Grid.hpp"
+#include "../coreEngine/GOManager.hpp"
+#include "Resources/ResourceGeneric.hpp"
 
 Scenario& Scenario::getInstance(){
     static Scenario instance;
@@ -12,6 +14,7 @@ Scenario::Scenario(){
     grid = new Grid();
     load(GRID_PATH);
 	loadColisiones(GRID_COLISIONS_PATH);
+	loadObjects(GRID_OBJECTS_PATH);
 };
 Scenario::~Scenario(){
     delete sprite;
@@ -45,6 +48,7 @@ bool Scenario::testColision(int y, int x){
 
 
 void Scenario::load(std::string path){
+	std::cout<<"Cargando Mapa"<<std::endl;
 	std::ifstream file(path);
 	int fila, columna;
 	fila = 0;
@@ -69,7 +73,9 @@ void Scenario::load(std::string path){
 	file.close();
 };
 
+
 void Scenario::loadColisiones(std::string path){
+	std::cout<<"Cargando colisiones"<<std::endl;
 	std::ifstream file(path);
 	int fila, columna;
 	fila = 0;
@@ -82,6 +88,34 @@ void Scenario::loadColisiones(std::string path){
 
 		while (iss >> n){
 			grid->setColisionAt(fila,columna,n);
+			columna++;
+
+			if(columna >= GRID_MAX_W){
+				columna = 0;
+				fila += 1;
+			}
+		}
+	}
+
+	file.close();
+};
+
+void Scenario::loadObjects(std::string path){
+	std::cout<<"Cargando objetos"<<std::endl;
+	std::ifstream file(path);
+	int fila, columna;
+	fila = 0;
+	columna = 0;
+	std::string linea;
+
+	while (std::getline(file, linea,',')){
+		std::istringstream iss(linea);
+		int n;
+
+		while (iss >> n){
+			//grid->setColisionAt(fila,columna,n);
+			if(n != 0)
+				GOManager::getInstance().resources.push_back(new ResourceGeneric(n,fila,columna));//Instanciamos objetos
 			columna++;
 
 			if(columna >= GRID_MAX_W){

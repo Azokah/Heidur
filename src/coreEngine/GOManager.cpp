@@ -11,9 +11,6 @@
 
 GOManager::~GOManager(){};
 GOManager::GOManager(){
-    resources.push_back(new ResourceGeneric(BUSH,15,5));
-    resources.push_back(new ResourceGeneric(BUSH,5,15));
-    resources.push_back(new ResourceGeneric(ROCK,6,15));
     menu = new MainMenu();
 };
 

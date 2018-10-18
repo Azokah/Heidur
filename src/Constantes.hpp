@@ -59,6 +59,7 @@
 #define TILE_MUD_CODE 827 //Deprecated
 #define TILE_WOOD_FLOOR_CODE 913 //Deprecated
 #define SPRITE_BUSH 1169
+#define SPRITE_TREE 1169
 #define SPRITE_RESOURCE_GENERIC 2923
 #define SPRITE_ITEM 2923
 //GRID
@@ -66,6 +67,7 @@
 #define GRID_MAX_W 100
 #define GRID_PATH "../resources/Maps/Mapa_Mapa.csv"
 #define GRID_COLISIONS_PATH "../resources/Maps/Mapa_Colisiones.csv"
+#define GRID_OBJECTS_PATH "../resources/Maps/Mapa_Objetos.csv"
 
 //NETWORKING
 #define MASTER_SERVER_IP "127.0.0.1"
@@ -133,6 +135,7 @@ namespace globals {
 
     enum RESOURCE_TYPE {
     BUSH,
+    TREE,
     ROCK
     };
     enum ITEM_TYPE {

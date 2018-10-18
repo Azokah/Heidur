@@ -30,4 +30,5 @@ class Scenario{
 
             void load(std::string);
             void loadColisiones(std::string);
+            void loadObjects(std::string);
 };

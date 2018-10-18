@@ -16,7 +16,8 @@ using namespace globals;
 
 class ResourceGeneric{
     public:
-        ResourceGeneric(RESOURCE_TYPE,int,int);
+        ResourceGeneric(int,int);
+        ResourceGeneric(int,int,int);
         ~ResourceGeneric();
 
         void update(float,Player*);

@@ -55,6 +55,7 @@ EVENT_ENUM_TYPE InputManager::processInput(MenuGeneric* menu){
                 switch( event.key.keysym.sym ){
                     case SDLK_ESCAPE:
                         SDL_Quit();
+                        exit(0);
                         //accion = SDL_QUIT;
                         break;
                     case SDLK_F1:
@@ -211,7 +212,7 @@ void ToggleInventory::execute(Player* p) {
 };
 void Interact::execute(Player* p) {
     for(auto& r : GOManager::getInstance().resources)
-        if(!r->resource->cooldown)r->sprite->isInPos(p->sprite->position.y,p->sprite->position.x);
+        if(!r->resource->cooldown)r->sprite->isInPos(p->sprite->position.y+(TILE_H/2),p->sprite->position.x+(TILE_W/2));
 };
 
 //Menu Commander definition
