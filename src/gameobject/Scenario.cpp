@@ -114,7 +114,7 @@ void Scenario::loadObjects(std::string path){
 
 		while (iss >> n){
 			//grid->setColisionAt(fila,columna,n);
-			if(n != 0)
+			if(n != 0)//Cambiar linea de abajo por factory de game objects
 				GOManager::getInstance().resources.push_back(new ResourceGeneric(n,fila,columna));//Instanciamos objetos
 			columna++;
 

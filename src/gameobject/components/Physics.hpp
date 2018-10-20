@@ -7,6 +7,13 @@
 
 class Sprite;
 
+enum FACING {
+    NORTH,
+    SOUTH,
+    WEST,
+    EAST
+};
+
 class Physics {
     public:
         Physics();
@@ -25,7 +32,7 @@ class Physics {
         void stopDown();
 
         
-
+        FACING facing;
     private:
 
     bool movingUp, movingDown, movingLeft, movingRight;

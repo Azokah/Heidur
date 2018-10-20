@@ -211,8 +211,26 @@ void ToggleInventory::execute(Player* p) {
     SceneManager::getInstance().nextScene(new InventoryMenuScene());
 };
 void Interact::execute(Player* p) {
-    for(auto& r : GOManager::getInstance().resources)
-        if(!r->resource->cooldown)r->sprite->isInPos(p->sprite->position.y+(TILE_H/2),p->sprite->position.x+(TILE_W/2));
+    int dy=p->sprite->position.y+(TILE_H/2), dx=p->sprite->position.x+(TILE_W/2);
+
+    switch(p->physics->facing){
+            case NORTH:
+                dy-=TILE_H;
+                break;
+            case SOUTH:
+                dy+=TILE_H;
+                break;
+            case EAST:
+                dx+=TILE_W;
+                break;
+            case WEST:
+                dx-=TILE_W;
+                break;
+    }
+    
+    for(auto& r : GOManager::getInstance().resources){
+        if(!r->resource->cooldown)r->sprite->isInPos(dy,dx);
+    }
 };
 
 //Menu Commander definition

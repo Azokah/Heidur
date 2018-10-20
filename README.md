@@ -13,10 +13,8 @@
 * Singleplayer experience in a multiplayer connected world
 * Combate
 * Multiplayer
-* Sistema de menus
 * Crafting
 * Recoleccion de items
-* Agregar capa de scenario de colisiones
 
 ### For more information
  * [See our one sheet sample](docs/One%20sheet%20sample.pdf)
@@ -24,3 +22,25 @@
 ##### Authors: 
 * Jaime Gonzalez Bonorino ( Azokah - jaimegbonorino@gmail.com )
 * Sebastian Pascual ( Repollo )
+
+
+
+#### Jobs
+
+*   Carpintero
+*   Herrero
+*   Minero
+*   Talador
+*   Comerciante
+*   Granjero
+*   Pastor
+*   Trabajador de cueros
+*   Constructor
+*   Arquitecto
+*   Ladrillero
+*   Cocinero
+*   Medico
+*   Cazador
+*   Guardian
+*   Caza-Recompensas
+*   Explorador

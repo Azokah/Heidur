@@ -12,7 +12,11 @@ ResourceTree::ResourceTree(int x, int y):ResourceGeneric(x,y){
     resource = new Resource(TREE);
     sprite->setDest(SPRITE_TREE);
 };
-ResourceTree::~ResourceTree(){};
+ResourceTree::~ResourceTree(){
+    delete physics;
+    delete sprite;
+    delete resource;
+};
 
 
 
