@@ -46,3 +46,26 @@
 *   Ladron
 *   Caza-Recompensas
 *   Explorador
+
+
+#### MVP
+
+*   Determinar MVP
+**  Un escenario(hecho)
+**  Arboles(hecho)
+**  Hacha
+**  Crafting con madera
+**  Venta de objetos
+**  Niveles y experiencia(hecho)
+
+
+#### Mecanicas
+
+*   Mecanica para un personaje que reacciona ante input
+*   Mecanica para recolectar objetos
+*   Mecanica para utilizar objetos para obtener recursos
+*   Mecanica para crear objetos utilizando objetos
+*   Mecanica para ganar experiencia y subir de nivel
+*   Mecanica para generar misiones para los personajes
+*   Mecanica para recompensar personajes que completan misiones
+*   Mecanica para conectar jugadores de forma online
