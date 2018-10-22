@@ -8,7 +8,7 @@
 #include "../../coreEngine/SDL/Timer.hpp"
 
 
-ResourceGeneric::ResourceGeneric(int y,int x){
+ResourceGeneric::ResourceGeneric(int x,int y){
     srand(time(NULL));
     physics = new Physics();
     sprite = new Sprite();
@@ -19,7 +19,7 @@ ResourceGeneric::ResourceGeneric(int y,int x){
     sprite->position.x = x*TILE_W;
 };
 
-ResourceGeneric::ResourceGeneric(int n,int y,int x){
+ResourceGeneric::ResourceGeneric(int n,int x,int y){
     srand(time(NULL));
     physics = new Physics();
     sprite = new Sprite();

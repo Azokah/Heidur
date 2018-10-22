@@ -3,6 +3,7 @@
 #include "components/Grid.hpp"
 #include "../coreEngine/GOManager.hpp"
 #include "Resources/ResourceGeneric.hpp"
+#include "../Util/ResourceFactory.hpp"
 
 Scenario& Scenario::getInstance(){
     static Scenario instance;
@@ -113,9 +114,9 @@ void Scenario::loadObjects(std::string path){
 		int n;
 
 		while (iss >> n){
-			//grid->setColisionAt(fila,columna,n);
-			if(n != 0)//Cambiar linea de abajo por factory de game objects
-				GOManager::getInstance().resources.push_back(new ResourceGeneric(n,fila,columna));//Instanciamos objetos
+			if(n != 0)
+				//Instanciamos objetos
+				GOManager::getInstance().resources.push_back(ResourceFactory::getInstance().makeResource(n,columna,fila));
 			columna++;
 
 			if(columna >= GRID_MAX_W){

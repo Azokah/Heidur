@@ -42,5 +42,7 @@
 *   Medico
 *   Cazador
 *   Guardian
+*   Asesino
+*   Ladron
 *   Caza-Recompensas
 *   Explorador

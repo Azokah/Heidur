@@ -8,6 +8,7 @@
 *********************************************************************/
 #pragma once
 #include <iostream>
+#include <memory>
 #include <vector>
 
 class ResourceGeneric;
@@ -22,7 +23,7 @@ class GOManager {
         void update(float,Player*);
         void draw();
 
-        std::vector<ResourceGeneric*> resources;
+        std::vector<std::unique_ptr<ResourceGeneric>> resources;
 
         MenuGeneric * menu;
 

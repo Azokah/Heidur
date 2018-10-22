@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDL/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/SDL/Texto.hpp coreEngine/SDL/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/GOManager.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/Resources/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/Items/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/GUI/MenuGeneric.hpp gameobject/GUI/MainMenu.hpp gameobject/GUI/InventoryMenu.hpp coreEngine/Scenes/MainGameScene.hpp coreEngine/SceneManager.hpp coreEngine/Scenes/MainMenuScene.hpp coreEngine/Scenes/InventoryMenuScene.hpp gameobject/GUI/BackpackMenu.hpp coreEngine/Scenes/BackpackMenuScene.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o GOManager.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o InventoryMenu.o MainGameScene.o SceneManager.o MainMenuScene.o InventoryMenuScene.o BackpackMenu.o BackpackMenuScene.o 
+HEADERS = Constantes.hpp coreEngine/SDL/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/SDL/Texto.hpp coreEngine/SDL/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/GOManager.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/Resources/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/Items/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/GUI/MenuGeneric.hpp gameobject/GUI/MainMenu.hpp gameobject/GUI/InventoryMenu.hpp coreEngine/Scenes/MainGameScene.hpp coreEngine/SceneManager.hpp coreEngine/Scenes/MainMenuScene.hpp coreEngine/Scenes/InventoryMenuScene.hpp gameobject/GUI/BackpackMenu.hpp coreEngine/Scenes/BackpackMenuScene.hpp Util/ResourceFactory.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o GOManager.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o InventoryMenu.o MainGameScene.o SceneManager.o MainMenuScene.o InventoryMenuScene.o BackpackMenu.o BackpackMenuScene.o ResourceFactory.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2_net
 
 default: main $(OBJECTS)
@@ -94,6 +94,8 @@ Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
 Scenario.o: gameobject/Scenario.hpp gameobject/Scenario.cpp
 	$(CC) -c gameobject/Scenario.cpp
 
+ResourceFactory.o: Util/ResourceFactory.hpp Util/ResourceFactory.cpp
+	$(CC) -c Util/ResourceFactory.cpp
 
 clean:
 	-rm -f main
@@ -125,3 +127,4 @@ clean:
 	-rm -f MainGameScene.o 
 	-rm -f SceneManager.o 
 	-rm -f MainMenuScene.o InventoryMenuScene.o BackpackMenuScene.o 
+	-rm -f ResourceFactory.o 
