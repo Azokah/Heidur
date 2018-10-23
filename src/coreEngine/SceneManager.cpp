@@ -1,10 +1,11 @@
 #include "SceneManager.hpp"
-#include "Scenes/MainMenuScene.hpp"
+#include "Scenes/MenuScene.hpp"
 #include "Scenes/MainGameScene.hpp"
+#include "../gameobject/GUI/MainMenu.hpp"
 #include <SDL2/SDL.h>
 
 SceneManager::SceneManager(){
-    scenes.push_back(new MainMenuScene());
+    scenes.push_back(new MenuScene(&MainMenu::getInstance()));
     state = INICIANDO;
 };
 SceneManager::~SceneManager(){};

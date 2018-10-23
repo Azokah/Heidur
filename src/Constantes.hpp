@@ -51,6 +51,7 @@
 #define STARTING_STRENGTH 1
 #define STARTING_DEXTERITY 1
 #define STARTING_WISDOM 1
+#define STARTING_EXPERIENCE 0
 
 //GRAFICOS
 #define PLAYER_SPRITE_DEST 87
@@ -62,6 +63,7 @@
 #define SPRITE_TREE 1169
 #define SPRITE_RESOURCE_GENERIC 2923
 #define SPRITE_ITEM 2923
+
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
@@ -97,6 +99,10 @@
 #define CANNOT_CONNECT_ERROR -7
 #define SOCKET_SETS_ERROR -8
 #define SOCKET_SETS_ERROR_2 -9
+
+
+//WORLD RULES
+#define MIN_EXP_GAIN 100
 
 namespace globals {
     static void getError(std::string errorString, int error ){

@@ -1,6 +1,6 @@
 CC = g++ -std=c++14 
-HEADERS = Constantes.hpp coreEngine/SDL/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/SDL/Texto.hpp coreEngine/SDL/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/GOManager.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/Resources/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/Items/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/GUI/MenuGeneric.hpp gameobject/GUI/MainMenu.hpp gameobject/GUI/InventoryMenu.hpp coreEngine/Scenes/MainGameScene.hpp coreEngine/SceneManager.hpp coreEngine/Scenes/MainMenuScene.hpp coreEngine/Scenes/InventoryMenuScene.hpp gameobject/GUI/BackpackMenu.hpp coreEngine/Scenes/BackpackMenuScene.hpp Util/ResourceFactory.hpp
-OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o GOManager.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o InventoryMenu.o MainGameScene.o SceneManager.o MainMenuScene.o InventoryMenuScene.o BackpackMenu.o BackpackMenuScene.o ResourceFactory.o
+HEADERS = Constantes.hpp coreEngine/SDL/SDLHandler.hpp coreEngine/InputManager.hpp gameobject/components/Grid.hpp coreEngine/SDL/Texto.hpp coreEngine/SDL/Timer.hpp gameobject/components/Sprite.hpp gameobject/Player.hpp gameobject/Scenario.hpp  gameobject/components/Physics.hpp coreEngine/GOManager.hpp gameobject/Monster.hpp coreEngine/Camera.hpp gameobject/components/Stats.hpp gameobject/Resources/ResourceGeneric.hpp gameobject/components/Inventory.hpp gameobject/Items/ItemGeneric.hpp gameobject/components/Resource.hpp gameobject/components/Item.hpp gameobject/components/MenuComponent.hpp gameobject/GUI/MenuGeneric.hpp gameobject/GUI/MainMenu.hpp gameobject/GUI/InventoryMenu.hpp coreEngine/Scenes/MainGameScene.hpp coreEngine/SceneManager.hpp gameobject/GUI/BackpackMenu.hpp Util/ResourceFactory.hpp gameobject/GUI/StatsMenu.hpp gameobject/Resources/ResourceTree.hpp coreEngine/Scenes/MenuScene.hpp
+OBJECTS = SDLHandler.o Texto.o Timer.o Player.o Sprite.o Physics.o InputManager.o Grid.o Scenario.o GOManager.o Monster.o Camera.o Stats.o ResourceGeneric.o Inventory.o ItemGeneric.o  Resource.o Item.o MenuComponent.o MenuGeneric.o MainMenu.o InventoryMenu.o MainGameScene.o SceneManager.o BackpackMenu.o ResourceFactory.o StatsMenu.o ResourceTree.o MenuScene.o
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lSDL2_net
 
 default: main $(OBJECTS)
@@ -34,14 +34,8 @@ SceneManager.o: coreEngine/SceneManager.hpp coreEngine/SceneManager.cpp
 MainGameScene.o: coreEngine/Scenes/MainGameScene.hpp coreEngine/Scenes/MainGameScene.cpp
 	$(CC) -c coreEngine/Scenes/MainGameScene.cpp
 
-MainMenuScene.o: coreEngine/Scenes/MainMenuScene.hpp coreEngine/Scenes/MainMenuScene.cpp
-	$(CC) -c coreEngine/Scenes/MainMenuScene.cpp
-
-InventoryMenuScene.o: coreEngine/Scenes/InventoryMenuScene.hpp coreEngine/Scenes/InventoryMenuScene.cpp
-	$(CC) -c coreEngine/Scenes/InventoryMenuScene.cpp
-
-BackpackMenuScene.o: coreEngine/Scenes/BackpackMenuScene.hpp coreEngine/Scenes/BackpackMenuScene.cpp
-	$(CC) -c coreEngine/Scenes/BackpackMenuScene.cpp
+MenuScene.o: coreEngine/Scenes/MenuScene.hpp coreEngine/Scenes/MenuScene.cpp
+	$(CC) -c coreEngine/Scenes/MenuScene.cpp
 
 Sprite.o: gameobject/components/Sprite.hpp gameobject/components/Sprite.cpp
 	$(CC) -c gameobject/components/Sprite.cpp
@@ -76,6 +70,9 @@ Player.o: gameobject/Player.hpp gameobject/Player.cpp
 ResourceGeneric.o: gameobject/Resources/ResourceGeneric.hpp gameobject/Resources/ResourceGeneric.cpp
 	$(CC) -c gameobject/Resources/ResourceGeneric.cpp
 
+ResourceTree.o: gameobject/Resources/ResourceTree.hpp gameobject/Resources/ResourceTree.cpp
+	$(CC) -c gameobject/Resources/ResourceTree.cpp
+
 ItemGeneric.o: gameobject/Items/ItemGeneric.hpp gameobject/Items/ItemGeneric.cpp
 	$(CC) -c gameobject/Items/ItemGeneric.cpp
 
@@ -88,6 +85,9 @@ MainMenu.o: gameobject/GUI/MainMenu.hpp gameobject/GUI/MainMenu.cpp
 BackpackMenu.o: gameobject/GUI/BackpackMenu.hpp gameobject/GUI/BackpackMenu.cpp
 	$(CC) -c gameobject/GUI/BackpackMenu.cpp
 
+StatsMenu.o: gameobject/GUI/StatsMenu.hpp gameobject/GUI/StatsMenu.cpp
+	$(CC) -c gameobject/GUI/StatsMenu.cpp
+
 Monster.o: gameobject/Monster.hpp gameobject/Monster.cpp
 	$(CC) -c gameobject/Monster.cpp
 
@@ -99,32 +99,12 @@ ResourceFactory.o: Util/ResourceFactory.hpp Util/ResourceFactory.cpp
 
 clean:
 	-rm -f main
-	-rm -f SDLHandler.o
-	-rm -f Texto.o 
-	-rm -f Timer.o 
-	-rm -f Player.o 
-	-rm -f Sprite.o 
-	-rm -f Physics.o 
-	-rm -f InputManager.o
-	-rm -f Scenario.o
-	-rm -f Grid.o
-	-rm -f NetworkClient.o 
-	-rm -f GOManager.o 
-	-rm -f PlayerExternal.o 
-	-rm -f Monster.o
-	-rm -f Camera.o 
-	-rm -f Stats.o 
-	-rm -f ResourceGeneric.o 
-	-rm -f Inventory.o 
+	-rm -f SDLHandler.o Texto.o Timer.o Camera.o 
+	-rm -f Player.o Monster.o Scenario.o
+	-rm -f Sprite.o Physics.o Grid.o Stats.o Inventory.o Item.o Resource.o MenuComponent.o 
+	-rm -f InputManager.o GOManager.o NetworkClient.o PlayerExternal.o
+	-rm -f ResourceGeneric.o ResourceTree.o
 	-rm -f ItemGeneric.o 
-	-rm -f Resource.o 
-	-rm -f Item.o 
-	-rm -f MenuComponent.o 
-	-rm -f MenuGeneric.o 
-	-rm -f MainMenu.o 
-	-rm -f InventoryMenu.o 
-	-rm -f MainMenu.o BackpackMenu.o 
-	-rm -f MainGameScene.o 
-	-rm -f SceneManager.o 
-	-rm -f MainMenuScene.o InventoryMenuScene.o BackpackMenuScene.o 
+	-rm -f MenuGeneric.o MainMenu.o InventoryMenu.o BackpackMenu.o StatsMenu.o
+	-rm -f SceneManager.o MainGameScene.o MenuScene.o
 	-rm -f ResourceFactory.o 

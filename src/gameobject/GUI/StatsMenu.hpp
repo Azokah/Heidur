@@ -5,16 +5,16 @@
 #include "../../Constantes.hpp"
 #include "MenuGeneric.hpp"
 
-class BackpackMenu : public MenuGeneric{
+class StatsMenu : public MenuGeneric{
     public:
-        static BackpackMenu& getInstance();
+        static StatsMenu& getInstance();
 
-        BackpackMenu();
-        ~BackpackMenu();
+        StatsMenu();
+        ~StatsMenu();
 
         void execute();
 
         virtual void update(float);
-        void fetchItems();
+        void fetchStats();
 
 };

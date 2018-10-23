@@ -1,5 +1,6 @@
 #include "Resource.hpp"
 #include "Inventory.hpp"
+#include "Stats.hpp"
 #include "../Player.hpp"
 #include "../Items/ItemGeneric.hpp"
 #include "../../coreEngine/SDL/Timer.hpp"
@@ -29,6 +30,7 @@ Resource::~Resource(){
 void Resource::action(Player* p){
     p->inventory->items.push_back(new ItemGeneric(itemType)); //Añade un item del tipo del recurso
     //std::cout<<"Aded bush fruit to player\n"; //TESTUSE
+    p->stats->experience+=MIN_EXP_GAIN;
     goInCooldown();
 };
 

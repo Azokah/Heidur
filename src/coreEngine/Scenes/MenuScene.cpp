@@ -1,21 +1,21 @@
-#include "InventoryMenuScene.hpp"
+#include "MenuScene.hpp"
 
 #include "../../Constantes.hpp"
 #include "../SDL/SDLHandler.hpp"
 #include "../InputManager.hpp"
 #include "../Camera.hpp"
-#include "../../gameobject/GUI/InventoryMenu.hpp"
+#include "../../gameobject/GUI/MenuGeneric.hpp"
 
-InventoryMenuScene::InventoryMenuScene(){
+MenuScene::MenuScene(MenuGeneric* ActualMenu){
     sdl = &SDLHandler::getInstance();
     camera = &Camera::getInstance();
     input = &InputManager::getInstance();
-    menu = &InventoryMenu::getInstance();
+    menu = ActualMenu;
     
 };
-InventoryMenuScene::~InventoryMenuScene(){};
+MenuScene::~MenuScene(){};
 
-EVENT_ENUM_TYPE InventoryMenuScene::update(){
+EVENT_ENUM_TYPE MenuScene::update(){
     EVENT_ENUM_TYPE inputAction;
     
     float delta = sdl->getDelta();

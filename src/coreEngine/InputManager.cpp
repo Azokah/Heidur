@@ -2,8 +2,7 @@
 #include "SDL/SDLHandler.hpp"
 #include "GOManager.hpp"
 #include "SceneManager.hpp"
-#include "Scenes/MainMenuScene.hpp"
-#include "Scenes/InventoryMenuScene.hpp"
+#include "Scenes/MenuScene.hpp"
 #include "../gameobject/Player.hpp"
 #include "../gameobject/Resources/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
@@ -11,6 +10,10 @@
 #include "../gameobject/components/Inventory.hpp"
 #include "../gameobject/components/Resource.hpp"
 #include "../gameobject/GUI/MenuGeneric.hpp"
+#include "../gameobject/GUI/MainMenu.hpp"
+#include "../gameobject/GUI/InventoryMenu.hpp"
+
+
 
 
 InputManager& InputManager::getInstance(){
@@ -123,7 +126,7 @@ EVENT_ENUM_TYPE InputManager::processInput(Player* player){
                     case SDLK_ESCAPE:
                         //SDL_Quit();
                         //accion = SDL_QUIT;
-                        SceneManager::getInstance().nextScene(new MainMenuScene());
+                        SceneManager::getInstance().nextScene(new MenuScene(&MainMenu::getInstance()));
                         break;
                     case SDLK_F1:
                         SDLHandler::getInstance().takeScreenshot();
@@ -208,7 +211,7 @@ void StopLeft::execute(Player* p) { p->physics->stopLeft();};
 void StopRight::execute(Player* p) { p->physics->stopRight();};
 void ToggleInventory::execute(Player* p) {
     //p->inventory->toConsole();
-    SceneManager::getInstance().nextScene(new InventoryMenuScene());
+    SceneManager::getInstance().nextScene(new MenuScene(&InventoryMenu::getInstance()));
 };
 void Interact::execute(Player* p) {
     int dy=p->sprite->position.y+(TILE_H/2), dx=p->sprite->position.x+(TILE_W/2);

@@ -8,6 +8,7 @@ Stats::Stats(){
     strength = STARTING_STRENGTH;
     dexterity = STARTING_DEXTERITY;
     wisdom = STARTING_WISDOM;
+    experience = STARTING_EXPERIENCE;
 };
 Stats::~Stats(){};
 

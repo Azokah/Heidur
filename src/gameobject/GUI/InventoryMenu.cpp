@@ -1,8 +1,9 @@
 #include "InventoryMenu.hpp"
 #include "../components/MenuComponent.hpp"
 #include "../../coreEngine/SceneManager.hpp"
-#include "../../coreEngine/Scenes/BackpackMenuScene.hpp"
-
+#include "../../coreEngine/Scenes/MenuScene.hpp"
+#include "StatsMenu.hpp"
+#include "BackpackMenu.hpp"
 
 InventoryMenu& InventoryMenu::getInstance(){
     static InventoryMenu instance;
@@ -20,11 +21,10 @@ InventoryMenu::~InventoryMenu(){
 void InventoryMenu::execute(){
     switch(currentOption){
         case 0:
-            SceneManager::getInstance().nextScene( new BackpackMenuScene());
+            SceneManager::getInstance().nextScene( new MenuScene(&BackpackMenu::getInstance()));
             break;
         case 1:
-            std::cout<<"Resuming game..."<<std::endl;
-            SceneManager::getInstance().prevScene(); //Segfault fixed with scenemanager scenes != 0
+            SceneManager::getInstance().nextScene( new MenuScene(&StatsMenu::getInstance()));
             break;
         case 2:
             std::cout<<"Resuming game..."<<std::endl;

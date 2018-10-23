@@ -15,4 +15,5 @@ class Stats {
         int actualHealth, actualEnergy, actualHunger, actualThirst;
 
         int strength, dexterity, wisdom;
+        int experience;
 };

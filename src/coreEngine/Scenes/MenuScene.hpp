@@ -5,14 +5,14 @@
 class SDLHandler;
 class Camera;
 class InputManager;
-class InventoryMenu;
+class MenuGeneric;
 
 using namespace globals;
 
-class InventoryMenuScene : public Scene {
+class MenuScene : public Scene {
     public:
-        InventoryMenuScene();
-        ~InventoryMenuScene();
+        MenuScene(MenuGeneric*);
+        ~MenuScene();
 
         virtual EVENT_ENUM_TYPE update();
 
@@ -22,6 +22,6 @@ class InventoryMenuScene : public Scene {
         Camera * camera;
         InputManager * input;
 
-        InventoryMenu * menu;
+        MenuGeneric * menu;
 
 };

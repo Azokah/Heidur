@@ -12,7 +12,7 @@ class MenuGeneric {
         MenuGeneric();
         ~MenuGeneric();
 
-        void update(float);
+        virtual void update(float);
         void draw();
 
         bool activate();

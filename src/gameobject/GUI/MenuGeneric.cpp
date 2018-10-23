@@ -51,6 +51,9 @@ bool MenuGeneric::deactivate(){
 
 void MenuGeneric::nextOption(){
     currentOption++;
+    if(currentOption > menus.size()-1){
+        currentOption = menus.size()-1;
+    }
 };
 void MenuGeneric::previousOption(){
     currentOption--;

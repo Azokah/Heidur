@@ -51,12 +51,12 @@
 #### MVP
 
 *   Determinar MVP
-**  Un escenario(hecho)
-**  Arboles(hecho)
-**  Hacha
-**  Crafting con madera
-**  Venta de objetos
-**  Niveles y experiencia(hecho)
+    *  Un escenario(hecho)
+    *  Arboles(hecho)
+    *  Hacha
+    *  Crafting con madera
+    *  Venta de objetos
+    *  Niveles y experiencia(hecho)
 
 
 #### Mecanicas
