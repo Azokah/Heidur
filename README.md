@@ -1,28 +1,26 @@
 # Heidur
 
-![In-Development screenshot](screenshots/develop/12424.bmp)
+![In-Development screenshot](screenshots/develop/171447.bmp)
 
 ### Small - Casual - Multiplatform - RPG
 
 #### Summary
 
-   *In a place full of magic and mystery, a young man in search of opportunities gets the chance to work in the castle of one of the most powerful kings of Heidur. Soon the young man would discover that this job was not what he expected, but a promise is a promise, getting away is not an option. He will try determination and courage in an endless amount of adventures, to finally arrive at what seems to be the twisted end of the world, and with his own hands, to prevent it.*
+   *En un lugar lleno de magia y misterio, una persona en busca de oportunidades y un destino comenzará a forjar su propia historia, a base de trabajo, habilidad, riquezas y descubirimientos. 
+   Tu eres el elegido y unico capaz de lograr lo que nadie ha podido hacer...
+   Buscar la verdad detras de este mundo?...
+   Obtener riquezas y vivir una vida comoda?...
+   Fama y fortuna?...
+   Revelar los misterios ocultos en lo mas profundo de Heidur?...
+   Proteger a los débiles?...
+   La decision es tuya.*
 
 #### Features
 * Casual
 * Singleplayer experience in a multiplayer connected world
-* Combate
-* Multiplayer
-* Crafting
-* Recoleccion de items
-
-### For more information
- * [See our one sheet sample](docs/One%20sheet%20sample.pdf)
-
-##### Authors: 
-* Jaime Gonzalez Bonorino ( Azokah - jaimegbonorino@gmail.com )
-* Sebastian Pascual ( Repollo )
-
+* Epic list of jobs to do
+* Active and passive combat
+* Big World
 
 
 #### Jobs
@@ -48,8 +46,17 @@
 *   Explorador
 
 
-#### MVP
+### For more information
+ * [See our one sheet sample]("Deprectaed")
 
+##### Authors: 
+* Jaime Gonzalez Bonorino ( Azokah - jaimegbonorino@gmail.com )
+* Sebastian Pascual ( Repollo )
+
+
+#Development 
+
+#### MVP
 *   Determinar MVP
     *  Un escenario(hecho)
     *  Arboles(hecho)
@@ -57,7 +64,6 @@
     *  Crafting con madera
     *  Venta de objetos
     *  Niveles y experiencia(hecho)
-
 
 #### Mecanicas
 
