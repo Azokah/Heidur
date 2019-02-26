@@ -31,6 +31,7 @@ void Sprite::draw(){
     }
 };
 
+
 void Sprite::drawAt(int y, int x){
     position.x = x;
     position.y = y;

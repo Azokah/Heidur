@@ -54,7 +54,12 @@ void ResourceGeneric::update(float delta,Player* p){
     }
 };
 
+void ResourceGeneric::draw(int x, int y){
+    if(!resource->cooldown)
+            sprite->drawAt(x,y);
+};
+
 void ResourceGeneric::draw(){
     if(!resource->cooldown)
-        sprite->draw();
+            sprite->draw();
 };

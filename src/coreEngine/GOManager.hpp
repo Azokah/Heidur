@@ -14,6 +14,7 @@
 class ResourceGeneric;
 class Player;
 class MenuGeneric;
+class Monster;
 
 class GOManager {
     public:
@@ -21,9 +22,15 @@ class GOManager {
         ~GOManager();
 
         void update(float,Player*);
+        void draw(int,int);
         void draw();
 
+        void poblateMonsters(); //Test only
+
+        Monster* getClosestEnemy(Player*);
+
         std::vector<std::unique_ptr<ResourceGeneric>> resources;
+        std::vector<std::unique_ptr<Monster>> monsters;
 
         MenuGeneric * menu;
 

@@ -6,7 +6,6 @@
 #include "../Camera.hpp"
 #include "../GOManager.hpp"
 #include "../../gameobject/Player.hpp"
-#include "../../gameobject/Monster.hpp"
 #include "../../gameobject/Scenario.hpp"
 #include "../../gameobject/components/Sprite.hpp"
 
@@ -15,6 +14,7 @@ MainGameScene::MainGameScene(){
     sdl = &SDLHandler::getInstance();
     camera = &Camera::getInstance();
     gom = &GOManager::getInstance();
+    gom->poblateMonsters();
     map = &Scenario::getInstance();
     input = &InputManager::getInstance();
     player = &Player::getInstance();
@@ -31,7 +31,6 @@ EVENT_ENUM_TYPE MainGameScene::update(){
     
     //Update entities
     player->update(delta);
-    //monster.update(delta);
     camera->update(delta,player);
     gom->update(delta,player);
 
@@ -39,9 +38,14 @@ EVENT_ENUM_TYPE MainGameScene::update(){
     sdl->cleanRender();
     map->draw();
     player->draw();
-    //monster.draw();
+    /*
+    for(int i = 0; i < GRID_MAX_H;i++){
+        for(int j = 0; j< GRID_MAX_W; j++){
+            gom->draw(i,j);
+        }
+    }*/
     gom->draw();
-    sdl->draw();
+    sdl->draw(); 
     
     return inputAction;
 };

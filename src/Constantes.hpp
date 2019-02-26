@@ -3,8 +3,8 @@
 //General
 //Constantes de Juego
 #define VERSION 0.0.1
-#define TILE_W 32
-#define TILE_H 32
+#define TILE_W 64
+#define TILE_H 64
 
 //SDLWrapper
 #define TITULO "HEIDUR - EARLY ALPHA"
@@ -22,7 +22,7 @@
 
 //Graficos
 #define SPRITES_PER_ROW 64
-#define SPRITE_PATH "../resources/Sprites/Test.png"
+#define SPRITE_PATH "../resources/Sprites/Sprite-0001.png"
 
 //Texto
 #define TEXTO_SIZE 18
@@ -54,22 +54,22 @@
 #define STARTING_EXPERIENCE 0
 
 //GRAFICOS
-#define PLAYER_SPRITE_DEST 87
-#define MONSTER_SPRITE_DEST 184
-#define TILE_GRASS_CODE 954 //Deprecated
-#define TILE_MUD_CODE 827 //Deprecated
-#define TILE_WOOD_FLOOR_CODE 913 //Deprecated
-#define SPRITE_BUSH 1169
-#define SPRITE_TREE 1169
-#define SPRITE_RESOURCE_GENERIC 2923
-#define SPRITE_ITEM 2923
+#define PLAYER_SPRITE_DEST 0
+#define MONSTER_SPRITE_DEST 4
+#define TILE_GRASS_CODE 1 //Deprecated
+#define TILE_MUD_CODE 2 //Deprecated
+#define TILE_WOOD_FLOOR_CODE 6 //Deprecated
+#define SPRITE_BUSH 10
+#define SPRITE_TREE 12
+#define SPRITE_RESOURCE_GENERIC 13
+#define SPRITE_ITEM 7
 
 //GRID
 #define GRID_MAX_H 100
 #define GRID_MAX_W 100
-#define GRID_PATH "../resources/Maps/Mapa_Mapa.csv"
-#define GRID_COLISIONS_PATH "../resources/Maps/Mapa_Colisiones.csv"
-#define GRID_OBJECTS_PATH "../resources/Maps/Mapa_Objetos.csv"
+#define GRID_PATH "../resources/Maps/Mapa64x64_Mapa.csv"
+#define GRID_COLISIONS_PATH "../resources/Maps/Mapa64x64_Colisiones.csv"
+#define GRID_OBJECTS_PATH "../resources/Maps/Mapa64x64_Objetos.csv"
 
 //NETWORKING
 #define MASTER_SERVER_IP "127.0.0.1"

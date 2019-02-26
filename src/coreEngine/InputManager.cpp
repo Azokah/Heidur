@@ -4,6 +4,7 @@
 #include "SceneManager.hpp"
 #include "Scenes/MenuScene.hpp"
 #include "../gameobject/Player.hpp"
+#include "../gameobject/Monster.hpp"
 #include "../gameobject/Resources/ResourceGeneric.hpp"
 #include "../gameobject/components/Physics.hpp"
 #include "../gameobject/components/Sprite.hpp"
@@ -32,6 +33,7 @@ InputManager::InputManager(){
     stopLeft = new StopLeft();
     toggleInventory = new ToggleInventory();
     interact = new Interact();
+    nextEnemy = new NextEnemy();
 
     upMenu = new MoveUpMenu();
     downMenu = new MoveDownMenu();
@@ -150,6 +152,9 @@ EVENT_ENUM_TYPE InputManager::processInput(Player* player){
                     case SDLK_z:
                         interact->execute(player);
                         break;
+                    case SDLK_TAB:
+                        nextEnemy->execute(player);
+                        break;
                     accion = SDL_KEYDOWN;
                 }
                 break;
@@ -235,6 +240,10 @@ void Interact::execute(Player* p) {
         if(!r->resource->cooldown)r->sprite->isInPos(dy,dx);
     }
 };
+void NextEnemy::execute(Player* p) {
+    GOManager::getInstance().getClosestEnemy(p)->sprite->position.x += TILE_W;
+};
+
 
 //Menu Commander definition
 

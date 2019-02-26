@@ -17,6 +17,7 @@ class Player{
         ~Player();
 
         void update(float);
+        void draw(int, int);
         void draw();
         
     //private:

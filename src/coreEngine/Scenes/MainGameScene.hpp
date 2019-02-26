@@ -25,7 +25,6 @@ class MainGameScene : public Scene {
         InputManager * input;
 
         Player * player;
-        //Monster monster(15,15);
         GOManager * gom;
         Scenario * map;
 };

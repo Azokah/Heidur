@@ -21,7 +21,9 @@ class ResourceGeneric{
         ~ResourceGeneric();
 
         void update(float,Player*);
+        void draw(int,int);
         void draw();
+        
         
         Physics * physics;
         Sprite * sprite;

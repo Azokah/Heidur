@@ -62,6 +62,7 @@ class InputManager {
         Command* stopDown;
         Command* interact;
         Command* toggleInventory;
+        Command* nextEnemy;
 
 
         //Menu Scene Commands
@@ -126,7 +127,10 @@ class Interact : public Command {
     public:
         virtual void execute(Player*);
 };
-
+class NextEnemy : public Command {
+    public:
+        virtual void execute(Player*);
+};
 
 //Commands for menu/gui definitions
 class MoveUpMenu : public CommandMenu {

@@ -31,6 +31,10 @@ void Player::update(float delta){
     inventory->update(delta);
 };
 
+void Player::draw(int x, int y){
+    sprite->drawAt(x,y);
+};
+
 void Player::draw(){
     sprite->draw();
 };
