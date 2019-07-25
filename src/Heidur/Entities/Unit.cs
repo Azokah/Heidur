@@ -33,7 +33,8 @@ namespace Heidur.Entities
         public void Init()
         {
             nearbyUnits = new List<Unit>();
-            position = destination = new Vector2(10 * Constants.TILESIZE, 10 * Constants.TILESIZE);
+            position = new Vector2(10 * Constants.TILESIZE, 10 * Constants.TILESIZE);
+            destination = position;
             Range = Constants.Unit.DEFAULT_RANGE;
             Speed = Constants.Unit.DEFAULT_SPEED;
             Damage = Constants.Unit.DEFAULT_DAMAGE;
@@ -41,7 +42,6 @@ namespace Heidur.Entities
             Experience = Constants.Unit.DEFAULT_EXPERIENCE;
             IsSelected = false;
             Up = Down = Left = Right = false;
-            MovementByDestination = false;
         }
 
         public void MoveTo(Vector2 goTo)
@@ -49,25 +49,56 @@ namespace Heidur.Entities
             destination = goTo;
         }
 
+        private void SetDestination()
+        {
+            if (Up)
+                destination = position - new Vector2(0, Constants.TILESIZE);
+            if (Down)
+                destination = position + new Vector2(0, Constants.TILESIZE);
+            if(Right)
+                destination = position + new Vector2(Constants.TILESIZE, 0);
+            if (Left)
+                destination = position - new Vector2(Constants.TILESIZE, 0);
+        }
+
         private void Move(float deltaTime)
         {
-            if (MovementByDestination)
+            if (position == destination)
             {
-                if (position != destination)
-                {
-                    position =
-                        new Vector2(
-                        position.X > destination.X ? position.X + Speed * deltaTime : position.X - Speed * deltaTime,
-                        position.Y > destination.Y ? position.Y + Speed * deltaTime : position.Y - Speed * deltaTime
-                        );
-                }
+                SetDestination();
             }
             else
             {
-                position = Up ? position - new Vector2(0, Speed) : position;
-                position = Down ? position + new Vector2(0, Speed) : position;
-                position = Right ? position + new Vector2(Speed, 0) : position;
-                position = Left ? position - new Vector2(Speed, 0) : position;
+                var frameSpeed = Constants.Unit.DEFAULT_SPEED * deltaTime;
+                Vector2 offset = destination - position;
+                if (offset.X > 0)
+                {
+                    if (offset.X > frameSpeed)
+                        offset.X = frameSpeed;
+                }
+                else
+                {
+                    if (offset.X < -1 * frameSpeed)
+                        offset.X = -1 * frameSpeed;
+                }
+
+                if (offset.Y > 0)
+                {
+                    if (offset.Y > frameSpeed)
+                        offset.Y = frameSpeed;
+                }
+                else
+                {
+                    if (offset.Y < -1 * frameSpeed)
+                        offset.Y = -1 * frameSpeed;
+                }
+
+                position += offset;
+
+                if (position == destination)
+                {
+                    SetDestination();
+                }
             }
         }
 
