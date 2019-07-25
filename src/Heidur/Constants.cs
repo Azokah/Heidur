@@ -33,9 +33,18 @@ namespace Heidur
 
         public class Map
         {
-            public const string DEFAULT_MAP_SPRITE = "Grass";
+            public const string DEFAULT_MAP_SPRITE = "GameMapSprites";
             public const int DEFAULT_MAP_WIDTH = 20;
             public const int DEFAULT_MAP_HEIGHT = 20;
+
+            public enum TILES
+            {
+                Grass,
+                Dirt,
+                StoneWall,
+                Sand,
+                WoodenFloor
+            }
         }
     }
 }

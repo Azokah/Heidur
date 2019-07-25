@@ -34,7 +34,14 @@ namespace Heidur.Entities
                 Map[j] = new int[Width];
                 for(int i = 0; i < Width; i++)
                 {
-                    Map[j][i] = 0;
+                    if ( i == 0 || j == 0 || i == Constants.Map.DEFAULT_MAP_WIDTH || j == Constants.Map.DEFAULT_MAP_HEIGHT)
+                    {
+                        Map[j][i] = (int)Constants.Map.TILES.StoneWall;
+                    }
+                    else
+                    {
+                        Map[j][i] = (int) Constants.Map.TILES.Grass;
+                    }
                 }
             }
         }
@@ -48,11 +55,8 @@ namespace Heidur.Entities
                 position.Y = j * Constants.TILESIZE;
                 for (int i = 0; i < Width; i++)
                 {
-                    if (Map[j][i] == 0)
-                    {
-                        position.X = i * Constants.TILESIZE;
-                        spriteBatch.Draw(this.Texture, this.position - camera.position, Color.White);
-                    }
+                    position.X = i * Constants.TILESIZE;
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, new Rectangle(0 + Map[j][i] * Constants.TILESIZE, 0, Constants.TILESIZE, Constants.TILESIZE), Color.White);
                 }
             }
         }
