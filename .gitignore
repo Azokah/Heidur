@@ -1,9 +1,4 @@
-.vscode/*
-.vscode\*
-.src\Heidur\bin\*
-.src/Heidur/bin/*
-.src/.vs/*
-.src\.vs\*
+.vscode/
 src/.vs/
 src/Heidur/obj/
 src/Heidur/Content/obj/
