@@ -34,7 +34,7 @@ namespace Heidur.Entities
                 Map[j] = new int[Width];
                 for(int i = 0; i < Width; i++)
                 {
-                    if ( i == 0 || j == 0 || i == Constants.Map.DEFAULT_MAP_WIDTH || j == Constants.Map.DEFAULT_MAP_HEIGHT)
+                    if ( i == 0 || j == 0 || i == Constants.Map.DEFAULT_MAP_WIDTH-1 || j == Constants.Map.DEFAULT_MAP_HEIGHT-1 )
                     {
                         Map[j][i] = (int)Constants.Map.TILES.StoneWall;
                     }
@@ -59,6 +59,11 @@ namespace Heidur.Entities
                     spriteBatch.Draw(this.Texture, this.position - camera.position, new Rectangle(0 + Map[j][i] * Constants.TILESIZE, 0, Constants.TILESIZE, Constants.TILESIZE), Color.White);
                 }
             }
+        }
+
+        public void LoadContent(Game1 game)
+        {
+            this.Texture = game.Content.Load<Texture2D>(Constants.Map.DEFAULT_MAP_SPRITE);
         }
     }
 }

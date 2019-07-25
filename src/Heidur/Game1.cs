@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace Heidur
@@ -14,6 +15,7 @@ namespace Heidur
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        AudioManager audio;
         GameMap gameMap;
         Unit unit;
         List<NonPlayerCharacter> npcs;
@@ -43,6 +45,8 @@ namespace Heidur
             this.IsMouseVisible = true;
 
             // TODO: Add your initialization logic here
+            audio = new AudioManager();
+
             camera = new Camera();
             camera.Init();
             gameMap = new GameMap();
@@ -51,7 +55,6 @@ namespace Heidur
             unit.Init();
             npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter() , new NonPlayerCharacter() , new NonPlayerCharacter() };
             npcs.ForEach(n => n.Init());
-
 
             base.Initialize();
         }
@@ -66,9 +69,10 @@ namespace Heidur
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            gameMap.Texture = Content.Load<Texture2D>(Constants.Map.DEFAULT_MAP_SPRITE);
-            unit.Texture = Content.Load<Texture2D>(Constants.Unit.DEFAULT_UNIT_SPRITE);
-            npcs.ForEach(n => n.Texture = Content.Load<Texture2D>(Constants.Unit.DEFAULT_UNIT_SPRITE));
+            //audio.LoadContentAndPlay(this);
+            gameMap.LoadContent(this); 
+            unit.LoadContent(this); 
+            npcs.ForEach(n => n.LoadContent(this));
         }
 
         /// <summary>
@@ -97,6 +101,7 @@ namespace Heidur
             unit.Update(delta, npcs);
             npcs.ForEach(n => n.Update(delta, npcs));
             camera.Update(unit);
+
             base.Update(gameTime);
         }
 

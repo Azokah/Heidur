@@ -45,5 +45,7 @@ namespace Heidur.Entities
         void KeyActions(KeyboardState keyBoardState);
 
         void GainExperience(int experience);
+
+        void LoadContent(Game1 game);
     }
 }
