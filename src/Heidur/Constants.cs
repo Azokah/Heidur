@@ -24,7 +24,7 @@ namespace Heidur
         {
             public const string DEFAULT_UNIT_SPRITE = "Unit";
             public const int DEFAULT_RANGE = 32;
-            public const int DEFAULT_SPEED = 5;
+            public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
             public const int DEFAULT_HP = 10;
             public const int DEFAULT_EXPERIENCE = 0;
