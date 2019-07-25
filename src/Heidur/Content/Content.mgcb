@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin BattleTheme1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:BattleTheme1.ogg
+
 #begin GameMapSprites.png
 /importer:TextureImporter
 /processor:TextureProcessor

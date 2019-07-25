@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Entities\AudioManager.cs" />
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\NonPlayerCharacter.cs" />
     <Compile Include="Entities\Unit.cs" />

@@ -46,5 +46,10 @@ namespace Heidur
                 WoodenFloor
             }
         }
+
+        public class Music
+        {
+            public const string DEFAULT_MUSIC = "BattleTheme1";
+        }
     }
 }

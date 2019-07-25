@@ -22,6 +22,7 @@ namespace Heidur.Entities
         public int Experience { get; set; }
 
         public bool IsSelected { get; set; }
+
         public int currentHP { get; set; }
 
         public bool MovementByDestination;
@@ -271,6 +272,11 @@ namespace Heidur.Entities
         private void StopMoveRight()
         {
             Right = false;
+        }
+
+        public void LoadContent(Game1 game)
+        {
+            this.Texture = game.Content.Load<Texture2D>(Constants.Unit.DEFAULT_UNIT_SPRITE);
         }
     }
 }
