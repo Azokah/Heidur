@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities;
+using Heidur.Entities.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,10 +14,13 @@ namespace Heidur
     /// </summary>
     public class Game1 : Game
     {
+        // Engine and Game properties
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        AudioManager audioManager;
+        InputManager inputManager;
 
-        AudioManager audio;
+        //GameObjects
         GameMap gameMap;
         Unit unit;
         List<NonPlayerCharacter> npcs;
@@ -46,7 +50,7 @@ namespace Heidur
             this.IsMouseVisible = true;
 
             // TODO: Add your initialization logic here
-            audio = new AudioManager();
+            audioManager = new AudioManager();
 
             camera = new Camera();
             camera.Init();
@@ -56,6 +60,8 @@ namespace Heidur
             unit.Init();
             npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter() , new NonPlayerCharacter() , new NonPlayerCharacter() };
             npcs.ForEach(n => n.Init());
+
+            inputManager = new InputManager(unit);
 
             base.Initialize();
         }
@@ -130,7 +136,7 @@ namespace Heidur
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            unit.KeyActions(Keyboard.GetState());
+            inputManager.Update(Keyboard.GetState());
         }
 
         private void CheckMouseActions(float delta)

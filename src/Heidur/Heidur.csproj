@@ -45,6 +45,17 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\AudioManager.cs" />
     <Compile Include="Entities\Camera.cs" />
+    <Compile Include="Entities\Commands\MoveLeftCommand.cs" />
+    <Compile Include="Entities\Commands\MoveRightCommand.cs" />
+    <Compile Include="Entities\Commands\MoveDownCommand.cs" />
+    <Compile Include="Entities\Commands\StopMoveLeftCommand.cs" />
+    <Compile Include="Entities\Commands\StopMoveRightCommand.cs" />
+    <Compile Include="Entities\Commands\StopMoveUpCommand.cs" />
+    <Compile Include="Entities\Commands\StopMoveDownCommand.cs" />
+    <Compile Include="Entities\Commands\MoveUpCommand.cs" />
+    <Compile Include="Entities\Commands\AttackCommand.cs" />
+    <Compile Include="Entities\Commands\ICommand.cs" />
+    <Compile Include="Entities\Managers\InputManager.cs" />
     <Compile Include="Entities\NonPlayerCharacter.cs" />
     <Compile Include="Entities\Unit.cs" />
     <Compile Include="Entities\GameMap.cs" />

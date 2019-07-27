@@ -127,12 +127,12 @@ namespace Heidur.Entities
             return result;
         }
 
-        public bool Attack(Unit target)
+        public bool Attack()
         {
-            if (GetDistanceFromUnit(target) < Range)
+            var objective = nearbyUnits.Where(u => u.CheckIfAlive()).OrderBy(u => GetDistanceFromUnit(u)).FirstOrDefault();
+            if (objective != null)
             {
-                target.TakeDamage(Damage);
-                return true;
+                objective.TakeDamage(this.Damage);
             }
 
             return false;
@@ -189,97 +189,42 @@ namespace Heidur.Entities
             this.Experience += experience;
         }
 
-        public void KeyActions(KeyboardState keyBoardState)
-        {
-            if(keyBoardState.IsKeyDown(Keys.Z))
-            {
-                var objective = nearbyUnits.Where(u => u.CheckIfAlive()).OrderBy(u => GetDistanceFromUnit(u)).FirstOrDefault();
-                if (objective != null)
-                {
-                    objective.TakeDamage(this.Damage);
-                    Console.WriteLine($"Did {this.Damage} damage to Objective!");
-                    if (!objective.CheckIfAlive())
-                    {
-                        Console.WriteLine($"You Killed the Objective!");
-                        this.GainExperience(Constants.Unit.DEFAULT_EXPERIENCE_GAIN);
-                    }
-                }
-            }
-
-            if (keyBoardState.IsKeyDown(Keys.Up))
-            {
-                MoveUp();
-            }
-            else
-            {
-                StopMoveUp();
-            }
-
-            if (keyBoardState.IsKeyDown(Keys.Down))
-            {
-                MoveDown();
-            }
-            else
-            {
-                StopMoveDown();
-            }
-
-            if (keyBoardState.IsKeyDown(Keys.Left))
-            {
-                MoveLeft();
-            }
-            else
-            {
-                StopMoveLeft();
-            }
-
-            if (keyBoardState.IsKeyDown(Keys.Right))
-            {
-                MoveRight();
-            }
-            else
-            {
-                StopMoveRight();
-            }
-
-        }
-
-        private void MoveUp()
+        public void MoveUp()
         {
             Up = true;
         }
 
-        private void MoveDown()
+        public void MoveDown()
         {
             Down = true;
         }
 
-        private void MoveLeft()
+        public void MoveLeft()
         {
             Left = true;
         }
 
-        private void MoveRight()
+        public void MoveRight()
         {
             Right = true;
         }
 
-        private void StopMoveUp()
+        public void StopMoveUp()
         {
             Up = false;
         }
 
-        private void StopMoveDown()
+        public void StopMoveDown()
         {
             Down = false;
         }
 
-        private void StopMoveLeft()
+        public void StopMoveLeft()
         {
             Left = false;
         }
 
-        private void StopMoveRight()
+        public void StopMoveRight()
         {
             Right = false;
         }

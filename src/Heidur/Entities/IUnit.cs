@@ -28,7 +28,7 @@ namespace Heidur.Entities
 
         void MoveTo(Vector2 goTo);
 
-        bool Attack(Unit target);
+        bool Attack();
 
         void TakeDamage(int damage);
 
@@ -42,10 +42,24 @@ namespace Heidur.Entities
 
         void Draw(Camera camera, SpriteBatch spriteBatch);
 
-        void KeyActions(KeyboardState keyBoardState);
-
         void GainExperience(int experience);
 
         void LoadContent(Game1 game);
+
+        void MoveUp();
+
+        void MoveDown();
+
+        void MoveLeft();
+
+        void MoveRight();
+
+        void StopMoveUp();
+
+        void StopMoveDown();
+
+        void StopMoveLeft();
+
+        void StopMoveRight();
     }
 }
