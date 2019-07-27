@@ -32,7 +32,7 @@ namespace Heidur.Entities
 
         void TakeDamage(int damage);
 
-        void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC);
+        void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC, GameMap map);
 
         bool CheckIfAlive();
 

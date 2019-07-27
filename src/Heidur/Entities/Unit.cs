@@ -50,7 +50,7 @@ namespace Heidur.Entities
             destination = goTo;
         }
 
-        private void SetDestination()
+        private void SetDestination(GameMap map)
         {
             if (Up)
                 destination = position - new Vector2(0, Constants.TILESIZE);
@@ -60,13 +60,23 @@ namespace Heidur.Entities
                 destination = position + new Vector2(Constants.TILESIZE, 0);
             if (Left)
                 destination = position - new Vector2(Constants.TILESIZE, 0);
+
+            if (CheckColission(map, destination))
+            {
+                destination = position;
+            }
         }
 
-        private void Move(float deltaTime)
+        private bool CheckColission(GameMap map, Vector2 point)
+        {
+            return !map.IsTileWalkable(point);
+        }
+
+        private void Move(float deltaTime, GameMap map)
         {
             if (position == destination)
             {
-                SetDestination();
+                SetDestination(map);
             }
             else
             {
@@ -98,7 +108,7 @@ namespace Heidur.Entities
 
                 if (position == destination)
                 {
-                    SetDestination();
+                    SetDestination(map);
                 }
             }
         }
@@ -133,12 +143,12 @@ namespace Heidur.Entities
             currentHP -= damage;
         }
 
-        public void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC)
+        public void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC, GameMap map)
         {
             nearbyUnits = getInRangeUnits(nearbyNPC);
             if (CheckIfAlive())
             {
-                this.Move(deltaTime);
+                this.Move(deltaTime, map);
             }
             else
             {
