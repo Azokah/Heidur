@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Heidur
 {
@@ -98,8 +99,9 @@ namespace Heidur
             this.CheckMouseActions(delta);
 
             // TODO: Add your update logic here
-            unit.Update(delta, npcs);
-            npcs.ForEach(n => n.Update(delta, npcs));
+            unit.Update(delta, npcs, gameMap);
+            npcs.ForEach(n => n.Update(delta, npcs, gameMap));
+            gameMap.Update(npcs.Cast<IUnit>().ToList());
             camera.Update(unit);
 
             base.Update(gameTime);
