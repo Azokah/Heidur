@@ -76,7 +76,7 @@ namespace Heidur
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            //audio.LoadContentAndPlay(this);
+            audio.LoadContentAndPlay(this);
             gameMap.LoadContent(this); 
             unit.LoadContent(this); 
             npcs.ForEach(n => n.LoadContent(this));
