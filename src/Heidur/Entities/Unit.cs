@@ -43,9 +43,9 @@ namespace Heidur.Entities
         private float HitIntervalLastTicks;
         private float Clock;
 
-        public void Init()
+        public Unit()
         {
-            nearbyUnits = new List<IUnit>();
+            this.nearbyUnits = new List<IUnit>();
             position = new Vector2(10 * Constants.TILESIZE, 10 * Constants.TILESIZE);
             destination = position;
             Range = Constants.Unit.DEFAULT_RANGE;
@@ -284,7 +284,7 @@ namespace Heidur.Entities
 
         public void LoadContent(Game1 game)
         {
-            this.Texture = game.Content.Load<Texture2D>(Constants.Unit.DEFAULT_UNIT_SPRITE);
+            this.Texture = game.Content.Load<Texture2D>(Constants.Unit.DEFAULT_SPRITE);
         }
     }
 }
