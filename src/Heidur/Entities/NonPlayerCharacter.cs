@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Heidur.Entities.Components.PhysicsComponent;
 
 namespace Heidur.Entities
 {
-    public class NonPlayerCharacter : Unit
+    public class NonPlayerCharacter : GameObject
     {
         private float IdleMovementInterval;
         private float Clock;
@@ -16,19 +17,19 @@ namespace Heidur.Entities
 
         public NonPlayerCharacter() : base()
         {
-            this.Range = Constants.NPC.DEFAULT_RANGE;
+            this.statsComponent.Range = Constants.NPC.DEFAULT_RANGE;
             random = new Random(Guid.NewGuid().GetHashCode());
-            this.position = new Vector2(random.Next(Constants.Map.DEFAULT_MAP_WIDTH-1) * Constants.TILESIZE, random.Next(Constants.Map.DEFAULT_MAP_HEIGHT-1) * Constants.TILESIZE);
-            destination = position;
+            this.physicsComponent.position = new Vector2(random.Next(Constants.Map.DEFAULT_MAP_WIDTH-1) * Constants.TILESIZE, random.Next(Constants.Map.DEFAULT_MAP_HEIGHT-1) * Constants.TILESIZE);
+            this.physicsComponent.destination = this.physicsComponent.position;
             IdleMovementInterval = 0;
             Clock = 0;
         }
 
-        public new void Update(float deltaTime, List<IUnit> nearbyNPC, GameMap map)
+        public new void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)
         {
             Clock += deltaTime;
             base.Update(deltaTime, nearbyNPC, map);
-            var objective = nearbyNPC.Where(u => this.GetDistanceFromUnit(u) < this.Range).FirstOrDefault();
+            var objective = nearbyNPC.Where(u => this.physicsComponent.GetDistanceFromUnit(u) < this.statsComponent.Range).FirstOrDefault();
             if (objective != null)
             {
                 AIAgressive(map, objective);
@@ -39,43 +40,43 @@ namespace Heidur.Entities
             }
         }
 
-        private void AIAgressive(GameMap map, IUnit objective)
+        private void AIAgressive(GameMap map, GameObject objective)
         {
             if (this.Clock > IdleMovementInterval + Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE)
             {
                 IdleMovementInterval = Clock;
 
-                if (objective.position.Y < this.position.Y)
+                if (objective.physicsComponent.position.Y < this.physicsComponent.position.Y)
                 {
-                    destination = position - new Vector2(0, Constants.TILESIZE);
-                    FacingDirection = FacingDirections.UP;
+                    physicsComponent.destination = physicsComponent.position - new Vector2(0, Constants.TILESIZE);
+                    physicsComponent.FacingDirection = FacingDirections.UP;
                 }
 
-                if (objective.position.Y > this.position.Y)
+                if (objective.physicsComponent.position.Y > this.physicsComponent.position.Y)
                 {
-                    destination = position + new Vector2(0, Constants.TILESIZE);
-                    FacingDirection = FacingDirections.DOWN;
+                    physicsComponent.destination = physicsComponent.position + new Vector2(0, Constants.TILESIZE);
+                    physicsComponent.FacingDirection = FacingDirections.DOWN;
                 }
 
-                if (objective.position.X > this.position.X)
+                if (objective.physicsComponent.position.X > this.physicsComponent.position.X)
                 {
-                    destination = position + new Vector2(Constants.TILESIZE, 0);
-                    FacingDirection = FacingDirections.RIGHT;
+                    physicsComponent.destination = physicsComponent.position + new Vector2(Constants.TILESIZE, 0);
+                    physicsComponent.FacingDirection = FacingDirections.RIGHT;
                 }
 
-                if (objective.position.X < this.position.X)
+                if (objective.physicsComponent.position.X < this.physicsComponent.position.X)
                 {
-                    destination = position - new Vector2(Constants.TILESIZE, 0);
-                    FacingDirection = FacingDirections.LEFT;
+                    physicsComponent.destination = physicsComponent.position - new Vector2(Constants.TILESIZE, 0);
+                    physicsComponent.FacingDirection = FacingDirections.LEFT;
                 }
 
-                if (CheckColission(map, destination))
+                if (CheckColission(map, physicsComponent.destination))
                 {
-                    destination = position;
+                    physicsComponent.destination = physicsComponent.position;
                 }
             }
 
-            this.Attack();
+            this.statsComponent.Attack(this.physicsComponent);
         }
 
         private void AIIdle(GameMap map)
@@ -90,11 +91,11 @@ namespace Heidur.Entities
                     // X or Y
                     if (random.Next(2) == 1)
                     {
-                        this.destination += new Vector2(-1 * Constants.TILESIZE, 0);
+                        this.physicsComponent.destination += new Vector2(-1 * Constants.TILESIZE, 0);
                     }
                     else
                     {
-                        this.destination += new Vector2(0, -1 * Constants.TILESIZE);
+                        this.physicsComponent.destination += new Vector2(0, -1 * Constants.TILESIZE);
                     }
                 }
                 else
@@ -102,17 +103,17 @@ namespace Heidur.Entities
                     // X or Y
                     if (random.Next(2) == 1)
                     {
-                        this.destination += new Vector2(Constants.TILESIZE, 0);
+                        this.physicsComponent.destination += new Vector2(Constants.TILESIZE, 0);
                     }
                     else
                     {
-                        this.destination += new Vector2(0, Constants.TILESIZE);
+                        this.physicsComponent.destination += new Vector2(0, Constants.TILESIZE);
                     }
                 }
 
-                if (CheckColission(map, destination))
+                if (CheckColission(map, physicsComponent.destination))
                 {
-                    destination = position;
+                    physicsComponent.destination = physicsComponent.position;
                 }
             }
         }
@@ -122,9 +123,9 @@ namespace Heidur.Entities
             return !map.IsTileWalkable(point);
         }
 
-        public new void LoadContent(Game1 game)
+        public void LoadContent(Game1 game)
         {
-            this.Texture = game.Content.Load<Texture2D>(Constants.NPC.DEFAULT_SPRITE);
+            this.spriteComponent.Texture = game.Content.Load<Texture2D>(Constants.NPC.DEFAULT_SPRITE);
         }
     }
 }

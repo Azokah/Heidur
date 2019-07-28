@@ -8,9 +8,9 @@ namespace Heidur.Entities.Commands
 {
     public class AttackCommand : ICommand
     {
-        public void execute(IUnit player)
+        public void execute(GameObject player)
         {
-            player.Attack();
+            player.statsComponent.Attack(player.physicsComponent);
         }
     }
 }

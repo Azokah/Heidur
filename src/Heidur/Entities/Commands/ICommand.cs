@@ -8,6 +8,6 @@ namespace Heidur.Entities
 {
     interface ICommand
     {
-        void execute(IUnit player);
+        void execute(GameObject player);
     }
 }

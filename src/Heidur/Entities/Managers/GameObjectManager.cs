@@ -9,13 +9,13 @@ namespace Heidur.Entities.Managers
 {
     class GameObjectManager
     {
-        public Unit unit;
+        public GameObject unit;
         public List<NonPlayerCharacter> npcs;
         public GameMap gameMap;
 
         public GameObjectManager()
         {
-            unit = new Unit();
+            unit = new GameObject();
             npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter(), new NonPlayerCharacter(), new NonPlayerCharacter() };
             gameMap = new GameMap();
         }
@@ -23,25 +23,41 @@ namespace Heidur.Entities.Managers
         public void LoadContent(Game1 game)
         {
             gameMap.LoadContent(game);
-            unit.LoadContent(game);
+            unit.spriteComponent.LoadContent(game);
             npcs.ForEach(n => n.LoadContent(game));
         }
 
         public void Update(float delta)
         {
-            unit.Update(delta, npcs.Cast<IUnit>().ToList(), gameMap);
-            npcs.ForEach(n => n.Update(delta, new List<IUnit>() { unit }, gameMap));
-            var units = new List<IUnit>();
-            units.AddRange(npcs.Cast<IUnit>().ToList());
+            unit.Update(delta, npcs.Cast<GameObject>().ToList(), gameMap);
+            npcs.ForEach(n => n.Update(delta, new List<GameObject>() { unit }, gameMap));
+            var units = new List<GameObject>();
+            units.AddRange(npcs);
             units.Add(unit);
             gameMap.Update(units);
+
+            RemoveDeadGameObjects();
         }
 
         public void Draw(Camera camera, SpriteBatch spriteBatch)
         {
             gameMap.Draw(camera, spriteBatch);
-            unit.Draw(camera, spriteBatch);
-            npcs.ForEach(n => n.Draw(camera, spriteBatch));
+            unit.spriteComponent.Draw(camera, spriteBatch, unit.physicsComponent.position);
+            npcs.ForEach(n => n.spriteComponent.Draw(camera, spriteBatch, n.physicsComponent.position));
+        }
+
+        public void RemoveDeadGameObjects()
+        {
+            var npcsToRemove = new List<NonPlayerCharacter>();
+            foreach(var npc in npcs)
+            {
+                if(!npc.statsComponent.CheckIfAlive())
+                {
+                    npcsToRemove.Add(npc);
+                }
+            }
+
+            npcsToRemove.ForEach(n => npcs.Remove(n));
         }
     }
 }

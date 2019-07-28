@@ -8,9 +8,9 @@ namespace Heidur.Entities.Commands
 {
     public class MoveUpCommand : ICommand
     {
-        public void execute(IUnit player)
+        public void execute(GameObject player)
         {
-            player.MoveUp();
+            player.physicsComponent.MoveUp();
         }
     }
 }
