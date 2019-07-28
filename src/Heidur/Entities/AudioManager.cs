@@ -11,6 +11,12 @@ namespace Heidur.Entities
     {
         public Song currentSong;
 
+        public AudioManager()
+        {
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = Constants.Music.DEFAULT_VOLUMEN_AUDIO;
+        }
+
         public void Play()
         {
             if (currentSong != null)
