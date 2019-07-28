@@ -8,9 +8,9 @@ namespace Heidur.Entities.Commands
 {
     public class MoveLeftCommand : ICommand
     {
-        public void execute(IUnit player)
+        public void execute(GameObject player)
         {
-            player.MoveLeft();
+            player.physicsComponent.MoveLeft();
         }
     }
 }

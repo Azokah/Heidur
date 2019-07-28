@@ -28,7 +28,7 @@ namespace Heidur.Entities
             };
         }
 
-        public void Update(IUnit unit = null)
+        public void Update(GameObject unit = null)
         {
             if (unit != null)
             {
@@ -120,9 +120,9 @@ namespace Heidur.Entities
             }
         }
 
-        public void CenterCameraAtUnit(IUnit unit)
+        public void CenterCameraAtUnit(GameObject unit)
         {
-            this.position = unit.position - new Vector2(Constants.RESOLUTION_WIDTH/2, Constants.RESOLUTION_HEIGHT/2);
+            this.position = unit.physicsComponent.position - new Vector2(Constants.RESOLUTION_WIDTH/2, Constants.RESOLUTION_HEIGHT/2);
         }
            
     }

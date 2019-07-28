@@ -10,12 +10,12 @@ namespace Heidur.Entities.Managers
 {
     public class InputManager
     {
-        private IUnit player;
+        private GameObject player;
         private ICommand moveUp, moveDown, moveLeft, moveRight;
         private ICommand stopMoveUp, stopMoveDown, stopMoveLeft, stopMoveRight;
         private ICommand attack;
 
-        public InputManager(IUnit player)
+        public InputManager(GameObject player)
         {
             this.player = player;
             moveUp = new MoveUpCommand();

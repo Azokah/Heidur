@@ -8,9 +8,9 @@ namespace Heidur.Entities.Commands
 {
     public class StopMoveDownCommand : ICommand
     {
-        public void execute(IUnit player)
+        public void execute(GameObject player)
         {
-            player.StopMoveDown();
+            player.physicsComponent.StopMoveDown();
         }
     }
 }
