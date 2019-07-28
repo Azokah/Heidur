@@ -21,7 +21,7 @@ namespace Heidur.Entities
         public bool[,] ObjectsCollisionMap = new bool[Width, Height];
         public bool[,] UnitsCollisionMap = new bool[Width, Height];
 
-        public void Init()
+        public GameMap()
         {
             position = new Vector2()
             {
@@ -40,7 +40,7 @@ namespace Heidur.Entities
                     }
                     else
                     {
-                        Map[j,i] = (int) Constants.Map.TILES.Grass;
+                        Map[j,i] = (int) Constants.Map.TILES.Dirt;
                         ObjectsCollisionMap[j, i] = true;
                     }
                     UnitsCollisionMap[j, i] = true;
