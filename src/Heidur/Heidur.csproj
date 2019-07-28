@@ -55,6 +55,7 @@
     <Compile Include="Entities\Commands\MoveUpCommand.cs" />
     <Compile Include="Entities\Commands\AttackCommand.cs" />
     <Compile Include="Entities\Commands\ICommand.cs" />
+    <Compile Include="Entities\Managers\GameObjectManager.cs" />
     <Compile Include="Entities\Managers\InputManager.cs" />
     <Compile Include="Entities\NonPlayerCharacter.cs" />
     <Compile Include="Entities\Unit.cs" />

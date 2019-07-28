@@ -19,11 +19,9 @@ namespace Heidur
         SpriteBatch spriteBatch;
         AudioManager audioManager;
         InputManager inputManager;
+        GameObjectManager gameObjectManager;
 
         //GameObjects
-        GameMap gameMap;
-        Unit unit;
-        List<NonPlayerCharacter> npcs;
         Camera camera;
 
         public Game1()
@@ -51,15 +49,11 @@ namespace Heidur
 
             // TODO: Add your initialization logic here
             audioManager = new AudioManager();
+            gameObjectManager = new GameObjectManager();
+            inputManager = new InputManager(gameObjectManager.unit);
 
             camera = new Camera();
             camera.Init();
-            gameMap = new GameMap();
-            gameMap.Init();
-            unit = new Unit();
-            npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter() , new NonPlayerCharacter() , new NonPlayerCharacter() };
-
-            inputManager = new InputManager(unit);
 
             base.Initialize();
         }
@@ -75,9 +69,9 @@ namespace Heidur
 
             // TODO: use this.Content to load your game content here
             audioManager.LoadContentAndPlay(this);
-            gameMap.LoadContent(this); 
-            unit.LoadContent(this); 
-            npcs.ForEach(n => n.LoadContent(this));
+            gameObjectManager.LoadContent(this);
+
+
         }
 
         /// <summary>
@@ -103,13 +97,8 @@ namespace Heidur
             this.CheckMouseActions(delta);
 
             // TODO: Add your update logic here
-            unit.Update(delta, npcs.Cast<IUnit>().ToList(), gameMap);
-            npcs.ForEach(n => n.Update(delta, new List<IUnit>() { unit }, gameMap));
-            var units = new List<IUnit>();
-            units.AddRange(npcs.Cast<IUnit>().ToList());
-            units.Add(unit);
-            gameMap.Update(units);
-            camera.Update(unit);
+            gameObjectManager.Update(delta);
+            camera.Update(gameObjectManager.unit);
 
             base.Update(gameTime);
         }
@@ -124,9 +113,7 @@ namespace Heidur
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            gameMap.Draw(camera, spriteBatch);
-            unit.Draw(camera, spriteBatch);
-            npcs.ForEach(n => n.Draw(camera, spriteBatch));
+            gameObjectManager.Draw(this.camera, this.spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -146,7 +133,6 @@ namespace Heidur
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 // Do cool stuff here
-                unit.CheckIfClicked(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
             }
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed)
