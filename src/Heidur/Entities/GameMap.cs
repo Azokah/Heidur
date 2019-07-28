@@ -72,6 +72,10 @@ namespace Heidur.Entities
         {
             var xToTiles = x / Constants.TILESIZE;
             var yToTiles = y / Constants.TILESIZE;
+            if ( yToTiles < 0 || xToTiles < 0 || yToTiles >= Constants.Map.DEFAULT_MAP_HEIGHT || xToTiles >= Constants.Map.DEFAULT_MAP_WIDTH)
+            {
+                return false;
+            }
             return ObjectsCollisionMap[yToTiles, xToTiles] && UnitsCollisionMap[yToTiles, xToTiles];
         }
 

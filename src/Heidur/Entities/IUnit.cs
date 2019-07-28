@@ -32,11 +32,11 @@ namespace Heidur.Entities
 
         void TakeDamage(int damage);
 
-        void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC, GameMap map);
+        void Update(float deltaTime, List<IUnit> nearbyNPC, GameMap map);
 
         bool CheckIfAlive();
 
-        int GetDistanceFromUnit(Unit target);
+        int GetDistanceFromUnit(IUnit target);
 
         bool CheckIfClicked(Vector2 clickPosition);
 

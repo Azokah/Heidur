@@ -29,7 +29,15 @@ namespace Heidur
             public const int DEFAULT_HP = 10;
             public const int DEFAULT_EXPERIENCE = 0;
             public const int DEFAULT_EXPERIENCE_GAIN = 100;
-            public const float DEFAULT_UNIT_HIT_INTERVAL = (float)1.5;
+            public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
+        }
+
+        public class NPC
+        {
+            public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
+            public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
+            public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.8f;
+            public const int DEFAULT_RANGE = 8; // This is measured in Tiles
         }
 
         public class Map
@@ -51,7 +59,7 @@ namespace Heidur
         public class Music
         {
             public const string DEFAULT_MUSIC = "BattleTheme1";
-            public const float DEFAULT_VOLUMEN_AUDIO = 0;
+            public const float DEFAULT_VOLUMEN_AUDIO = 0.1f;
         }
     }
 }

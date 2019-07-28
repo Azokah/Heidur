@@ -105,9 +105,12 @@ namespace Heidur
             this.CheckMouseActions(delta);
 
             // TODO: Add your update logic here
-            unit.Update(delta, npcs, gameMap);
-            npcs.ForEach(n => n.Update(delta, npcs, gameMap));
-            gameMap.Update(npcs.Cast<IUnit>().ToList());
+            unit.Update(delta, npcs.Cast<IUnit>().ToList(), gameMap);
+            npcs.ForEach(n => n.Update(delta, new List<IUnit>() { unit }, gameMap));
+            var units = new List<IUnit>();
+            units.AddRange(npcs.Cast<IUnit>().ToList());
+            units.Add(unit);
+            gameMap.Update(units);
             camera.Update(unit);
 
             base.Update(gameTime);

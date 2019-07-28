@@ -11,7 +11,7 @@ namespace Heidur.Entities
 {
     public class Unit : IUnit
     {
-        private enum FacingDirections
+        public enum FacingDirections
         {
             UP,
             DOWN,
@@ -36,16 +36,16 @@ namespace Heidur.Entities
         public bool MovementByDestination;
 
         private bool Up, Down, Left, Right;
-        private FacingDirections FacingDirection = FacingDirections.DOWN;
+        public FacingDirections FacingDirection = FacingDirections.DOWN;
 
-        private List<Unit> nearbyUnits;
+        private List<IUnit> nearbyUnits;
 
         private float HitIntervalLastTicks;
         private float Clock;
 
         public void Init()
         {
-            nearbyUnits = new List<Unit>();
+            nearbyUnits = new List<IUnit>();
             position = new Vector2(10 * Constants.TILESIZE, 10 * Constants.TILESIZE);
             destination = position;
             Range = Constants.Unit.DEFAULT_RANGE;
@@ -142,14 +142,14 @@ namespace Heidur.Entities
             }
         }
 
-        public int GetDistanceFromUnit(Unit target)
+        public int GetDistanceFromUnit(IUnit target)
         {
             return Convert.ToInt32(Math.Sqrt(Math.Pow(this.position.X - target.position.X, 2) + Math.Pow(this.position.Y - target.position.Y, 2))/Constants.TILESIZE);
         }
 
-        private List<Unit> getInRangeUnits(List<NonPlayerCharacter> nearbyNPC)
+        private List<IUnit> getInRangeUnits(List<IUnit> nearbyNPC)
         {
-            var result = new List<Unit>();
+            var result = new List<IUnit>();
 
             result.AddRange(nearbyNPC.Where(n => GetDistanceFromUnit(n) < Constants.Unit.DEFAULT_RANGE));
 
@@ -195,7 +195,7 @@ namespace Heidur.Entities
             currentHP -= damage;
         }
 
-        public void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC, GameMap map)
+        public void Update(float deltaTime, List<IUnit> nearbyNPC, GameMap map)
         {
             Clock += deltaTime;
             nearbyUnits = getInRangeUnits(nearbyNPC);
