@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,14 @@ namespace Heidur.Entities
         private float Clock;
         Random random;
 
-        public new void Init()
+        public NonPlayerCharacter() : base()
         {
-            base.Init();
-
             this.Range = Constants.NPC.DEFAULT_RANGE;
             random = new Random(Guid.NewGuid().GetHashCode());
             this.position = new Vector2(random.Next(Constants.Map.DEFAULT_MAP_WIDTH-1) * Constants.TILESIZE, random.Next(Constants.Map.DEFAULT_MAP_HEIGHT-1) * Constants.TILESIZE);
             destination = position;
             IdleMovementInterval = 0;
             Clock = 0;
-            
         }
 
         public new void Update(float deltaTime, List<IUnit> nearbyNPC, GameMap map)
@@ -122,6 +120,11 @@ namespace Heidur.Entities
         private bool CheckColission(GameMap map, Vector2 point)
         {
             return !map.IsTileWalkable(point);
+        }
+
+        public new void LoadContent(Game1 game)
+        {
+            this.Texture = game.Content.Load<Texture2D>(Constants.NPC.DEFAULT_SPRITE);
         }
     }
 }

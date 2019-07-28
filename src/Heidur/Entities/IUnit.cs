@@ -24,8 +24,6 @@ namespace Heidur.Entities
         bool IsSelected { get; set; }
         int currentHP { get; set; }
 
-        void Init();
-
         void MoveTo(Vector2 goTo);
 
         bool Attack();

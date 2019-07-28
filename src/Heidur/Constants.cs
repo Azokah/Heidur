@@ -22,7 +22,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_UNIT_SPRITE = "Unit";
+            public const string DEFAULT_SPRITE = "Man";
             public const int DEFAULT_RANGE = 32; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
@@ -34,6 +34,7 @@ namespace Heidur
 
         public class NPC
         {
+            public const string DEFAULT_SPRITE = "Zombie";
             public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.8f;

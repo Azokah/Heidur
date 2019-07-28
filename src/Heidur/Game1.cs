@@ -57,9 +57,7 @@ namespace Heidur
             gameMap = new GameMap();
             gameMap.Init();
             unit = new Unit();
-            unit.Init();
             npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter() , new NonPlayerCharacter() , new NonPlayerCharacter() };
-            npcs.ForEach(n => n.Init());
 
             inputManager = new InputManager(unit);
 
