@@ -23,12 +23,13 @@ namespace Heidur
         public class Unit
         {
             public const string DEFAULT_UNIT_SPRITE = "Unit";
-            public const int DEFAULT_RANGE = 32;
+            public const int DEFAULT_RANGE = 32; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
             public const int DEFAULT_HP = 10;
             public const int DEFAULT_EXPERIENCE = 0;
             public const int DEFAULT_EXPERIENCE_GAIN = 100;
+            public const float DEFAULT_UNIT_HIT_INTERVAL = (float)1.5;
         }
 
         public class Map
@@ -50,6 +51,7 @@ namespace Heidur
         public class Music
         {
             public const string DEFAULT_MUSIC = "BattleTheme1";
+            public const float DEFAULT_VOLUMEN_AUDIO = 0;
         }
     }
 }

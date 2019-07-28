@@ -11,6 +11,14 @@ namespace Heidur.Entities
 {
     public class Unit : IUnit
     {
+        private enum FacingDirections
+        {
+            UP,
+            DOWN,
+            LEFT,
+            RIGHT
+        }
+
         public Texture2D Texture { get; set; }
 
         public Vector2 position { get; set; }
@@ -28,8 +36,12 @@ namespace Heidur.Entities
         public bool MovementByDestination;
 
         private bool Up, Down, Left, Right;
+        private FacingDirections FacingDirection = FacingDirections.DOWN;
 
         private List<Unit> nearbyUnits;
+
+        private float HitIntervalLastTicks;
+        private float Clock;
 
         public void Init()
         {
@@ -43,6 +55,7 @@ namespace Heidur.Entities
             Experience = Constants.Unit.DEFAULT_EXPERIENCE;
             IsSelected = false;
             Up = Down = Left = Right = false;
+            Clock = HitIntervalLastTicks = 0;
         }
 
         public void MoveTo(Vector2 goTo)
@@ -53,13 +66,29 @@ namespace Heidur.Entities
         private void SetDestination(GameMap map)
         {
             if (Up)
+            {
                 destination = position - new Vector2(0, Constants.TILESIZE);
+                FacingDirection = FacingDirections.UP;
+            }
+                
             if (Down)
+            {
                 destination = position + new Vector2(0, Constants.TILESIZE);
+                FacingDirection = FacingDirections.DOWN;
+            }
+                
             if(Right)
+            {
                 destination = position + new Vector2(Constants.TILESIZE, 0);
+                FacingDirection = FacingDirections.RIGHT;
+            }
+                
             if (Left)
+            {
                 destination = position - new Vector2(Constants.TILESIZE, 0);
+                FacingDirection = FacingDirections.LEFT;
+            }
+                
 
             if (CheckColission(map, destination))
             {
@@ -87,7 +116,7 @@ namespace Heidur.Entities
                     if (offset.X > frameSpeed)
                         offset.X = frameSpeed;
                 }
-                else
+                else if (offset.X < 0)
                 {
                     if (offset.X < -1 * frameSpeed)
                         offset.X = -1 * frameSpeed;
@@ -98,7 +127,7 @@ namespace Heidur.Entities
                     if (offset.Y > frameSpeed)
                         offset.Y = frameSpeed;
                 }
-                else
+                else if (offset.Y < 0)
                 {
                     if (offset.Y < -1 * frameSpeed)
                         offset.Y = -1 * frameSpeed;
@@ -115,7 +144,7 @@ namespace Heidur.Entities
 
         public int GetDistanceFromUnit(Unit target)
         {
-            return Convert.ToInt32(position.LengthSquared() - target.position.LengthSquared());
+            return Convert.ToInt32(Math.Sqrt(Math.Pow(this.position.X - target.position.X, 2) + Math.Pow(this.position.Y - target.position.Y, 2))/Constants.TILESIZE);
         }
 
         private List<Unit> getInRangeUnits(List<NonPlayerCharacter> nearbyNPC)
@@ -129,10 +158,33 @@ namespace Heidur.Entities
 
         public bool Attack()
         {
-            var objective = nearbyUnits.Where(u => u.CheckIfAlive()).OrderBy(u => GetDistanceFromUnit(u)).FirstOrDefault();
-            if (objective != null)
+            if (Clock > HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
             {
-                objective.TakeDamage(this.Damage);
+                var targetPosition = this.position;
+
+                switch (this.FacingDirection)
+                {
+                    case FacingDirections.UP:
+                        targetPosition -= new Vector2(0, Constants.TILESIZE);
+                        break;
+                    case FacingDirections.DOWN:
+                        targetPosition += new Vector2(0, Constants.TILESIZE);
+                        break;
+                    case FacingDirections.LEFT:
+                        targetPosition -= new Vector2(Constants.TILESIZE, 0);
+                        break;
+                    case FacingDirections.RIGHT:
+                        targetPosition += new Vector2(Constants.TILESIZE, 0);
+                        break;
+                }
+
+                var objective = nearbyUnits.Where(u => u.CheckIfAlive() && u.position.Equals(targetPosition)).FirstOrDefault();
+                if (objective != null)
+                {
+                    HitIntervalLastTicks = Clock;
+                    objective.TakeDamage(this.Damage);
+                    Console.WriteLine("You hitted the target!");
+                }
             }
 
             return false;
@@ -145,6 +197,7 @@ namespace Heidur.Entities
 
         public void Update(float deltaTime, List<NonPlayerCharacter> nearbyNPC, GameMap map)
         {
+            Clock += deltaTime;
             nearbyUnits = getInRangeUnits(nearbyNPC);
             if (CheckIfAlive())
             {

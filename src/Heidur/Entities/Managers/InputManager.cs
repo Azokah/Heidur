@@ -31,12 +31,12 @@ namespace Heidur.Entities.Managers
 
         public void Update(KeyboardState keyBoardState)
         {
-            if (keyBoardState.IsKeyDown(Keys.Z))
+            if (keyBoardState.IsKeyDown(Keys.LeftControl))
             {
                 attack.execute(this.player);
             }
 
-            if (keyBoardState.IsKeyDown(Keys.Up))
+            if (keyBoardState.IsKeyDown(Keys.W))
             {
                 moveUp.execute(this.player);
             }
@@ -45,7 +45,7 @@ namespace Heidur.Entities.Managers
                 stopMoveUp.execute(this.player);
             }
 
-            if (keyBoardState.IsKeyDown(Keys.Down))
+            if (keyBoardState.IsKeyDown(Keys.S))
             {
                 moveDown.execute(this.player);
             }
@@ -54,7 +54,7 @@ namespace Heidur.Entities.Managers
                 stopMoveDown.execute(this.player);
             }
 
-            if (keyBoardState.IsKeyDown(Keys.Left))
+            if (keyBoardState.IsKeyDown(Keys.A))
             {
                 moveLeft.execute(this.player);
             }
@@ -63,7 +63,7 @@ namespace Heidur.Entities.Managers
                 stopMoveLeft.execute(this.player);
             }
 
-            if (keyBoardState.IsKeyDown(Keys.Right))
+            if (keyBoardState.IsKeyDown(Keys.D))
             {
                 moveRight.execute(this.player);
             }
