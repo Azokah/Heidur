@@ -22,7 +22,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_SPRITE = "Man";
+            public const string DEFAULT_SPRITE = "Man2";
             public const int DEFAULT_RANGE = 32; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;

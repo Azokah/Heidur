@@ -40,7 +40,7 @@ namespace Heidur.Entities
                     }
                     else
                     {
-                        Map[j,i] = (int) Constants.Map.TILES.Dirt;
+                        Map[j,i] = (int) Constants.Map.TILES.WoodenFloor;
                         ObjectsCollisionMap[j, i] = true;
                     }
                     UnitsCollisionMap[j, i] = true;
