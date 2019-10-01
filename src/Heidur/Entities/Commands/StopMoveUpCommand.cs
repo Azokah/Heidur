@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Heidur.Entities.Processors;
 
 namespace Heidur.Entities.Commands
 {
@@ -10,7 +6,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            player.physicsComponent.StopMoveUp();
+            PhysicsProcessor.StopMoveUp(player.physicsComponent);
         }
     }
 }

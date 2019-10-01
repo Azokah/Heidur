@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Heidur.Entities.Processors;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,8 @@ namespace Heidur.Entities.Managers
         public void LoadContent(Game1 game)
         {
             gameMap.LoadContent(game);
-            unit.spriteComponent.LoadContent(game);
-            npcs.ForEach(n => n.LoadContent(game));
+            SpriteProcessor.LoadContent(game, unit.spriteComponent);
+            npcs.ForEach(n => SpriteProcessor.LoadContent(game, n.spriteComponent));
         }
 
         public void Update(float delta)
@@ -42,8 +43,8 @@ namespace Heidur.Entities.Managers
         public void Draw(Camera camera, SpriteBatch spriteBatch)
         {
             gameMap.Draw(camera, spriteBatch);
-            unit.spriteComponent.Draw(camera, spriteBatch, unit.physicsComponent.position);
-            npcs.ForEach(n => n.spriteComponent.Draw(camera, spriteBatch, n.physicsComponent.position));
+            unit.Draw(camera, spriteBatch, unit.physicsComponent.position);
+            npcs.ForEach(n => n.Draw(camera, spriteBatch, n.physicsComponent.position));
         }
 
         public void RemoveDeadGameObjects()
@@ -51,7 +52,7 @@ namespace Heidur.Entities.Managers
             var npcsToRemove = new List<NonPlayerCharacter>();
             foreach(var npc in npcs)
             {
-                if(!npc.statsComponent.CheckIfAlive())
+                if(!StatsProcessor.CheckIfAlive(npc.statsComponent))
                 {
                     npcsToRemove.Add(npc);
                 }

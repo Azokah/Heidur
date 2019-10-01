@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Heidur.Entities.Processors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            player.statsComponent.Attack(player.physicsComponent);
+            StatsProcessor.Attack(player.statsComponent, player.physicsComponent);
         }
     }
 }

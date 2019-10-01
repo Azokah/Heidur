@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Heidur
 {
-    class Constants
+    public static class Constants
     {
         // Configuration
         public const int RESOLUTION_WIDTH = 1024;
@@ -44,8 +44,8 @@ namespace Heidur
         public class Map
         {
             public const string DEFAULT_MAP_SPRITE = "GameMapSprites";
-            public const int DEFAULT_MAP_WIDTH = 20;
-            public const int DEFAULT_MAP_HEIGHT = 20;
+            public const int DEFAULT_MAP_WIDTH = 100;
+            public const int DEFAULT_MAP_HEIGHT = 100;
 
             public enum TILES
             {
@@ -61,6 +61,17 @@ namespace Heidur
         {
             public const string DEFAULT_MUSIC = "BattleTheme1";
             public const float DEFAULT_VOLUMEN_AUDIO = 0.1f;
+        }
+
+        public class Physics
+        {
+            public enum FacingDirections
+            {
+                UP,
+                DOWN,
+                LEFT,
+                RIGHT
+            }
         }
     }
 }
