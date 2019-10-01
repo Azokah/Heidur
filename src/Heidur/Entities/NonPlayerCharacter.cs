@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Heidur.Entities.Processors;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Heidur.Constants.Physics;
 using static Heidur.Entities.Components.PhysicsComponent;
 
 namespace Heidur.Entities
@@ -13,9 +15,10 @@ namespace Heidur.Entities
     {
         private float IdleMovementInterval;
         private float Clock;
+        private string SpriteName;
         Random random;
 
-        public NonPlayerCharacter() : base()
+        public NonPlayerCharacter(string SpriteName = Constants.NPC.DEFAULT_SPRITE) : base()
         {
             this.statsComponent.Range = Constants.NPC.DEFAULT_RANGE;
             random = new Random(Guid.NewGuid().GetHashCode());
@@ -23,13 +26,14 @@ namespace Heidur.Entities
             this.physicsComponent.destination = this.physicsComponent.position;
             IdleMovementInterval = 0;
             Clock = 0;
+            this.SpriteName = SpriteName;
         }
 
         public new void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)
         {
             Clock += deltaTime;
             base.Update(deltaTime, nearbyNPC, map);
-            var objective = nearbyNPC.Where(u => this.physicsComponent.GetDistanceFromUnit(u) < this.statsComponent.Range).FirstOrDefault();
+            var objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.physicsComponent, this.physicsComponent) < this.statsComponent.Range).FirstOrDefault();
             if (objective != null)
             {
                 AIAgressive(map, objective);
@@ -76,7 +80,7 @@ namespace Heidur.Entities
                 }
             }
 
-            this.statsComponent.Attack(this.physicsComponent);
+            StatsProcessor.Attack(this.statsComponent, this.physicsComponent);
         }
 
         private void AIIdle(GameMap map)
@@ -121,11 +125,6 @@ namespace Heidur.Entities
         private bool CheckColission(GameMap map, Vector2 point)
         {
             return !map.IsTileWalkable(point);
-        }
-
-        public void LoadContent(Game1 game)
-        {
-            this.spriteComponent.Texture = game.Content.Load<Texture2D>(Constants.NPC.DEFAULT_SPRITE);
         }
     }
 }

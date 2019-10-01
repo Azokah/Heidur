@@ -55,10 +55,12 @@
     <Compile Include="Entities\Commands\MoveUpCommand.cs" />
     <Compile Include="Entities\Commands\AttackCommand.cs" />
     <Compile Include="Entities\Commands\ICommand.cs" />
-    <Compile Include="Entities\Components\IComponent.cs" />
     <Compile Include="Entities\Components\PhysicsComponent.cs" />
     <Compile Include="Entities\Components\SpriteComponent.cs" />
     <Compile Include="Entities\Components\StatsComponent.cs" />
+    <Compile Include="Entities\Processors\PhysicsProcessor.cs" />
+    <Compile Include="Entities\Processors\SpriteProcessor.cs" />
+    <Compile Include="Entities\Processors\StatsProcessor.cs" />
     <Compile Include="Entities\Managers\GameObjectManager.cs" />
     <Compile Include="Entities\Managers\InputManager.cs" />
     <Compile Include="Entities\NonPlayerCharacter.cs" />
