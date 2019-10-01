@@ -132,7 +132,8 @@ namespace Heidur
             // BUTTONS
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                // Do cool stuff here
+                //BOUNDARIES
+                inputManager.Update(Mouse.GetState().Position);
             }
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed)
@@ -140,9 +141,6 @@ namespace Heidur
                 // Do cool stuff here
 
             }
-
-            //BOUNDARIES
-            // camera.MoveCameraAtBoundaries(Mouse.GetState().Position);
         }
     }
 }

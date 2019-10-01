@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,48 @@ namespace Heidur.Entities.Managers
             stopMoveRight = new StopMoveRightCommand();
             stopMoveDown = new StopMoveDownCommand();
             attack = new AttackCommand();
+        }
+
+        public void Update(Point mousePositionInWindow)
+        {
+            int centerX = Constants.RESOLUTION_WIDTH / 2;
+            int centerY = Constants.RESOLUTION_HEIGHT / 2;
+
+            if (mousePositionInWindow.Y < Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
+            {
+                moveUp.execute(this.player);
+            }
+            else
+            {
+                stopMoveUp.execute(this.player);
+            }
+
+            if (mousePositionInWindow.Y > Constants.RESOLUTION_HEIGHT - Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
+            {
+                moveDown.execute(this.player);
+            }
+            else
+            {
+                stopMoveDown.execute(this.player);
+            }
+
+            if (mousePositionInWindow.X < Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
+            {
+                moveLeft.execute(this.player);
+            }
+            else
+            {
+                stopMoveLeft.execute(this.player);
+            }
+
+            if (mousePositionInWindow.X > Constants.RESOLUTION_WIDTH - Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
+            {
+                moveRight.execute(this.player);
+            }
+            else
+            {
+                stopMoveRight.execute(this.player);
+            }
         }
 
         public void Update(KeyboardState keyBoardState)
@@ -71,7 +114,6 @@ namespace Heidur.Entities.Managers
             {
                 stopMoveRight.execute(this.player);
             }
-
         }
     }
 }
