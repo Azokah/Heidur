@@ -18,6 +18,8 @@ namespace Heidur
         {
             public const int CAMERA_SPEED = 16; // Try to keep it in 2^x.
             public const int CAMERA_BORDERS = 0;
+            public const int MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE = RESOLUTION_WIDTH / 3;
+            public const int MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE = RESOLUTION_HEIGHT / 3;
         }
 
         public class Unit
