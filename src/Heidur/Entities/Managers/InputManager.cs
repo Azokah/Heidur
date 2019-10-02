@@ -32,9 +32,6 @@ namespace Heidur.Entities.Managers
 
         public void Update(Point mousePositionInWindow)
         {
-            int centerX = Constants.RESOLUTION_WIDTH / 2;
-            int centerY = Constants.RESOLUTION_HEIGHT / 2;
-
             if (mousePositionInWindow.Y < Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
             {
                 moveUp.execute(this.player);

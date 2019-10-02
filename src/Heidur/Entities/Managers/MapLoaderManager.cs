@@ -60,7 +60,7 @@ namespace Heidur.Entities.Managers
                         }
                         else
                         {
-                            collisionLayer[hCounter, wCounter] = !tile.ToString().Equals("0");
+                            collisionLayer[hCounter, wCounter] = tile.ToString().Equals("1");
                         }
 
                         wCounter++;

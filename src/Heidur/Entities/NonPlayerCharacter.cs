@@ -15,7 +15,6 @@ namespace Heidur.Entities
     {
         private float IdleMovementInterval;
         private float Clock;
-        private string SpriteName;
         Random random;
 
         public NonPlayerCharacter(string SpriteName = Constants.NPC.DEFAULT_SPRITE) : base()
@@ -26,7 +25,8 @@ namespace Heidur.Entities
             this.physicsComponent.destination = this.physicsComponent.position;
             IdleMovementInterval = 0;
             Clock = 0;
-            this.SpriteName = SpriteName;
+            spriteComponent.textureName = SpriteName;
+            spriteComponent.textureModifier = 2;
         }
 
         public new void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)
