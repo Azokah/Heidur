@@ -17,9 +17,11 @@ namespace Heidur.Entities
 
         public Texture2D Texture;
 
-        public int[,] Map = new int[Width, Height];
-        public bool[,] ObjectsCollisionMap = new bool[Width, Height];
-        public bool[,] UnitsCollisionMap = new bool[Width, Height];
+        public int[,] FloorLayer = new int[Height, Width];
+        public int[,] WallsLayer = new int[Height, Width];
+        public int[,] ObjectsLayer = new int[Height, Width];
+        public bool[,] ObjectsCollisionLayer = new bool[Height, Width];
+        public bool[,] UnitsCollisionLayer = new bool[Height, Width];
 
         public GameMap()
         {
@@ -28,24 +30,6 @@ namespace Heidur.Entities
                 X = 0,
                 Y = 0
             };
-
-            for(int j = 0; j < Height; j++)
-            {
-                for(int i = 0; i < Width; i++)
-                {
-                    if ( i == 0 || j == 0 || i == Constants.Map.DEFAULT_MAP_WIDTH-1 || j == Constants.Map.DEFAULT_MAP_HEIGHT-1 )
-                    {
-                        Map[j,i] = (int)Constants.Map.TILES.StoneWall;
-                        ObjectsCollisionMap[j, i] = false;
-                    }
-                    else
-                    {
-                        Map[j,i] = (int) Constants.Map.TILES.WoodenFloor;
-                        ObjectsCollisionMap[j, i] = true;
-                    }
-                    UnitsCollisionMap[j, i] = true;
-                }
-            }
         }
 
         public void Draw(Camera camera, SpriteBatch spriteBatch)
@@ -58,7 +42,30 @@ namespace Heidur.Entities
                 for (int i = 0; i < Width; i++)
                 {
                     position.X = i * Constants.TILESIZE;
-                    spriteBatch.Draw(this.Texture, this.position - camera.position, new Rectangle(0 + Map[j,i] * Constants.TILESIZE, 0, Constants.TILESIZE, Constants.TILESIZE), Color.White);
+
+                    Rectangle tileToDrawPositionInAtlas = new Rectangle(0 + FloorLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
+                    tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
+                    tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
+                    tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
+
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
+
+                    tileToDrawPositionInAtlas = new Rectangle(0 + WallsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
+                    tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
+                    tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
+                    tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
+
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
+
+                     tileToDrawPositionInAtlas = new Rectangle(0 + ObjectsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
+                    tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
+                    tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
+                    tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
+
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
                 }
             }
         }
@@ -76,7 +83,7 @@ namespace Heidur.Entities
             {
                 return false;
             }
-            return ObjectsCollisionMap[yToTiles, xToTiles] && UnitsCollisionMap[yToTiles, xToTiles];
+            return ObjectsCollisionLayer[yToTiles, xToTiles] && UnitsCollisionLayer[yToTiles, xToTiles];
         }
 
         public bool IsTileWalkable(Vector2 position)
@@ -100,16 +107,16 @@ namespace Heidur.Entities
             {
                 for (int i = 0; i < Width; i++)
                 {
-                    UnitsCollisionMap[j, i] = true;
+                    UnitsCollisionLayer[j, i] = true;
                 }
             }
 
             foreach (var unit in units)
             {
-                UnitsCollisionMap[Convert.ToInt32(unit.physicsComponent.position.Y/Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.position.X / Constants.TILESIZE)] = false;
+                UnitsCollisionLayer[Convert.ToInt32(unit.physicsComponent.position.Y/Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.position.X / Constants.TILESIZE)] = false;
 
                 // We also set the destination tile as occupied, because if a unit is moving there will be colission issues, such as two units in the same tile
-                UnitsCollisionMap[Convert.ToInt32(unit.physicsComponent.destination.Y / Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.destination.X / Constants.TILESIZE)] = false;
+                UnitsCollisionLayer[Convert.ToInt32(unit.physicsComponent.destination.Y / Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.destination.X / Constants.TILESIZE)] = false;
             }
         }
     }
