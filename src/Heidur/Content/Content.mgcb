@@ -31,18 +31,6 @@
 /processorParam:TextureFormat=Color
 /build:../Resources/Sprites/GameMapSprites.png;GameMapSprites.png
 
-#begin ../Resources/Sprites/Man.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../Resources/Sprites/Man.png;Man.png
-
 #begin ../Resources/Sprites/Man2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -66,4 +54,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../Resources/Sprites/Zombie.png;Zombie.png
+
+#begin DungeonTileset.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DungeonTileset.png;MapTileset.png
 

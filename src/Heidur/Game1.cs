@@ -139,7 +139,6 @@ namespace Heidur
             if (Mouse.GetState().RightButton == ButtonState.Pressed)
             {
                 // Do cool stuff here
-
             }
         }
     }

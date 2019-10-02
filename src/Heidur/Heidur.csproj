@@ -58,6 +58,7 @@
     <Compile Include="Entities\Components\PhysicsComponent.cs" />
     <Compile Include="Entities\Components\SpriteComponent.cs" />
     <Compile Include="Entities\Components\StatsComponent.cs" />
+    <Compile Include="Entities\Managers\MapLoaderManager.cs" />
     <Compile Include="Entities\Processors\PhysicsProcessor.cs" />
     <Compile Include="Entities\Processors\SpriteProcessor.cs" />
     <Compile Include="Entities\Processors\StatsProcessor.cs" />
@@ -74,6 +75,9 @@
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -129,6 +133,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

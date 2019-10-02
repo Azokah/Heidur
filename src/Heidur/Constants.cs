@@ -11,7 +11,7 @@ namespace Heidur
         // Configuration
         public const int RESOLUTION_WIDTH = 1024;
         public const int RESOLUTION_HEIGHT = 768;
-        public const int TILESIZE = 64;
+        public const int TILESIZE = 32;
 
         //Below here paste constants of entities
         public class Camera
@@ -45,18 +45,10 @@ namespace Heidur
 
         public class Map
         {
-            public const string DEFAULT_MAP_SPRITE = "GameMapSprites";
+            public const string DEFAULT_MAP_SPRITE = "MapTileset";
             public const int DEFAULT_MAP_WIDTH = 100;
             public const int DEFAULT_MAP_HEIGHT = 100;
-
-            public enum TILES
-            {
-                Grass,
-                Dirt,
-                StoneWall,
-                Sand,
-                WoodenFloor
-            }
+            public const int TILES_PER_ROW = 16;
         }
 
         public class Music
