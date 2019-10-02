@@ -19,7 +19,7 @@ namespace Heidur.Entities.Managers
         public GameObjectManager()
         {
             unit = new GameObject();
-            npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(), new NonPlayerCharacter(), new NonPlayerCharacter(), new NonPlayerCharacter() };
+            npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(50, 52), new NonPlayerCharacter(), new NonPlayerCharacter(), new NonPlayerCharacter() };
             gameMap = MapLoaderManager.LoadMap(FixedStartingMapName);
         }
 

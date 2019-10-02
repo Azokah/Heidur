@@ -29,6 +29,18 @@ namespace Heidur.Entities
             spriteComponent.textureModifier = 2;
         }
 
+        public NonPlayerCharacter(int x, int y, string SpriteName = Constants.NPC.DEFAULT_SPRITE) : base()
+        {
+            this.statsComponent.Range = Constants.NPC.DEFAULT_RANGE;
+            random = new Random(Guid.NewGuid().GetHashCode());
+            this.physicsComponent.position = new Vector2(x * Constants.TILESIZE, y * Constants.TILESIZE);
+            this.physicsComponent.destination = this.physicsComponent.position;
+            IdleMovementInterval = 0;
+            Clock = 0;
+            spriteComponent.textureName = SpriteName;
+            spriteComponent.textureModifier = 2;
+        }
+
         public new void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)
         {
             Clock += deltaTime;
