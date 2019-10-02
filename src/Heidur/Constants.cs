@@ -24,7 +24,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_SPRITE = "Man2";
+            public const string DEFAULT_SPRITE = "AdventurerTileset";
             public const int DEFAULT_RANGE = 15; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
@@ -32,11 +32,12 @@ namespace Heidur
             public const int DEFAULT_EXPERIENCE = 0;
             public const int DEFAULT_EXPERIENCE_GAIN = 100;
             public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
+            public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
         }
 
         public class NPC
         {
-            public const string DEFAULT_SPRITE = "Zombie";
+            public const string DEFAULT_SPRITE = "CyclopsTileset";
             public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.8f;
@@ -66,6 +67,11 @@ namespace Heidur
                 LEFT,
                 RIGHT
             }
+        }
+
+        public class Sprites
+        {
+            public const float DEFAULT_UNIT_INDEX = 0.3f;
         }
     }
 }
