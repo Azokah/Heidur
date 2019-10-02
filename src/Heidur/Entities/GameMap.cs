@@ -47,7 +47,23 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
                     tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
-                    tileToDrawPositionInAtlas.X *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
+
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
+
+                    tileToDrawPositionInAtlas = new Rectangle(0 + WallsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
+                    tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
+                    tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
+                    tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
+
+                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
+
+                     tileToDrawPositionInAtlas = new Rectangle(0 + ObjectsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
+                    tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
+                    tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
+                    tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
+                    tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
                     spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White);
                 }

@@ -20,7 +20,7 @@ namespace Heidur.Entities.Components
         public PhysicsComponent()
         {
             this.NearbyUnits = new List<GameObject>();
-            position = new Vector2(10 * Constants.TILESIZE, 10 * Constants.TILESIZE);
+            position = new Vector2(50 * Constants.TILESIZE, 50 * Constants.TILESIZE);
             destination = position;
             Speed = Constants.Unit.DEFAULT_SPEED;
             Up = Down = Left = Right = false;
