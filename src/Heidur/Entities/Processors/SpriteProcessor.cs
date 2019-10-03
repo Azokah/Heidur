@@ -1,6 +1,7 @@
 ﻿using Heidur.Entities.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Processors
 {
@@ -10,21 +11,23 @@ namespace Heidur.Entities.Processors
 
         public static void Update(float deltaTime, SpriteComponent spriteComponent)
         {
-            // Sprites do nothing yet, here updates animation i guess
+            AnimationProcessor.Update(spriteComponent.AnimationComponent, deltaTime);
         }
 
-        public static void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)
+        public static void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent, FacingDirections FacingDirection)
         {
             var textureSizeModified = Constants.TILESIZE * spriteComponent.textureModifier;
             var originVectorModified = spriteComponent.textureModifier == 1 ? Vector2.Zero : new Vector2(textureSizeModified/3, textureSizeModified/2);
+            SpriteEffects effect = FacingDirection.Equals(FacingDirections.LEFT) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             DrawHitBoxes(camera, spriteBatch, position, spriteComponent);
-            spriteBatch.Draw(spriteComponent.Texture, position - camera.position, new Rectangle(0, 0, textureSizeModified, textureSizeModified), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+            spriteBatch.Draw(spriteComponent.Texture, position - camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, effect, Constants.Sprites.DEFAULT_UNIT_INDEX);
         }
 
         public static void LoadContent(Game1 game, SpriteComponent spriteComponent)
         {
             spriteComponent.Texture = game.Content.Load<Texture2D>(!string.IsNullOrWhiteSpace(spriteComponent.textureName) ? spriteComponent.textureName : Constants.Unit.DEFAULT_SPRITE);
+            spriteComponent.AnimationComponent = new AnimationComponent(spriteComponent, Constants.Animation.DEFAULT_FRAMES_IDLE, Constants.Animation.DEFAULT_FRAMES_WALKING, Constants.Animation.DEFAULT_FRAMES_ATTACK);
         }
 
         private static void DrawHitBoxes(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)

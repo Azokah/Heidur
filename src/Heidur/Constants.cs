@@ -40,7 +40,7 @@ namespace Heidur
             public const string DEFAULT_SPRITE = "CyclopsTileset";
             public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
-            public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.8f;
+            public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.3f;
             public const int DEFAULT_RANGE = 8; // This is measured in Tiles
         }
 
@@ -72,6 +72,21 @@ namespace Heidur
         public class Sprites
         {
             public const float DEFAULT_UNIT_INDEX = 0.3f;
+        }
+
+        public class Animation
+        {
+            public const float DEFAULT_FRAMES_SPEED_MS = 0.1f;
+            public const int DEFAULT_FRAMES_IDLE = 13;
+            public const int DEFAULT_FRAMES_WALKING = 8;
+            public const int DEFAULT_FRAMES_ATTACK = 10;
+            public enum FrameCategory
+            {
+                IDLE,
+                WALKING,
+                ATTACK
+            }
+            public const int FRAME_CATEGORIES = 3;
         }
     }
 }
