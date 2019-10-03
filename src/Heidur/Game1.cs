@@ -39,7 +39,7 @@ namespace Heidur
         protected override void Initialize()
         {
             //Window options
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = Constants.RESOLUTION_WIDTH;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = Constants.RESOLUTION_HEIGHT;   // set this value to the desired height of your window
             graphics.ApplyChanges();

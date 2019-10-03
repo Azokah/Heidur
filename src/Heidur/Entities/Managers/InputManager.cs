@@ -28,6 +28,7 @@ namespace Heidur.Entities.Managers
             stopMoveRight = new StopMoveRightCommand();
             stopMoveDown = new StopMoveDownCommand();
             attack = new AttackCommand();
+            
         }
 
         public void Update(Point mousePositionInWindow)

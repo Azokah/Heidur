@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Clock.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\AudioManager.cs" />
     <Compile Include="Entities\Camera.cs" />
@@ -56,10 +57,12 @@
     <Compile Include="Entities\Commands\AttackCommand.cs" />
     <Compile Include="Entities\Commands\ICommand.cs" />
     <Compile Include="Entities\Components\PhysicsComponent.cs" />
+    <Compile Include="Entities\Components\AnimationComponent.cs" />
     <Compile Include="Entities\Components\SpriteComponent.cs" />
     <Compile Include="Entities\Components\StatsComponent.cs" />
     <Compile Include="Entities\Managers\MapLoaderManager.cs" />
     <Compile Include="Entities\Processors\PhysicsProcessor.cs" />
+    <Compile Include="Entities\Processors\AnimationProcessor.cs" />
     <Compile Include="Entities\Processors\SpriteProcessor.cs" />
     <Compile Include="Entities\Processors\StatsProcessor.cs" />
     <Compile Include="Entities\Managers\GameObjectManager.cs" />

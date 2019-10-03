@@ -25,11 +25,12 @@ namespace Heidur.Entities
             PhysicsProcessor.Update(deltaTime, nearbyNPC, map, physicsComponent);
             StatsProcessor.Update(deltaTime, statsComponent);
             SpriteProcessor.Update(deltaTime, spriteComponent);
+            AnimationProcessor.SwitchToFrameCategory(this);
         }
 
         public void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position)
         {
-            SpriteProcessor.Draw(camera, spriteBatch, position, spriteComponent);
+            SpriteProcessor.Draw(camera, spriteBatch, position, spriteComponent, physicsComponent.FacingDirection);
         }
     }
 }
