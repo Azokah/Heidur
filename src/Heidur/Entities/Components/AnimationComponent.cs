@@ -19,7 +19,7 @@ namespace Heidur.Entities.Components
         public AnimationComponent(SpriteComponent spriteComponent, int IdleFramesLength, int WalkingFramesLength, int AttackFramesLength)
         {
             Clock = new Clock();
-            this.FramesLength = new int[Constants.Animation.FRAME_CATEGORIES] { IdleFramesLength, WalkingFramesLength, AttackFramesLength };
+            this.FramesLength = new int[Constants.Animation.FRAME_CATEGORIES] { WalkingFramesLength, WalkingFramesLength, WalkingFramesLength, WalkingFramesLength, IdleFramesLength, AttackFramesLength };
             this.frameArray = AnimationProcessor.CraftAnimationLists(this, spriteComponent);
             CurrentCategory = (int) Constants.Animation.FrameCategory.IDLE;
             CurrentFrame = 0;

@@ -18,6 +18,8 @@ namespace Heidur.Entities
             physicsComponent = new PhysicsComponent();
             statsComponent = new StatsComponent();
             spriteComponent = new SpriteComponent();
+            spriteComponent.textureName = "MagoIao";
+            spriteComponent.textureModifier = 2;
         }
 
         public void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)

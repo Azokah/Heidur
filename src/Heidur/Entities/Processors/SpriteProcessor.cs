@@ -18,10 +18,9 @@ namespace Heidur.Entities.Processors
         {
             var textureSizeModified = Constants.TILESIZE * spriteComponent.textureModifier;
             var originVectorModified = spriteComponent.textureModifier == 1 ? Vector2.Zero : new Vector2(textureSizeModified/3, textureSizeModified/2);
-            SpriteEffects effect = FacingDirection.Equals(FacingDirections.LEFT) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             DrawHitBoxes(camera, spriteBatch, position, spriteComponent);
-            spriteBatch.Draw(spriteComponent.Texture, position - camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, effect, Constants.Sprites.DEFAULT_UNIT_INDEX);
+            spriteBatch.Draw(spriteComponent.Texture, position - camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
         }
 
         public static void LoadContent(Game1 game, SpriteComponent spriteComponent)
