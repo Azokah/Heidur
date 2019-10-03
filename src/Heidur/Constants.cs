@@ -78,9 +78,9 @@ namespace Heidur
         public class Animation
         {
             public const float DEFAULT_FRAMES_SPEED_MS = 0.1f;
-            public const int DEFAULT_FRAMES_IDLE = 1;
+            public const int DEFAULT_FRAMES_IDLE = 4;
             public const int DEFAULT_FRAMES_WALKING = 4;
-            public const int DEFAULT_FRAMES_ATTACK = 1;
+            public const int DEFAULT_FRAMES_ATTACK = 4;
             public enum FrameCategory
             {
                 WALKING_S,

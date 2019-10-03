@@ -15,6 +15,7 @@ namespace Heidur.Entities.Components
 
         public int CurrentCategory;
         public int CurrentFrame;
+        public bool FullAnimation;
 
         public AnimationComponent(SpriteComponent spriteComponent, int IdleFramesLength, int WalkingFramesLength, int AttackFramesLength)
         {
@@ -23,6 +24,7 @@ namespace Heidur.Entities.Components
             this.frameArray = AnimationProcessor.CraftAnimationLists(this, spriteComponent);
             CurrentCategory = (int) Constants.Animation.FrameCategory.IDLE;
             CurrentFrame = 0;
+            FullAnimation = false;
         }
     }
 }

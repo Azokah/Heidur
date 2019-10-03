@@ -50,6 +50,7 @@ namespace Heidur.Entities.Processors
                 if (animationComponent.CurrentFrame >= animationComponent.FramesLength[animationComponent.CurrentCategory])
                 {
                     animationComponent.CurrentFrame = 0;
+                    animationComponent.FullAnimation = false;
                 }
             }
 
@@ -67,36 +68,34 @@ namespace Heidur.Entities.Processors
 
         public static void SwitchToFrameCategory(GameObject player)
         {
-            if ( player.physicsComponent.Up ||
+            if (!player.spriteComponent.AnimationComponent.FullAnimation)
+            {
+                if (player.physicsComponent.Up ||
                 player.physicsComponent.Down ||
                 player.physicsComponent.Left ||
-                player.physicsComponent.Right )
-            {
-                switch(player.physicsComponent.FacingDirection)
-                {
-                    case Constants.Physics.FacingDirections.UP:
-                        InnerSwitchToCategory(player, FrameCategory.WALKING_N);
-                        break;
-                    case Constants.Physics.FacingDirections.DOWN:
-                        InnerSwitchToCategory(player, FrameCategory.WALKING_S);
-                        break;
-                    case Constants.Physics.FacingDirections.LEFT:
-                        InnerSwitchToCategory(player, FrameCategory.WALKING_E);
-                        break;
-                    case Constants.Physics.FacingDirections.RIGHT:
-                        InnerSwitchToCategory(player, FrameCategory.WALKING_W);
-                        break;
-                }
-            }
-            else
-            {
-                player.spriteComponent.AnimationComponent.CurrentFrame = 0;
+                player.physicsComponent.Right)
 
-                // if (!player.spriteComponent.AnimationComponent.CurrentCategory.Equals((int)FrameCategory.IDLE))
-                // {
-                //     player.spriteComponent.AnimationComponent.CurrentCategory = (int)FrameCategory.IDLE;
-                //     player.spriteComponent.AnimationComponent.CurrentFrame = 0;
-                // }
+                {
+                    switch (player.physicsComponent.FacingDirection)
+                    {
+                        case Constants.Physics.FacingDirections.UP:
+                            InnerSwitchToCategory(player, FrameCategory.WALKING_N);
+                            break;
+                        case Constants.Physics.FacingDirections.DOWN:
+                            InnerSwitchToCategory(player, FrameCategory.WALKING_S);
+                            break;
+                        case Constants.Physics.FacingDirections.LEFT:
+                            InnerSwitchToCategory(player, FrameCategory.WALKING_E);
+                            break;
+                        case Constants.Physics.FacingDirections.RIGHT:
+                            InnerSwitchToCategory(player, FrameCategory.WALKING_W);
+                            break;
+                    }
+                }
+                else
+                {
+                    player.spriteComponent.AnimationComponent.CurrentFrame = 0;
+                }
             }
         }
 
@@ -107,6 +106,13 @@ namespace Heidur.Entities.Processors
                 player.spriteComponent.AnimationComponent.CurrentCategory = (int)frameCategory;
                 player.spriteComponent.AnimationComponent.CurrentFrame = 0;
             }
+        }
+
+        public static void ExecuteFullAnimation(GameObject player, FrameCategory frameCategory)
+        {
+            player.spriteComponent.AnimationComponent.FullAnimation = true;
+            InnerSwitchToCategory(player, frameCategory);
+            player.spriteComponent.AnimationComponent.CurrentFrame = 0;
         }
     }
 }
