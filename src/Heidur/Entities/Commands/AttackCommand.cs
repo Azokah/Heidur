@@ -12,6 +12,7 @@ namespace Heidur.Entities.Commands
         public void execute(GameObject player)
         {
             StatsProcessor.Attack(player.statsComponent, player.physicsComponent);
+            AnimationProcessor.ExecuteFullAnimation(player, Constants.Animation.FrameCategory.ATTACK);
         }
     }
 }
