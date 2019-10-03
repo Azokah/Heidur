@@ -42,7 +42,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Clock.cs" />
+    <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
+    <Compile Include="Helpers\Clock.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\AudioManager.cs" />
     <Compile Include="Entities\Camera.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Entities\Commands\MoveUpCommand.cs" />
     <Compile Include="Entities\Commands\AttackCommand.cs" />
     <Compile Include="Entities\Commands\ICommand.cs" />
+    <Compile Include="Entities\Components\AIBehaviorsComponent.cs" />
     <Compile Include="Entities\Components\PhysicsComponent.cs" />
     <Compile Include="Entities\Components\AnimationComponent.cs" />
     <Compile Include="Entities\Components\SpriteComponent.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Entities\GameMap.cs" />
     <Compile Include="Entities\IGameObject.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Helpers\RandomNumbersHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

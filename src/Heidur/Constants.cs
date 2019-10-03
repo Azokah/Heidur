@@ -42,6 +42,7 @@ namespace Heidur
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.3f;
             public const int DEFAULT_RANGE = 8; // This is measured in Tiles
+            public const int DEFAULT_SPEED = 64;
         }
 
         public class Map

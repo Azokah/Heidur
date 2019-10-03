@@ -1,6 +1,6 @@
 ﻿using Heidur.Entities.Processors;
+using Heidur.Helpers;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace Heidur.Entities.Components
