@@ -14,6 +14,7 @@ namespace Heidur.Entities.Components
 
         public float Clock;
         public bool Up, Down, Left, Right;
+        public bool IsMoving;
         public int Speed { get; set; }
         public bool IsSelected { get; set; }
 
@@ -23,7 +24,7 @@ namespace Heidur.Entities.Components
             position = new Vector2(50 * Constants.TILESIZE, 50 * Constants.TILESIZE);
             destination = position;
             Speed = Constants.Unit.DEFAULT_SPEED;
-            Up = Down = Left = Right = false;
+            Up = Down = Left = Right = IsMoving = false;
             FacingDirection = FacingDirections.DOWN;
             IsSelected = false;
         }

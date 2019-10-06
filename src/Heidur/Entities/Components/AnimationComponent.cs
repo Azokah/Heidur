@@ -17,12 +17,12 @@ namespace Heidur.Entities.Components
         public int CurrentFrame;
         public bool FullAnimation;
 
-        public AnimationComponent(SpriteComponent spriteComponent, int IdleFramesLength, int WalkingFramesLength, int AttackFramesLength)
+        public AnimationComponent(SpriteComponent spriteComponent,int WalkingFramesLength)
         {
             Clock = new Clock();
-            this.FramesLength = new int[Constants.Animation.FRAME_CATEGORIES] { WalkingFramesLength, WalkingFramesLength, WalkingFramesLength, WalkingFramesLength, IdleFramesLength, AttackFramesLength };
+            this.FramesLength = new int[Constants.Animation.FRAME_CATEGORIES] { WalkingFramesLength, WalkingFramesLength, WalkingFramesLength, WalkingFramesLength };
             this.frameArray = AnimationProcessor.CraftAnimationLists(this, spriteComponent);
-            CurrentCategory = (int) Constants.Animation.FrameCategory.IDLE;
+            CurrentCategory = (int) Constants.Animation.FrameCategory.WALKING_S;
             CurrentFrame = 0;
             FullAnimation = false;
         }

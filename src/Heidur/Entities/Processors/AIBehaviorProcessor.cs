@@ -29,30 +29,32 @@ namespace Heidur.Entities.Processors
 
         private static void AIAgressive(NonPlayerCharacter caller, GameMap map, GameObject objective)
         {
+            PhysicsProcessor.StopAllMovement(caller.physicsComponent);
+
             if (caller.aiBehaviorComponent.Clock.isIntervalTicked(Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE))
             {
 
                 if (objective.physicsComponent.position.Y < caller.physicsComponent.position.Y)
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position - new Vector2(0, Constants.TILESIZE);
+                    PhysicsProcessor.MoveUp(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.UP;
                 }
 
                 if (objective.physicsComponent.position.Y > caller.physicsComponent.position.Y)
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position + new Vector2(0, Constants.TILESIZE);
+                    PhysicsProcessor.MoveDown(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.DOWN;
                 }
 
                 if (objective.physicsComponent.position.X > caller.physicsComponent.position.X)
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position + new Vector2(Constants.TILESIZE, 0);
+                    PhysicsProcessor.MoveRight(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.RIGHT;
                 }
 
                 if (objective.physicsComponent.position.X < caller.physicsComponent.position.X)
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position - new Vector2(Constants.TILESIZE, 0);
+                    PhysicsProcessor.MoveLeft(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.LEFT;
                 }
 

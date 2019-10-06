@@ -21,6 +21,8 @@ namespace Heidur
         InputManager inputManager;
         GameObjectManager gameObjectManager;
 
+        RenderTarget2D nativeRenderTarget;
+
         //GameObjects
         Camera camera;
 
@@ -43,6 +45,8 @@ namespace Heidur
             graphics.PreferredBackBufferWidth = Constants.RESOLUTION_WIDTH;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = Constants.RESOLUTION_HEIGHT;   // set this value to the desired height of your window
             graphics.ApplyChanges();
+
+            nativeRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT);
 
             //Mouse options
             //Mouse.SetCursor(MouseCursor.FromTexture2D(Content.Load<Texture2D>("cursor"), 0, 0));
@@ -110,11 +114,17 @@ namespace Heidur
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.SetRenderTarget(nativeRenderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null);
             gameObjectManager.Draw(this.camera, this.spriteBatch);
+            spriteBatch.End();
+
+            GraphicsDevice.SetRenderTarget(null);
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.Sprites.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.Sprites.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
