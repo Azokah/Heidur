@@ -3,9 +3,8 @@ using Heidur.Entities.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using MonoGame.Extended.Collections;
 
 namespace Heidur
 {
@@ -45,6 +44,9 @@ namespace Heidur
             graphics.PreferredBackBufferWidth = Constants.RESOLUTION_WIDTH;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = Constants.RESOLUTION_HEIGHT;   // set this value to the desired height of your window
             graphics.ApplyChanges();
+
+            this.IsFixedTimeStep = true;
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d); // Caps framerate to 60fps
 
             nativeRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT);
 
@@ -118,13 +120,13 @@ namespace Heidur
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, null);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
             gameObjectManager.Draw(this.camera, this.spriteBatch);
             spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.Sprites.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.Sprites.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
+            spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

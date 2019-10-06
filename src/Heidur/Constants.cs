@@ -12,6 +12,7 @@ namespace Heidur
         public const int RESOLUTION_WIDTH = 1024;
         public const int RESOLUTION_HEIGHT = 768;
         public const int TILESIZE = 32;
+        public const int DEFAULT_ZOOMING_MODIFIER = 2;
 
         //Below here paste constants of entities
         public class Camera
@@ -57,7 +58,7 @@ namespace Heidur
         public class Music
         {
             public const string DEFAULT_MUSIC = "BattleTheme1";
-            public const float DEFAULT_VOLUMEN_AUDIO = 0.1f;
+            public const float DEFAULT_VOLUMEN_AUDIO = 0.0f;
         }
 
         public class Physics
@@ -74,7 +75,6 @@ namespace Heidur
         public class Sprites
         {
             public const float DEFAULT_UNIT_INDEX = 0.3f;
-            public const int DEFAULT_ZOOMING_MODIFIER = 2;
         }
 
         public class Animation
