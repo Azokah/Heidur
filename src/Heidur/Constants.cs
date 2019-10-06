@@ -24,7 +24,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_SPRITE = "AdventurerTileset";
+            public const string DEFAULT_SPRITE = "warrior_m";
             public const int DEFAULT_RANGE = 15; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
@@ -37,12 +37,13 @@ namespace Heidur
 
         public class NPC
         {
-            public const string DEFAULT_SPRITE = "MagoIao";
+            public const string DEFAULT_SPRITE = "ninja_m";
+            public const int DEFAULT_SPEED = 128;
             public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.3f;
+            public const int DEFAULT_NPC_SIZE_MODIFIER = 1;
             public const int DEFAULT_RANGE = 8; // This is measured in Tiles
-            public const int DEFAULT_SPEED = 64;
         }
 
         public class Map
@@ -79,19 +80,15 @@ namespace Heidur
         public class Animation
         {
             public const float DEFAULT_FRAMES_SPEED_MS = 0.1f;
-            public const int DEFAULT_FRAMES_IDLE = 4;
-            public const int DEFAULT_FRAMES_WALKING = 4;
-            public const int DEFAULT_FRAMES_ATTACK = 4;
+            public const int DEFAULT_FRAMES_WALKING = 3;
             public enum FrameCategory
             {
-                WALKING_S,
                 WALKING_N,
-                WALKING_E,
                 WALKING_W,
-                IDLE,
-                ATTACK
+                WALKING_S,
+                WALKING_E
             }
-            public const int FRAME_CATEGORIES = 6;
+            public const int FRAME_CATEGORIES = 4;
         }
     }
 }

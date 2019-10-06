@@ -78,11 +78,13 @@ namespace Heidur.Entities.Processors
         {
             if (physicsComponent.position == physicsComponent.destination)
             {
+                physicsComponent.IsMoving = false;
                 SetDestination(map, physicsComponent);
             }
             else
             {
-                var frameSpeed = Constants.Unit.DEFAULT_SPEED * deltaTime;
+                physicsComponent.IsMoving = true;
+                var frameSpeed = physicsComponent.Speed * deltaTime;
                 Vector2 offset = physicsComponent.destination - physicsComponent.position;
                 if (offset.X > 0)
                 {
@@ -166,6 +168,14 @@ namespace Heidur.Entities.Processors
         public static void StopMoveRight(PhysicsComponent physicsComponent)
         {
             physicsComponent.Right = false;
+        }
+
+        public static void StopAllMovement(PhysicsComponent physicsComponent)
+        {
+            physicsComponent.Right = false;
+            physicsComponent.Up = false;
+            physicsComponent.Left = false;
+            physicsComponent.Down = false;
         }
     }
 }

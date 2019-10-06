@@ -26,7 +26,7 @@ namespace Heidur.Entities.Processors
         public static void LoadContent(Game1 game, SpriteComponent spriteComponent)
         {
             spriteComponent.Texture = game.Content.Load<Texture2D>(!string.IsNullOrWhiteSpace(spriteComponent.textureName) ? spriteComponent.textureName : Constants.Unit.DEFAULT_SPRITE);
-            spriteComponent.AnimationComponent = new AnimationComponent(spriteComponent, Constants.Animation.DEFAULT_FRAMES_IDLE, Constants.Animation.DEFAULT_FRAMES_WALKING, Constants.Animation.DEFAULT_FRAMES_ATTACK);
+            spriteComponent.AnimationComponent = new AnimationComponent(spriteComponent,Constants.Animation.DEFAULT_FRAMES_WALKING);
         }
 
         private static void DrawHitBoxes(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)
