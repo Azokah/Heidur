@@ -14,6 +14,6 @@ namespace Heidur.Entities
     {
         void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map);
 
-        void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position);
+        void Draw(SpriteBatch spriteBatch, Vector2 position);
     }
 }

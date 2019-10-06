@@ -7,6 +7,7 @@ using System;
 using MonoGame.Extended.Collections;
 using Heidur.Entities.Components;
 using Heidur.Entities.Processors;
+using System.Collections.Generic;
 
 namespace Heidur
 {
@@ -22,9 +23,6 @@ namespace Heidur
         GameObjectManager gameObjectManager;
 
         RenderTarget2D nativeRenderTarget;
-
-        //GameObjects
-        Camera camera;
 
         public Game1()
         {
@@ -59,9 +57,6 @@ namespace Heidur
             gameObjectManager = new GameObjectManager();
             inputManager = new InputManager(gameObjectManager.unit);
 
-            camera = new Camera();
-            camera.Init();
-
             base.Initialize();
         }
 
@@ -75,6 +70,7 @@ namespace Heidur
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            ParticlesProcessor.LoadContent(this, new List<string>() { "star", "circle" });
             AudioProcessor.LoadContentAndPlay(this);
             gameObjectManager.LoadContent(this);
         }
@@ -103,7 +99,8 @@ namespace Heidur
 
             // TODO: Add your update logic here
             gameObjectManager.Update(delta);
-            camera.Update(gameObjectManager.unit);
+            Camera.Update(gameObjectManager.unit);
+            ParticlesProcessor.Update();
 
             base.Update(gameTime);
         }
@@ -119,7 +116,8 @@ namespace Heidur
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
-            gameObjectManager.Draw(this.camera, this.spriteBatch);
+            gameObjectManager.Draw(this.spriteBatch);
+            ParticlesProcessor.Draw(spriteBatch);
             spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);

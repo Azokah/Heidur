@@ -8,31 +8,24 @@ using System.Threading.Tasks;
 
 namespace Heidur.Entities
 {
-    public class Camera
+    public static class Camera
     {
         public const int Width = Constants.RESOLUTION_WIDTH;
         public const int Height = Constants.RESOLUTION_HEIGHT;
 
-        public Vector2 position;
-
-        private bool UP, DOWN, LEFT, RIGHT;
-
-
-        public void Init()
+        public static Vector2 position = position = new Vector2()
         {
-            UP = DOWN = LEFT = RIGHT = false;
-            position = new Vector2()
-            {
-                X = 0,
-                Y = 0
-            };
-        }
+            X = 0,
+            Y = 0
+        };
 
-        public void Update(GameObject unit = null)
+        private static bool UP = false, DOWN = false, LEFT = false, RIGHT = false;
+
+        public static void Update(GameObject unit = null)
         {
             if (unit != null)
             {
-                this.CenterCameraAtUnit(unit);
+                Camera.CenterCameraAtUnit(unit);
             }
 
             position.Y -= UP ? Constants.Camera.CAMERA_SPEED : 0;
@@ -41,88 +34,88 @@ namespace Heidur.Entities
             position.X -= LEFT ? Constants.Camera.CAMERA_SPEED : 0;
         }
 
-        public void MoveUp()
+        public static void MoveUp()
         {
             UP = true;
         }
 
-        public void MoveDown()
+        public static void MoveDown()
         {
             DOWN = true;
         }
 
-        public void MoveLeft()
+        public static void MoveLeft()
         {
             LEFT = true;
         }
 
-        public void MoveRight()
+        public static void MoveRight()
         {
             RIGHT = true;
         }
 
-        public void StopMoveUp()
+        public static void StopMoveUp()
         {
             UP = false;
         }
 
-        public void StopMoveDown()
+        public static void StopMoveDown()
         {
             DOWN = false;
         }
 
-        public void StopMoveLeft()
+        public static void StopMoveLeft()
         {
             LEFT = false;
         }
 
-        public void StopMoveRight()
+        public static void StopMoveRight()
         {
             RIGHT = false;
         }
 
-        public void MoveCameraAtBoundaries(Point mousePosition)
+        public static void MoveCameraAtBoundaries(Point mousePosition)
         {
             if (mousePosition.X > Constants.RESOLUTION_WIDTH - Constants.Camera.CAMERA_BORDERS)
             {
-                this.MoveRight();
+                Camera.MoveRight();
             }
             else
             {
-                this.StopMoveRight();
+                Camera.StopMoveRight();
             }
 
             if (mousePosition.X < Constants.Camera.CAMERA_BORDERS)
             {
-                this.MoveLeft();
+                Camera.MoveLeft();
             }
             else
             {
-                this.StopMoveLeft();
+                Camera.StopMoveLeft();
             }
 
             if (mousePosition.Y > Constants.RESOLUTION_HEIGHT - Constants.Camera.CAMERA_BORDERS)
             {
-                this.MoveDown();
+                Camera.MoveDown();
             }
             else
             {
-                this.StopMoveDown();
+                Camera.StopMoveDown();
             }
 
             if (mousePosition.Y < Constants.Camera.CAMERA_BORDERS)
             {
-                this.MoveUp();
+                Camera.MoveUp();
             }
             else
             {
-                this.StopMoveUp();
+                Camera.StopMoveUp();
             }
         }
 
-        public void CenterCameraAtUnit(GameObject unit)
+        public static void CenterCameraAtUnit(GameObject unit)
         {
-            this.position = unit.physicsComponent.position - new Vector2((Constants.RESOLUTION_WIDTH/2)/Constants.DEFAULT_ZOOMING_MODIFIER, (Constants.RESOLUTION_HEIGHT/2) / Constants.DEFAULT_ZOOMING_MODIFIER);
+            Camera.position = unit.physicsComponent.position - new Vector2((Constants.RESOLUTION_WIDTH/2)/Constants.DEFAULT_ZOOMING_MODIFIER, (Constants.RESOLUTION_HEIGHT/2) / Constants.DEFAULT_ZOOMING_MODIFIER);
         }
            
     }

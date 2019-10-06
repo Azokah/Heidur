@@ -36,7 +36,7 @@ namespace Heidur.Entities
             };
         }
 
-        public void Draw(Camera camera, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             position.Y = 0;
             position.X = 0;
@@ -53,7 +53,7 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, FloorZIndex);
+                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, FloorZIndex);
 
                     tileToDrawPositionInAtlas = new Rectangle(0 + WallsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
                     tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
@@ -61,7 +61,7 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
+                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
 
                     tileToDrawPositionInAtlas = new Rectangle(0 + ObjectsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
                     tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
@@ -69,7 +69,7 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, ObjectsZIndex);
+                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, ObjectsZIndex);
                 }
             }
         }

@@ -14,13 +14,13 @@ namespace Heidur.Entities.Processors
             AnimationProcessor.Update(spriteComponent.AnimationComponent, deltaTime);
         }
 
-        public static void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent, FacingDirections FacingDirection)
+        public static void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent, FacingDirections FacingDirection)
         {
             var textureSizeModified = Constants.TILESIZE * spriteComponent.textureModifier;
             var originVectorModified = spriteComponent.textureModifier == 1 ? Vector2.Zero : new Vector2(textureSizeModified/3, textureSizeModified/2);
 
-            DrawHitBoxes(camera, spriteBatch, position, spriteComponent);
-            spriteBatch.Draw(spriteComponent.Texture, position - camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+            DrawHitBoxes(spriteBatch, position, spriteComponent);
+            spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
         }
 
         public static void LoadContent(Game1 game, SpriteComponent spriteComponent)
@@ -29,7 +29,7 @@ namespace Heidur.Entities.Processors
             spriteComponent.AnimationComponent = new AnimationComponent(spriteComponent,Constants.Animation.DEFAULT_FRAMES_WALKING);
         }
 
-        private static void DrawHitBoxes(Camera camera, SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)
+        private static void DrawHitBoxes(SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)
         {
             if (drawHitBoxes)
             {
@@ -45,7 +45,7 @@ namespace Heidur.Entities.Processors
 
                 rect.SetData(data);
 
-                Vector2 coor = position - camera.position;
+                Vector2 coor = position - Camera.position;
                 spriteBatch.Draw(rect, coor, null, Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
             }
         }

@@ -57,6 +57,7 @@ namespace Heidur.Entities.Processors
                     AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
                     source.HitIntervalLastTicks = source.Clock;
                     TakeDamage(objective.statsComponent, source.Damage);
+                    ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
                     Console.WriteLine("You hitted the target!");
                 }
             }

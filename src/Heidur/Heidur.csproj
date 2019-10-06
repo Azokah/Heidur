@@ -43,6 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />

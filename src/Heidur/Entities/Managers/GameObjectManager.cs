@@ -42,11 +42,11 @@ namespace Heidur.Entities.Managers
             RemoveDeadGameObjects();
         }
 
-        public void Draw(Camera camera, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            gameMap.Draw(camera, spriteBatch);
-            unit.Draw(camera, spriteBatch, unit.physicsComponent.position);
-            npcs.ForEach(n => n.Draw(camera, spriteBatch, n.physicsComponent.position));
+            gameMap.Draw(spriteBatch);
+            unit.Draw(spriteBatch, unit.physicsComponent.position);
+            npcs.ForEach(n => n.Draw(spriteBatch, n.physicsComponent.position));
         }
 
         public void RemoveDeadGameObjects()
