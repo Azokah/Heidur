@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using MonoGame.Extended.Collections;
+using Heidur.Entities.Components;
+using Heidur.Entities.Processors;
 
 namespace Heidur
 {
@@ -16,7 +18,6 @@ namespace Heidur
         // Engine and Game properties
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        AudioManager audioManager;
         InputManager inputManager;
         GameObjectManager gameObjectManager;
 
@@ -55,7 +56,6 @@ namespace Heidur
             this.IsMouseVisible = true;
 
             // TODO: Add your initialization logic here
-            audioManager = new AudioManager();
             gameObjectManager = new GameObjectManager();
             inputManager = new InputManager(gameObjectManager.unit);
 
@@ -75,10 +75,8 @@ namespace Heidur
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            audioManager.LoadContentAndPlay(this);
+            AudioProcessor.LoadContentAndPlay(this);
             gameObjectManager.LoadContent(this);
-
-
         }
 
         /// <summary>

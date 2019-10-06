@@ -44,9 +44,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
+    <Compile Include="Entities\Processors\AudioProcessor.cs" />
+    <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
     <Compile Include="Helpers\Clock.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Entities\AudioManager.cs" />
+    <Compile Include="Entities\Components\AudioComponent.cs" />
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\Commands\MoveLeftCommand.cs" />
     <Compile Include="Entities\Commands\MoveRightCommand.cs" />

@@ -61,6 +61,16 @@ namespace Heidur
             public const float DEFAULT_VOLUMEN_AUDIO = 0.0f;
         }
 
+        public class SoundEffects
+        {
+            public enum FXSounds
+            {
+                HIT
+            }
+
+            public static readonly string[] FXSoundsNamesAndPaths = { "Hit" }; 
+        }
+
         public class Physics
         {
             public enum FacingDirections

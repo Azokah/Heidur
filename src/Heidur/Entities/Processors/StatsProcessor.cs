@@ -54,6 +54,7 @@ namespace Heidur.Entities.Processors
                 var objective = physicsComponent.NearbyUnits.Where(u => CheckIfAlive(u.statsComponent) && u.physicsComponent.position.Equals(targetPosition)).FirstOrDefault();
                 if (objective != null)
                 {
+                    AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
                     source.HitIntervalLastTicks = source.Clock;
                     TakeDamage(objective.statsComponent, source.Damage);
                     Console.WriteLine("You hitted the target!");
