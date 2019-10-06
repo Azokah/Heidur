@@ -122,7 +122,7 @@ namespace Heidur.Entities
 
         public void CenterCameraAtUnit(GameObject unit)
         {
-            this.position = unit.physicsComponent.position - new Vector2(Constants.RESOLUTION_WIDTH/2, Constants.RESOLUTION_HEIGHT/2);
+            this.position = unit.physicsComponent.position - new Vector2((Constants.RESOLUTION_WIDTH/2)/Constants.Sprites.DEFAULT_ZOOMING_MODIFIER, (Constants.RESOLUTION_HEIGHT/2) / Constants.Sprites.DEFAULT_ZOOMING_MODIFIER);
         }
            
     }

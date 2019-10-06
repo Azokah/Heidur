@@ -24,7 +24,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_SPRITE = "MagoIao";
+            public const string DEFAULT_SPRITE = "AdventurerTileset";
             public const int DEFAULT_RANGE = 15; // This is measured in Tiles
             public const int DEFAULT_SPEED = 256;
             public const int DEFAULT_DAMAGE = 1;
@@ -73,6 +73,7 @@ namespace Heidur
         public class Sprites
         {
             public const float DEFAULT_UNIT_INDEX = 0.3f;
+            public const int DEFAULT_ZOOMING_MODIFIER = 2;
         }
 
         public class Animation
