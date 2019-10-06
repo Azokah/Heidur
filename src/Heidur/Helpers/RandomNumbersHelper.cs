@@ -22,5 +22,10 @@ namespace Heidur.Helpers
         {
             return new Random(Guid.NewGuid().GetHashCode()).Next(max);
         }
+
+        public static double ReturnRandomDouble()
+        {
+            return new Random(Guid.NewGuid().GetHashCode()).NextDouble();
+        }
     }
 }

@@ -28,9 +28,9 @@ namespace Heidur.Entities
             AnimationProcessor.SwitchToFrameCategory(this);
         }
 
-        public void Draw(Camera camera, SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            SpriteProcessor.Draw(camera, spriteBatch, position, spriteComponent, physicsComponent.FacingDirection);
+            SpriteProcessor.Draw(spriteBatch, position, spriteComponent, physicsComponent.FacingDirection);
         }
     }
 }

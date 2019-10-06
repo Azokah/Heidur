@@ -100,5 +100,16 @@ namespace Heidur
             }
             public const int FRAME_CATEGORIES = 4;
         }
+
+        public class Particles
+        {
+            public const int DEFAULT_ATTACK_PARTICLES_AMMOUNT = 30;
+            public const float DEFAULT_LAYER_DEPTH = 0.9f;
+
+            public enum ParticlesStyle
+            {
+                ATTACK
+            }
+        }
     }
 }
