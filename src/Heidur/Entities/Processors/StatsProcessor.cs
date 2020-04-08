@@ -33,6 +33,7 @@ namespace Heidur.Entities.Processors
 			if (statsComponent.Experience >= nextLevel)
 			{
 				statsComponent.Level++;
+				PerformDefaultAdvancement(statsComponent);
 				AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.LEVEL_UP);
 			}
 		}
@@ -51,6 +52,13 @@ namespace Heidur.Entities.Processors
 			}
 
 			return result;
+		}
+
+		private static void PerformDefaultAdvancement(StatsComponent statsComponent)
+		{
+			statsComponent.HP += Constants.Leveling.DEFAULT_HP_ADVANCEMENT;
+			statsComponent.Damage += Constants.Leveling.DEFAULT_DAMAGE_ADVANCEMENT;
+			statsComponent.CurrentHP = statsComponent.HP;
 		}
     }
 }

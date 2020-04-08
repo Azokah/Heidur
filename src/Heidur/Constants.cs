@@ -42,6 +42,8 @@ namespace Heidur
 		public class Leveling
 		{
 			public const int DEFAULT_LEVELING_ADVANCEMENT = 1000;
+			public const int DEFAULT_HP_ADVANCEMENT = 10;
+			public const int DEFAULT_DAMAGE_ADVANCEMENT = 2;
 		}
 
         public class NPC
