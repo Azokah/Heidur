@@ -22,5 +22,16 @@
 			ExperienceReward = Constants.Unit.DEFAULT_REWARD;
 			Level = Constants.Unit.DEFAULT_LEVEL;
         }
-    }
+
+		public StatsComponent(int range, int damage, int hp, int experience, int level)
+		{
+			Clock = HitIntervalLastTicks = 0;
+			Range = range;
+			Damage = damage;
+			CurrentHP = HP = hp;
+			Experience = experience;
+			ExperienceReward = Constants.Unit.DEFAULT_REWARD;
+			Level = level;
+		}
+	}
 }

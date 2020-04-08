@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur
 {
-    public static class Constants
+	public static class Constants
     {
         // Configuration
         public const int RESOLUTION_WIDTH = 1024;
@@ -139,6 +135,13 @@ namespace Heidur
 		public class RangedSkill
 		{
 			public const int DEFAULT_RANGED_RANGE = 5;
+		}
+
+		public class Item
+		{
+			public const string DEFAULT_NAME = "Item";
+			public const string DEFAULT_DESCRIPTION = "Description";
+			public const string DEFAULT_ITEM_TEXTURE = "star";
 		}
 	}
 }
