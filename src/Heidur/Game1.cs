@@ -4,23 +4,21 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using MonoGame.Extended.Collections;
-using Heidur.Entities.Components;
 using Heidur.Entities.Processors;
-using System.Collections.Generic;
 
 namespace Heidur
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-    public class Game1 : Game
+	/// <summary>
+	/// This is the main type for your game.
+	/// </summary>
+	public class Game1 : Game
     {
         // Engine and Game properties
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         InputManager inputManager;
         GameObjectManager gameObjectManager;
+		UIManager uiManager;
 
         RenderTarget2D nativeRenderTarget;
 
@@ -56,6 +54,7 @@ namespace Heidur
             // TODO: Add your initialization logic here
             gameObjectManager = new GameObjectManager();
             inputManager = new InputManager(gameObjectManager.unit);
+			uiManager = new UIManager();
 
             base.Initialize();
         }
@@ -70,10 +69,12 @@ namespace Heidur
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            ParticlesProcessor.LoadContent(this, new List<string>() { "star", "circle" });
+            ParticlesProcessor.LoadContent(this);
             AudioProcessor.LoadContentAndPlay(this);
             gameObjectManager.LoadContent(this);
-        }
+			uiManager.LoadContent(this);
+
+		}
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -116,14 +117,15 @@ namespace Heidur
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
-            gameObjectManager.Draw(this.spriteBatch);
-            ParticlesProcessor.Draw(spriteBatch);
-            spriteBatch.End();
+			gameObjectManager.Draw(spriteBatch);
+			ParticlesProcessor.Draw(spriteBatch);
+			spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
-            spriteBatch.End();
+			uiManager.Draw(spriteBatch, gameObjectManager.unit.statsComponent);
+			spriteBatch.End();
 
             base.Draw(gameTime);
         }

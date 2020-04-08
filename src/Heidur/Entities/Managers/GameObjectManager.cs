@@ -10,7 +10,7 @@ namespace Heidur.Entities.Managers
 {
     class GameObjectManager
     {
-        private const string FixedStartingMapName = "MainTown.json";
+		private const string FixedStartingMapName = Constants.Map.DEFAULT_MAP_NAME;
 
         public GameObject unit;
         public List<NonPlayerCharacter> npcs;

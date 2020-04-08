@@ -3,6 +3,7 @@ using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using static Heidur.Constants.Particles;
 
 namespace Heidur.Entities.Processors
@@ -114,7 +115,20 @@ namespace Heidur.Entities.Processors
             ParticlesProcessor.textures = textures;
         }
 
-        public static void SetPosition(Vector2 position)
+		public static void LoadContent(Game game1)
+		{
+			List<Texture2D> textures = new List<Texture2D>();
+
+			foreach (var particle in DEFAULT_PARTICLES_SPRITES)
+			{
+				textures.Add(game1.Content.Load<Texture2D>(particle));
+			}
+
+			ParticlesProcessor.textures = textures;
+		}
+
+
+		public static void SetPosition(Vector2 position)
         {
             EmitterLocation = position;
         }

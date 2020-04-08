@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,7 @@ namespace Heidur
             public const int DEFAULT_MAP_WIDTH = 100;
             public const int DEFAULT_MAP_HEIGHT = 100;
             public const int TILES_PER_ROW = 16;
+			public const string DEFAULT_MAP_NAME = "Town.json";
         }
 
         public class Music
@@ -106,10 +108,22 @@ namespace Heidur
             public const int DEFAULT_ATTACK_PARTICLES_AMMOUNT = 30;
             public const float DEFAULT_LAYER_DEPTH = 0.9f;
 
-            public enum ParticlesStyle
+			public static List<string> DEFAULT_PARTICLES_SPRITES = new List<string>(){ "star", "circle" };
+
+
+			public enum ParticlesStyle
             {
                 ATTACK
             }
         }
+
+		public class UI
+		{
+			public const float DEFAULT_UI_INDEX = 0.9f;
+			public const string DEFAULT_UI_FONT = "Fonts/Calibri32";
+			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
+			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);
+			public static Color DEFAULT_UI_COLOR = Color.Yellow;
+		}
     }
 }

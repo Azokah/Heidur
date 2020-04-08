@@ -47,6 +47,7 @@
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
+    <Compile Include="Entities\Managers\UIManager.cs" />
     <Compile Include="Helpers\Clock.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\Components\AudioComponent.cs" />

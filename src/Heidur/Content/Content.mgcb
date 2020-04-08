@@ -43,6 +43,13 @@
 /processorParam:TextureFormat=Color
 /build:DungeonTileset.png;MapTileset.png
 
+#begin Fonts/Calibri32.spritefont
+/importer:FontDescriptionImporter
+/processor:LocalizedFontProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Calibri32.spritefont
+
 #begin healer_f.png
 /importer:TextureImporter
 /processor:TextureProcessor
