@@ -80,6 +80,12 @@
 /processorParam:Quality=Best
 /build:hit.mp3
 
+#begin Level_up.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Level_up.mp3
+
 #begin mage_f.png
 /importer:TextureImporter
 /processor:TextureProcessor

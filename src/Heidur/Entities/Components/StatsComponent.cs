@@ -6,6 +6,7 @@
         public int Damage { get; set; }
         public int Range { get; set; }
         public int Experience { get; set; }
+		public int Level { get; set; }
         public int CurrentHP { get; set; }
         public float HitIntervalLastTicks;
         public float Clock;
@@ -19,6 +20,7 @@
             CurrentHP = HP = Constants.Unit.DEFAULT_HP;
             Experience = Constants.Unit.DEFAULT_EXPERIENCE;
 			ExperienceReward = Constants.Unit.DEFAULT_REWARD;
+			Level = Constants.Unit.DEFAULT_LEVEL;
         }
     }
 }

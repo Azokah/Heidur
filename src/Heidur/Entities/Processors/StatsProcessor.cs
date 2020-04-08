@@ -24,6 +24,33 @@ namespace Heidur.Entities.Processors
         {
             Console.WriteLine($"You gained {experience} experience points!");
             statsComponent.Experience += experience;
+			CheckLevel(statsComponent);
         }
+
+		public static void CheckLevel(StatsComponent statsComponent)
+		{
+			var nextLevel = GetLevelAdvancement(statsComponent.Level);
+			if (statsComponent.Experience >= nextLevel)
+			{
+				statsComponent.Level++;
+				AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.LEVEL_UP);
+			}
+		}
+
+		private static int GetLevelAdvancement(int level)
+		{
+			var firstNumber = 0;
+			var secondNumber = Constants.Leveling.DEFAULT_LEVELING_ADVANCEMENT;
+
+			int result = firstNumber + secondNumber;
+			for(var l = 1; l < level; l++)
+			{
+				firstNumber = secondNumber;
+				secondNumber = result;
+				result = firstNumber + secondNumber;
+			}
+
+			return result;
+		}
     }
 }

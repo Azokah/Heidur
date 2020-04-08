@@ -31,7 +31,8 @@ namespace Heidur.Entities.Processors
         {
             AudioComponent.currentSong = game.Content.Load<Song>(Constants.Music.DEFAULT_MUSIC);
             AudioComponent.soundEffects.Add(game.Content.Load<SoundEffect>(Constants.SoundEffects.FXSoundsNamesAndPaths[(int)Constants.SoundEffects.FXSounds.HIT]));
-        }
+			AudioComponent.soundEffects.Add(game.Content.Load<SoundEffect>(Constants.SoundEffects.FXSoundsNamesAndPaths[(int)Constants.SoundEffects.FXSounds.LEVEL_UP]));
+		}
 
         public static void LoadContentAndPlay(Game1 game)
         {

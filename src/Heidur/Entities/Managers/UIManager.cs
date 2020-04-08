@@ -17,6 +17,7 @@ namespace Heidur.Entities.Managers
 		{
 			spriteBatch.DrawString(font, statsComponent.CurrentHP.ToString() + "/" + statsComponent.HP.ToString(), Constants.UI.DEFAULT_UI_POSITION, Constants.UI.DEFAULT_UI_COLOR);
 			spriteBatch.DrawString(font, "EXP: " + statsComponent.Experience.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
+			spriteBatch.DrawString(font, "Level: " + statsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y * 2, Constants.UI.DEFAULT_UI_COLOR);
 		}
 	}
 }
