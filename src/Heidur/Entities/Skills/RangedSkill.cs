@@ -40,7 +40,6 @@ namespace Heidur.Entities.Skills
 
 		private bool CheckIfInRange(PhysicsComponent source, GameObject objective)
 		{
-			bool result = false;
 			Vector2 direction = Vector2.Zero;
 			switch (source.FacingDirection)
 			{
@@ -51,14 +50,18 @@ namespace Heidur.Entities.Skills
 					direction = new Vector2(0, -1);
 					break;
 				case FacingDirections.LEFT:
-					direction = new Vector2(-1, 0);
+					direction = new Vector2(1, 0);
 					break;
 				case FacingDirections.RIGHT:
-					direction = new Vector2(1, 0);
+					direction = new Vector2(-1, 0);
 					break;
 			}
 
-			return (PhysicsProcessor.GetDistanceFromUnit(objective.physicsComponent, source) <= range);
+			var normalized = Vector2.Subtract(source.position, objective.physicsComponent.position);
+			normalized.Normalize();
+
+			return (PhysicsProcessor.GetDistanceFromUnit(objective.physicsComponent, source) <= range) &&
+				direction.Equals(normalized);
 		}
 	}
 }
