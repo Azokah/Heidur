@@ -1,12 +1,9 @@
 ﻿using Heidur.Entities.Components;
-using Microsoft.Xna.Framework;
 using System;
-using System.Linq;
-using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Processors
 {
-    public static class StatsProcessor
+	public static class StatsProcessor
     {
         public static void Update(float deltaTime, StatsComponent statsComponent)
         {

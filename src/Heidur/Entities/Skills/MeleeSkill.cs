@@ -43,6 +43,10 @@ namespace Heidur.Entities.Skills
 					source.HitIntervalLastTicks = source.Clock;
 					StatsProcessor.TakeDamage(objective.statsComponent, source.Damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
+					if (!StatsProcessor.CheckIfAlive(objective.statsComponent))
+					{
+						StatsProcessor.GainExperience(source, objective.statsComponent.ExperienceReward);
+					}
 				}
 			}
 

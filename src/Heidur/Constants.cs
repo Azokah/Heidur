@@ -32,7 +32,8 @@ namespace Heidur
             public const int DEFAULT_DAMAGE = 1;
             public const int DEFAULT_HP = 10;
             public const int DEFAULT_EXPERIENCE = 0;
-            public const int DEFAULT_EXPERIENCE_GAIN = 100;
+			public const int DEFAULT_REWARD = 250;
+			public const int DEFAULT_EXPERIENCE_GAIN = 100;
             public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
             public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
         }
