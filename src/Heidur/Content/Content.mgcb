@@ -43,6 +43,13 @@
 /processorParam:TextureFormat=Color
 /build:DungeonTileset.png;MapTileset.png
 
+#begin Fonts/Calibri32.spritefont
+/importer:FontDescriptionImporter
+/processor:LocalizedFontProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Calibri32.spritefont
+
 #begin healer_f.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -72,6 +79,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:hit.mp3
+
+#begin Level_up.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Level_up.mp3
 
 #begin mage_f.png
 /importer:TextureImporter

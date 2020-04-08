@@ -14,7 +14,7 @@ namespace Heidur.Entities.Managers
         private GameObject player;
         private ICommand moveUp, moveDown, moveLeft, moveRight;
         private ICommand stopMoveUp, stopMoveDown, stopMoveLeft, stopMoveRight;
-        private ICommand attack;
+        private ICommand attack, rangedAttack;
 
         public InputManager(GameObject player)
         {
@@ -28,8 +28,9 @@ namespace Heidur.Entities.Managers
             stopMoveRight = new StopMoveRightCommand();
             stopMoveDown = new StopMoveDownCommand();
             attack = new AttackCommand();
-            
-        }
+			rangedAttack = new RangedAttackCommand();
+
+		}
 
         public void Update(Point mousePositionInWindow)
         {
@@ -77,7 +78,12 @@ namespace Heidur.Entities.Managers
                 attack.execute(this.player);
             }
 
-            if (keyBoardState.IsKeyDown(Keys.W))
+			if (keyBoardState.IsKeyDown(Keys.LeftAlt))
+			{
+				rangedAttack.execute(this.player);
+			}
+
+			if (keyBoardState.IsKeyDown(Keys.W))
             {
                 moveUp.execute(this.player);
             }

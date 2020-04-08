@@ -1,12 +1,9 @@
 ﻿using Heidur.Entities.Components;
-using Microsoft.Xna.Framework;
 using System;
-using System.Linq;
-using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Processors
 {
-    public static class StatsProcessor
+	public static class StatsProcessor
     {
         public static void Update(float deltaTime, StatsComponent statsComponent)
         {
@@ -27,42 +24,41 @@ namespace Heidur.Entities.Processors
         {
             Console.WriteLine($"You gained {experience} experience points!");
             statsComponent.Experience += experience;
+			CheckLevel(statsComponent);
         }
 
-        public static bool Attack(StatsComponent source, PhysicsComponent physicsComponent)
-        {
-            if (source.Clock > source.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
-            {
-                var targetPosition = physicsComponent.position;
+		public static void CheckLevel(StatsComponent statsComponent)
+		{
+			var nextLevel = GetLevelAdvancement(statsComponent.Level);
+			if (statsComponent.Experience >= nextLevel)
+			{
+				statsComponent.Level++;
+				PerformDefaultAdvancement(statsComponent);
+				AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.LEVEL_UP);
+			}
+		}
 
-                switch (physicsComponent.FacingDirection)
-                {
-                    case FacingDirections.UP:
-                        targetPosition -= new Vector2(0, Constants.TILESIZE);
-                        break;
-                    case FacingDirections.DOWN:
-                        targetPosition += new Vector2(0, Constants.TILESIZE);
-                        break;
-                    case FacingDirections.LEFT:
-                        targetPosition -= new Vector2(Constants.TILESIZE, 0);
-                        break;
-                    case FacingDirections.RIGHT:
-                        targetPosition += new Vector2(Constants.TILESIZE, 0);
-                        break;
-                }
+		private static int GetLevelAdvancement(int level)
+		{
+			var firstNumber = 0;
+			var secondNumber = Constants.Leveling.DEFAULT_LEVELING_ADVANCEMENT;
 
-                var objective = physicsComponent.NearbyUnits.Where(u => CheckIfAlive(u.statsComponent) && u.physicsComponent.position.Equals(targetPosition)).FirstOrDefault();
-                if (objective != null)
-                {
-                    AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
-                    source.HitIntervalLastTicks = source.Clock;
-                    TakeDamage(objective.statsComponent, source.Damage);
-                    ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
-                    Console.WriteLine("You hitted the target!");
-                }
-            }
+			int result = firstNumber + secondNumber;
+			for(var l = 1; l < level; l++)
+			{
+				firstNumber = secondNumber;
+				secondNumber = result;
+				result = firstNumber + secondNumber;
+			}
 
-            return false;
-        }
+			return result;
+		}
+
+		private static void PerformDefaultAdvancement(StatsComponent statsComponent)
+		{
+			statsComponent.HP += Constants.Leveling.DEFAULT_HP_ADVANCEMENT;
+			statsComponent.Damage += Constants.Leveling.DEFAULT_DAMAGE_ADVANCEMENT;
+			statsComponent.CurrentHP = statsComponent.HP;
+		}
     }
 }

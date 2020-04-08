@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur
 {
-    public static class Constants
+	public static class Constants
     {
         // Configuration
         public const int RESOLUTION_WIDTH = 1024;
@@ -31,10 +28,19 @@ namespace Heidur
             public const int DEFAULT_DAMAGE = 1;
             public const int DEFAULT_HP = 10;
             public const int DEFAULT_EXPERIENCE = 0;
-            public const int DEFAULT_EXPERIENCE_GAIN = 100;
+			public const int DEFAULT_LEVEL = 1;
+			public const int DEFAULT_REWARD = 250;
+			public const int DEFAULT_EXPERIENCE_GAIN = 100;
             public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
             public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
         }
+
+		public class Leveling
+		{
+			public const int DEFAULT_LEVELING_ADVANCEMENT = 1000;
+			public const int DEFAULT_HP_ADVANCEMENT = 10;
+			public const int DEFAULT_DAMAGE_ADVANCEMENT = 2;
+		}
 
         public class NPC
         {
@@ -53,6 +59,7 @@ namespace Heidur
             public const int DEFAULT_MAP_WIDTH = 100;
             public const int DEFAULT_MAP_HEIGHT = 100;
             public const int TILES_PER_ROW = 16;
+			public const string DEFAULT_MAP_NAME = "Town.json";
         }
 
         public class Music
@@ -65,10 +72,11 @@ namespace Heidur
         {
             public enum FXSounds
             {
-                HIT
+                HIT,
+				LEVEL_UP
             }
 
-            public static readonly string[] FXSoundsNamesAndPaths = { "Hit" }; 
+            public static readonly string[] FXSoundsNamesAndPaths = { "Hit", "Level_up" }; 
         }
 
         public class Physics
@@ -106,10 +114,34 @@ namespace Heidur
             public const int DEFAULT_ATTACK_PARTICLES_AMMOUNT = 30;
             public const float DEFAULT_LAYER_DEPTH = 0.9f;
 
-            public enum ParticlesStyle
+			public static List<string> DEFAULT_PARTICLES_SPRITES = new List<string>(){ "star", "circle" };
+
+
+			public enum ParticlesStyle
             {
                 ATTACK
             }
         }
-    }
+
+		public class UI
+		{
+			public const float DEFAULT_UI_INDEX = 0.9f;
+			public const string DEFAULT_UI_FONT = "Fonts/Calibri32";
+			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
+			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);
+			public static Color DEFAULT_UI_COLOR = Color.Yellow;
+		}
+
+		public class RangedSkill
+		{
+			public const int DEFAULT_RANGED_RANGE = 5;
+		}
+
+		public class Item
+		{
+			public const string DEFAULT_NAME = "Item";
+			public const string DEFAULT_DESCRIPTION = "Description";
+			public const string DEFAULT_ITEM_TEXTURE = "star";
+		}
+	}
 }

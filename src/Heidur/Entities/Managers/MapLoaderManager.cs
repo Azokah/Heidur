@@ -14,7 +14,7 @@ namespace Heidur.Entities.Managers
         public const int Width = Constants.Map.DEFAULT_MAP_WIDTH;
         public const int Height = Constants.Map.DEFAULT_MAP_HEIGHT;
 
-        public const string path = @".\Maps\";
+        public const string path = @"..\..\..\..\Resources\Maps\";
         public const string floorLayerName = "Suelo";
         public const string wallsLayerName = "Paredes";
         public const string objectsLayerName = "Objetos";

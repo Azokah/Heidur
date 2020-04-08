@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Processors;
+using Heidur.Entities.Skills;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            StatsProcessor.Attack(player.statsComponent, player.physicsComponent);
+            player.skillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(player);
         }
     }
 }

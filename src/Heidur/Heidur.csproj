@@ -43,10 +43,18 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
+    <Compile Include="Entities\Items\Item.cs" />
+    <Compile Include="Entities\Items\IItem.cs" />
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
+    <Compile Include="Entities\Managers\UIManager.cs" />
+    <Compile Include="Entities\Processors\ItemsProcessor.cs" />
+    <Compile Include="Entities\Skills\ISkill.cs" />
+    <Compile Include="Entities\Skills\RangedSkill.cs" />
+    <Compile Include="Entities\Skills\MeleeSkill.cs" />
     <Compile Include="Helpers\Clock.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\Components\AudioComponent.cs" />

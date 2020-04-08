@@ -15,5 +15,11 @@ namespace Heidur.Entities.Components
             textureModifier = 1;
             textureName = string.Empty;
         }
-    }
+
+		public SpriteComponent(string textureName)
+		{
+			textureModifier = 1;
+			this.textureName = textureName;
+		}
+	}
 }

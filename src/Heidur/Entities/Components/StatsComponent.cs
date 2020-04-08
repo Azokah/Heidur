@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Heidur.Entities.Components
+﻿namespace Heidur.Entities.Components
 {
-    public class StatsComponent
+	public class StatsComponent
     {
         public int HP { get; set; }
         public int Damage { get; set; }
         public int Range { get; set; }
         public int Experience { get; set; }
+		public int Level { get; set; }
         public int CurrentHP { get; set; }
         public float HitIntervalLastTicks;
         public float Clock;
+		public int ExperienceReward { get; set; }
 
         public StatsComponent()
         {
@@ -23,6 +19,19 @@ namespace Heidur.Entities.Components
             Damage = Constants.Unit.DEFAULT_DAMAGE;
             CurrentHP = HP = Constants.Unit.DEFAULT_HP;
             Experience = Constants.Unit.DEFAULT_EXPERIENCE;
+			ExperienceReward = Constants.Unit.DEFAULT_REWARD;
+			Level = Constants.Unit.DEFAULT_LEVEL;
         }
-    }
+
+		public StatsComponent(int range, int damage, int hp, int experience, int level)
+		{
+			Clock = HitIntervalLastTicks = 0;
+			Range = range;
+			Damage = damage;
+			CurrentHP = HP = hp;
+			Experience = experience;
+			ExperienceReward = Constants.Unit.DEFAULT_REWARD;
+			Level = level;
+		}
+	}
 }
