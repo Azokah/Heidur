@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Components;
+using Heidur.Entities.Skills;
 using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using System;
@@ -64,7 +65,7 @@ namespace Heidur.Entities.Processors
                 }
             }
 
-            StatsProcessor.Attack(caller.statsComponent, caller.physicsComponent);
+			caller.skillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(caller);
         }
 
         private static void AIIdle(NonPlayerCharacter caller, GameMap map)

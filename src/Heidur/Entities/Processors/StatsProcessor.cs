@@ -28,41 +28,5 @@ namespace Heidur.Entities.Processors
             Console.WriteLine($"You gained {experience} experience points!");
             statsComponent.Experience += experience;
         }
-
-        public static bool Attack(StatsComponent source, PhysicsComponent physicsComponent)
-        {
-            if (source.Clock > source.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
-            {
-                var targetPosition = physicsComponent.position;
-
-                switch (physicsComponent.FacingDirection)
-                {
-                    case FacingDirections.UP:
-                        targetPosition -= new Vector2(0, Constants.TILESIZE);
-                        break;
-                    case FacingDirections.DOWN:
-                        targetPosition += new Vector2(0, Constants.TILESIZE);
-                        break;
-                    case FacingDirections.LEFT:
-                        targetPosition -= new Vector2(Constants.TILESIZE, 0);
-                        break;
-                    case FacingDirections.RIGHT:
-                        targetPosition += new Vector2(Constants.TILESIZE, 0);
-                        break;
-                }
-
-                var objective = physicsComponent.NearbyUnits.Where(u => CheckIfAlive(u.statsComponent) && u.physicsComponent.position.Equals(targetPosition)).FirstOrDefault();
-                if (objective != null)
-                {
-                    AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
-                    source.HitIntervalLastTicks = source.Clock;
-                    TakeDamage(objective.statsComponent, source.Damage);
-                    ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
-                    Console.WriteLine("You hitted the target!");
-                }
-            }
-
-            return false;
-        }
     }
 }
