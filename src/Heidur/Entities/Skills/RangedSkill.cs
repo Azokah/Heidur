@@ -37,6 +37,7 @@ namespace Heidur.Entities.Skills
 					{
 						StatsProcessor.GainExperience(unit.statsComponent, objective.statsComponent.ExperienceReward);
 					}
+					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + unit.statsComponent.Damage, objective.physicsComponent.position, Color.Red);
 				}
 			}
 

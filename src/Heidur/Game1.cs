@@ -18,7 +18,6 @@ namespace Heidur
         SpriteBatch spriteBatch;
         InputManager inputManager;
         GameObjectManager gameObjectManager;
-		UIManager uiManager;
 
         RenderTarget2D nativeRenderTarget;
 
@@ -54,7 +53,6 @@ namespace Heidur
             // TODO: Add your initialization logic here
             gameObjectManager = new GameObjectManager();
             inputManager = new InputManager(gameObjectManager.unit);
-			uiManager = new UIManager();
 
             base.Initialize();
         }
@@ -72,7 +70,7 @@ namespace Heidur
             ParticlesProcessor.LoadContent(this);
             AudioProcessor.LoadContentAndPlay(this);
             gameObjectManager.LoadContent(this);
-			uiManager.LoadContent(this);
+			UIProcessor.LoadContent(this);
 
 		}
 
@@ -102,8 +100,10 @@ namespace Heidur
             gameObjectManager.Update(delta);
             Camera.Update(gameObjectManager.unit);
             ParticlesProcessor.Update();
+			UIProcessor.Update(delta);
 
-            base.Update(gameTime);
+
+			base.Update(gameTime);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Heidur
             GraphicsDevice.SetRenderTarget(null);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
-			uiManager.Draw(spriteBatch, gameObjectManager.unit);
+			UIProcessor.Draw(spriteBatch, gameObjectManager.unit);
 			spriteBatch.End();
 
             base.Draw(gameTime);

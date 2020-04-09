@@ -131,6 +131,7 @@ namespace Heidur
 			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
 			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);
 			public static Color DEFAULT_UI_COLOR = Color.Yellow;
+			public static float DEFAULT_FLOATING_TEXT_DURATION = 1.0f;
 		}
 
 		public class RangedSkill
