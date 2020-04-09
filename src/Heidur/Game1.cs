@@ -124,7 +124,7 @@ namespace Heidur
             GraphicsDevice.SetRenderTarget(null);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
-			uiManager.Draw(spriteBatch, gameObjectManager.unit.statsComponent);
+			uiManager.Draw(spriteBatch, gameObjectManager.unit);
 			spriteBatch.End();
 
             base.Draw(gameTime);
@@ -144,7 +144,7 @@ namespace Heidur
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 //BOUNDARIES
-                inputManager.Update(Mouse.GetState().Position);
+                inputManager.Update(Mouse.GetState().Position, gameObjectManager.npcs);
             }
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed)

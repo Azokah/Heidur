@@ -9,32 +9,33 @@ namespace Heidur.Entities.Skills
 {
 	public class RangedSkill : ISkill
 	{
-		private int range { get; set; }
+		private int Range { get; set; }
 
 		public RangedSkill()
 		{
-			range = Constants.RangedSkill.DEFAULT_RANGED_RANGE;
+			Range = Constants.RangedSkill.DEFAULT_RANGED_RANGE;
 		}
 
-		public bool Execute(GameObject unit)
+		public bool Execute(GameObject unit, GameObject objective)
 		{
-			return Attack(unit.statsComponent, unit.physicsComponent);
+			return Attack(unit, objective);
 		}
 
-		private bool Attack(StatsComponent source, PhysicsComponent physicsComponent)
+		private bool Attack(GameObject unit, GameObject objective)
 		{
-			if (source.Clock > source.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
+			if (unit.statsComponent.Clock > unit.statsComponent.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
 			{
-				var objective = physicsComponent.NearbyUnits.Where(u => StatsProcessor.CheckIfAlive(u.statsComponent) && CheckIfInRange(physicsComponent, u)).FirstOrDefault();
-				if (objective != null)
+				if (objective != null &&
+					StatsProcessor.CheckIfAlive(objective.statsComponent) &&
+					PhysicsProcessor.GetDistanceFromUnit(objective.physicsComponent, unit.physicsComponent) < Range)
 				{
 					AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
-					source.HitIntervalLastTicks = source.Clock;
-					StatsProcessor.TakeDamage(objective.statsComponent, source.Damage);
+					unit.statsComponent.HitIntervalLastTicks = unit.statsComponent.Clock;
+					StatsProcessor.TakeDamage(objective.statsComponent, unit.statsComponent.Damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
 					if (!StatsProcessor.CheckIfAlive(objective.statsComponent))
 					{
-						StatsProcessor.GainExperience(source, objective.statsComponent.ExperienceReward);
+						StatsProcessor.GainExperience(unit.statsComponent, objective.statsComponent.ExperienceReward);
 					}
 				}
 			}
@@ -64,7 +65,7 @@ namespace Heidur.Entities.Skills
 			var normalized = Vector2.Subtract(source.position, objective.physicsComponent.position);
 			normalized.Normalize();
 
-			return (PhysicsProcessor.GetDistanceFromUnit(objective.physicsComponent, source) <= range) &&
+			return (PhysicsProcessor.GetDistanceFromUnit(objective.physicsComponent, source) <= Range) &&
 				direction.Equals(normalized);
 		}
 	}

@@ -13,13 +13,13 @@ namespace Heidur.Entities.Managers
 		private const string FixedStartingMapName = Constants.Map.DEFAULT_MAP_NAME;
 
         public GameObject unit;
-        public List<NonPlayerCharacter> npcs;
+        public List<GameObject> npcs;
         public GameMap gameMap;
 
         public GameObjectManager()
         {
             unit = new GameObject();
-            npcs = new List<NonPlayerCharacter>() { new NonPlayerCharacter(50, 52), new NonPlayerCharacter(50,53), new NonPlayerCharacter(50,54), new NonPlayerCharacter(50,55) };
+            npcs = new List<GameObject>() { new NonPlayerCharacter(50, 52), new NonPlayerCharacter(50,53), new NonPlayerCharacter(50,54), new NonPlayerCharacter(50,55) };
             gameMap = MapLoaderManager.LoadMap(FixedStartingMapName);
         }
 
@@ -51,7 +51,7 @@ namespace Heidur.Entities.Managers
 
         public void RemoveDeadGameObjects()
         {
-            var npcsToRemove = new List<NonPlayerCharacter>();
+            var npcsToRemove = new List<GameObject>();
             foreach(var npc in npcs)
             {
                 if(!StatsProcessor.CheckIfAlive(npc.statsComponent))

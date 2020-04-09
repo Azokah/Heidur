@@ -24,7 +24,7 @@ namespace Heidur.Entities.Processors
         {
             var result = new List<Rectangle>();
 
-            var textureSizeModified = Constants.TILESIZE * spriteComponent.textureModifier;
+            var textureSizeModified = Constants.TILESIZE * spriteComponent.TextureModifier;
 
             for (int i = 0; i < animationComponent.FramesLength[(int)frameCategory]; i++)
             {

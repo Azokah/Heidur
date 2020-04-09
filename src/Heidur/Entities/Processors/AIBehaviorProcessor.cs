@@ -65,7 +65,7 @@ namespace Heidur.Entities.Processors
                 }
             }
 
-			caller.skillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(caller);
+			caller.skillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(caller, caller.physicsComponent.objective);
         }
 
         private static void AIIdle(NonPlayerCharacter caller, GameMap map)

@@ -7,7 +7,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            player.skillSet.Where(s => s is RangedSkill).FirstOrDefault().Execute(player);
+            player.skillSet.Where(s => s is RangedSkill).FirstOrDefault().Execute(player, player.physicsComponent.objective);
         }
     }
 }

@@ -14,6 +14,11 @@ namespace Heidur.Entities.Processors
             physicsComponent.Clock += deltaTime;
             physicsComponent.NearbyUnits = getInRangeUnits(nearbyNPC, physicsComponent);
             Move(deltaTime, map, physicsComponent);
+			if (physicsComponent.objective != null &&
+				!StatsProcessor.CheckIfAlive(physicsComponent.objective.statsComponent))
+			{
+				physicsComponent.objective = null;
+			}
         }
 
         public static void MoveTo(Vector2 goTo, PhysicsComponent physicsComponent)
@@ -47,7 +52,6 @@ namespace Heidur.Entities.Processors
                 physicsComponent.FacingDirection = FacingDirections.LEFT;
             }
 
-
             if (CheckColission(map, physicsComponent.destination))
             {
                 physicsComponent.destination = physicsComponent.position;
@@ -72,7 +76,6 @@ namespace Heidur.Entities.Processors
 
             return result;
         }
-
 
         private static void Move(float deltaTime, GameMap map, PhysicsComponent physicsComponent)
         {
@@ -119,14 +122,23 @@ namespace Heidur.Entities.Processors
 
         public static bool CheckIfClicked(Vector2 clickPosition, PhysicsComponent physicsComponent)
         {
-            if (clickPosition.X > physicsComponent.position.X && clickPosition.X < physicsComponent.position.X + 64)
+            if (clickPosition.X > physicsComponent.position.X && clickPosition.X  < physicsComponent.position.X + Constants.TILESIZE)
             {
-                if (clickPosition.Y > physicsComponent.position.Y && clickPosition.Y < physicsComponent.position.Y + 64)
+                if (clickPosition.Y > physicsComponent.position.Y && clickPosition.Y < physicsComponent.position.Y + Constants.TILESIZE)
                 {
                     physicsComponent.IsSelected = !physicsComponent.IsSelected;
                     return true;
                 }
             }
+
+			if ((clickPosition.X / Constants.TILESIZE)-1 == physicsComponent.position.X / Constants.TILESIZE)
+			{
+				if ((clickPosition.Y / Constants.TILESIZE) -1 == physicsComponent.position.Y / Constants.TILESIZE)
+				{
+					physicsComponent.IsSelected = !physicsComponent.IsSelected;
+					return true;
+				}
+			}
             return false;
         }
 

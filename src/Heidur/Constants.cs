@@ -127,6 +127,7 @@ namespace Heidur
 		{
 			public const float DEFAULT_UI_INDEX = 0.9f;
 			public const string DEFAULT_UI_FONT = "Fonts/Calibri32";
+			public const string DEFAULT_CROSSHAIR_SPRITE = "crosshair";
 			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
 			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);
 			public static Color DEFAULT_UI_COLOR = Color.Yellow;

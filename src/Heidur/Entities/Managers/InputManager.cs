@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Commands;
+using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -32,44 +33,18 @@ namespace Heidur.Entities.Managers
 
 		}
 
-        public void Update(Point mousePositionInWindow)
+        public void Update(Point mousePositionInWindow, List<GameObject> entities)
         {
-            if (mousePositionInWindow.Y < Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
-            {
-                moveUp.execute(this.player);
-            }
-            else
-            {
-                stopMoveUp.execute(this.player);
-            }
-
-            if (mousePositionInWindow.Y > Constants.RESOLUTION_HEIGHT - Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
-            {
-                moveDown.execute(this.player);
-            }
-            else
-            {
-                stopMoveDown.execute(this.player);
-            }
-
-            if (mousePositionInWindow.X < Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
-            {
-                moveLeft.execute(this.player);
-            }
-            else
-            {
-                stopMoveLeft.execute(this.player);
-            }
-
-            if (mousePositionInWindow.X > Constants.RESOLUTION_WIDTH - Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
-            {
-                moveRight.execute(this.player);
-            }
-            else
-            {
-                stopMoveRight.execute(this.player);
-            }
-        }
+			foreach(var entity in entities)
+			{
+				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() / Constants.DEFAULT_ZOOMING_MODIFIER + Camera.position, entity.physicsComponent))
+				{
+					player.physicsComponent.objective = entity;
+					return;
+				}
+			}
+			player.physicsComponent.objective = null;
+		}
 
         public void Update(KeyboardState keyBoardState)
         {

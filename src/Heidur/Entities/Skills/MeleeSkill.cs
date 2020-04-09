@@ -9,18 +9,18 @@ namespace Heidur.Entities.Skills
 {
 	public class MeleeSkill : ISkill
 	{
-		public bool Execute(GameObject unit)
+		public bool Execute(GameObject unit, GameObject objective)
 		{
-			return Attack(unit.statsComponent, unit.physicsComponent);
+			return Attack(unit, objective);
 		}
 
-		private bool Attack(StatsComponent source, PhysicsComponent physicsComponent)
+		private bool Attack(GameObject unit, GameObject objective)
 		{
-			if (source.Clock > source.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
+			if (unit.statsComponent.Clock > unit.statsComponent.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
 			{
-				var targetPosition = physicsComponent.position;
+				var targetPosition = unit.physicsComponent.position;
 
-				switch (physicsComponent.FacingDirection)
+				switch (unit.physicsComponent.FacingDirection)
 				{
 					case FacingDirections.UP:
 						targetPosition -= new Vector2(0, Constants.TILESIZE);
@@ -36,16 +36,15 @@ namespace Heidur.Entities.Skills
 						break;
 				}
 
-				var objective = physicsComponent.NearbyUnits.Where(u => StatsProcessor.CheckIfAlive(u.statsComponent) && u.physicsComponent.position.Equals(targetPosition)).FirstOrDefault();
-				if (objective != null)
+				if (objective != null && StatsProcessor.CheckIfAlive(objective.statsComponent) && PhysicsProcessor.GetDistanceFromUnit(unit.physicsComponent, objective.physicsComponent) <= 1)
 				{
 					AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
-					source.HitIntervalLastTicks = source.Clock;
-					StatsProcessor.TakeDamage(objective.statsComponent, source.Damage);
+					unit.statsComponent.HitIntervalLastTicks = unit.statsComponent.Clock;
+					StatsProcessor.TakeDamage(objective.statsComponent, unit.statsComponent.Damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
 					if (!StatsProcessor.CheckIfAlive(objective.statsComponent))
 					{
-						StatsProcessor.GainExperience(source, objective.statsComponent.ExperienceReward);
+						StatsProcessor.GainExperience(unit.statsComponent, objective.statsComponent.ExperienceReward);
 					}
 				}
 			}

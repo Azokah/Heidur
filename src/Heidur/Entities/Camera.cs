@@ -117,6 +117,11 @@ namespace Heidur.Entities
         {
             Camera.position = unit.physicsComponent.position - new Vector2((Constants.RESOLUTION_WIDTH/2)/Constants.DEFAULT_ZOOMING_MODIFIER, (Constants.RESOLUTION_HEIGHT/2) / Constants.DEFAULT_ZOOMING_MODIFIER);
         }
+
+		public static Vector2 GetRealPosition()
+		{
+			return Camera.position;
+		}
            
     }
 }
