@@ -15,6 +15,7 @@ namespace Heidur.Entities.Components
         public float Clock;
 		public int ExperienceReward { get; set; }
 		public float IntervalModifier { get; set; }
+		public int LearningPoints { get; set; }
 
 		public int Strength { get; set; }
 		public int Dexterity { get; set; }
@@ -52,6 +53,7 @@ namespace Heidur.Entities.Components
 			ItemDamage = 0;
 			ItemHp = 0;
 			ItemRange = 0;
+			LearningPoints = 0;
 
 			StatsProcessor.ApplyBonuses(this);
 			StatsProcessor.CalculateStats(this);
@@ -81,6 +83,7 @@ namespace Heidur.Entities.Components
 			ItemDamage = 0;
 			ItemHp = 0;
 			ItemRange = 0;
+			LearningPoints = 0;
 
 			StatsProcessor.ApplyBonuses(this);
 		}
@@ -106,6 +109,7 @@ namespace Heidur.Entities.Components
 			ItemDamage = 0;
 			ItemHp = 0;
 			ItemRange = 0;
+			LearningPoints = 0;
 
 			StatsProcessor.ApplyBonuses(this);
 			StatsProcessor.CalculateStats(this);

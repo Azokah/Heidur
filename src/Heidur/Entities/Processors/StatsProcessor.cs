@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Components;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace Heidur.Entities.Processors
@@ -20,21 +21,22 @@ namespace Heidur.Entities.Processors
             statsComponent.CurrentHP -= damage;
         }
 
-        public static void GainExperience(StatsComponent statsComponent, int experience)
+        public static void GainExperience(GameObject unit, int experience)
         {
-            Console.WriteLine($"You gained {experience} experience points!");
-            statsComponent.Experience += experience;
-			CheckLevel(statsComponent);
+			UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "EXP +" + experience, unit.PhysicsComponent.position, Color.YellowGreen);
+			unit.StatsComponent.Experience += experience;
+			CheckLevel(unit);
         }
 
-		public static void CheckLevel(StatsComponent statsComponent)
+		public static void CheckLevel(GameObject unit)
 		{
-			var nextLevel = GetLevelAdvancement(statsComponent.Level);
-			if (statsComponent.Experience >= nextLevel)
+			var nextLevel = GetLevelAdvancement(unit.StatsComponent.Level);
+			if (unit.StatsComponent.Experience >= nextLevel)
 			{
-				statsComponent.Level++;
-				PerformDefaultAdvancement(statsComponent);
+				unit.StatsComponent.Level++;
+				PerformDefaultAdvancement(unit.StatsComponent);
 				AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.LEVEL_UP);
+				UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "Level UP!", unit.PhysicsComponent.position, Color.YellowGreen);
 			}
 		}
 
@@ -56,15 +58,7 @@ namespace Heidur.Entities.Processors
 
 		private static void PerformDefaultAdvancement(StatsComponent statsComponent)
 		{
-			RemoveBonuses(statsComponent);
-
-			statsComponent.Strength += statsComponent.Strength + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Strength);
-			statsComponent.Constitution += statsComponent.Constitution + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Constitution);
-			statsComponent.Dexterity += statsComponent.Dexterity + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Dexterity);
-			statsComponent.Intelligence += statsComponent.Intelligence + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Intelligence);
-			statsComponent.Spirit += statsComponent.Spirit + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Spirit);
-
-			ApplyBonuses(statsComponent);
+			statsComponent.LearningPoints += Constants.Stats.DEFAULT_LEARNINGPOINTS_ADVANCEMENT;
 			CalculateStats(statsComponent);
 		}
 

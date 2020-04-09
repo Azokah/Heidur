@@ -22,8 +22,8 @@
 			Name = Constants.Item.DEFAULT_NAME;
 			Description = Constants.Item.DEFAULT_DESCRIPTION;
 			Equiped = false;
-			StrengthBonus = 25;
-			DexterityBonus = 20;
+			StrengthBonus = 2;
+			DexterityBonus = 2;
 			IntelligenceBonus = 1;
 			ConstitutionBonus = 4;
 			SpiritBonus = 0;

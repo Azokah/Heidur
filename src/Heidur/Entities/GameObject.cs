@@ -22,8 +22,7 @@ namespace Heidur.Entities
             StatsComponent = new StatsComponent();
             SpriteComponent = new SpriteComponent();
 			SkillSet = new List<ISkill>() { new MeleeSkill(), new RangedSkill() };
-			Inventory = new List<ItemComponent>() { new ItemComponent() };
-			ItemsProcessor.EquipAll(this);
+			Inventory = new List<ItemComponent>() { };
 		}
 
         public void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map)

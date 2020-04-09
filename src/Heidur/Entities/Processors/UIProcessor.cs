@@ -23,8 +23,7 @@ namespace Heidur.Entities.Processors
 		public static void Draw(SpriteBatch spriteBatch, GameObject player)
 		{
 			spriteBatch.DrawString(font, player.StatsComponent.CurrentHP.ToString() + "/" + player.StatsComponent.HP.ToString(), Constants.UI.DEFAULT_UI_POSITION, Constants.UI.DEFAULT_UI_COLOR);
-			spriteBatch.DrawString(font, "EXP: " + player.StatsComponent.Experience.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
-			spriteBatch.DrawString(font, "Level: " + player.StatsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y * 2, Constants.UI.DEFAULT_UI_COLOR);
+			spriteBatch.DrawString(font, "Level: " + player.StatsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
 			if (player.PhysicsComponent.objective != null)
 			{
 				spriteBatch.Draw(crosshair, (player.PhysicsComponent.objective.PhysicsComponent.position - Camera.position) * Constants.DEFAULT_ZOOMING_MODIFIER, Color.White);

@@ -43,6 +43,7 @@ namespace Heidur
 			public const int DEFAULT_CONSTITUTION = 1;
 			public const int DEFAULT_SPIRIT = 1;
 			public const float INTERVAL_MODIFIER_CONSTANT = 0.013f;
+			public const int DEFAULT_LEARNINGPOINTS_ADVANCEMENT = 5;
 		}
 
 		public class Leveling
