@@ -42,11 +42,11 @@ namespace Heidur.Entities.Skills
 					unit.statsComponent.HitIntervalLastTicks = unit.statsComponent.Clock;
 					StatsProcessor.TakeDamage(objective.statsComponent, unit.statsComponent.Damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
+					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + unit.statsComponent.Damage, objective.physicsComponent.position, Color.Red);
 					if (!StatsProcessor.CheckIfAlive(objective.statsComponent))
 					{
 						StatsProcessor.GainExperience(unit.statsComponent, objective.statsComponent.ExperienceReward);
 					}
-					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + unit.statsComponent.Damage, objective.physicsComponent.position, Color.Red);
 				}
 			}
 

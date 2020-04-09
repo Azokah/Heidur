@@ -32,7 +32,7 @@ namespace Heidur.Entities.Processors
 
 			foreach (var floatingText in floatingTextList)
 			{
-				spriteBatch.DrawString(font, floatingText.text, Constants.UI.DEFAULT_UI_POSITION, Constants.UI.DEFAULT_UI_COLOR);
+				spriteBatch.DrawString(font, floatingText.text, floatingText.position, floatingText.color);
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Heidur.Entities.Processors
 			{
 				finalTimestamp = internalClock.Value + msDuration,
 				text = text,
-				position = (position-Camera.position),
+				position = (position-Camera.position)*Constants.DEFAULT_ZOOMING_MODIFIER,
 				color = color
 			});
 		}
