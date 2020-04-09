@@ -26,8 +26,8 @@ namespace Heidur.Entities.Managers
         public void LoadContent(Game1 game)
         {
             gameMap.LoadContent(game);
-            SpriteProcessor.LoadContent(game, unit.spriteComponent);
-            npcs.ForEach(n => SpriteProcessor.LoadContent(game, n.spriteComponent));
+            SpriteProcessor.LoadContent(game, unit.SpriteComponent);
+            npcs.ForEach(n => SpriteProcessor.LoadContent(game, n.SpriteComponent));
         }
 
         public void Update(float delta)
@@ -45,8 +45,8 @@ namespace Heidur.Entities.Managers
         public void Draw(SpriteBatch spriteBatch)
         {
             gameMap.Draw(spriteBatch);
-            unit.Draw(spriteBatch, unit.physicsComponent.position);
-            npcs.ForEach(n => n.Draw(spriteBatch, n.physicsComponent.position));
+            unit.Draw(spriteBatch, unit.PhysicsComponent.position);
+            npcs.ForEach(n => n.Draw(spriteBatch, n.PhysicsComponent.position));
         }
 
         public void RemoveDeadGameObjects()
@@ -54,7 +54,7 @@ namespace Heidur.Entities.Managers
             var npcsToRemove = new List<GameObject>();
             foreach(var npc in npcs)
             {
-                if(!StatsProcessor.CheckIfAlive(npc.statsComponent))
+                if(!StatsProcessor.CheckIfAlive(npc.StatsComponent))
                 {
                     npcsToRemove.Add(npc);
                 }

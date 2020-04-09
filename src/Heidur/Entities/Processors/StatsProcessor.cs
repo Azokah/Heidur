@@ -56,9 +56,48 @@ namespace Heidur.Entities.Processors
 
 		private static void PerformDefaultAdvancement(StatsComponent statsComponent)
 		{
-			statsComponent.HP += Constants.Leveling.DEFAULT_HP_ADVANCEMENT;
-			statsComponent.Damage += Constants.Leveling.DEFAULT_DAMAGE_ADVANCEMENT;
-			statsComponent.CurrentHP = statsComponent.HP;
+			RemoveBonuses(statsComponent);
+
+			statsComponent.Strength += statsComponent.Strength + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Strength);
+			statsComponent.Constitution += statsComponent.Constitution + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Constitution);
+			statsComponent.Dexterity += statsComponent.Dexterity + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Dexterity);
+			statsComponent.Intelligence += statsComponent.Intelligence + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Intelligence);
+			statsComponent.Spirit += statsComponent.Spirit + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Spirit);
+
+			ApplyBonuses(statsComponent);
+			CalculateStats(statsComponent);
 		}
-    }
+
+		public static void CalculateStats(StatsComponent statsComponent)
+		{
+			statsComponent.Range = statsComponent.Dexterity + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Dexterity);
+			statsComponent.Damage = (statsComponent.Strength * 2) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Strength);
+			statsComponent.CurrentHP = statsComponent.HP = (statsComponent.Constitution * 3) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Constitution);
+			statsComponent.IntervalModifier = Constants.Stats.INTERVAL_MODIFIER_CONSTANT * statsComponent.Dexterity;
+		}
+
+		public static void ApplyBonuses(StatsComponent statsComponent)
+		{
+			statsComponent.Strength += statsComponent.ItemStrength;
+			statsComponent.Dexterity += statsComponent.ItemDexterity;
+			statsComponent.Intelligence += statsComponent.ItemIntelligence;
+			statsComponent.Constitution += statsComponent.ItemConstitution;
+			statsComponent.Spirit += statsComponent.ItemSpirit;
+			statsComponent.Damage += statsComponent.ItemDamage;
+			statsComponent.HP += statsComponent.ItemHp;
+			statsComponent.Range += statsComponent.ItemRange;
+		}
+
+		public static void RemoveBonuses(StatsComponent statsComponent)
+		{
+			statsComponent.Strength -= statsComponent.ItemStrength;
+			statsComponent.Dexterity -= statsComponent.ItemDexterity;
+			statsComponent.Intelligence -= statsComponent.ItemIntelligence;
+			statsComponent.Constitution -= statsComponent.ItemConstitution;
+			statsComponent.Spirit -= statsComponent.ItemSpirit;
+			statsComponent.Damage -= statsComponent.ItemDamage;
+			statsComponent.HP -= statsComponent.ItemHp;
+			statsComponent.Range -= statsComponent.ItemRange;
+		}
+	}
 }

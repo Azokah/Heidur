@@ -37,13 +37,13 @@ namespace Heidur.Entities.Managers
         {
 			foreach(var entity in entities)
 			{
-				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() / Constants.DEFAULT_ZOOMING_MODIFIER + Camera.position, entity.physicsComponent))
+				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() / Constants.DEFAULT_ZOOMING_MODIFIER + Camera.position, entity.PhysicsComponent))
 				{
-					player.physicsComponent.objective = entity;
+					player.PhysicsComponent.objective = entity;
 					return;
 				}
 			}
-			player.physicsComponent.objective = null;
+			player.PhysicsComponent.objective = null;
 		}
 
         public void Update(KeyboardState keyBoardState)

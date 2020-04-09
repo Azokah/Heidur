@@ -44,8 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
-    <Compile Include="Entities\Items\Item.cs" />
-    <Compile Include="Entities\Items\IItem.cs" />
+    <Compile Include="Entities\Components\ItemComponent.cs" />
     <Compile Include="Entities\Managers\Models\UIFloatingText.cs" />
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />

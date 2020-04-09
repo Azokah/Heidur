@@ -23,17 +23,27 @@ namespace Heidur
         public class Unit
         {
             public const string DEFAULT_SPRITE = "warrior_m";
-            public const int DEFAULT_RANGE = 15; // This is measured in Tiles
-            public const int DEFAULT_SPEED = 256;
-            public const int DEFAULT_DAMAGE = 1;
-            public const int DEFAULT_HP = 10;
-            public const int DEFAULT_EXPERIENCE = 0;
+            public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
+            public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
+			public const int DEFAULT_SPEED = 256;
+		}
+
+		public class Stats
+		{
+			public const int DEFAULT_RANGE = 3; // This is measured in Tiles
+			public const int DEFAULT_DAMAGE = 1;
+			public const int DEFAULT_HP = 10;
+			public const int DEFAULT_EXPERIENCE = 0;
 			public const int DEFAULT_LEVEL = 1;
 			public const int DEFAULT_REWARD = 250;
 			public const int DEFAULT_EXPERIENCE_GAIN = 100;
-            public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
-            public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
-        }
+			public const int DEFAULT_STRENGTH = 1;
+			public const int DEFAULT_DEXTERITY= 1;
+			public const int DEFAULT_INTELLIGENCE = 1;
+			public const int DEFAULT_CONSTITUTION = 1;
+			public const int DEFAULT_SPIRIT = 1;
+			public const float INTERVAL_MODIFIER_CONSTANT = 0.013f;
+		}
 
 		public class Leveling
 		{
@@ -50,7 +60,7 @@ namespace Heidur
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.3f;
             public const int DEFAULT_NPC_SIZE_MODIFIER = 1;
-            public const int DEFAULT_RANGE = 8; // This is measured in Tiles
+            public const int DEFAULT_VISION = 8; // This is measured in Tiles
         }
 
         public class Map

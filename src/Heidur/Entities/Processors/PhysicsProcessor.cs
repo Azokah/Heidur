@@ -9,15 +9,15 @@ namespace Heidur.Entities.Processors
 {
     public static class PhysicsProcessor
     {
-        public static void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map, PhysicsComponent physicsComponent)
+        public static void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map, GameObject source)
         {
-            physicsComponent.Clock += deltaTime;
-            physicsComponent.NearbyUnits = getInRangeUnits(nearbyNPC, physicsComponent);
-            Move(deltaTime, map, physicsComponent);
-			if (physicsComponent.objective != null &&
-				!StatsProcessor.CheckIfAlive(physicsComponent.objective.statsComponent))
+			source.PhysicsComponent.Clock += deltaTime;
+			source.PhysicsComponent.NearbyUnits = getInRangeUnits(nearbyNPC, source);
+            Move(deltaTime, map, source.PhysicsComponent);
+			if (source.PhysicsComponent.objective != null &&
+				!StatsProcessor.CheckIfAlive(source.PhysicsComponent.objective.StatsComponent))
 			{
-				physicsComponent.objective = null;
+				source.PhysicsComponent.objective = null;
 			}
         }
 
@@ -68,11 +68,11 @@ namespace Heidur.Entities.Processors
             return Convert.ToInt32(Math.Sqrt(Math.Pow(source.position.X - target.position.X, 2) + Math.Pow(source.position.Y - target.position.Y, 2)) / Constants.TILESIZE);
         }
 
-        private static List<GameObject> getInRangeUnits(List<GameObject> allNpc, PhysicsComponent source)
+        private static List<GameObject> getInRangeUnits(List<GameObject> allNpc, GameObject source)
         {
             var result = new List<GameObject>();
 
-            result.AddRange(allNpc.Where(n => GetDistanceFromUnit(n.physicsComponent, source) < Constants.Unit.DEFAULT_RANGE));
+            result.AddRange(allNpc.Where(n => GetDistanceFromUnit(n.PhysicsComponent, source.PhysicsComponent) < source.StatsComponent.Range));
 
             return result;
         }
