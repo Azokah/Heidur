@@ -17,10 +17,10 @@ namespace Heidur.Entities.Processors
         {
             caller.aiBehaviorComponent.Clock.Update(deltaTime);
 
-            var objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.physicsComponent, caller.physicsComponent) < caller.statsComponent.Range).FirstOrDefault();
-            if (objective != null)
+			caller.physicsComponent.objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.physicsComponent, caller.physicsComponent) < caller.statsComponent.Range).FirstOrDefault();
+            if (caller.physicsComponent.objective != null)
             {
-                AIAgressive(caller, map, objective);
+                AIAgressive(caller, map);
             }
             else
             {
@@ -28,32 +28,33 @@ namespace Heidur.Entities.Processors
             }
         }
 
-        private static void AIAgressive(NonPlayerCharacter caller, GameMap map, GameObject objective)
+        private static void AIAgressive(NonPlayerCharacter caller, GameMap map)
         {
             PhysicsProcessor.StopAllMovement(caller.physicsComponent);
+			
 
             if (caller.aiBehaviorComponent.Clock.isIntervalTicked(Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE))
             {
 
-                if (objective.physicsComponent.position.Y < caller.physicsComponent.position.Y)
+                if (caller.physicsComponent.objective.physicsComponent.position.Y < caller.physicsComponent.position.Y)
                 {
                     PhysicsProcessor.MoveUp(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.UP;
                 }
 
-                if (objective.physicsComponent.position.Y > caller.physicsComponent.position.Y)
+                if (caller.physicsComponent.objective.physicsComponent.position.Y > caller.physicsComponent.position.Y)
                 {
                     PhysicsProcessor.MoveDown(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.DOWN;
                 }
 
-                if (objective.physicsComponent.position.X > caller.physicsComponent.position.X)
+                if (caller.physicsComponent.objective.physicsComponent.position.X > caller.physicsComponent.position.X)
                 {
                     PhysicsProcessor.MoveRight(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.RIGHT;
                 }
 
-                if (objective.physicsComponent.position.X < caller.physicsComponent.position.X)
+                if (caller.physicsComponent.objective.physicsComponent.position.X < caller.physicsComponent.position.X)
                 {
                     PhysicsProcessor.MoveLeft(caller.physicsComponent);
                     caller.physicsComponent.FacingDirection = FacingDirections.LEFT;

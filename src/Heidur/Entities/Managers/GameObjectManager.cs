@@ -33,7 +33,7 @@ namespace Heidur.Entities.Managers
         public void Update(float delta)
         {
             unit.Update(delta, npcs.Cast<GameObject>().ToList(), gameMap);
-            npcs.ForEach(n => n.Update(delta, new List<GameObject>() { unit }, gameMap));
+            npcs.ForEach(n => ((NonPlayerCharacter)n).Update(delta, new List<GameObject>() { unit }, gameMap));
             var units = new List<GameObject>();
             units.AddRange(npcs);
             units.Add(unit);
