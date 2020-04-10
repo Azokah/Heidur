@@ -1,14 +1,11 @@
 ﻿using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur.Entities.Managers
 {
-    class GameObjectManager
+	public class GameObjectManager
     {
 		private const string FixedStartingMapName = Constants.Map.DEFAULT_MAP_NAME;
 

@@ -156,5 +156,16 @@ namespace Heidur
 			public const string DEFAULT_DESCRIPTION = "Description";
 			public const string DEFAULT_ITEM_TEXTURE = "star";
 		}
+
+		public class Scene
+		{
+			public enum SCENE_STATE
+			{
+				INITIALIZING,
+				LOADING,
+				RUNNING,
+				PAUSED
+			}
+		}
 	}
 }

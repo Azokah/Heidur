@@ -2,15 +2,11 @@
 using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur.Entities.Managers
 {
-    public class InputManager
+	public class InputManager
     {
         private GameObject player;
         private ICommand moveUp, moveDown, moveLeft, moveRight;
@@ -30,10 +26,23 @@ namespace Heidur.Entities.Managers
             stopMoveDown = new StopMoveDownCommand();
             attack = new AttackCommand();
 			rangedAttack = new RangedAttackCommand();
-
 		}
 
-        public void Update(Point mousePositionInWindow, List<GameObject> entities)
+		public InputManager()
+		{
+			moveUp = new MoveUpCommand();
+			moveDown = new MoveDownCommand();
+			moveRight = new MoveRightCommand();
+			moveLeft = new MoveLeftCommand();
+			stopMoveUp = new StopMoveUpCommand();
+			stopMoveLeft = new StopMoveLeftCommand();
+			stopMoveRight = new StopMoveRightCommand();
+			stopMoveDown = new StopMoveDownCommand();
+			attack = new AttackCommand();
+			rangedAttack = new RangedAttackCommand();
+		}
+
+		public void Update(Point mousePositionInWindow, List<GameObject> entities)
         {
 			foreach(var entity in entities)
 			{

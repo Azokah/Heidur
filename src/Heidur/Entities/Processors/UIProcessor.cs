@@ -31,13 +31,14 @@ namespace Heidur.Entities.Processors
 
 			foreach (var floatingText in floatingTextList)
 			{
-				spriteBatch.DrawString(font, floatingText.text, floatingText.position, floatingText.color);
+				spriteBatch.DrawString(font, floatingText.text, (floatingText.position - Camera.position) * Constants.DEFAULT_ZOOMING_MODIFIER, floatingText.color);
 			}
 		}
 
 		public static void Update(float delta)
 		{
 			internalClock.Update(delta);
+			floatingTextList.ForEach(t => t.position.Y--);
 
 			foreach (var item in floatingTextList.Where(e => e.finalTimestamp < internalClock.Value).ToList())
 			{
@@ -51,7 +52,7 @@ namespace Heidur.Entities.Processors
 			{
 				finalTimestamp = internalClock.Value + msDuration,
 				text = text,
-				position = (position-Camera.position)*Constants.DEFAULT_ZOOMING_MODIFIER,
+				position = position,
 				color = color
 			});
 		}

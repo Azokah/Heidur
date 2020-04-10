@@ -43,9 +43,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Commands\ActionCommand.cs" />
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
     <Compile Include="Entities\Components\ItemComponent.cs" />
+    <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
+    <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
+    <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />
     <Compile Include="Entities\Managers\Models\UIFloatingText.cs" />
+    <Compile Include="Entities\Managers\SceneManager.cs" />
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />

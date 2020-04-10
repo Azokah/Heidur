@@ -1,10 +1,9 @@
-﻿using Heidur.Entities;
-using Heidur.Entities.Managers;
+﻿using Heidur.Entities.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
-using Heidur.Entities.Processors;
+using Heidur.Entities.Managers.Models.Scenes;
+using System.Collections.Generic;
 
 namespace Heidur
 {
@@ -13,19 +12,19 @@ namespace Heidur
 	/// </summary>
 	public class Game1 : Game
     {
-        // Engine and Game properties
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        InputManager inputManager;
-        GameObjectManager gameObjectManager;
+		public GraphicsDeviceManager graphics;
+		public RenderTarget2D nativeRenderTarget;
+		public SpriteBatch spriteBatch;
 
-        RenderTarget2D nativeRenderTarget;
+		public SceneManager sceneManager;
 
-        public Game1()
+		public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-        }
+
+			sceneManager = new SceneManager(new MainGameScene());
+		}
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -50,11 +49,11 @@ namespace Heidur
             //Mouse.SetCursor(MouseCursor.FromTexture2D(Content.Load<Texture2D>("cursor"), 0, 0));
             this.IsMouseVisible = true;
 
-            // TODO: Add your initialization logic here
-            gameObjectManager = new GameObjectManager();
-            inputManager = new InputManager(gameObjectManager.unit);
+			// TODO: Add your initialization logic here
+			sceneManager.Initialize(this);
 
-            base.Initialize();
+
+			base.Initialize();
         }
 
         /// <summary>
@@ -66,12 +65,8 @@ namespace Heidur
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            ParticlesProcessor.LoadContent(this);
-            AudioProcessor.LoadContentAndPlay(this);
-            gameObjectManager.LoadContent(this);
-			UIProcessor.LoadContent(this);
-
+			// TODO: use this.Content to load your game content here
+			sceneManager.LoadContent(this);
 		}
 
         /// <summary>
@@ -96,11 +91,8 @@ namespace Heidur
 
             this.CheckMouseActions(delta);
 
-            // TODO: Add your update logic here
-            gameObjectManager.Update(delta);
-            Camera.Update(gameObjectManager.unit);
-            ParticlesProcessor.Update();
-			UIProcessor.Update(delta);
+			// TODO: Add your update logic here
+			sceneManager.Update(delta);
 
 
 			base.Update(gameTime);
@@ -112,45 +104,20 @@ namespace Heidur
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.SetRenderTarget(nativeRenderTarget);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
-			gameObjectManager.Draw(spriteBatch);
-			ParticlesProcessor.Draw(spriteBatch);
-			spriteBatch.End();
-
-            GraphicsDevice.SetRenderTarget(null);
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
-			UIProcessor.Draw(spriteBatch, gameObjectManager.unit);
-			spriteBatch.End();
+			// TODO: Add your drawing code here
+			sceneManager.Draw(this);
 
             base.Draw(gameTime);
         }
 
         private void CheckKeyboard(float delta)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            inputManager.Update(Keyboard.GetState());
+			sceneManager.CheckKeyboard(this, delta);
         }
 
         private void CheckMouseActions(float delta)
         {
-            // BUTTONS
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-            {
-                //BOUNDARIES
-                inputManager.Update(Mouse.GetState().Position, gameObjectManager.npcs);
-            }
-
-            if (Mouse.GetState().RightButton == ButtonState.Pressed)
-            {
-                // Do cool stuff here
-            }
+			sceneManager.CheckMouseActions(delta);
         }
     }
 }

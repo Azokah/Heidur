@@ -4,17 +4,13 @@
 
 #### Summary
 
-   *In a place full of magic and mystery, where honor is everything, what path will you take?. The evil is trying to destroy it all, and maybe you are the hero that people need. The gods will try your determination and courage in an endless amount of adventures, and you will finally arrive at what seems to be the twisted end of the world. Will you prevent it?, maybe you want to see the world burn... is up to you*
+   *In a place full of magic and mystery, where honor is everything, the evil is trying to destroy it all, and maybe you are the hero that people need. The gods will try your determination and courage, and maybe you will finally arrive at what seems to be the twisted end of the humanity. Will you be capable of prevent it?*
 
 #### What is this about...
-* Serious, big and original lore.
-    *   Because it is never a bad time for a story.
-* Lots of things to do, at your own time.
-    *   If you are bored of exploring maybe you can relax with a drink, fishing in the lake, or maybe read a book.
-* Casual and dynamic
-    *   Because we understand that you are busy
-* Singleplayer experience or multiplayer connected world
-    *   You can play all the content alone at your own pace(even faster than in a group if you manage to do it). But maybe all you want is to gather all your party and slay some foes!
+*Survival: The apocaliptic demons will not rest until what is left of the humanity is forever erased from this world.
+*RPG: Develop tactics, aquire knowledge, learn new skills, forge new weapons, and do whatever it takes in order to stop the evil.
+*Casual: The evil can be banished quicker than a cup of tea.
+*Coop: Because it is more fun to kill the bad guys with your friends.
 
 ### For more information
  * [See our one sheet sample](docs/One%20sheet%20sample.pdf)
@@ -26,3 +22,4 @@ Programming and Game Design:
 
 Music and SFX:
 * Sebastian Pascual ( Repollo -  Sebaco123321@gmail.com)
+
