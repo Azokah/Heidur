@@ -6,7 +6,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            PhysicsProcessor.MoveUp(player.physicsComponent);
+            PhysicsProcessor.MoveUp(player.PhysicsComponent);
         }
     }
 }

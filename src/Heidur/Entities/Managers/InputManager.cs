@@ -1,15 +1,12 @@
 ﻿using Heidur.Entities.Commands;
+using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur.Entities.Managers
 {
-    public class InputManager
+	public class InputManager
     {
         private GameObject player;
         private ICommand moveUp, moveDown, moveLeft, moveRight;
@@ -29,47 +26,34 @@ namespace Heidur.Entities.Managers
             stopMoveDown = new StopMoveDownCommand();
             attack = new AttackCommand();
 			rangedAttack = new RangedAttackCommand();
-
 		}
 
-        public void Update(Point mousePositionInWindow)
+		public InputManager()
+		{
+			moveUp = new MoveUpCommand();
+			moveDown = new MoveDownCommand();
+			moveRight = new MoveRightCommand();
+			moveLeft = new MoveLeftCommand();
+			stopMoveUp = new StopMoveUpCommand();
+			stopMoveLeft = new StopMoveLeftCommand();
+			stopMoveRight = new StopMoveRightCommand();
+			stopMoveDown = new StopMoveDownCommand();
+			attack = new AttackCommand();
+			rangedAttack = new RangedAttackCommand();
+		}
+
+		public void Update(Point mousePositionInWindow, List<GameObject> entities)
         {
-            if (mousePositionInWindow.Y < Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
-            {
-                moveUp.execute(this.player);
-            }
-            else
-            {
-                stopMoveUp.execute(this.player);
-            }
-
-            if (mousePositionInWindow.Y > Constants.RESOLUTION_HEIGHT - Constants.Camera.MOUSE_MOVEMENT_HEIGHT_ACTIVE_ZONE)
-            {
-                moveDown.execute(this.player);
-            }
-            else
-            {
-                stopMoveDown.execute(this.player);
-            }
-
-            if (mousePositionInWindow.X < Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
-            {
-                moveLeft.execute(this.player);
-            }
-            else
-            {
-                stopMoveLeft.execute(this.player);
-            }
-
-            if (mousePositionInWindow.X > Constants.RESOLUTION_WIDTH - Constants.Camera.MOUSE_MOVEMENT_WIDTH_ACTIVE_ZONE)
-            {
-                moveRight.execute(this.player);
-            }
-            else
-            {
-                stopMoveRight.execute(this.player);
-            }
-        }
+			foreach(var entity in entities)
+			{
+				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() / Constants.DEFAULT_ZOOMING_MODIFIER + Camera.position, entity.PhysicsComponent))
+				{
+					player.PhysicsComponent.objective = entity;
+					return;
+				}
+			}
+			player.PhysicsComponent.objective = null;
+		}
 
         public void Update(KeyboardState keyBoardState)
         {

@@ -11,6 +11,7 @@ namespace Heidur.Entities.Components
 
         public FacingDirections FacingDirection;
         public List<GameObject> NearbyUnits;
+		public GameObject objective;
 
         public float Clock;
         public bool Up, Down, Left, Right;
@@ -27,7 +28,9 @@ namespace Heidur.Entities.Components
             Up = Down = Left = Right = IsMoving = false;
             FacingDirection = FacingDirections.DOWN;
             IsSelected = false;
-        }
+			objective = null;
+
+		}
 
     }
 }

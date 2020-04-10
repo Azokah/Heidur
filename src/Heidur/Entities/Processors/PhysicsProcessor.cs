@@ -9,11 +9,16 @@ namespace Heidur.Entities.Processors
 {
     public static class PhysicsProcessor
     {
-        public static void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map, PhysicsComponent physicsComponent)
+        public static void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map, GameObject source)
         {
-            physicsComponent.Clock += deltaTime;
-            physicsComponent.NearbyUnits = getInRangeUnits(nearbyNPC, physicsComponent);
-            Move(deltaTime, map, physicsComponent);
+			source.PhysicsComponent.Clock += deltaTime;
+			source.PhysicsComponent.NearbyUnits = getInRangeUnits(nearbyNPC, source);
+            Move(deltaTime, map, source.PhysicsComponent);
+			if (source.PhysicsComponent.objective != null &&
+				!StatsProcessor.CheckIfAlive(source.PhysicsComponent.objective.StatsComponent))
+			{
+				source.PhysicsComponent.objective = null;
+			}
         }
 
         public static void MoveTo(Vector2 goTo, PhysicsComponent physicsComponent)
@@ -47,7 +52,6 @@ namespace Heidur.Entities.Processors
                 physicsComponent.FacingDirection = FacingDirections.LEFT;
             }
 
-
             if (CheckColission(map, physicsComponent.destination))
             {
                 physicsComponent.destination = physicsComponent.position;
@@ -64,15 +68,14 @@ namespace Heidur.Entities.Processors
             return Convert.ToInt32(Math.Sqrt(Math.Pow(source.position.X - target.position.X, 2) + Math.Pow(source.position.Y - target.position.Y, 2)) / Constants.TILESIZE);
         }
 
-        private static List<GameObject> getInRangeUnits(List<GameObject> allNpc, PhysicsComponent source)
+        private static List<GameObject> getInRangeUnits(List<GameObject> allNpc, GameObject source)
         {
             var result = new List<GameObject>();
 
-            result.AddRange(allNpc.Where(n => GetDistanceFromUnit(n.physicsComponent, source) < Constants.Unit.DEFAULT_RANGE));
+            result.AddRange(allNpc.Where(n => GetDistanceFromUnit(n.PhysicsComponent, source.PhysicsComponent) < source.StatsComponent.Range));
 
             return result;
         }
-
 
         private static void Move(float deltaTime, GameMap map, PhysicsComponent physicsComponent)
         {
@@ -119,14 +122,23 @@ namespace Heidur.Entities.Processors
 
         public static bool CheckIfClicked(Vector2 clickPosition, PhysicsComponent physicsComponent)
         {
-            if (clickPosition.X > physicsComponent.position.X && clickPosition.X < physicsComponent.position.X + 64)
+            if (clickPosition.X > physicsComponent.position.X && clickPosition.X  < physicsComponent.position.X + Constants.TILESIZE)
             {
-                if (clickPosition.Y > physicsComponent.position.Y && clickPosition.Y < physicsComponent.position.Y + 64)
+                if (clickPosition.Y > physicsComponent.position.Y && clickPosition.Y < physicsComponent.position.Y + Constants.TILESIZE)
                 {
                     physicsComponent.IsSelected = !physicsComponent.IsSelected;
                     return true;
                 }
             }
+
+			if ((clickPosition.X / Constants.TILESIZE)-1 == physicsComponent.position.X / Constants.TILESIZE)
+			{
+				if ((clickPosition.Y / Constants.TILESIZE) -1 == physicsComponent.position.Y / Constants.TILESIZE)
+				{
+					physicsComponent.IsSelected = !physicsComponent.IsSelected;
+					return true;
+				}
+			}
             return false;
         }
 

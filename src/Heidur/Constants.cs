@@ -23,17 +23,28 @@ namespace Heidur
         public class Unit
         {
             public const string DEFAULT_SPRITE = "warrior_m";
-            public const int DEFAULT_RANGE = 15; // This is measured in Tiles
-            public const int DEFAULT_SPEED = 256;
-            public const int DEFAULT_DAMAGE = 1;
-            public const int DEFAULT_HP = 10;
-            public const int DEFAULT_EXPERIENCE = 0;
+            public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
+            public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
+			public const int DEFAULT_SPEED = 256;
+		}
+
+		public class Stats
+		{
+			public const int DEFAULT_RANGE = 3; // This is measured in Tiles
+			public const int DEFAULT_DAMAGE = 1;
+			public const int DEFAULT_HP = 10;
+			public const int DEFAULT_EXPERIENCE = 0;
 			public const int DEFAULT_LEVEL = 1;
 			public const int DEFAULT_REWARD = 250;
 			public const int DEFAULT_EXPERIENCE_GAIN = 100;
-            public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
-            public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
-        }
+			public const int DEFAULT_STRENGTH = 1;
+			public const int DEFAULT_DEXTERITY= 1;
+			public const int DEFAULT_INTELLIGENCE = 1;
+			public const int DEFAULT_CONSTITUTION = 1;
+			public const int DEFAULT_SPIRIT = 1;
+			public const float INTERVAL_MODIFIER_CONSTANT = 0.013f;
+			public const int DEFAULT_LEARNINGPOINTS_ADVANCEMENT = 5;
+		}
 
 		public class Leveling
 		{
@@ -50,7 +61,7 @@ namespace Heidur
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE = 0.3f;
             public const int DEFAULT_NPC_SIZE_MODIFIER = 1;
-            public const int DEFAULT_RANGE = 8; // This is measured in Tiles
+            public const int DEFAULT_VISION = 8; // This is measured in Tiles
         }
 
         public class Map
@@ -127,9 +138,11 @@ namespace Heidur
 		{
 			public const float DEFAULT_UI_INDEX = 0.9f;
 			public const string DEFAULT_UI_FONT = "Fonts/Calibri32";
+			public const string DEFAULT_CROSSHAIR_SPRITE = "crosshair";
 			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
 			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);
 			public static Color DEFAULT_UI_COLOR = Color.Yellow;
+			public static float DEFAULT_FLOATING_TEXT_DURATION = 1.0f;
 		}
 
 		public class RangedSkill
@@ -142,6 +155,17 @@ namespace Heidur
 			public const string DEFAULT_NAME = "Item";
 			public const string DEFAULT_DESCRIPTION = "Description";
 			public const string DEFAULT_ITEM_TEXTURE = "star";
+		}
+
+		public class Scene
+		{
+			public enum SCENE_STATE
+			{
+				INITIALIZING,
+				LOADING,
+				RUNNING,
+				PAUSED
+			}
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Components;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace Heidur.Entities.Processors
@@ -20,21 +21,22 @@ namespace Heidur.Entities.Processors
             statsComponent.CurrentHP -= damage;
         }
 
-        public static void GainExperience(StatsComponent statsComponent, int experience)
+        public static void GainExperience(GameObject unit, int experience)
         {
-            Console.WriteLine($"You gained {experience} experience points!");
-            statsComponent.Experience += experience;
-			CheckLevel(statsComponent);
+			UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "EXP +" + experience, unit.PhysicsComponent.position, Color.YellowGreen);
+			unit.StatsComponent.Experience += experience;
+			CheckLevel(unit);
         }
 
-		public static void CheckLevel(StatsComponent statsComponent)
+		public static void CheckLevel(GameObject unit)
 		{
-			var nextLevel = GetLevelAdvancement(statsComponent.Level);
-			if (statsComponent.Experience >= nextLevel)
+			var nextLevel = GetLevelAdvancement(unit.StatsComponent.Level);
+			if (unit.StatsComponent.Experience >= nextLevel)
 			{
-				statsComponent.Level++;
-				PerformDefaultAdvancement(statsComponent);
+				unit.StatsComponent.Level++;
+				PerformDefaultAdvancement(unit.StatsComponent);
 				AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.LEVEL_UP);
+				UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "Level UP!", unit.PhysicsComponent.position, Color.YellowGreen);
 			}
 		}
 
@@ -56,9 +58,40 @@ namespace Heidur.Entities.Processors
 
 		private static void PerformDefaultAdvancement(StatsComponent statsComponent)
 		{
-			statsComponent.HP += Constants.Leveling.DEFAULT_HP_ADVANCEMENT;
-			statsComponent.Damage += Constants.Leveling.DEFAULT_DAMAGE_ADVANCEMENT;
-			statsComponent.CurrentHP = statsComponent.HP;
+			statsComponent.LearningPoints += Constants.Stats.DEFAULT_LEARNINGPOINTS_ADVANCEMENT;
+			CalculateStats(statsComponent);
 		}
-    }
+
+		public static void CalculateStats(StatsComponent statsComponent)
+		{
+			statsComponent.Range = statsComponent.Dexterity + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Dexterity);
+			statsComponent.Damage = (statsComponent.Strength * 2) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Strength);
+			statsComponent.CurrentHP = statsComponent.HP = (statsComponent.Constitution * 3) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Constitution);
+			statsComponent.IntervalModifier = Constants.Stats.INTERVAL_MODIFIER_CONSTANT * statsComponent.Dexterity;
+		}
+
+		public static void ApplyBonuses(StatsComponent statsComponent)
+		{
+			statsComponent.Strength += statsComponent.ItemStrength;
+			statsComponent.Dexterity += statsComponent.ItemDexterity;
+			statsComponent.Intelligence += statsComponent.ItemIntelligence;
+			statsComponent.Constitution += statsComponent.ItemConstitution;
+			statsComponent.Spirit += statsComponent.ItemSpirit;
+			statsComponent.Damage += statsComponent.ItemDamage;
+			statsComponent.HP += statsComponent.ItemHp;
+			statsComponent.Range += statsComponent.ItemRange;
+		}
+
+		public static void RemoveBonuses(StatsComponent statsComponent)
+		{
+			statsComponent.Strength -= statsComponent.ItemStrength;
+			statsComponent.Dexterity -= statsComponent.ItemDexterity;
+			statsComponent.Intelligence -= statsComponent.ItemIntelligence;
+			statsComponent.Constitution -= statsComponent.ItemConstitution;
+			statsComponent.Spirit -= statsComponent.ItemSpirit;
+			statsComponent.Damage -= statsComponent.ItemDamage;
+			statsComponent.HP -= statsComponent.ItemHp;
+			statsComponent.Range -= statsComponent.ItemRange;
+		}
+	}
 }

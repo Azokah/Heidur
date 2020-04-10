@@ -117,10 +117,10 @@ namespace Heidur.Entities
 
             foreach (var unit in units)
             {
-                UnitsCollisionLayer[Convert.ToInt32(unit.physicsComponent.position.Y/Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.position.X / Constants.TILESIZE)] = false;
+                UnitsCollisionLayer[Convert.ToInt32(unit.PhysicsComponent.position.Y/Constants.TILESIZE), Convert.ToInt32(unit.PhysicsComponent.position.X / Constants.TILESIZE)] = false;
 
                 // We also set the destination tile as occupied, because if a unit is moving there will be colission issues, such as two units in the same tile
-                UnitsCollisionLayer[Convert.ToInt32(unit.physicsComponent.destination.Y / Constants.TILESIZE), Convert.ToInt32(unit.physicsComponent.destination.X / Constants.TILESIZE)] = false;
+                UnitsCollisionLayer[Convert.ToInt32(unit.PhysicsComponent.destination.Y / Constants.TILESIZE), Convert.ToInt32(unit.PhysicsComponent.destination.X / Constants.TILESIZE)] = false;
             }
         }
     }

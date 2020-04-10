@@ -11,7 +11,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-            PhysicsProcessor.MoveDown(player.physicsComponent);
+            PhysicsProcessor.MoveDown(player.PhysicsComponent);
         }
     }
 }

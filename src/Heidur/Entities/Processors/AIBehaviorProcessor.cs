@@ -17,10 +17,10 @@ namespace Heidur.Entities.Processors
         {
             caller.aiBehaviorComponent.Clock.Update(deltaTime);
 
-            var objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.physicsComponent, caller.physicsComponent) < caller.statsComponent.Range).FirstOrDefault();
-            if (objective != null)
+			caller.PhysicsComponent.objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.PhysicsComponent, caller.PhysicsComponent) < caller.StatsComponent.Range).FirstOrDefault();
+            if (caller.PhysicsComponent.objective != null)
             {
-                AIAgressive(caller, map, objective);
+                AIAgressive(caller, map);
             }
             else
             {
@@ -28,44 +28,45 @@ namespace Heidur.Entities.Processors
             }
         }
 
-        private static void AIAgressive(NonPlayerCharacter caller, GameMap map, GameObject objective)
+        private static void AIAgressive(NonPlayerCharacter caller, GameMap map)
         {
-            PhysicsProcessor.StopAllMovement(caller.physicsComponent);
+            PhysicsProcessor.StopAllMovement(caller.PhysicsComponent);
+			
 
             if (caller.aiBehaviorComponent.Clock.isIntervalTicked(Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE))
             {
 
-                if (objective.physicsComponent.position.Y < caller.physicsComponent.position.Y)
+                if (caller.PhysicsComponent.objective.PhysicsComponent.position.Y < caller.PhysicsComponent.position.Y)
                 {
-                    PhysicsProcessor.MoveUp(caller.physicsComponent);
-                    caller.physicsComponent.FacingDirection = FacingDirections.UP;
+                    PhysicsProcessor.MoveUp(caller.PhysicsComponent);
+                    caller.PhysicsComponent.FacingDirection = FacingDirections.UP;
                 }
 
-                if (objective.physicsComponent.position.Y > caller.physicsComponent.position.Y)
+                if (caller.PhysicsComponent.objective.PhysicsComponent.position.Y > caller.PhysicsComponent.position.Y)
                 {
-                    PhysicsProcessor.MoveDown(caller.physicsComponent);
-                    caller.physicsComponent.FacingDirection = FacingDirections.DOWN;
+                    PhysicsProcessor.MoveDown(caller.PhysicsComponent);
+                    caller.PhysicsComponent.FacingDirection = FacingDirections.DOWN;
                 }
 
-                if (objective.physicsComponent.position.X > caller.physicsComponent.position.X)
+                if (caller.PhysicsComponent.objective.PhysicsComponent.position.X > caller.PhysicsComponent.position.X)
                 {
-                    PhysicsProcessor.MoveRight(caller.physicsComponent);
-                    caller.physicsComponent.FacingDirection = FacingDirections.RIGHT;
+                    PhysicsProcessor.MoveRight(caller.PhysicsComponent);
+                    caller.PhysicsComponent.FacingDirection = FacingDirections.RIGHT;
                 }
 
-                if (objective.physicsComponent.position.X < caller.physicsComponent.position.X)
+                if (caller.PhysicsComponent.objective.PhysicsComponent.position.X < caller.PhysicsComponent.position.X)
                 {
-                    PhysicsProcessor.MoveLeft(caller.physicsComponent);
-                    caller.physicsComponent.FacingDirection = FacingDirections.LEFT;
+                    PhysicsProcessor.MoveLeft(caller.PhysicsComponent);
+                    caller.PhysicsComponent.FacingDirection = FacingDirections.LEFT;
                 }
 
-                if (CheckColission(map, caller.physicsComponent.destination))
+                if (CheckColission(map, caller.PhysicsComponent.destination))
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position;
+                    caller.PhysicsComponent.destination = caller.PhysicsComponent.position;
                 }
             }
 
-			caller.skillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(caller);
+			caller.SkillSet.Where(s => s is MeleeSkill).FirstOrDefault().Execute(caller, caller.PhysicsComponent.objective);
         }
 
         private static void AIIdle(NonPlayerCharacter caller, GameMap map)
@@ -79,11 +80,11 @@ namespace Heidur.Entities.Processors
                     // X or Y
                     if (RandomNumbersHelper.ReturnRandomNumber(2) == 1)
                     {
-                        caller.physicsComponent.destination += new Vector2(-1 * Constants.TILESIZE, 0);
+                        caller.PhysicsComponent.destination += new Vector2(-1 * Constants.TILESIZE, 0);
                     }
                     else
                     {
-                        caller.physicsComponent.destination += new Vector2(0, -1 * Constants.TILESIZE);
+                        caller.PhysicsComponent.destination += new Vector2(0, -1 * Constants.TILESIZE);
                     }
                 }
                 else
@@ -91,17 +92,17 @@ namespace Heidur.Entities.Processors
                     // X or Y
                     if (RandomNumbersHelper.ReturnRandomNumber(2) == 1)
                     {
-                        caller.physicsComponent.destination += new Vector2(Constants.TILESIZE, 0);
+                        caller.PhysicsComponent.destination += new Vector2(Constants.TILESIZE, 0);
                     }
                     else
                     {
-                        caller.physicsComponent.destination += new Vector2(0, Constants.TILESIZE);
+                        caller.PhysicsComponent.destination += new Vector2(0, Constants.TILESIZE);
                     }
                 }
 
-                if (CheckColission(map, caller.physicsComponent.destination))
+                if (CheckColission(map, caller.PhysicsComponent.destination))
                 {
-                    caller.physicsComponent.destination = caller.physicsComponent.position;
+                    caller.PhysicsComponent.destination = caller.PhysicsComponent.position;
                 }
             }
         }

@@ -2,6 +2,6 @@
 {
 	public interface ISkill
 	{
-		bool Execute(GameObject unit);
+		bool Execute(GameObject unit, GameObject objective);
 	}
 }

@@ -9,18 +9,18 @@ namespace Heidur.Entities.Skills
 {
 	public class MeleeSkill : ISkill
 	{
-		public bool Execute(GameObject unit)
+		public bool Execute(GameObject unit, GameObject objective)
 		{
-			return Attack(unit.statsComponent, unit.physicsComponent);
+			return Attack(unit, objective);
 		}
 
-		private bool Attack(StatsComponent source, PhysicsComponent physicsComponent)
+		private bool Attack(GameObject unit, GameObject objective)
 		{
-			if (source.Clock > source.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL)
+			if (unit.StatsComponent.Clock > unit.StatsComponent.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL - unit.StatsComponent.IntervalModifier)
 			{
-				var targetPosition = physicsComponent.position;
+				var targetPosition = unit.PhysicsComponent.position;
 
-				switch (physicsComponent.FacingDirection)
+				switch (unit.PhysicsComponent.FacingDirection)
 				{
 					case FacingDirections.UP:
 						targetPosition -= new Vector2(0, Constants.TILESIZE);
@@ -36,16 +36,16 @@ namespace Heidur.Entities.Skills
 						break;
 				}
 
-				var objective = physicsComponent.NearbyUnits.Where(u => StatsProcessor.CheckIfAlive(u.statsComponent) && u.physicsComponent.position.Equals(targetPosition)).FirstOrDefault();
-				if (objective != null)
+				if (objective != null && StatsProcessor.CheckIfAlive(objective.StatsComponent) && PhysicsProcessor.GetDistanceFromUnit(unit.PhysicsComponent, objective.PhysicsComponent) <= 1)
 				{
 					AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
-					source.HitIntervalLastTicks = source.Clock;
-					StatsProcessor.TakeDamage(objective.statsComponent, source.Damage);
-					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.physicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
-					if (!StatsProcessor.CheckIfAlive(objective.statsComponent))
+					unit.StatsComponent.HitIntervalLastTicks = unit.StatsComponent.Clock;
+					StatsProcessor.TakeDamage(objective.StatsComponent, unit.StatsComponent.Damage);
+					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.PhysicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
+					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + unit.StatsComponent.Damage, objective.PhysicsComponent.position, Color.Red);
+					if (!StatsProcessor.CheckIfAlive(objective.StatsComponent))
 					{
-						StatsProcessor.GainExperience(source, objective.statsComponent.ExperienceReward);
+						StatsProcessor.GainExperience(unit, objective.StatsComponent.ExperienceReward);
 					}
 				}
 			}

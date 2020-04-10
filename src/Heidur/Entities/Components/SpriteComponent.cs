@@ -1,25 +1,24 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Components
 {
-    public class SpriteComponent
+	public class SpriteComponent
     {
-        public string textureName { get; set; }
-        public int textureModifier { get; set; }
+        public string TextureName { get; set; }
+        public int TextureModifier { get; set; }
         public Texture2D Texture { get; set; }
         public AnimationComponent AnimationComponent { get; set; }
 
         public SpriteComponent()
         {
-            textureModifier = 1;
-            textureName = string.Empty;
+            TextureModifier = 1;
+            TextureName = string.Empty;
         }
 
 		public SpriteComponent(string textureName)
 		{
-			textureModifier = 1;
-			this.textureName = textureName;
+			TextureModifier = 1;
+			this.TextureName = textureName;
 		}
 	}
 }
