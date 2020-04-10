@@ -8,8 +8,11 @@
 
 #### What is this about...
 *Survival: The apocaliptic demons will not rest until what is left of the humanity is forever erased from this world.
+
 *RPG: Develop tactics, aquire knowledge, learn new skills, forge new weapons, and do whatever it takes in order to stop the evil.
+
 *Casual: The evil can be banished quicker than a cup of tea.
+
 *Coop: Because it is more fun to kill the bad guys with your friends.
 
 ### For more information
@@ -23,3 +26,5 @@ Programming and Game Design:
 Music and SFX:
 * Sebastian Pascual ( Repollo -  Sebaco123321@gmail.com)
 
+Art and Graphics:
+* Francisco Gonzalez Bonorino ( Murdok )
