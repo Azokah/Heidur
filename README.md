@@ -27,4 +27,4 @@ Music and SFX:
 * Sebastian Pascual ( Repollo -  Sebaco123321@gmail.com)
 
 Art and Graphics:
-* Francisco Gonzalez Bonorino ( Murdok )
+* Francisco Gonzalez Bonorino ( Murdok - franciscogbonorino@hotmail.com)
