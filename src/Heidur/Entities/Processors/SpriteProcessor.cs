@@ -14,20 +14,27 @@ namespace Heidur.Entities.Processors
             AnimationProcessor.Update(spriteComponent.AnimationComponent, deltaTime);
         }
 
-        public static void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent, FacingDirections FacingDirection)
+        public static void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)
         {
             var textureSizeModified = Constants.TILESIZE * spriteComponent.TextureModifier;
             var originVectorModified = spriteComponent.TextureModifier == 1 ? Vector2.Zero : new Vector2(textureSizeModified/3, textureSizeModified/2);
 			var pot = position - Camera.position;
 
 			DrawHitBoxes(spriteBatch, position, spriteComponent);
-            spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+			if (spriteComponent.IsAnimated)
+			{
+				spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+			}
+			else
+			{
+				spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, null, Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+			}
+            
         }
 
         public static void LoadContent(Game1 game, SpriteComponent spriteComponent)
         {
             spriteComponent.Texture = game.Content.Load<Texture2D>(!string.IsNullOrWhiteSpace(spriteComponent.TextureName) ? spriteComponent.TextureName : Constants.Unit.DEFAULT_SPRITE);
-            spriteComponent.AnimationComponent = new AnimationComponent(spriteComponent,Constants.Animation.DEFAULT_FRAMES_WALKING);
         }
 
         private static void DrawHitBoxes(SpriteBatch spriteBatch, Vector2 position, SpriteComponent spriteComponent)

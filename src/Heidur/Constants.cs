@@ -155,6 +155,7 @@ namespace Heidur
 			public const string DEFAULT_NAME = "Item";
 			public const string DEFAULT_DESCRIPTION = "Description";
 			public const string DEFAULT_ITEM_TEXTURE = "star";
+			public const string DEFAULT_ITEM_SWORD_TEXTURE = "ItemSwordPortrait";
 		}
 
 		public class Scene

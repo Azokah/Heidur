@@ -46,6 +46,9 @@
     <Compile Include="Entities\Commands\ActionCommand.cs" />
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
     <Compile Include="Entities\Components\ItemComponent.cs" />
+    <Compile Include="Entities\Factories\ItemFactory.cs" />
+    <Compile Include="Entities\Factories\AnimationFactory.cs" />
+    <Compile Include="Entities\Factories\SpriteFactory.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />

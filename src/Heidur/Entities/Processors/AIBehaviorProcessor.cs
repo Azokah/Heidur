@@ -17,7 +17,7 @@ namespace Heidur.Entities.Processors
         {
             caller.aiBehaviorComponent.Clock.Update(deltaTime);
 
-			caller.PhysicsComponent.objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.PhysicsComponent, caller.PhysicsComponent) < caller.StatsComponent.Range).FirstOrDefault();
+			caller.PhysicsComponent.objective = nearbyNPC.Where(u => PhysicsProcessor.GetDistanceFromUnit(u.PhysicsComponent, caller.PhysicsComponent) < caller.StatsComponent.Vision).FirstOrDefault();
             if (caller.PhysicsComponent.objective != null)
             {
                 AIAgressive(caller, map);

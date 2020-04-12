@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Components;
+using Heidur.Entities.Factories;
 using Heidur.Entities.Processors;
 using Heidur.Entities.Skills;
 using Microsoft.Xna.Framework;
@@ -20,7 +21,7 @@ namespace Heidur.Entities
         {
             PhysicsComponent = new PhysicsComponent();
             StatsComponent = new StatsComponent();
-            SpriteComponent = new SpriteComponent();
+			SpriteComponent = SpriteFactory.GetNewAnimatedSprite(Constants.Unit.DEFAULT_SPRITE);
 			SkillSet = new List<ISkill>() { new MeleeSkill(), new RangedSkill() };
 			Inventory = new List<ItemComponent>() { };
 		}
@@ -35,7 +36,7 @@ namespace Heidur.Entities
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            SpriteProcessor.Draw(spriteBatch, position, SpriteComponent, PhysicsComponent.FacingDirection);
+            SpriteProcessor.Draw(spriteBatch, position, SpriteComponent);
         }
     }
 }

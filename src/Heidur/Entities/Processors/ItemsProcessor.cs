@@ -7,7 +7,7 @@ namespace Heidur.Entities.Processors
     {
 		public static void LoadContent(Game1 game, ItemComponent item)
 		{
-			SpriteProcessor.LoadContent(game, item.spriteComponent);
+			SpriteProcessor.LoadContent(game, item.SpriteComponent);
 		}
 
 		public static void Equip(GameObject bearer, ItemComponent item)

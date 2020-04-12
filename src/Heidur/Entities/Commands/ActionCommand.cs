@@ -5,7 +5,6 @@
         public void execute(GameObject player)
         {
             //Implement action
-
         }
     }
 }
