@@ -1,13 +1,9 @@
-﻿using Heidur.Entities.Processors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Heidur.Entities.GameObjects;
+using Heidur.Entities.Processors;
 
 namespace Heidur.Entities.Commands
 {
-    public class MoveDownCommand : ICommand
+	public class MoveDownCommand : ICommand
     {
         public void execute(GameObject player)
         {

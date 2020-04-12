@@ -1,4 +1,5 @@
-﻿using Heidur.Entities.Managers.Models;
+﻿using Heidur.Entities.GameObjects;
+using Heidur.Entities.Managers.Models;
 using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

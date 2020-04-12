@@ -1,8 +1,6 @@
-﻿using Heidur.Entities.Components;
+﻿using Heidur.Entities.GameObjects;
 using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
-using System;
-using System.Linq;
 using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Skills

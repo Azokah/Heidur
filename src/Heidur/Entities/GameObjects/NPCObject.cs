@@ -1,10 +1,10 @@
 ﻿using Heidur.Entities.Components;
 using Heidur.Entities.Factories;
+using Heidur.Entities.GameObjects;
 using Heidur.Entities.Processors;
 using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Heidur.Entities
 {

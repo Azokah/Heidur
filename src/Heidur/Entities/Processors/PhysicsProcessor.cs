@@ -1,4 +1,5 @@
 ﻿using Heidur.Entities.Components;
+using Heidur.Entities.GameObjects;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

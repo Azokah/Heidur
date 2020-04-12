@@ -1,4 +1,5 @@
-﻿using Heidur.Entities.Skills;
+﻿using Heidur.Entities.GameObjects;
+using Heidur.Entities.Skills;
 using System.Linq;
 
 namespace Heidur.Entities.Commands

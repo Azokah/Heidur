@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Heidur.Entities.GameObjects;
 
 namespace Heidur.Entities
 {
-    interface ICommand
+	interface ICommand
     {
         void execute(GameObject player);
     }

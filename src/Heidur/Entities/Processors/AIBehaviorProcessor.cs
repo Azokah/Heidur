@@ -1,17 +1,14 @@
-﻿using Heidur.Entities.Components;
+﻿using Heidur.Entities.GameObjects;
 using Heidur.Entities.Skills;
 using Heidur.Helpers;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Processors
 {
-    public static class AIBehaviorProcessor
+	public static class AIBehaviorProcessor
     {
         public static void Update(float deltaTime, List<GameObject> nearbyNPC, GameMap map, NonPlayerCharacter caller)
         {

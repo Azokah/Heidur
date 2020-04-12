@@ -1,4 +1,6 @@
-﻿namespace Heidur.Entities.Skills
+﻿using Heidur.Entities.GameObjects;
+
+namespace Heidur.Entities.Skills
 {
 	public interface ISkill
 	{

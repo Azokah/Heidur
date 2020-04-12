@@ -6,17 +6,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace Heidur.Entities
+namespace Heidur.Entities.GameObjects
 {
-	public class GameObject : IGameObject
-    {
+	public class PlayerObject : GameObject
+	{
         public PhysicsComponent PhysicsComponent { get; set; }
         public StatsComponent StatsComponent { get; set; }
         public SpriteComponent SpriteComponent { get; set; }
 		public List<ISkill> SkillSet { get; set; }
 		public List<ItemComponent> Inventory { get; set; }
 
-        public GameObject()
+        public PlayerObject()
         {
             PhysicsComponent = new PhysicsComponent();
             StatsComponent = new StatsComponent();
@@ -30,7 +30,7 @@ namespace Heidur.Entities
             PhysicsProcessor.Update(deltaTime, nearbyNPC, map, this);
             StatsProcessor.Update(deltaTime, StatsComponent);
             SpriteProcessor.Update(deltaTime, SpriteComponent);
-            AnimationProcessor.SwitchToFrameCategory(this);
+            AnimationProcessor.SwitchToFrameCategory(this as GameObject);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)

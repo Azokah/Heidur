@@ -1,4 +1,6 @@
-﻿namespace Heidur.Entities.Commands
+﻿using Heidur.Entities.GameObjects;
+
+namespace Heidur.Entities.Commands
 {
 	public class ActionCommand : ICommand
     {

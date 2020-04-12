@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Heidur.Entities.GameObjects;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using static Heidur.Constants.Physics;
 

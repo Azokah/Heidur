@@ -49,6 +49,8 @@
     <Compile Include="Entities\Factories\ItemFactory.cs" />
     <Compile Include="Entities\Factories\AnimationFactory.cs" />
     <Compile Include="Entities\Factories\SpriteFactory.cs" />
+    <Compile Include="Entities\GameObjects\GameObject.cs" />
+    <Compile Include="Entities\GameObjects\PlayerObject.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />
@@ -89,10 +91,10 @@
     <Compile Include="Entities\Processors\StatsProcessor.cs" />
     <Compile Include="Entities\Managers\GameObjectManager.cs" />
     <Compile Include="Entities\Managers\InputManager.cs" />
-    <Compile Include="Entities\NonPlayerCharacter.cs" />
-    <Compile Include="Entities\GameObject.cs" />
+    <Compile Include="Entities\GameObjects\NPCObject.cs" />
+    <Compile Include="Entities\GameObjects\ActionObject.cs" />
     <Compile Include="Entities\GameMap.cs" />
-    <Compile Include="Entities\IGameObject.cs" />
+    <Compile Include="Entities\GameObjects\IGameObject.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Helpers\RandomNumbersHelper.cs" />
     <Compile Include="Program.cs" />
