@@ -54,11 +54,15 @@
     <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />
-    <Compile Include="Entities\Managers\Models\UIFloatingText.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUIAction.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUIText.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUIObject.cs" />
+    <Compile Include="Entities\Processors\Models\UI\UIFloatingText.cs" />
     <Compile Include="Entities\Managers\SceneManager.cs" />
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
+    <Compile Include="Entities\Processors\Models\UI\UITextButton.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
     <Compile Include="Entities\Processors\ItemsProcessor.cs" />
     <Compile Include="Entities\Processors\UIProcessor.cs" />
@@ -92,7 +96,6 @@
     <Compile Include="Entities\Managers\GameObjectManager.cs" />
     <Compile Include="Entities\Managers\InputManager.cs" />
     <Compile Include="Entities\GameObjects\NPCObject.cs" />
-    <Compile Include="Entities\GameObjects\ActionObject.cs" />
     <Compile Include="Entities\GameMap.cs" />
     <Compile Include="Entities\GameObjects\IGameObject.cs" />
     <Compile Include="Game1.cs" />

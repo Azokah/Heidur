@@ -9,7 +9,7 @@ namespace Heidur
         public const int RESOLUTION_WIDTH = 1024;
         public const int RESOLUTION_HEIGHT = 768;
         public const int TILESIZE = 32;
-        public const int DEFAULT_ZOOMING_MODIFIER = 2;
+        public const int DEFAULT_ZOOMING_MODIFIER = 1;
 
         //Below here paste constants of entities
         public class Camera
@@ -150,6 +150,7 @@ namespace Heidur
 		{
 			public const float DEFAULT_UI_INDEX = 0.9f;
 			public const string DEFAULT_UI_FONT = "Fonts/Calibri32";
+			public const int DEFAULT_UI_FONT_SIZE = 32;
 			public const string DEFAULT_CROSSHAIR_SPRITE = "crosshair";
 			public static Vector2 DEFAULT_UI_POSITION = new Vector2(0, 0);
 			public static Vector2 DEFAULT_UI_POSITION_INCREMENT_Y = new Vector2(0, 32);

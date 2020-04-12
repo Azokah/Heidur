@@ -23,7 +23,7 @@ namespace Heidur
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-			sceneManager = new SceneManager(new MainGameScene());
+			sceneManager = new SceneManager(new TitleScene());
 		}
 
         /// <summary>

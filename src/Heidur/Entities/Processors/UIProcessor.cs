@@ -1,5 +1,4 @@
-﻿using Heidur.Entities.GameObjects;
-using Heidur.Entities.Managers.Models;
+﻿using Heidur.Entities.Processors.Models.UI;
 using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,6 +33,11 @@ namespace Heidur.Entities.Processors
 			{
 				spriteBatch.DrawString(font, floatingText.text, (floatingText.position - Camera.position) * Constants.DEFAULT_ZOOMING_MODIFIER, floatingText.color);
 			}
+		}
+
+		public static void DrawText(SpriteBatch spriteBatch, string text, Vector2 position, Color color)
+		{
+			spriteBatch.DrawString(font, text, position, color);
 		}
 
 		public static void Update(float delta)

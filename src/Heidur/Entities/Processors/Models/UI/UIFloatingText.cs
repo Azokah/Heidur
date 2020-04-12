@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Heidur.Entities.Managers.Models
+namespace Heidur.Entities.Processors.Models.UI
 {
 	public class UIFloatingText
 	{

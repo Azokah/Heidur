@@ -80,5 +80,13 @@ namespace Heidur.Entities.Managers
 		{
 			scene.CheckMouseActions(delta);
 		}
+
+		public void SetScene(Game1 game, IScene scene)
+		{
+			Scenes.Add(scene);
+			CurrentScene = scene;
+			Initialize(game, scene);
+			LoadContent(game, scene);
+		}
 	}
 }
