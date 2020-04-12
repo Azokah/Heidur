@@ -12,7 +12,6 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		// Engine and Game properties
 		public InputManager inputManager;
 		public GameObjectManager gameObjectManager;
-		ItemComponent sword = ItemFactory.GetNewItem();
 		public Constants.Scene.SCENE_STATE State { get; set; }
 
 		public void Initialize(Game1 game)
@@ -25,11 +24,12 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		public void LoadContent(Game1 game)
 		{
 			State = Constants.Scene.SCENE_STATE.LOADING;
-			gameObjectManager.LoadContent(game);
+
+			SpriteProcessor.LoadContent(game);
 			ParticlesProcessor.LoadContent(game);
 			AudioProcessor.LoadContentAndPlay(game);
 			UIProcessor.LoadContent(game);
-			ItemsProcessor.LoadContent(game, sword);
+			gameObjectManager.LoadContent(game);
 		}
 
 		public void Update(float delta)
@@ -50,7 +50,6 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
 			gameObjectManager.Draw(spriteBatch);
 			ParticlesProcessor.Draw(spriteBatch);
-			SpriteProcessor.Draw(spriteBatch, new Vector2(48 * Constants.TILESIZE, 49 * Constants.TILESIZE), sword.SpriteComponent);
 			spriteBatch.End();
 
 			game.GraphicsDevice.SetRenderTarget(null);

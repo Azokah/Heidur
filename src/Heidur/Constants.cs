@@ -104,7 +104,19 @@ namespace Heidur
         public class Sprites
         {
             public const float DEFAULT_UNIT_INDEX = 0.3f;
-        }
+			public const string MISSING_TEXTURE = "missingTexture";
+			public static List<string> TEXTURES_LIST = new List<string>()
+			{
+				MISSING_TEXTURE,
+				UI.DEFAULT_CROSSHAIR_SPRITE,
+				Unit.DEFAULT_SPRITE,
+				NPC.DEFAULT_SPRITE,
+				Map.DEFAULT_MAP_SPRITE,
+				Item.DEFAULT_ITEM_SWORD_TEXTURE,
+				"star",
+				"circle"
+			};
+		}
 
         public class Animation
         {

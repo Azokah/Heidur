@@ -12,7 +12,8 @@ namespace Heidur.Entities.Factories
 			{
 				TextureName = textureName,
 				IsAnimated = true,
-				TextureModifier = 1
+				TextureModifier = 1,
+				//Texture = SpriteProcessor.GetTexture(textureName)
 			};
 
 			spriteComponent.AnimationComponent = AnimationFactory.GetNewAnimationComponent(spriteComponent);

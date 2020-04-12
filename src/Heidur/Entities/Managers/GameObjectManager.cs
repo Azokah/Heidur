@@ -23,8 +23,8 @@ namespace Heidur.Entities.Managers
         public void LoadContent(Game1 game)
         {
             gameMap.LoadContent(game);
-            SpriteProcessor.LoadContent(game, unit.SpriteComponent);
-            npcs.ForEach(n => SpriteProcessor.LoadContent(game, n.SpriteComponent));
+			SpriteProcessor.GetTexture(unit.SpriteComponent);
+			npcs.ForEach(n => SpriteProcessor.GetTexture(n.SpriteComponent));
         }
 
         public void Update(float delta)
