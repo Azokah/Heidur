@@ -2,11 +2,11 @@
 
 namespace Heidur.Entities.Commands
 {
-	public class HideStatsCommand : ICommand
+	public class ShowInventoryCommand : ICommand
     {
         public void execute(GameObject player)
         {
-			UIProcessor.ShowStats(player, false);
+			UIProcessor.ShowInventory(player);
         }
     }
 }

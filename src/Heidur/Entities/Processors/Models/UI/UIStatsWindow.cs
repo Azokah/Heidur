@@ -40,57 +40,57 @@ namespace Heidur.Entities.Processors.Models.UI
 			{
 				new UITextButton()
 				{
-					TextString = "Strength: " + unit.StatsComponent.Strength,
+					TextString = "Strength: " + unit.StatsComponent.GetStrength(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Strength: " + unit.StatsComponent.Strength).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Strength: " + unit.StatsComponent.Strength).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Strength: " + unit.StatsComponent.GetStrength()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Strength: " + unit.StatsComponent.GetStrength()).Y))
 				},
 				new UITextButton()
 				{
-					TextString = "Dexterity: " + unit.StatsComponent.Dexterity,
+					TextString = "Dexterity: " + unit.StatsComponent.GetDexterity(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Dexterity: " + unit.StatsComponent.Dexterity).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Dexterity: " + unit.StatsComponent.Dexterity).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Dexterity: " + unit.StatsComponent.GetDexterity()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Dexterity: " + unit.StatsComponent.GetDexterity()).Y))
 				},
 				new UITextButton()
 				{
-					TextString = "Intelligence: " + unit.StatsComponent.Intelligence,
+					TextString = "Intelligence: " + unit.StatsComponent.GetIntelligence(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 2,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Intelligence: " + unit.StatsComponent.Intelligence).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Intelligence: " + unit.StatsComponent.Intelligence).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Intelligence: " + unit.StatsComponent.GetIntelligence()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Intelligence: " + unit.StatsComponent.GetIntelligence()).Y))
 				},
 				new UITextButton()
 				{
-					TextString = "Constitution: " + unit.StatsComponent.Constitution,
+					TextString = "Constitution: " + unit.StatsComponent.GetConstitution(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 3,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Constitution: " + unit.StatsComponent.Constitution).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Constitution: " + unit.StatsComponent.Constitution).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Constitution: " + unit.StatsComponent.GetConstitution()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Constitution: " + unit.StatsComponent.GetConstitution()).Y))
 				},
 				new UITextButton()
 				{
-					TextString = "Spirit: " + unit.StatsComponent.Spirit,
+					TextString = "Spirit: " + unit.StatsComponent.GetSpirit(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 4,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Spirit: " + unit.StatsComponent.Spirit).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Spirit: " + unit.StatsComponent.Spirit).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Spirit: " + unit.StatsComponent.GetSpirit()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Spirit: " + unit.StatsComponent.GetSpirit()).Y))
 				},
 				new UITextButton()
 				{
-					TextString = "Damage: " + unit.StatsComponent.Damage,
+					TextString = "Damage: " + unit.StatsComponent.GetMinDamage() + "/" + unit.StatsComponent.GetMaxDamage(),
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 5,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Damage: " + unit.StatsComponent.Damage).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Damage: " + unit.StatsComponent.Damage).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Damage: " + unit.StatsComponent.GetMinDamage() + "/" + unit.StatsComponent.GetMaxDamage()).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Damage: " + unit.StatsComponent.GetMinDamage() + "/" + unit.StatsComponent.GetMaxDamage()).Y))
 				},
 				new UITextButton()
 				{
@@ -109,9 +109,22 @@ namespace Heidur.Entities.Processors.Models.UI
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 7,
 						Convert.ToInt32(UIProcessor.font.MeasureString("Learning points: " + unit.StatsComponent.LearningPoints).X),
 						Convert.ToInt32(UIProcessor.font.MeasureString("Learning points: " + unit.StatsComponent.LearningPoints).Y))
+				},
+				new UITextButton()
+				{
+					TextString = "Close window",
+					Position = new Rectangle(
+						WindowRectangle.X,
+						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 8,
+						Convert.ToInt32(UIProcessor.font.MeasureString("Close window").X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Close window").Y)),
+					Action = () =>
+					{
+						Enabled = false;
+					}
 				}
 			};
-			WindowRectangle = new Rectangle(WindowRectangle.X, Components.Count * Constants.UI.DEFAULT_UI_FONT_SIZE, WindowRectangle.Width, WindowRectangle.Height);
+			WindowRectangle = new Rectangle(WindowRectangle.X, WindowRectangle.Y, WindowRectangle.Width, (Components.Count + 1) * Constants.UI.DEFAULT_UI_FONT_SIZE);
 		}
 	}
 }

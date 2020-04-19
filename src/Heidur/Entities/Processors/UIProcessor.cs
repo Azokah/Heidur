@@ -12,6 +12,7 @@ namespace Heidur.Entities.Processors
 		public static SpriteFont font = null;
 		public static Texture2D crosshair = null;
 		public static UIStatsWindow statsWindow = null;
+		public static UIInventoryWindow inventoryWindow = null;
 		public static List<UIFloatingText> floatingTextList = new List<UIFloatingText>();
 		public static Clock internalClock = new Clock();
 
@@ -42,12 +43,13 @@ namespace Heidur.Entities.Processors
 				
 			crosshair.SetData(data);
 			statsWindow = new UIStatsWindow(game);
+			inventoryWindow = new UIInventoryWindow(game);
 
 		}
 
 		public static void Draw(SpriteBatch spriteBatch, GameObject player)
 		{
-			spriteBatch.DrawString(font, player.StatsComponent.CurrentHP.ToString() + "/" + player.StatsComponent.HP.ToString(), Constants.UI.DEFAULT_UI_POSITION, Constants.UI.DEFAULT_UI_COLOR);
+			spriteBatch.DrawString(font, player.StatsComponent.CurrentHP.ToString() + "/" + player.StatsComponent.GetMaxHp().ToString(), Constants.UI.DEFAULT_UI_POSITION, Constants.UI.DEFAULT_UI_COLOR);
 			spriteBatch.DrawString(font, "Level: " + player.StatsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
 			if (player.PhysicsComponent.objective != null)
 			{
@@ -62,6 +64,11 @@ namespace Heidur.Entities.Processors
 			if (statsWindow.Enabled)
 			{
 				statsWindow.Draw(spriteBatch);
+			}
+
+			if (inventoryWindow.Enabled)
+			{
+				inventoryWindow.Draw(spriteBatch);
 			}
 		}
 
@@ -97,10 +104,22 @@ namespace Heidur.Entities.Processors
 			});
 		}
 
-		public static void ShowStats(GameObject player, bool stats)
+		public static void ShowStats(GameObject player)
 		{
-			statsWindow.SetComponents(player);
-			statsWindow.Enabled = stats;
+			if (!statsWindow.Enabled)
+			{
+				statsWindow.SetComponents(player);
+				statsWindow.Enabled = true;
+			}
+		}
+
+		public static void ShowInventory(GameObject player)
+		{
+			if(!inventoryWindow.Enabled)
+			{
+				inventoryWindow.SetComponents(player);
+				inventoryWindow.Enabled = true;
+			}
 		}
 	}
 }

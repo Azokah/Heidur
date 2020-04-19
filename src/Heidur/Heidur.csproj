@@ -43,7 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entities\Commands\HideStatsCommand.cs" />
+    <Compile Include="Entities\Commands\ShowInventoryCommand.cs" />
     <Compile Include="Entities\Commands\ShowStatsCommand.cs" />
     <Compile Include="Entities\Commands\ActionCommand.cs" />
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
@@ -64,6 +64,7 @@
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
+    <Compile Include="Entities\Processors\Models\UI\UIInventoryWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\UIStatsWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\UITextButton.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />

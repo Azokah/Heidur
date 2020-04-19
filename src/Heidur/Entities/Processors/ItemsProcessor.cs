@@ -13,8 +13,7 @@ namespace Heidur.Entities.Processors
 
 		public static void Equip(GameObject bearer, ItemComponent item)
         {
-			StatsProcessor.RemoveBonuses(bearer.StatsComponent);
-            if(bearer.Inventory.Where(i => i.Name.Equals(item.Name) && !i.Equiped).First() != null)
+			if (bearer.Inventory.Exists(i => i.Name.Equals(item.Name) && !i.Equiped))
 			{
 				bearer.StatsComponent.ItemStrength += item.StrengthBonus;
 				bearer.StatsComponent.ItemDexterity += item.DexterityBonus;
@@ -22,18 +21,15 @@ namespace Heidur.Entities.Processors
 				bearer.StatsComponent.ItemConstitution += item.ConstitutionBonus;
 				bearer.StatsComponent.ItemSpirit += item.SpiritBonus;
 				bearer.StatsComponent.ItemRange += item.RangeBonus;
-				bearer.StatsComponent.ItemDamage += item.DamageBonus;
+				bearer.StatsComponent.ItemMaxDamage += item.DamageBonus;
 				bearer.StatsComponent.ItemHp += item.HPBonus;
 				item.Equiped = true;
 			}
-			StatsProcessor.ApplyBonuses(bearer.StatsComponent);
-			StatsProcessor.CalculateStats(bearer.StatsComponent);
 		}
 
 		public static void Unequip(GameObject bearer, ItemComponent item)
 		{
-			StatsProcessor.RemoveBonuses(bearer.StatsComponent);
-			if (bearer.Inventory.Where(i => i.Name.Equals(item.Name) && i.Equiped).First() != null)
+			if (bearer.Inventory.Exists(i => i.Name.Equals(item.Name) && i.Equiped))
 			{
 				bearer.StatsComponent.ItemStrength -= item.StrengthBonus;
 				bearer.StatsComponent.ItemDexterity -= item.DexterityBonus;
@@ -41,12 +37,10 @@ namespace Heidur.Entities.Processors
 				bearer.StatsComponent.ItemConstitution -= item.ConstitutionBonus;
 				bearer.StatsComponent.ItemSpirit -= item.SpiritBonus;
 				bearer.StatsComponent.ItemRange -= item.RangeBonus;
-				bearer.StatsComponent.ItemDamage -= item.DamageBonus;
+				bearer.StatsComponent.ItemMaxDamage -= item.DamageBonus;
 				bearer.StatsComponent.ItemHp -= item.HPBonus;
 				item.Equiped = false;
 			}
-			StatsProcessor.ApplyBonuses(bearer.StatsComponent);
-			StatsProcessor.CalculateStats(bearer.StatsComponent);
 		}
 
 		public static void EquipAll(GameObject bearer)

@@ -11,7 +11,7 @@ namespace Heidur.Entities.Processors.Models.UI
 
 		public void Execute()
 		{
-			Action();
+			Action?.Invoke();
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace Heidur.Entities.Managers
 		private GameObject player;
 		private ICommand moveUp, moveDown, moveLeft, moveRight;
 		private ICommand stopMoveUp, stopMoveDown, stopMoveLeft, stopMoveRight;
-		private ICommand attack, rangedAttack, showStats, hideStats;
+		private ICommand attack, rangedAttack, showStats, showInventory;
 
 		public InputManager(GameObject player)
 		{
@@ -30,7 +30,7 @@ namespace Heidur.Entities.Managers
 			attack = new AttackCommand();
 			rangedAttack = new RangedAttackCommand();
 			showStats = new ShowStatsCommand();
-			hideStats = new HideStatsCommand();
+			showInventory = new ShowInventoryCommand();
 		}
 
 		public InputManager()
@@ -61,13 +61,16 @@ namespace Heidur.Entities.Managers
 
 		public void Update(Point mousePositionInWindow, IUIText entity)
 		{
-			if (mousePositionInWindow.X > entity.Position.X && mousePositionInWindow.X < entity.Position.X + entity.Position.Width)
+			if (entity != null)
 			{
-				if (mousePositionInWindow.Y > entity.Position.Y && mousePositionInWindow.Y < entity.Position.Y + entity.Position.Height)
+				if (mousePositionInWindow.X > entity.Position.X && mousePositionInWindow.X < entity.Position.X + entity.Position.Width)
 				{
-					if (entity is UITextButton)
+					if (mousePositionInWindow.Y > entity.Position.Y && mousePositionInWindow.Y < entity.Position.Y + entity.Position.Height)
 					{
-						((UITextButton)entity).Execute();
+						if (entity is UITextButton)
+						{
+							((UITextButton)entity).Execute();
+						}
 					}
 				}
 			}
@@ -125,9 +128,10 @@ namespace Heidur.Entities.Managers
 			{
 				showStats.execute(this.player);
 			}
-			else
+
+			if (keyBoardState.IsKeyDown(Keys.I))
 			{
-				hideStats.execute(this.player);
+				showInventory.execute(this.player);
 			}
 		}
 

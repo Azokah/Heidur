@@ -36,11 +36,12 @@ namespace Heidur.Entities.Skills
 
 				if (objective != null && StatsProcessor.CheckIfAlive(objective.StatsComponent) && PhysicsProcessor.GetDistanceFromUnit(unit.PhysicsComponent, objective.PhysicsComponent) <= 1)
 				{
+					var damage = Helpers.RandomNumbersHelper.ReturnRandomNumber(unit.StatsComponent.GetMinDamage(), unit.StatsComponent.GetMaxDamage());
 					AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
 					unit.StatsComponent.HitIntervalLastTicks = unit.StatsComponent.Clock;
-					StatsProcessor.TakeDamage(objective.StatsComponent, unit.StatsComponent.Damage);
+					StatsProcessor.TakeDamage(objective.StatsComponent, damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.PhysicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
-					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + unit.StatsComponent.Damage, objective.PhysicsComponent.position, Color.Red);
+					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + damage, objective.PhysicsComponent.position, Color.Red);
 					if (!StatsProcessor.CheckIfAlive(objective.StatsComponent))
 					{
 						StatsProcessor.GainExperience(unit, objective.StatsComponent.ExperienceReward);

@@ -7,12 +7,12 @@ namespace Heidur.Entities.Factories
 		public static ItemComponent GetNewItem()
 		{
 			return GetNewItem(Constants.Item.DEFAULT_NAME, Constants.Item.DEFAULT_DESCRIPTION, Constants.Item.DEFAULT_ITEM_SWORD_TEXTURE,
-				2, 2, 1, 4, 0, 1, 0, 5);
+				2, 2, 1, 4, 0, 1, 1, 0, 5);
 		}
 
 		public static ItemComponent GetNewItem(string name, string description, string textureName,
 			int strength, int dexterity, int intelligence, int constitution, int spirit,
-			int damage, int range, int hpbonus)
+			int damage, int minDamage, int range, int hpbonus)
 
 		{
 			return new ItemComponent() {

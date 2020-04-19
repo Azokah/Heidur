@@ -6,7 +6,7 @@ namespace Heidur.Entities.Commands
     {
         public void execute(GameObject player)
         {
-			UIProcessor.ShowStats(player, true);
+			UIProcessor.ShowStats(player);
         }
     }
 }

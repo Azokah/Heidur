@@ -74,6 +74,20 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			{
 				//BOUNDARIES
 				inputManager.Update(Mouse.GetState().Position, gameObjectManager.npcs);
+				if (UIProcessor.statsWindow.Enabled)
+				{
+					foreach (var button in UIProcessor.statsWindow.Components)
+					{
+						inputManager.Update(Mouse.GetState().Position, button);
+					}
+				}
+				if (UIProcessor.inventoryWindow.Enabled)
+				{
+					foreach (var button in UIProcessor.inventoryWindow.Components)
+					{
+						inputManager.Update(Mouse.GetState().Position, button);
+					}
+				}
 			}
 
 			if (Mouse.GetState().RightButton == ButtonState.Pressed)
