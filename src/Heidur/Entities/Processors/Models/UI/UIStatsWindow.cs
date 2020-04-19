@@ -30,7 +30,7 @@ namespace Heidur.Entities.Processors.Models.UI
 			UIProcessor.DrawWindow(spriteBatch, this);
 			foreach(var component in Components)
 			{
-				UIProcessor.DrawText(spriteBatch, component.TextString, new Vector2(component.Position.X, component.Position.Y), Color.MediumVioletRed);
+				UIProcessor.DrawText(spriteBatch, component.TextString, new Vector2(component.Position.X, component.Position.Y), Color.GreenYellow);
 			}
 		}
 
@@ -103,14 +103,15 @@ namespace Heidur.Entities.Processors.Models.UI
 				},
 				new UITextButton()
 				{
-					TextString = "HP: " + unit.StatsComponent.HP,
+					TextString = "Learning points: " + unit.StatsComponent.LearningPoints,
 					Position = new Rectangle(
 						WindowRectangle.X,
 						WindowRectangle.Y + Constants.UI.DEFAULT_UI_FONT_SIZE * 7,
-						Convert.ToInt32(UIProcessor.font.MeasureString("HP: " + unit.StatsComponent.HP).X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("HP: " + unit.StatsComponent.HP).Y))
+						Convert.ToInt32(UIProcessor.font.MeasureString("Learning points: " + unit.StatsComponent.LearningPoints).X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Learning points: " + unit.StatsComponent.LearningPoints).Y))
 				}
 			};
+			WindowRectangle = new Rectangle(WindowRectangle.X, Components.Count * Constants.UI.DEFAULT_UI_FONT_SIZE, WindowRectangle.Width, WindowRectangle.Height);
 		}
 	}
 }
