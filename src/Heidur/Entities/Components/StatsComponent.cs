@@ -35,11 +35,11 @@ namespace Heidur.Entities.Components
 		public StatsComponent()
         {
             Clock = HitIntervalLastTicks = 0;
-			Strength = Constants.Stats.DEFAULT_STRENGTH;
-			Dexterity = Constants.Stats.DEFAULT_DEXTERITY;
-			Intelligence = Constants.Stats.DEFAULT_INTELLIGENCE;
-			Constitution = Constants.Stats.DEFAULT_CONSTITUTION;
-			Spirit = Constants.Stats.DEFAULT_SPIRIT;
+			Strength = Helpers.RandomNumbersHelper.ReturnRandomNumber(3,18);
+			Dexterity = Helpers.RandomNumbersHelper.ReturnRandomNumber(3, 18);
+			Intelligence = Helpers.RandomNumbersHelper.ReturnRandomNumber(3, 18);
+			Constitution = Helpers.RandomNumbersHelper.ReturnRandomNumber(3, 18);
+			Spirit = Helpers.RandomNumbersHelper.ReturnRandomNumber(3, 18);
 			Experience = Constants.Stats.DEFAULT_EXPERIENCE;
 			ExperienceReward = Constants.Stats.DEFAULT_REWARD;
 			Level = Constants.Stats.DEFAULT_LEVEL;

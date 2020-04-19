@@ -66,8 +66,8 @@ namespace Heidur.Entities.Processors
 		public static void CalculateStats(StatsComponent statsComponent)
 		{
 			statsComponent.Range = statsComponent.Dexterity + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Dexterity);
-			statsComponent.Damage = (statsComponent.Strength * 2) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Strength);
-			statsComponent.CurrentHP = statsComponent.HP = (statsComponent.Constitution * 3) + Helpers.RandomNumbersHelper.ReturnRandomNumber(statsComponent.Constitution);
+			statsComponent.Damage = statsComponent.Strength;
+			statsComponent.CurrentHP = statsComponent.HP = statsComponent.HP + Helpers.RandomNumbersHelper.ReturnRandomNumber(1, statsComponent.Constitution);
 			statsComponent.IntervalModifier = Constants.Stats.INTERVAL_MODIFIER_CONSTANT * statsComponent.Dexterity;
 		}
 

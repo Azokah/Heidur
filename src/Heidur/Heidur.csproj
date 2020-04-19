@@ -43,6 +43,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Commands\HideStatsCommand.cs" />
+    <Compile Include="Entities\Commands\ShowStatsCommand.cs" />
     <Compile Include="Entities\Commands\ActionCommand.cs" />
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
     <Compile Include="Entities\Components\ItemComponent.cs" />
@@ -55,13 +57,14 @@
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />
     <Compile Include="Entities\Processors\Models\UI\IUIAction.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUIWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\IUIText.cs" />
-    <Compile Include="Entities\Processors\Models\UI\IUIObject.cs" />
     <Compile Include="Entities\Processors\Models\UI\UIFloatingText.cs" />
     <Compile Include="Entities\Managers\SceneManager.cs" />
     <Compile Include="Entities\Processors\Models\Particle.cs" />
     <Compile Include="Entities\Processors\AIBehaviorProcessor.cs" />
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
+    <Compile Include="Entities\Processors\Models\UI\UIStatsWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\UITextButton.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
     <Compile Include="Entities\Processors\ItemsProcessor.cs" />

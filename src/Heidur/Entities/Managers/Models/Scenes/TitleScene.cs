@@ -3,6 +3,7 @@ using Heidur.Entities.Processors.Models.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Heidur.Entities.Managers.Models.Scenes
@@ -19,12 +20,22 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			State = Constants.Scene.SCENE_STATE.INITIALIZING;
 			inputManager = new InputManager();
+		}
+
+		public void LoadContent(Game1 game)
+		{
+			State = Constants.Scene.SCENE_STATE.LOADING;
+			UIProcessor.LoadContent(game);
 			uiButtons = new List<UITextButton>()
 			{
 				new UITextButton()
 				{
 					TextString = "New Game",
-					Position = new Vector2(Constants.RESOLUTION_WIDTH/2, Constants.RESOLUTION_HEIGHT/2-Constants.UI.DEFAULT_UI_FONT_SIZE),
+					Position = new Rectangle(
+						Constants.RESOLUTION_WIDTH/2,
+						Constants.RESOLUTION_HEIGHT/2,
+						Convert.ToInt32(UIProcessor.font.MeasureString("New Game").X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("New Game").Y)),
 					Action = () =>
 					{
 						game.sceneManager.SetScene(game, new MainGameScene());
@@ -33,19 +44,17 @@ namespace Heidur.Entities.Managers.Models.Scenes
 				new UITextButton()
 				{
 					TextString = "Exit",
-					Position = new Vector2(Constants.RESOLUTION_WIDTH/2, Constants.RESOLUTION_HEIGHT/2+Constants.UI.DEFAULT_UI_FONT_SIZE),
+					Position = new Rectangle(
+						Constants.RESOLUTION_WIDTH/2,
+						Constants.RESOLUTION_HEIGHT/2+Constants.UI.DEFAULT_UI_FONT_SIZE,
+						Convert.ToInt32(UIProcessor.font.MeasureString("Exit").X),
+						Convert.ToInt32(UIProcessor.font.MeasureString("Exit").Y)),
 					Action = () =>
 					{
 						game.Exit();
 					}
 				}
 			};
-		}
-
-		public void LoadContent(Game1 game)
-		{
-			State = Constants.Scene.SCENE_STATE.LOADING;
-			UIProcessor.LoadContent(game);
 		}
 
 		public void Update(float delta)
@@ -67,7 +76,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
 			foreach(var button in uiButtons)
 			{
-				UIProcessor.DrawText(spriteBatch, button.TextString, button.Position, Color.Red);
+				UIProcessor.DrawText(spriteBatch, button.TextString, new Vector2(button.Position.X, button.Position.Y), Color.Red);
 			}
 			spriteBatch.End();
 		}
@@ -88,7 +97,10 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			if (Mouse.GetState().LeftButton == ButtonState.Pressed)
 			{
 				//BOUNDARIES
-				//inputManager.Update(Mouse.GetState().Position, gameObjectManager.npcs);
+				foreach(var button in uiButtons)
+				{
+					inputManager.Update(Mouse.GetState().Position, button);
+				}
 			}
 
 			if (Mouse.GetState().RightButton == ButtonState.Pressed)

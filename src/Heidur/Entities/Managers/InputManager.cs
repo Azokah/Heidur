@@ -14,7 +14,7 @@ namespace Heidur.Entities.Managers
 		private GameObject player;
 		private ICommand moveUp, moveDown, moveLeft, moveRight;
 		private ICommand stopMoveUp, stopMoveDown, stopMoveLeft, stopMoveRight;
-		private ICommand attack, rangedAttack;
+		private ICommand attack, rangedAttack, showStats, hideStats;
 
 		public InputManager(GameObject player)
 		{
@@ -29,6 +29,8 @@ namespace Heidur.Entities.Managers
 			stopMoveDown = new StopMoveDownCommand();
 			attack = new AttackCommand();
 			rangedAttack = new RangedAttackCommand();
+			showStats = new ShowStatsCommand();
+			hideStats = new HideStatsCommand();
 		}
 
 		public InputManager()
@@ -47,6 +49,28 @@ namespace Heidur.Entities.Managers
 				}
 			}
 			player.PhysicsComponent.objective = null;
+		}
+
+		public void Update(Point mousePositionInWindow, List<IUIText> entities)
+		{
+			foreach (var entity in entities)
+			{
+				Update(mousePositionInWindow, entity);
+			}
+		}
+
+		public void Update(Point mousePositionInWindow, IUIText entity)
+		{
+			if (mousePositionInWindow.X > entity.Position.X && mousePositionInWindow.X < entity.Position.X + entity.Position.Width)
+			{
+				if (mousePositionInWindow.Y > entity.Position.Y && mousePositionInWindow.Y < entity.Position.Y + entity.Position.Height)
+				{
+					if (entity is UITextButton)
+					{
+						((UITextButton)entity).Execute();
+					}
+				}
+			}
 		}
 
 		public void Update(KeyboardState keyBoardState)
@@ -95,6 +119,15 @@ namespace Heidur.Entities.Managers
 			else
 			{
 				stopMoveRight.execute(this.player);
+			}
+
+			if (keyBoardState.IsKeyDown(Keys.C))
+			{
+				showStats.execute(this.player);
+			}
+			else
+			{
+				hideStats.execute(this.player);
 			}
 		}
 
