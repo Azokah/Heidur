@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../Resources/Musica/BattleTheme1.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:../Resources/Musica/BattleTheme1.ogg;BattleTheme1.ogg
-
 #begin circle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -74,6 +68,18 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Calibri32.spritefont
 
+#begin FX/hit.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FX/hit.mp3
+
+#begin FX/Level_up.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FX/Level_up.mp3
+
 #begin healer_f.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -110,12 +116,6 @@
 /processorParam:TextureFormat=Color
 /build:HeidurLogo.png
 
-#begin hit.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:hit.mp3
-
 #begin ItemSwordPortrait.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -128,11 +128,17 @@
 /processorParam:TextureFormat=Color
 /build:ItemSwordPortrait.png
 
-#begin Level_up.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Level_up.mp3
+#begin Logos/AzoSoftware.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Logos/AzoSoftware.png
 
 #begin mage_f.png
 /importer:TextureImporter
@@ -169,6 +175,36 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:missingTexture.png
+
+#begin Music/BattleTheme1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/BattleTheme1.ogg
+
+#begin Music/BossTheme1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/BossTheme1.ogg
+
+#begin Music/Danger1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/Danger1.ogg
+
+#begin Music/MainTheme.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/MainTheme.ogg
+
+#begin Music/Village1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/Village1.ogg
 
 #begin NewGameButton.png
 /importer:TextureImporter

@@ -75,8 +75,8 @@ namespace Heidur
 
         public class Music
         {
-            public const string DEFAULT_MUSIC = "BattleTheme1";
-            public const float DEFAULT_VOLUMEN_AUDIO = 0.0f;
+            public const string DEFAULT_MUSIC = "Music/MainTheme";
+            public const float DEFAULT_VOLUMEN_AUDIO = 0.7f;
         }
 
         public class SoundEffects
@@ -87,7 +87,7 @@ namespace Heidur
 				LEVEL_UP
             }
 
-            public static readonly string[] FXSoundsNamesAndPaths = { "Hit", "Level_up" }; 
+            public static readonly string[] FXSoundsNamesAndPaths = { "FX/Hit", "FX/Level_up" }; 
         }
 
         public class Physics

@@ -54,6 +54,7 @@
     <Compile Include="Entities\Factories\SpriteFactory.cs" />
     <Compile Include="Entities\GameObjects\GameObject.cs" />
     <Compile Include="Entities\GameObjects\PlayerObject.cs" />
+    <Compile Include="Entities\Managers\Models\Scenes\StartingCreditsScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />

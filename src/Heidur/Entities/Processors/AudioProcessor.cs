@@ -1,16 +1,12 @@
 ﻿using Heidur.Entities.Components;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Heidur.Constants.SoundEffects;
 
 namespace Heidur.Entities.Processors
 {
-    public static class AudioProcessor
+	public static class AudioProcessor
     {
         public static void Play()
         {

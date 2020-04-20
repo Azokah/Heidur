@@ -27,7 +27,6 @@ namespace Heidur.Entities.Managers.Models.Scenes
 
 			SpriteProcessor.LoadContent(game);
 			ParticlesProcessor.LoadContent(game);
-			AudioProcessor.LoadContentAndPlay(game);
 			UIProcessor.LoadContent(game);
 			gameObjectManager.LoadContent(game);
 		}
