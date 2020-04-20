@@ -18,34 +18,6 @@ namespace Heidur.Entities.Managers
         public GameObjectManager()
         {
             unit = new GameObject();
-			unit.Inventory.Add(ItemFactory.GetNewItem("Espada de las mil verdades",
-				"Legendaria espada",
-				Constants.Item.DEFAULT_ITEM_TEXTURE,
-				5,
-				1,
-				0,
-				0,
-				0,
-				15,
-				2,
-				0,
-				0
-				));
-
-			unit.Inventory.Add(ItemFactory.GetNewItem("Anillo de vida",
-				"Legendario anillo",
-				Constants.Item.DEFAULT_ITEM_TEXTURE,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				15
-				));
-
 			npcs = new List<GameObject>() { new NonPlayerCharacter(50, 52), new NonPlayerCharacter(50,53), new NonPlayerCharacter(50,54), new NonPlayerCharacter(50,55) };
             gameMap = MapLoaderManager.LoadMap(FixedStartingMapName);
         }

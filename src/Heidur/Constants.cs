@@ -141,7 +141,8 @@ namespace Heidur
 
 			public enum ParticlesStyle
             {
-                ATTACK
+                ATTACK,
+				SPELL
             }
         }
 
@@ -159,6 +160,22 @@ namespace Heidur
 		public class RangedSkill
 		{
 			public const int DEFAULT_RANGED_RANGE = 5;
+			public const string DEFAULT_RANGED_NAME = "RangedSkill";
+		}
+
+		public class MeleeSkill
+		{
+			public const string DEFAULT_MELEE_NAME = "MeleeSkill";
+		}
+
+		public class SpellSkill
+		{
+			public const string DEFAULT_SPELL_NAME = "Magic dart";
+			public const int DEFAULT_SPELL_RANGE = 5;
+			public const int DEFAULT_SPELL_MANACOST = 1;
+			public const int DEFAULT_SPELL_SPIRITNEEDED = 1;
+			public const int DEFAULT_SPELL_MINDAMAGE = 1;
+			public const int DEFAULT_SPELL_MAXDAMAGE = 10;
 		}
 
 		public class Item

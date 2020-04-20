@@ -1,5 +1,4 @@
-﻿using Heidur.Entities.GameObjects;
-using Heidur.Entities.Processors;
+﻿using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using static Heidur.Constants.Physics;
 
@@ -7,6 +6,13 @@ namespace Heidur.Entities.Skills
 {
 	public class MeleeSkill : ISkill
 	{
+		public string Name { get; set; }
+
+		public MeleeSkill()
+		{
+			Name = Constants.MeleeSkill.DEFAULT_MELEE_NAME;
+		}
+
 		public bool Execute(GameObject unit, GameObject objective)
 		{
 			return Attack(unit, objective);

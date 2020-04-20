@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Heidur.Entities.Processors.Models.UI
 {
-	public class UITextButton : IUIText, IUIAction, IUIPosition
+	public class UIButton : IUISprite, IUIAction, IUIPosition
 	{
-		public string TextString { get; set; }
+		public Texture2D Sprite { get; set; }
 		public Rectangle Position { get; set; }
 		public Action Action { get; set; }
 

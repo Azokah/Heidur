@@ -1,9 +1,9 @@
-﻿using Heidur.Entities.GameObjects;
-
-namespace Heidur.Entities.Skills
+﻿namespace Heidur.Entities.Skills
 {
 	public interface ISkill
 	{
+		string Name { get; set; }
+		
 		bool Execute(GameObject unit, GameObject objective);
 	}
 }

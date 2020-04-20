@@ -84,6 +84,11 @@ namespace Heidur.Entities.Processors
                     position += new Vector2(Constants.TILESIZE / 2, Constants.TILESIZE / 2);
                     size = size / 2;
                     break;
+				case ParticlesStyle.SPELL:
+					color = Color.Aqua;
+					position += new Vector2(Constants.TILESIZE / 2, Constants.TILESIZE / 2);
+					size = size * (float)1.2;
+					break;
                 default:
                     color = new Color(
                         (float)RandomNumbersHelper.ReturnRandomDouble(),

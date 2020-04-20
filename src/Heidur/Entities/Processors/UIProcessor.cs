@@ -77,6 +77,11 @@ namespace Heidur.Entities.Processors
 			spriteBatch.DrawString(font, text, position, color);
 		}
 
+		public static void DrawSprite(SpriteBatch spriteBatch, UIButton sprite)
+		{
+			spriteBatch.Draw(sprite.Sprite, sprite.Position, Color.White);
+		}
+
 		public static void DrawWindow(SpriteBatch spriteBatch, IUIWindow window)
 		{
 			spriteBatch.Draw(window.WindowTexture, window.WindowRectangle, Color.White);

@@ -12,7 +12,8 @@ namespace Heidur.Entities.Managers.Models.Scenes
 	{
 		// Engine and Game properties
 		public InputManager inputManager;
-		public List<UITextButton> uiButtons;
+		public List<UIButton> uiButtons;
+		public Texture2D HeidurLogo;
 
 		public Constants.Scene.SCENE_STATE State { get; set; }
 
@@ -25,30 +26,33 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		public void LoadContent(Game1 game)
 		{
 			State = Constants.Scene.SCENE_STATE.LOADING;
+			HeidurLogo = game.Content.Load<Texture2D>("HeidurLogo");
 			UIProcessor.LoadContent(game);
-			uiButtons = new List<UITextButton>()
+			var startSprite = game.Content.Load<Texture2D>("NewGameButton");
+			var exitSprite = game.Content.Load<Texture2D>("ExitButton");
+			uiButtons = new List<UIButton>()
 			{
-				new UITextButton()
+				new UIButton()
 				{
-					TextString = "New Game",
+					Sprite = startSprite,
 					Position = new Rectangle(
-						Constants.RESOLUTION_WIDTH/2,
+						Constants.RESOLUTION_WIDTH/2 - startSprite.Width/2,
 						Constants.RESOLUTION_HEIGHT/2,
-						Convert.ToInt32(UIProcessor.font.MeasureString("New Game").X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("New Game").Y)),
+						startSprite.Width,
+						startSprite.Height),
 					Action = () =>
 					{
 						game.sceneManager.SetScene(game, new MainGameScene());
 					}
 				},
-				new UITextButton()
+				new UIButton()
 				{
-					TextString = "Exit",
+					Sprite = exitSprite,
 					Position = new Rectangle(
-						Constants.RESOLUTION_WIDTH/2,
-						Constants.RESOLUTION_HEIGHT/2+Constants.UI.DEFAULT_UI_FONT_SIZE,
-						Convert.ToInt32(UIProcessor.font.MeasureString("Exit").X),
-						Convert.ToInt32(UIProcessor.font.MeasureString("Exit").Y)),
+						Constants.RESOLUTION_WIDTH/2 - exitSprite.Width/2,
+						Constants.RESOLUTION_HEIGHT/2+startSprite.Height,
+						exitSprite.Width,
+						exitSprite.Height),
 					Action = () =>
 					{
 						game.Exit();
@@ -67,17 +71,19 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			var spriteBatch = game.spriteBatch;
 
 			game.GraphicsDevice.SetRenderTarget(game.nativeRenderTarget);
-			game.GraphicsDevice.Clear(Color.Black);
+			game.GraphicsDevice.Clear(Color.DarkSlateGray);
 			spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
 			spriteBatch.End();
 
 			game.GraphicsDevice.SetRenderTarget(null);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+			
 			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
 			foreach(var button in uiButtons)
 			{
-				UIProcessor.DrawText(spriteBatch, button.TextString, new Vector2(button.Position.X, button.Position.Y), Color.Red);
+				UIProcessor.DrawSprite(spriteBatch, button);
 			}
+			spriteBatch.Draw(HeidurLogo, new Rectangle((((Constants.RESOLUTION_WIDTH / HeidurLogo.Width)/2)* HeidurLogo.Width) - HeidurLogo.Width/2, 0, HeidurLogo.Width, HeidurLogo.Height), Color.White);
 			spriteBatch.End();
 		}
 

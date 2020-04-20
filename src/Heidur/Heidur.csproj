@@ -43,6 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Commands\SpellAttackCommand.cs" />
     <Compile Include="Entities\Commands\ShowInventoryCommand.cs" />
     <Compile Include="Entities\Commands\ShowStatsCommand.cs" />
     <Compile Include="Entities\Commands\ActionCommand.cs" />
@@ -56,7 +57,10 @@
     <Compile Include="Entities\Managers\Models\Scenes\TitleScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\MainGameScene.cs" />
     <Compile Include="Entities\Managers\Models\Scenes\IScene.cs" />
+    <Compile Include="Entities\Processors\LogProcessor.cs" />
     <Compile Include="Entities\Processors\Models\UI\IUIAction.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUIPosition.cs" />
+    <Compile Include="Entities\Processors\Models\UI\IUISprite.cs" />
     <Compile Include="Entities\Processors\Models\UI\IUIWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\IUIText.cs" />
     <Compile Include="Entities\Processors\Models\UI\UIFloatingText.cs" />
@@ -66,11 +70,13 @@
     <Compile Include="Entities\Processors\AudioProcessor.cs" />
     <Compile Include="Entities\Processors\Models\UI\UIInventoryWindow.cs" />
     <Compile Include="Entities\Processors\Models\UI\UIStatsWindow.cs" />
+    <Compile Include="Entities\Processors\Models\UI\UIButton.cs" />
     <Compile Include="Entities\Processors\Models\UI\UITextButton.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
     <Compile Include="Entities\Processors\ItemsProcessor.cs" />
     <Compile Include="Entities\Processors\UIProcessor.cs" />
     <Compile Include="Entities\Skills\ISkill.cs" />
+    <Compile Include="Entities\Skills\SpellSkill.cs" />
     <Compile Include="Entities\Skills\RangedSkill.cs" />
     <Compile Include="Entities\Skills\MeleeSkill.cs" />
     <Compile Include="Helpers\Clock.cs" />

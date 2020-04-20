@@ -22,7 +22,7 @@ namespace Heidur.Entities
 			PhysicsComponent = new PhysicsComponent();
 			StatsComponent = new StatsComponent();
 			SpriteComponent = SpriteFactory.GetNewAnimatedSprite(Constants.Unit.DEFAULT_SPRITE);
-			SkillSet = new List<ISkill>() { new MeleeSkill(), new RangedSkill() };
+			SkillSet = new List<ISkill>() { new MeleeSkill(), new SpellSkill() };
 			Inventory = new List<ItemComponent>() { };
 		}
 

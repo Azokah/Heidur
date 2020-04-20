@@ -1,19 +1,28 @@
 ﻿using Heidur.Entities.Components;
+using Heidur.Entities.GameObjects;
 using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Skills
 {
-	public class RangedSkill : ISkill
+	public class SpellSkill : ISkill
 	{
 		private int Range { get; set; }
+		private int ManaCost { get; set; }
+		private int MinSpirit { get; set; }
+		private int MinDamage { get; set; }
+		private int MaxDamage { get; set; }
 		public string Name { get; set; }
 
-		public RangedSkill()
+		public SpellSkill()
 		{
-			Range = Constants.RangedSkill.DEFAULT_RANGED_RANGE;
-			Name = Constants.RangedSkill.DEFAULT_RANGED_NAME;
+			Name = Constants.SpellSkill.DEFAULT_SPELL_NAME;
+			Range = Constants.SpellSkill.DEFAULT_SPELL_RANGE;
+			ManaCost = Constants.SpellSkill.DEFAULT_SPELL_MANACOST;
+			MinSpirit = Constants.SpellSkill.DEFAULT_SPELL_SPIRITNEEDED;
+			MinDamage = Constants.SpellSkill.DEFAULT_SPELL_MINDAMAGE;
+			MaxDamage = Constants.SpellSkill.DEFAULT_SPELL_MAXDAMAGE;
 		}
 
 		public bool Execute(GameObject unit, GameObject objective)
@@ -23,17 +32,26 @@ namespace Heidur.Entities.Skills
 
 		private bool Attack(GameObject unit, GameObject objective)
 		{
-			if (unit.StatsComponent.Clock > unit.StatsComponent.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL - unit.StatsComponent.IntervalModifier)
+			if (unit.StatsComponent.GetSpirit() < MinSpirit)
+			{
+				UIProcessor.SetFloatingText(
+					Constants.UI.DEFAULT_FLOATING_TEXT_DURATION,
+					"Not enough spirit.",
+					unit.PhysicsComponent.position,
+					Color.AliceBlue);
+			}
+			else if (unit.StatsComponent.Clock > unit.StatsComponent.HitIntervalLastTicks + Constants.Unit.DEFAULT_UNIT_HIT_INTERVAL - unit.StatsComponent.IntervalModifier)
 			{
 				if (objective != null &&
 					StatsProcessor.CheckIfAlive(objective.StatsComponent) &&
 					PhysicsProcessor.GetDistanceFromUnit(objective.PhysicsComponent, unit.PhysicsComponent) < Range)
 				{
-					var damage = Helpers.RandomNumbersHelper.ReturnRandomNumber(unit.StatsComponent.GetMinDamage(), unit.StatsComponent.GetMaxDamage());
+					var damage = Helpers.RandomNumbersHelper.ReturnRandomNumber(this.MinDamage, this.MaxDamage);
 					AudioProcessor.PlaySoundEffect(Constants.SoundEffects.FXSounds.HIT);
 					unit.StatsComponent.HitIntervalLastTicks = unit.StatsComponent.Clock;
 					StatsProcessor.TakeDamage(objective.StatsComponent, damage);
 					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT, objective.PhysicsComponent.position, Constants.Particles.ParticlesStyle.ATTACK);
+					ParticlesProcessor.NewParticleStreamAt(Constants.Particles.DEFAULT_ATTACK_PARTICLES_AMMOUNT*2, objective.PhysicsComponent.position, Constants.Particles.ParticlesStyle.SPELL);
 					UIProcessor.SetFloatingText(Constants.UI.DEFAULT_FLOATING_TEXT_DURATION, "-" + damage, objective.PhysicsComponent.position, Color.Red);
 					if (!StatsProcessor.CheckIfAlive(objective.StatsComponent))
 					{

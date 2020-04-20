@@ -28,7 +28,7 @@ namespace Heidur.Entities.Managers
 			stopMoveRight = new StopMoveRightCommand();
 			stopMoveDown = new StopMoveDownCommand();
 			attack = new AttackCommand();
-			rangedAttack = new RangedAttackCommand();
+			rangedAttack = new SpellAttackCommand();
 			showStats = new ShowStatsCommand();
 			showInventory = new ShowInventoryCommand();
 		}
@@ -51,7 +51,7 @@ namespace Heidur.Entities.Managers
 			player.PhysicsComponent.objective = null;
 		}
 
-		public void Update(Point mousePositionInWindow, List<IUIText> entities)
+		public void Update(Point mousePositionInWindow, List<IUIPosition> entities)
 		{
 			foreach (var entity in entities)
 			{
@@ -59,7 +59,7 @@ namespace Heidur.Entities.Managers
 			}
 		}
 
-		public void Update(Point mousePositionInWindow, IUIText entity)
+		public void Update(Point mousePositionInWindow, IUIPosition entity)
 		{
 			if (entity != null)
 			{
@@ -67,9 +67,9 @@ namespace Heidur.Entities.Managers
 				{
 					if (mousePositionInWindow.Y > entity.Position.Y && mousePositionInWindow.Y < entity.Position.Y + entity.Position.Height)
 					{
-						if (entity is UITextButton)
+						if (entity is IUIAction)
 						{
-							((UITextButton)entity).Execute();
+							((IUIAction)entity).Execute();
 						}
 					}
 				}
