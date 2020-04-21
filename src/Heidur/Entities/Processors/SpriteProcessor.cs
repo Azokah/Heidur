@@ -20,7 +20,6 @@ namespace Heidur.Entities.Processors
 		{
 			var textureSizeModified = Constants.TILESIZE * spriteComponent.TextureModifier;
 			var originVectorModified = spriteComponent.TextureModifier == 1 ? Vector2.Zero : new Vector2(textureSizeModified / 3, textureSizeModified / 2);
-			var pot = position - Camera.position;
 
 			DrawHitBoxes(spriteBatch, position, spriteComponent);
 			if (spriteComponent.IsAnimated)

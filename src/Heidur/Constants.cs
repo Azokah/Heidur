@@ -8,8 +8,7 @@ namespace Heidur
         // Configuration
         public const int RESOLUTION_WIDTH = 1024;
         public const int RESOLUTION_HEIGHT = 768;
-        public const int TILESIZE = 32;
-        public const int DEFAULT_ZOOMING_MODIFIER = 1;
+        public const int TILESIZE = 64;
 
         //Below here paste constants of entities
         public class Camera
@@ -22,7 +21,7 @@ namespace Heidur
 
         public class Unit
         {
-            public const string DEFAULT_SPRITE = "warrior_m";
+            public const string DEFAULT_SPRITE = "Sprites/character";
             public const float DEFAULT_UNIT_HIT_INTERVAL = 1.5f;
             public const float DEFAULT_UNIT_Z_INDEX = 0.3f;
 			public const int DEFAULT_SPEED = 256;
@@ -55,7 +54,7 @@ namespace Heidur
 
         public class NPC
         {
-            public const string DEFAULT_SPRITE = "ninja_m";
+            public const string DEFAULT_SPRITE = "Sprites/character";
             public const int DEFAULT_SPEED = 128;
             public const float DEFAULT_UNIT_HIT_INTERVAL = 2f;
             public const float DEFAULT_UNIT_MOVE_INTERVAL_IDLE = 4f;
@@ -66,10 +65,10 @@ namespace Heidur
 
         public class Map
         {
-            public const string DEFAULT_MAP_SPRITE = "MapTileset";
+            public const string DEFAULT_MAP_SPRITE = "Sprites/GameMapSprites";
             public const int DEFAULT_MAP_WIDTH = 100;
             public const int DEFAULT_MAP_HEIGHT = 100;
-            public const int TILES_PER_ROW = 16;
+            public const int TILES_PER_ROW = 2000;
 			public const string DEFAULT_MAP_NAME = "Town.json";
         }
 
@@ -104,16 +103,15 @@ namespace Heidur
         public class Sprites
         {
             public const float DEFAULT_UNIT_INDEX = 0.3f;
-			public const string MISSING_TEXTURE = "missingTexture";
+			public const string MISSING_TEXTURE = "Sprites/missingTexture";
 			public static List<string> TEXTURES_LIST = new List<string>()
 			{
 				MISSING_TEXTURE,
 				Unit.DEFAULT_SPRITE,
-				NPC.DEFAULT_SPRITE,
 				Map.DEFAULT_MAP_SPRITE,
 				Item.DEFAULT_ITEM_SWORD_TEXTURE,
-				"star",
-				"circle"
+				"Sprites/star",
+				"Sprites/circle"
 			};
 		}
 
@@ -136,7 +134,7 @@ namespace Heidur
             public const int DEFAULT_ATTACK_PARTICLES_AMMOUNT = 30;
             public const float DEFAULT_LAYER_DEPTH = 0.9f;
 
-			public static List<string> DEFAULT_PARTICLES_SPRITES = new List<string>(){ "star", "circle" };
+			public static List<string> DEFAULT_PARTICLES_SPRITES = new List<string>(){ "Sprites/star", "Sprites/circle" };
 
 
 			public enum ParticlesStyle
@@ -183,7 +181,7 @@ namespace Heidur
 			public const string DEFAULT_NAME = "Item";
 			public const string DEFAULT_DESCRIPTION = "Description";
 			public const string DEFAULT_ITEM_TEXTURE = "star";
-			public const string DEFAULT_ITEM_SWORD_TEXTURE = "ItemSwordPortrait";
+			public const string DEFAULT_ITEM_SWORD_TEXTURE = "Sprites/ItemSwordPortrait";
 		}
 
 		public class Scene

@@ -58,7 +58,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			game.GraphicsDevice.SetRenderTarget(null);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 			
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
+			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			spriteBatch.Draw(AzoSoftwareLogo, new Rectangle((((Constants.RESOLUTION_WIDTH / AzoSoftwareLogo.Width)/2)* AzoSoftwareLogo.Width) - AzoSoftwareLogo.Width/2, Constants.RESOLUTION_HEIGHT/2 - AzoSoftwareLogo.Height/2, AzoSoftwareLogo.Width, AzoSoftwareLogo.Height), Color.White);
 			spriteBatch.End();
 		}

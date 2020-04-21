@@ -16,7 +16,7 @@ namespace Heidur.Entities.Processors.Models.UI
 		{
 			Enabled = false;
 			WindowRectangle = new Rectangle(Constants.RESOLUTION_WIDTH / 3, 0, Constants.RESOLUTION_WIDTH / 3, Constants.RESOLUTION_HEIGHT / 3);
-			Color[] data = new Color[WindowRectangle.Width * WindowRectangle.Height * Constants.DEFAULT_ZOOMING_MODIFIER];
+			Color[] data = new Color[WindowRectangle.Width * WindowRectangle.Height];
 			WindowTexture = new Texture2D(game.GraphicsDevice, WindowRectangle.Width, WindowRectangle.Height);
 			for (int i = 0; i < data.Length; ++i)
 			{

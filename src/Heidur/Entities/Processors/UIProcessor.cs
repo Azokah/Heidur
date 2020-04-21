@@ -19,23 +19,23 @@ namespace Heidur.Entities.Processors
 		public static void LoadContent(Game game)
 		{
 			font = game.Content.Load<SpriteFont>(Constants.UI.DEFAULT_UI_FONT);
-			Color[] data = new Color[(Constants.TILESIZE * Constants.TILESIZE) * Constants.DEFAULT_ZOOMING_MODIFIER];
+			Color[] data = new Color[(Constants.TILESIZE * Constants.TILESIZE)];
 			crosshair = new Texture2D(game.GraphicsDevice, Constants.TILESIZE, Constants.TILESIZE);
 			for (int i = 0; i < data.Length; ++i)
 			{
-				if (i <= Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER * 2)
+				if (i <= Constants.TILESIZE * 2)
 				{
 					data[i] = Color.Red;
 				}
-				else if (i >= (Constants.TILESIZE * Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER) - Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER * 2)
+				else if (i >= (Constants.TILESIZE * Constants.TILESIZE ) - Constants.TILESIZE * 2)
 				{
 					data[i] = Color.Red;
 				}
-				else if (i%Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER <= 2 )
+				else if (i%Constants.TILESIZE <= 2 )
 				{
 					data[i] = Color.Red;
 				}
-				else if (i % Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER >= Constants.TILESIZE * Constants.DEFAULT_ZOOMING_MODIFIER - 2)
+				else if (i % Constants.TILESIZE >= Constants.TILESIZE - 2)
 				{
 					data[i] = Color.Red;
 				}
@@ -53,12 +53,12 @@ namespace Heidur.Entities.Processors
 			spriteBatch.DrawString(font, "Level: " + player.StatsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
 			if (player.PhysicsComponent.objective != null)
 			{
-				spriteBatch.Draw(crosshair, (player.PhysicsComponent.objective.PhysicsComponent.position - Camera.position) * Constants.DEFAULT_ZOOMING_MODIFIER, Color.White);
+				spriteBatch.Draw(crosshair, (player.PhysicsComponent.objective.PhysicsComponent.position - Camera.position), Color.White);
 			}
 
 			foreach (var floatingText in floatingTextList)
 			{
-				spriteBatch.DrawString(font, floatingText.text, (floatingText.position - Camera.position) * Constants.DEFAULT_ZOOMING_MODIFIER, floatingText.color);
+				spriteBatch.DrawString(font, floatingText.text, (floatingText.position - Camera.position), floatingText.color);
 			}
 
 			if (statsWindow.Enabled)

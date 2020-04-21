@@ -26,10 +26,10 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		public void LoadContent(Game1 game)
 		{
 			State = Constants.Scene.SCENE_STATE.LOADING;
-			HeidurLogo = game.Content.Load<Texture2D>("HeidurLogo");
+			HeidurLogo = game.Content.Load<Texture2D>("Sprites/HeidurLogo");
 			UIProcessor.LoadContent(game);
-			var startSprite = game.Content.Load<Texture2D>("NewGameButton");
-			var exitSprite = game.Content.Load<Texture2D>("ExitButton");
+			var startSprite = game.Content.Load<Texture2D>("Sprites/NewGameButton");
+			var exitSprite = game.Content.Load<Texture2D>("Sprites/ExitButton");
 			uiButtons = new List<UIButton>()
 			{
 				new UIButton()
@@ -78,7 +78,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			game.GraphicsDevice.SetRenderTarget(null);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 			
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
+			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			foreach(var button in uiButtons)
 			{
 				UIProcessor.DrawSprite(spriteBatch, button);

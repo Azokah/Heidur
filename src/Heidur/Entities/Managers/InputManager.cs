@@ -42,7 +42,7 @@ namespace Heidur.Entities.Managers
 		{
 			foreach (var entity in entities)
 			{
-				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() / Constants.DEFAULT_ZOOMING_MODIFIER + Camera.position, entity.PhysicsComponent))
+				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() + Camera.position, entity.PhysicsComponent))
 				{
 					player.PhysicsComponent.objective = entity;
 					return;

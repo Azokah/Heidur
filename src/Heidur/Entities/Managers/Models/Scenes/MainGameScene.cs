@@ -53,7 +53,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 
 			game.GraphicsDevice.SetRenderTarget(null);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_WIDTH, Constants.DEFAULT_ZOOMING_MODIFIER * Constants.RESOLUTION_HEIGHT), Color.White);
+			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			UIProcessor.Draw(spriteBatch, gameObjectManager.unit);
 			spriteBatch.End();
 		}

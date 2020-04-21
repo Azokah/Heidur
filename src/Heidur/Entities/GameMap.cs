@@ -1,15 +1,11 @@
-﻿using Heidur.Entities.GameObjects;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heidur.Entities
 {
-    public class GameMap
+	public class GameMap
     {
         public const int Width = Constants.Map.DEFAULT_MAP_WIDTH;
         public const int Height = Constants.Map.DEFAULT_MAP_HEIGHT;
@@ -62,15 +58,20 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
-
+					if (WallsLayer[j, i] != 0)
+					{
+						spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
+					}
                     tileToDrawPositionInAtlas = new Rectangle(0 + ObjectsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
                     tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
                     tileToDrawPositionInAtlas.X -= (tileToDrawPositionInAtlas.Y * Constants.Map.TILES_PER_ROW);
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, ObjectsZIndex);
+					if(ObjectsLayer[j, i] != 0)
+					{
+						spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, ObjectsZIndex);
+					}
                 }
             }
         }
