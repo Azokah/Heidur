@@ -75,7 +75,6 @@ namespace Heidur.Entities.Managers
 
                 GameMap mapToReturn = new GameMap();
                 mapToReturn.FloorLayer = floorLayer;
-                mapToReturn.ObjectsLayer = objectsLayer;
                 mapToReturn.WallsLayer = wallsLayer;
                 mapToReturn.ObjectsCollisionLayer = collisionLayer;
 

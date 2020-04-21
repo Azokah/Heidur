@@ -1,11 +1,10 @@
-﻿using Heidur.Entities.GameObjects;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using static Heidur.Constants.Physics;
 
 namespace Heidur.Entities.Components
 {
-    public class PhysicsComponent
+	public class PhysicsComponent
     {
         public Vector2 position { get; set; }
         public Vector2 destination { get; set; }

@@ -25,6 +25,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			State = Constants.Scene.SCENE_STATE.LOADING;
 
+			TemplatesProcessor.LoadTemplates();
 			SpriteProcessor.LoadContent(game);
 			ParticlesProcessor.LoadContent(game);
 			UIProcessor.LoadContent(game);

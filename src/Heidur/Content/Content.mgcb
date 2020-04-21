@@ -209,3 +209,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/star.png
 
+#begin Templates/DungeonEntrance.json
+/copy:Templates/DungeonEntrance.json
+

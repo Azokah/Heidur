@@ -1,6 +1,4 @@
-﻿using Heidur.Entities.Factories;
-using Heidur.Entities.GameObjects;
-using Heidur.Entities.Processors;
+﻿using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +16,7 @@ namespace Heidur.Entities.Managers
         public GameObjectManager()
         {
             unit = new GameObject();
-			npcs = new List<GameObject>() { new NonPlayerCharacter(50, 52), new NonPlayerCharacter(50,53), new NonPlayerCharacter(50,54), new NonPlayerCharacter(50,55) };
+			npcs = new List<GameObject>() { new NonPlayerCharacter(50,53) };
             gameMap = MapLoaderManager.LoadMap(FixedStartingMapName);
         }
 

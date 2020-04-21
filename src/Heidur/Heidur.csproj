@@ -75,6 +75,7 @@
     <Compile Include="Entities\Processors\Models\UI\UITextButton.cs" />
     <Compile Include="Entities\Processors\ParticlesProcessor.cs" />
     <Compile Include="Entities\Processors\ItemsProcessor.cs" />
+    <Compile Include="Entities\Processors\TemplatesProcessor.cs" />
     <Compile Include="Entities\Processors\UIProcessor.cs" />
     <Compile Include="Entities\Skills\ISkill.cs" />
     <Compile Include="Entities\Skills\SpellSkill.cs" />
@@ -180,6 +181,11 @@
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
+    <None Include="Templates\Objects\DungeonEntrance.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\NPC\" />
+    <Folder Include="Templates\Player\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
