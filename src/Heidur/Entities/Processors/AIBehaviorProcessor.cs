@@ -28,9 +28,8 @@ namespace Heidur.Entities.Processors
         private static void AIAgressive(NonPlayerCharacter caller, GameMap map)
         {
             PhysicsProcessor.StopAllMovement(caller.PhysicsComponent);
-			
 
-            if (caller.aiBehaviorComponent.Clock.isIntervalTicked(Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE))
+            if (caller.aiBehaviorComponent.Clock.isIntervalTicked(Constants.NPC.DEFAULT_UNIT_MOVE_INTERVAL_AGGRESIVE) && !caller.PhysicsComponent.IsMoving)
             {
 
                 if (caller.PhysicsComponent.objective.PhysicsComponent.position.Y < caller.PhysicsComponent.position.Y)
