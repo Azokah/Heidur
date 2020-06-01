@@ -53,12 +53,12 @@ namespace Heidur.Entities.Processors
 			spriteBatch.DrawString(font, "Level: " + player.StatsComponent.Level.ToString(), Constants.UI.DEFAULT_UI_POSITION + Constants.UI.DEFAULT_UI_POSITION_INCREMENT_Y, Constants.UI.DEFAULT_UI_COLOR);
 			if (player.PhysicsComponent.objective != null)
 			{
-				spriteBatch.Draw(crosshair, (player.PhysicsComponent.objective.PhysicsComponent.position - Camera.position), Color.White);
+				spriteBatch.Draw(crosshair, player.PhysicsComponent.objective.PhysicsComponent.position, Color.White);
 			}
 
 			foreach (var floatingText in floatingTextList)
 			{
-				spriteBatch.DrawString(font, floatingText.text, (floatingText.position - Camera.position), floatingText.color);
+				spriteBatch.DrawString(font, floatingText.text, (floatingText.position ), floatingText.color);
 			}
 
 			if (statsWindow.Enabled)

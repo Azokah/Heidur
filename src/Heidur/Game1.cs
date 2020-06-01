@@ -13,7 +13,6 @@ namespace Heidur
 	public class Game1 : Game
     {
 		public GraphicsDeviceManager graphics;
-		public RenderTarget2D nativeRenderTarget;
 		public SpriteBatch spriteBatch;
 
 		public SceneManager sceneManager;
@@ -42,8 +41,6 @@ namespace Heidur
 
             this.IsFixedTimeStep = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d); // Caps framerate to 60fps
-
-            nativeRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT);
 
             //Mouse options
             //Mouse.SetCursor(MouseCursor.FromTexture2D(Content.Load<Texture2D>("cursor"), 0, 0));

@@ -50,15 +50,8 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			var spriteBatch = game.spriteBatch;
 
-			game.GraphicsDevice.SetRenderTarget(game.nativeRenderTarget);
 			game.GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
-			spriteBatch.End();
-
-			game.GraphicsDevice.SetRenderTarget(null);
-			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-			
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			spriteBatch.Draw(AzoSoftwareLogo, new Rectangle((((Constants.RESOLUTION_WIDTH / AzoSoftwareLogo.Width)/2)* AzoSoftwareLogo.Width) - AzoSoftwareLogo.Width/2, Constants.RESOLUTION_HEIGHT/2 - AzoSoftwareLogo.Height/2, AzoSoftwareLogo.Width, AzoSoftwareLogo.Height), Color.White);
 			spriteBatch.End();
 		}

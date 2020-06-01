@@ -5,5 +5,11 @@
 	"animated": true,
 	"frames": 4,
 	"directions": 1,
-	"texture": "DungeonEntrance"
+	"SpriteComponent": {
+		"textureName": "DungeonEntrance",
+		"TextureModifier": 1,
+		"IsAnimated": true,
+		"AnimationComponent": null
+
+	}
 }

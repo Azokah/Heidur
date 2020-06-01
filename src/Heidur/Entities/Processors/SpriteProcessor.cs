@@ -24,11 +24,11 @@ namespace Heidur.Entities.Processors
 			DrawHitBoxes(spriteBatch, position, spriteComponent);
 			if (spriteComponent.IsAnimated)
 			{
-				spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+				spriteBatch.Draw(spriteComponent.Texture, position , AnimationProcessor.GetFrame(spriteComponent.AnimationComponent), Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
 			}
 			else
 			{
-				spriteBatch.Draw(spriteComponent.Texture, position - Camera.position, null, Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
+				spriteBatch.Draw(spriteComponent.Texture, position , null, Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
 			}
 
 		}
@@ -68,7 +68,7 @@ namespace Heidur.Entities.Processors
 
                 rect.SetData(data);
 
-                Vector2 coor = position - Camera.position;
+                Vector2 coor = position ;
                 spriteBatch.Draw(rect, coor, null, Color.White, 0, originVectorModified, 1, SpriteEffects.None, Constants.Sprites.DEFAULT_UNIT_INDEX);
             }
         }

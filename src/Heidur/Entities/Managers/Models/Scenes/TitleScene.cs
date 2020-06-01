@@ -70,15 +70,8 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			var spriteBatch = game.spriteBatch;
 
-			game.GraphicsDevice.SetRenderTarget(game.nativeRenderTarget);
 			game.GraphicsDevice.Clear(Color.DarkSlateGray);
 			spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
-			spriteBatch.End();
-
-			game.GraphicsDevice.SetRenderTarget(null);
-			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-			
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			foreach(var button in uiButtons)
 			{
 				UIProcessor.DrawSprite(spriteBatch, button);
@@ -105,7 +98,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 				//BOUNDARIES
 				foreach(var button in uiButtons)
 				{
-					inputManager.Update(Mouse.GetState().Position, button);
+					inputManager.Update(Mouse.GetState().Position.ToVector2(), button);
 				}
 			}
 

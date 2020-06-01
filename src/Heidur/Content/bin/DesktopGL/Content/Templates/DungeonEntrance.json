@@ -4,5 +4,12 @@
 	"height": 192,
 	"animated": true,
 	"frames": 4,
-	"directions": 1
+	"directions": 1,
+	"SpriteComponent": {
+		"textureName": "DungeonEntrance",
+		"TextureModifier": 1,
+		"IsAnimated": true,
+		"AnimationComponent": null
+
+	}
 }

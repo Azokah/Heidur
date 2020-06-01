@@ -1,11 +1,10 @@
-﻿using Heidur.Entities.Processors;
-using Heidur.Helpers;
+﻿using Heidur.Helpers;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Heidur.Entities.Components
 {
-    public class AnimationComponent
+	public class AnimationComponent
     {
         public float framesSpeed = Constants.Animation.DEFAULT_FRAMES_SPEED_MS;
 

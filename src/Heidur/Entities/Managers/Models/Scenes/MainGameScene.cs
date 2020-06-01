@@ -4,12 +4,15 @@ using Heidur.Entities.Processors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using MonoGame.Extended.ViewportAdapters;
 
 namespace Heidur.Entities.Managers.Models.Scenes
 {
 	public class MainGameScene : IScene
 	{
 		// Engine and Game properties
+		public Camera2D camera;
 		public InputManager inputManager;
 		public GameObjectManager gameObjectManager;
 		public Constants.Scene.SCENE_STATE State { get; set; }
@@ -19,6 +22,8 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			State = Constants.Scene.SCENE_STATE.INITIALIZING;
 			gameObjectManager = new GameObjectManager();
 			inputManager = new InputManager(gameObjectManager.unit);
+			camera = new Camera2D(game);
+			camera.SetCameraSource(gameObjectManager.unit);
 		}
 
 		public void LoadContent(Game1 game)
@@ -36,7 +41,7 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			State = Constants.Scene.SCENE_STATE.RUNNING;
 			gameObjectManager.Update(delta);
-			Camera.Update(gameObjectManager.unit);
+			camera.Update(delta);
 			ParticlesProcessor.Update();
 			UIProcessor.Update(delta);
 		}
@@ -45,16 +50,10 @@ namespace Heidur.Entities.Managers.Models.Scenes
 		{
 			var spriteBatch = game.spriteBatch;
 
-			game.GraphicsDevice.SetRenderTarget(game.nativeRenderTarget);
 			game.GraphicsDevice.Clear(Color.CornflowerBlue);
-			spriteBatch.Begin(SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp);
+			spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: camera.camera.GetViewMatrix());
 			gameObjectManager.Draw(spriteBatch);
 			ParticlesProcessor.Draw(spriteBatch);
-			spriteBatch.End();
-
-			game.GraphicsDevice.SetRenderTarget(null);
-			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-			spriteBatch.Draw(game.nativeRenderTarget, new Rectangle(0, 0, Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_HEIGHT), Color.White);
 			UIProcessor.Draw(spriteBatch, gameObjectManager.unit);
 			spriteBatch.End();
 		}
@@ -73,19 +72,19 @@ namespace Heidur.Entities.Managers.Models.Scenes
 			if (Mouse.GetState().LeftButton == ButtonState.Pressed)
 			{
 				//BOUNDARIES
-				inputManager.Update(Mouse.GetState().Position, gameObjectManager.npcs);
+				inputManager.Update(camera.camera.ScreenToWorld(Mouse.GetState().Position.ToVector2()), gameObjectManager.npcs);
 				if (UIProcessor.statsWindow.Enabled)
 				{
 					foreach (var button in UIProcessor.statsWindow.Components)
 					{
-						inputManager.Update(Mouse.GetState().Position, button);
+						inputManager.Update(camera.camera.ScreenToWorld(Mouse.GetState().Position.ToVector2()), button);
 					}
 				}
 				if (UIProcessor.inventoryWindow.Enabled)
 				{
 					foreach (var button in UIProcessor.inventoryWindow.Components)
 					{
-						inputManager.Update(Mouse.GetState().Position, button);
+						inputManager.Update(camera.camera.ScreenToWorld(Mouse.GetState().Position.ToVector2()), button);
 					}
 				}
 			}

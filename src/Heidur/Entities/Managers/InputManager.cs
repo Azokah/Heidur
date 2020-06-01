@@ -38,11 +38,11 @@ namespace Heidur.Entities.Managers
 
 		}
 
-		public void Update(Point mousePositionInWindow, List<GameObject> entities)
+		public void Update(Vector2 mousePositionInWindow, List<GameObject> entities)
 		{
 			foreach (var entity in entities)
 			{
-				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow.ToVector2() + Camera.position, entity.PhysicsComponent))
+				if (PhysicsProcessor.CheckIfClicked(mousePositionInWindow, entity.PhysicsComponent))
 				{
 					player.PhysicsComponent.objective = entity;
 					return;
@@ -51,7 +51,7 @@ namespace Heidur.Entities.Managers
 			player.PhysicsComponent.objective = null;
 		}
 
-		public void Update(Point mousePositionInWindow, List<IUIPosition> entities)
+		public void Update(Vector2 mousePositionInWindow, List<IUIPosition> entities)
 		{
 			foreach (var entity in entities)
 			{
@@ -59,7 +59,7 @@ namespace Heidur.Entities.Managers
 			}
 		}
 
-		public void Update(Point mousePositionInWindow, IUIPosition entity)
+		public void Update(Vector2 mousePositionInWindow, IUIPosition entity)
 		{
 			if (entity != null)
 			{

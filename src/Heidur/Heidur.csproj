@@ -43,12 +43,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Camera2D.cs" />
     <Compile Include="Entities\Commands\SpellAttackCommand.cs" />
     <Compile Include="Entities\Commands\ShowInventoryCommand.cs" />
     <Compile Include="Entities\Commands\ShowStatsCommand.cs" />
     <Compile Include="Entities\Commands\ActionCommand.cs" />
     <Compile Include="Entities\Commands\RangedAttackCommand.cs" />
     <Compile Include="Entities\Components\ItemComponent.cs" />
+    <Compile Include="Entities\Factories\GameObjectFactory.cs" />
     <Compile Include="Entities\Factories\ItemFactory.cs" />
     <Compile Include="Entities\Factories\AnimationFactory.cs" />
     <Compile Include="Entities\Factories\SpriteFactory.cs" />
@@ -84,7 +86,6 @@
     <Compile Include="Helpers\Clock.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\Components\AudioComponent.cs" />
-    <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\Commands\MoveLeftCommand.cs" />
     <Compile Include="Entities\Commands\MoveRightCommand.cs" />
     <Compile Include="Entities\Commands\MoveDownCommand.cs" />
@@ -181,12 +182,8 @@
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
-    <None Include="Templates\Objects\DungeonEntrance.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Templates\NPC\" />
-    <Folder Include="Templates\Player\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

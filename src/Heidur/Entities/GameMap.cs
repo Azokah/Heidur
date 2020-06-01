@@ -49,7 +49,7 @@ namespace Heidur.Entities
                     tileToDrawPositionInAtlas.Y *= Constants.TILESIZE;
                     tileToDrawPositionInAtlas.X = (tileToDrawPositionInAtlas.X * Constants.TILESIZE) - Constants.TILESIZE;
 
-                    spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, FloorZIndex);
+                    spriteBatch.Draw(this.Texture, this.position , tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, FloorZIndex);
 
                     tileToDrawPositionInAtlas = new Rectangle(0 + WallsLayer[j, i], 0, Constants.TILESIZE, Constants.TILESIZE);
                     tileToDrawPositionInAtlas.Y += tileToDrawPositionInAtlas.X / Constants.Map.TILES_PER_ROW;
@@ -59,7 +59,7 @@ namespace Heidur.Entities
 
 					if (WallsLayer[j, i] != 0)
 					{
-						spriteBatch.Draw(this.Texture, this.position - Camera.position, tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
+						spriteBatch.Draw(this.Texture, this.position , tileToDrawPositionInAtlas, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, WallsZIndex);
 					}
                 }
             }

@@ -48,7 +48,7 @@ namespace Heidur.Entities.Processors.Models
             Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
             Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
 
-            spriteBatch.Draw(Texture, Position - Camera.position, sourceRectangle, Color, Angle, origin, Size, SpriteEffects.None, Constants.Particles.DEFAULT_LAYER_DEPTH);
+            spriteBatch.Draw(Texture, Position , sourceRectangle, Color, Angle, origin, Size, SpriteEffects.None, Constants.Particles.DEFAULT_LAYER_DEPTH);
         }
     }
 }
