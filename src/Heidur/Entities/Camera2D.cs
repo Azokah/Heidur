@@ -24,7 +24,7 @@ namespace Heidur.Entities
 		{
 			if (source != null)
 			{
-				camera.Position = new Microsoft.Xna.Framework.Vector2(source.PhysicsComponent.position.X - viewportAdapter.VirtualWidth/2, source.PhysicsComponent.position.Y - viewportAdapter.VirtualHeight/2);
+				camera.LookAt(source.PhysicsComponent.position);
 			}
 		}
 	}
